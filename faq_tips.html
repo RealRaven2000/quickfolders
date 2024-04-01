@@ -8,7 +8,7 @@
     <meta content="text/css" http-equiv="Content-Style-Type" />
     <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
     <link rel="stylesheet" href="css/project_nav.css?v=3" type="text/css">
-    <link rel="stylesheet" href="css/project.css?v=30" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=31" type="text/css">
     <link rel="stylesheet" href="css/infoBox.css" type="text/css">
     <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
     <link rel="stylesheet" href="css/footer.css" type="text/css">
@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="css/index.css?v=8" type="text/css">
 		<link rel="stylesheet" href="css/faq.css?v=4" type="text/css">
+
 
   </head>  
 
@@ -101,6 +102,7 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
 
 
 <h2><a name="FAQ">Frequently Asked Questions</a></h2>
+
 <br/><noscript>Please enable Javascript for an easier way to see the following section.<br></noscript>
 <a id="TJK_ToggleON">Expand All</a><a id="TJK_ToggleOFF">Collapse All</a>
 
@@ -130,12 +132,26 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
   Error console can be shown using the shortcut Ctrl+Shift+J or via the Thunderbird <i>tools</i> menu 
   under <i>Developer Tools</i> &laquo; <i>Error Console</i>. 
 
+  <br>
+  The additional debug options for QuickFolders can be set 
+  in about:config - or by right clicking the "Debug" checkbox on the QuickFolders Options <i>Advanced</i> tab: 
+  <br>
+  <img class="screenshot" src="images/debug-options-rightclick.png"/>
+  <br>
+  The Debug checkbox must be activated for any of the other debug options to be effective.
+  <br>
+  <img class="screenshot" src="images/about-config-debug-2.png">
+  <br> This will minimize the amount of reading / copying / pasting of error messages.
+     Do not activate all of them because you will be flooded with messages, if in doubt
+     you can contact me for suggestions for relevant ones for a specific problem.
+	</dd>  
+
   <dt>Can I change the order of toolbars?</dt>
   <dd> 
     Yes, add the following lines to userChrome.css and also make sure the Thunderbird 
     configuration setting <tt>toolkit.legacyUserProfileCustomizations.stylesheets</tt> is enabled.
 
-    <div class="code">
+    <pre class="code_block">
       #toolbar-menubar {
         order: 1;             
       }
@@ -151,23 +167,10 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
       #QuickFolders-Toolbar {
         order: 4;
       }
-    </div>
+    </pre>
 
   </dd>
-  
-  <br>
-  The additional debug options for QuickFolders can be set 
-  in about:config - or by right clicking the "Debug" checkbox on the QuickFolders Options <i>Advanced</i> tab: 
-  <br>
-  <img class="screenshot" src="images/debug-options-rightclick.png"/>
-  <br>
-  The Debug checkbox must be activated for any of the other debug options to be effective.
-  <br>
-  <img class="screenshot" src="images/about-config-debug-2.png">
-  <br> This will minimize the amount of reading / copying / pasting of error messages.
-     Do not activate all of them because you will be flooded with messages, if in doubt
-     you can contact me for suggestions for relevant ones for a specific problem.
-	</dd>
+
 
   <dt>Does QuickFolders work with the current beta of Thunderbird?</dt>
   <dd>
@@ -283,6 +286,15 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
 	<dt>You're brilliant. Can I reward you?</dt>
 	<dd>First of all, pass on the good news about QuickFolders to all other Thunderbird/SeaMonkey/Postbox users you know. You're always welcome to send me (Axel) emails directly from the Options / Support tab, but I am also very grateful to donations:
 	  Just <a href="http://quickfolders.org/donate.html">click here for detail.</a></dd>
+
+  <dt>How do the Shortcuts Alt+1 - Alt+9 work?</dt>
+  <dd>Since modern versions of Thunderbird reserve these shorcuts 
+    (ALT+number and CTRL+number) for itself you need to disable them using
+    the Add-on  <a target="_blank" 
+    href="https://addons.thunderbird.net/en-US/thunderbird/addon/tbkeys-lite/">tbkeys-lite</a>.
+    Configure as follows:<br><br>
+  <img src="images/tbkeys-alt-shortcuts.png" alt="tbkeys configuration" />
+  </dd>    
 
 </dl>
 

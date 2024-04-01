@@ -154,8 +154,7 @@ h3 {
 	transition-duration: 0.7s, 0.2s, 0.2s;
 }
 
-h3:hover
-{
+h3:hover {
 	border-radius: 1em 0.3em 1em 0.3em;
 }
 
@@ -189,7 +188,7 @@ h4 a {
 }
 
 h4:hover a { 
-  rgb(55, 10,00) !important; 
+  color: rgb(55, 10, 00) !important; 
   /* emboss: */
   text-shadow: 0pt 0pt 1px rgb(0, 0, 0), 0pt 0pt 2px rgb(187, 187, 187), 1px 1px 3px rgb(255, 255, 255);
 }
@@ -379,6 +378,7 @@ body {
 
 /* bubble used to display code */
 .code_block {
+	white-space: pre-wrap;
   background-color: white;
   border-style: solid;
   border-color: black;
