@@ -797,7 +797,14 @@ function initButtons() {
   document.getElementById("L0").addEventListener("click", (event) => { 
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/"); 
     window.close(); 
+  });
+  
+  document.getElementById("tbkeys").addEventListener("click", (event) => { 
+    QuickFolders.Util.openLinkInTab("https://github.com/RealRaven2000/QuickFolders/issues/387#issuecomment-2029756995"); 
+    window.close(); 
   });  
+
+  
 
 
 }
