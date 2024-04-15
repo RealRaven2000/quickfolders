@@ -140,14 +140,14 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1} Bản cập nhật mới nhất của $addonName$ sửa chữa các thuộc tính tab tiên tiến như địa chỉ tự động mỗi tab khi viết thư mới. {P2}{P1} Nó cũng có nhiều tính năng khác có thể truy cập ngay bây giờ trên Mac và Linux. {P2}",
+    "message": "{P1} Phiên bản mới nhất của $addonName$ sửa các cài đặt tìm kiếm nâng cao và giải quyết nhiều vấn đề về bố cục. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "Công việc này được tài trợ độc quyền bằng cách bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai."
   },
@@ -1314,8 +1314,8 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "18 tháng 12"
-  },
+    "message": "29 tháng 4"
+  },  
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -1411,8 +1411,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Bất kỳ mục trong menu công cụ (như hỗ trợ hoặc giấy phép) bây giờ kích hoạt trang cài đặt đúng ngay cả khi cài đặt đã hiển thị.{L2}{L1} Các cài đặt bổ sung cho QuickFolders hiện có sẵn cho tất cả các hệ điều hành. Chúng có thể truy cập bằng biểu tượng bánh răng nhỏ bên cạnh tùy chọn chính.{L2}{L1} Việc tải cấu hình từ cài đặt lại hoạt động [issue 425] {L2} {L1} Loại bỏ bóng đen văn bản không mong muốn ở một số phần của UI.{L2} {L1} Sửa các vấn đề khác nhau với các menu con thư mục treo. {L2} {L1} Bảng thuộc tính cụ thể cho tab được cải thiện{L2} {L1} Mục menu ngữ cảnh 'tùy chỉnh biểu tượng' không biến mất nữa.{L2}"
-  }, 
+    "message": "{L1} Tính năng mới để Đánh dấu Nhóm tin nhắn là đã đọc [issue 458]{L2}{L1} Cải thiện bản dịch tiếng Ý - cảm ơn Leopoldo Saggin về công việc tuyệt vời của anh ấy.{L2}{L1} Cải thiện tính khả dụng cho quickMove và danh sách đọc.{L2} {L1} Sửa một số vấn đề về bố cục.{L2} {L1} Ctrl+Click phải mở các lệnh QuickFolders như mong đợi. {L2} {L1} Sửa lỗi khi di chuyển thư trong khi chỉ hạn chế cho tài khoản được xem. {L2} {L1} Sửa các vấn đề với việc lưu trữ các loại trừ của nhiều tài khoản thư trong cài đặt tìm kiếm nâng cao.{L2}"
+  },   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

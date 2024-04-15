@@ -415,10 +415,10 @@ END LICENSE BLOCK */
     ##   settings dialog or tab is already open
 
   6.5 QuickFolders Pro - WIP
-    ## Add Alias to register dialog if already set in a license
     ## Improved Italian Translations thanks to Leopoldo Saggin 
     ## Localized hard coded English strings (thanks to Leopoldo Saggin for finding these)
     ## Fixed layout issues in advanced tab settings
+    ## [issue 462] Accessibility Improvement: increased (vertical) space around quickJump and reading list buttons
     ## [issue 458] Feature: Mark Newsgroup Read
     ## [issue 459] Ctrl+Right-click QuickFolders Commands don't work
     ## [issue 455] Reading list: add current item to list not working 
@@ -426,6 +426,7 @@ END LICENSE BLOCK */
     ## Opening support sites in a tab is now using API method
     ## [issue 451] quickMove error in conversation view (when results are restricted to current mail account)
     ## [issue 464] Advanced Search Settings - unchecking more multiple Accounts failed to save
+    ## Add Alias to register dialog if already set in a license
 
 
     
@@ -433,6 +434,10 @@ END LICENSE BLOCK */
 	TO DO next
 	==========
     ## [issue 423] Color Tabs with unread messages
+    ## [issue 462] Accessibility Improvement: increase (vertical) space around quickJump and reading list buttons
+    ## [issue 461] Accessibility improvements for fonts (quickJump) - make all UI Font Sizes increasable
+    ## [issue ]
+    ## [issue ]
     ## [issue ]
 
 

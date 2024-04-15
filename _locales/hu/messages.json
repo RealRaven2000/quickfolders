@@ -228,14 +228,14 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A $addonName$ legújabb kiadása kijavítja a fejlett lap tulajdonságokat, például az automatikus címzést lapenként az új levél írásakor. {P2}{P1} Emellett még sok más funkciót is tartalmaz, amelyek most már elérhetők Mac-en és Linux-on is. {P2}",
+    "message": "{P1} A $addonName$ legújabb kiadása kijavítja a fejlett keresési beállításokat és több elrendezési problémát is megold. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  }, 
+  },  
   "newsSection.license": {
     "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
@@ -1564,8 +1564,8 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "december 18"
-  },  
+    "message": "április 29."
+  },   
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
     "placeholders": {
@@ -1664,8 +1664,8 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Bármely eszközmenü tétel (például támogatás vagy licenc) mostantól aktiválja a megfelelő beállítási oldalt, akkor is, ha a beállítások már megjelennek.{L2}{L1} További beállítások hozzáadva a QuickFolders-hez, most már elérhetők minden operációs rendszeren. Ezek most egy kis fogaskerék ikonnal érhetők el a fő opció mellett.{L2}{L1} A beállítások betöltése ismét működik [issue 425] {L2} {L1} Eltávolítva a nem kívánt szövegárnyékok bizonyos részein.{L2} {L1} Javítva a függő mappa almenükkel kapcsolatos különféle problémákat. {L2} {L1} Javított fül-specifikus tulajdonságok panel{L2} {L1} A mappa kontextusmenü pontja, az 'ikon testreszabása' többé nem tűnik el.{L2}"
-  },
+    "message": "{L1} Új funkció a hírcsoportok megjelölésére olvasottként [issue 458]{L2}{L1} Javított olasz fordítások - köszönet Leopoldo Saggin-nak a nagyszerű munkájáért.{L2}{L1} Hozzáférhetőségi javítások a quickMove és az olvasási lista számára.{L2} {L1} Különböző elrendezési problémák javítása.{L2} {L1} Ctrl+Jobb kattintás megnyitja a QuickFolders parancsokat a várt módon. {L2} {L1} Hiba javítása a levél mozgatásakor, miközben csak a megtekintett fiókra van korlátozva. {L2} {L1} Problémák javítása több e-mail-fiók kizárásának mentésekor az előrehaladott keresési beállításokban.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

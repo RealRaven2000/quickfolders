@@ -265,14 +265,14 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} Aquesta darrera edició de $addonName$ soluciona propietats avançades de les pestanyes com l'adreça automàtica per pestanya quan redactes un correu nou. {P2}{P1} També inclou moltes més funcionalitats ara accessibles a Mac i Linux. {P2}",
+    "message": "{P1} Aquesta última edició de $addonName$ soluciona la configuració de cerca avançada i adreça diversos problemes de disseny. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "Com que aquest treball es finança exclusivament amb la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessats a utilitzar QuickFolders en el futur."
   },
@@ -1742,8 +1742,8 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "18 de diciembre"
-  },
+    "message": "29 d'abril"
+  },  
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1848,7 +1848,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Qualsevol element del menú de ferramentes (com ara suport o llicència) ara activa la pàgina de configuració correcta fins i tot quan les configuracions ja estan visibles.{L2}{L1} Ara es poden accedir a la configuració addicional de QuickFolders des de tots els sistemes operatius. Ara s'accedeix amb un petit icona de rodet a banda de l'opció principal.{L2}{L1} La càrrega de la configuració des de la configuració ja funciona de nou [issue 425] {L2} {L1} S'ha eliminat l'ombra de text no desitjada en algunes parts de la interfície d'usuari.{L2} {L1} S'han resolt diversos problemes amb els submenús de carpetes penjades. {L2} {L1} Millorada la pestanya del panell de propietats específiques{L2} {L1} L'element del menú contextual de la carpeta 'personalitzar icona' ja no desapareix.{L2}"
+    "message": "{L1} Nova funcionalitat per marcar els grups de notícies com llegits [issue 458]{L2}{L1} Millora de les traduccions italianes - gràcies a Leopoldo Saggin per la seva gran feina.{L2}{L1} Millores en l'accessibilitat per a quickMove i la llista de lectures.{L2} {L1} S'han resolt diversos problemes d'estructura.{L2} {L1} Ctrl+Click dret obre els comandaments de QuickFolders com es preveia. {L2} {L1} S'ha solucionat un error en moure els correus mentre està restringit al compte visualitzat. {L2} {L1} S'han corregit problemes amb el guardat d'exclusions de diversos comptes de correu a la configuració de cerca avançada.{L2}"
   },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

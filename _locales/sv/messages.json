@@ -257,14 +257,14 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Denna senaste upplaga av $addonName$ åtgärdar avancerade flikegenskaper, såsom automatisk adressering per flik vid skrivande av ny e-post. {P2}{P1} Den har också många fler funktioner som nu är tillgängliga på Mac och Linux. {P2}",
+    "message": "{P1} Denna senaste utgåva av $addonName$ fixar avancerade sökinställningar och löser flera layoutproblem. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
   },
@@ -1812,8 +1812,8 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "18 december"
-  },
+    "message": "29 april"
+  },  
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1918,8 +1918,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Varje verktygsmenyobjekt (till exempel support eller licens) aktiverar nu rätt inställningssida även när inställningarna redan visas.{L2}{L1} Ytterligare inställningar för QuickFolders är nu tillgängliga för alla operativsystem. Dessa nås nu med en liten kugghjulsikon bredvid huvudalternativet.{L2}{L1} Laddning av konfiguration från inställningar fungerar igen [issue 425] {L2} {L1} Borttagning av oönskade textskuggor på vissa delar av gränssnittet.{L2} {L1} Åtgärdade olika problem med hängande mapp-undermenyer. {L2} {L1} Förbättrad flik-specifik egenskapspanel{L2} {L1} Kontextmenyn 'anpassa ikon' försvinner inte längre.{L2}"
-  }, 
+    "message": "{L1} Ny funktion för att markera nyhetsgrupper som lästa [issue 458]{L2}{L1} Förbättrade italienska översättningar - tack till Leopoldo Saggin för hans fantastiska arbete.{L2}{L1} Tillgänglighetsförbättringar för quickMove och läslista.{L2} {L1} Olika layoutproblem har åtgärdats.{L2} {L1} Ctrl+Högerklick öppnar QuickFolders-kommandon som förväntat. {L2} {L1} Ett fel har åtgärdats när du flyttar e-post när det är begränsat till endast visat konto. {L2} {L1} Problem med att spara uteslutningar av flera e-postkonton i avancerade sökinställningar har åtgärdats.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

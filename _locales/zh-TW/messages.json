@@ -257,14 +257,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 這個最新版本的$addonName$修復了高級選項卡屬性，例如在撰寫新郵件時每個選項卡的自動 addressing。 {P2}{P1} 它還具有在Mac和Linux上現在可以訪問的許多其他功能。 {P2}",
+    "message": "{P1} 這個最新版本的 $addonName$ 修復了高級搜尋設置，並解決了一些版面配置問題。 {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證。"
   },
@@ -1750,8 +1750,8 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "12月18日"
-  },
+    "message": "4月29日"
+  },  
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
     "placeholders": {
@@ -1856,7 +1856,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: 任何工具選單項目（例如支援或授權）現在即使在已顯示設置的情況下也會啟用正確的設置頁面。{L2}{L1} QuickFolders 的其他設定現在可在所有操作系統上訪問。這些現在可以透過主選項旁邊的小齒輪圖標訪問。{L2}{L1} 再次從設置中加載配置 [issue 425] {L2} {L1} 刪除了 UI 某些部分中不需要的文本陰影.{L2} {L1} 解決了與懸掛文件夾子菜單相關的各種問題。 {L2} {L1} 改進了特定標籤屬性面板{L2} {L1} 文件夾上下文菜單項'自定義圖標'不再消失.{L2}"
+    "message": "{L1} 新功能：標記新聞組為已讀 [issue 458]{L2}{L1} 改善義大利文翻譯 - 感謝 Leopoldo Saggin 做出的傑出工作。{L2}{L1} quickMove 和閱讀清單的可存取性改善。{L2} {L1} 修正了各種版面配置問題。{L2} {L1} 按 Ctrl+右鍵單擊打開 QuickFolders 命令，如預期。 {L2} {L1} 修正了僅在查看帳戶時移動郵件時出現的錯誤。 {L2} {L1} 修正了在進階搜尋設置中保存多個郵件帳戶的排除時出現的問題。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

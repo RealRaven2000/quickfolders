@@ -128,14 +128,14 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Tämä $addonName$ -lisäosan uusin versio korjaa edistyneitä välilehtiominaisuuksia, kuten automaattista osoittamista välilehteä kohden kirjoittaessa uutta sähköpostia. {P2}{P1} Siinä on myös paljon muita ominaisuuksia, jotka ovat nyt käytettävissä Mac- ja Linux-ympäristöissä. {P2}",
+    "message": "{P1} Tämä uusin versio $addonName$ korjaa edistyneet hakumääritykset ja käsittelee useita asetteluongelmia. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa"
   },
@@ -224,8 +224,8 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "18. joulukuuta"
-  },  
+    "message": "29. huhtikuuta"
+  },   
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -312,8 +312,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Mikä tahansa työkaluvalikon kohde (kuten tuki tai lisenssi) aktivoi nyt oikean asetussivun, vaikka asetukset olisivat jo näkyvissä.{L2}{L1} Lisäasetukset QuickFoldersille ovat nyt käytettävissä kaikille käyttöjärjestelmille. Ne ovat nyt saatavilla pienen hammasrattaan kuvakkeen avulla päävaihtoehdon vieressä.{L2}{L1} Asetusten lataaminen toimii jälleen [issue 425] {L2} {L1} Poistettu ei-toivottuja tekstivarjoja joissakin käyttöliittymän osissa.{L2} {L1} Korjattu erilaisia ongelmia roikkuvien kansio-ali valikoiden kanssa. {L2} {L1} Parannettu välilehti-kohtainen ominaisuuspaneeli{L2} {L1} Kansion kontekstivalikon 'mukauta kuvake' ei katoa enää.{L2}"
-  },     
+    "message": "{L1} Uusi ominaisuus uutisryhmän merkitsemiseen luetuksi [issue 458]{L2}{L1} Parannettu italialainen käännös - kiitos Leopoldo Sagginille hänen upeasta työstään.{L2}{L1} Saavutettavuusparannuksia quickMove ja lukulistaan.{L2} {L1} Korjattu useita ulkoasuongelmia.{L2} {L1} Ctrl+Oikea-klikkaus avaa QuickFolders-komennot odotetusti. {L2} {L1} Korjattu virhe, kun siirretään sähköpostia vain katsotulle tilille. {L2} {L1} Korjattu ongelmia useiden sähköpostitilien poissulkemisessa edistyneissä hakun asetuksissa.{L2}"
+  },      
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Tervetuloa osoitteeseen $addonName$",

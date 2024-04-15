@@ -170,14 +170,14 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Tato nejnovější verze $addonName$ opravuje pokročilé vlastnosti karet, jako je automatické adresování na kartu při psaní nové pošty. {P2}{P1} Obsahuje také mnoho dalších funkcí, které jsou nyní dostupné na Mac a Linux. {P2}",
+    "message": "{P1} Tato nejnovější verze $addonName$ opravuje pokročilá nastavení vyhledávání a řeší řadu problémů s rozložením. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-}, 
+  },  
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
@@ -295,8 +295,8 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "18. prosince"
-  },
+    "message": "29. dubna"
+  },  
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -383,8 +383,8 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Jakákoli položka nabídky nástrojů (například podpora nebo licence) nyní aktivuje správnou stránku nastavení i tehdy, když jsou nastavení již zobrazena.{L2}{L1} Pro QuickFolders jsou nyní dostupná další nastavení přístupná pro všechny operační systémy. Nyní jsou dostupná pomocí ikony malého ozubeného kola vedle hlavní možnosti.{L2}{L1} Načítání konfigurace ze nastavení opět funguje [issue 425] {L2} {L1} Odstraněn nechtěný textový stín v některých částech uživatelského rozhraní.{L2} {L1} Opraveny různé problémy s visícími podnabídkami složek. {L2} {L1} Vylepšen panel s vlastnostmi specifickými pro záložku{L2} {L1} Položka kontextového menu složky 'přizpůsobit ikonu' už nezmizí.{L2}"
-  },  
+    "message": "{L1} Nová funkce pro označení novinové skupiny jako přečtené [issue 458]{L2}{L1} Vylepšené italské překlady - díky Leopoldo Sagginovi za jeho skvělou práci.{L2}{L1} Zlepšení přístupnosti pro quickMove a seznam čtení.{L2} {L1} Opraveny různé problémy s rozložením.{L2} {L1} Ctrl+Pravé tlačítko myši otevírá příkazy QuickFolders podle očekávání. {L2} {L1} Byla opravena chyba při přesouvání e-mailů pouze pro zobrazený účet. {L2} {L1} Byly vyřešeny problémy se ukládáním vyloučení více e-mailových účtů v pokročilých nastaveních vyhledávání.{L2}"
+  },    
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Vítejte v $addonName$",

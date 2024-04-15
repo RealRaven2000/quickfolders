@@ -404,7 +404,7 @@ input[type=color] {
   min-width: 120px
 }
 
-
+button.helpLink,
 .hasConfigEvent button.configSettings {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   background-color: transparent;
@@ -412,12 +412,20 @@ input[type=color] {
   cursor: pointer;
   display: list-item;
   fill: currentColor;
-  list-style-image: url('ico/settings-simple.svg') !important;
   list-style-position: inside;
   margin: 0 3px 0 auto;  
   min-width: 24px !important;
   padding: 3px 3px 0 3px;
   width: 24px;
+}
+
+
+.hasConfigEvent button.configSettings {
+  list-style-image: url('ico/settings-simple.svg') !important;
+}
+
+button.helpLink {
+  list-style-image: url('ico/help.svg') !important;
 }
 
 .hasConfigEvent button.configSettings:hover {

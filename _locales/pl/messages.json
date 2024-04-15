@@ -254,14 +254,14 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Ta najnowsza edycja $addonName$ naprawia zaawansowane właściwości karty, takie jak automatyczne adresowanie na kartę przy pisaniu nowej poczty. {P2}{P1} Posiada również wiele innych funkcji, które teraz są dostępne na Macu i Linuxie. {P2}",
+    "message": "{P1} Ta najnowsza wersja $addonName$ naprawia zaawansowane ustawienia wyszukiwania i rozwiązuje wiele problemów z układem. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
+  },   
   "newsSection.license": {
     "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
   },
@@ -1794,8 +1794,8 @@
     "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
   },
   "special-offer-expiry": {
-    "message": "18 grudnia"
-  },
+    "message": "29 kwietnia"
+  },  
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {
@@ -1900,8 +1900,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Każdy element menu narzędziowego (takie jak wsparcie czy licencja) teraz aktywuje właściwą stronę ustawień, nawet gdy ustawienia są już wyświetlane.{L2}{L1} Dodatkowe ustawienia dla QuickFolders są teraz dostępne dla wszystkich systemów operacyjnych. Teraz można je uzyskać za pomocą małej ikony zębatki obok głównej opcji.{L2}{L1} Ładowanie konfiguracji ze ustawień działa ponownie [issue 425] {L2} {L1} Usunięte niechciane cienie tekstu w niektórych częściach interfejsu.{L2} {L1} Naprawione różne problemy z zawieszającymi się podmenu folderów. {L2} {L1} Ulepszony panel właściwości specyficzny dla zakładek{L2} {L1} Element menu kontekstowego 'dostosuj ikonę' nie znika już.{L2}"
-  },  
+    "message": "{L1} Nowa funkcja oznaczania grup dyskusyjnych jako przeczytane [issue 458]{L2}{L1} Poprawione włoskie tłumaczenia - dzięki Leopoldo Saggin za świetną pracę.{L2}{L1} Usprawnienia dostępności dla quickMove i listy odczytów.{L2} {L1} Naprawione różne problemy z układem.{L2} {L1} Klawisz Ctrl+Klik prawym otwiera polecenia QuickFolders zgodnie z oczekiwaniami. {L2} {L1} Naprawiono błąd podczas przenoszenia wiadomości, gdy ograniczono się tylko do wyświetlanego konta. {L2} {L1} Naprawiono problemy z zapisywaniem wykluczeń wielu kont pocztowych w zaawansowanych ustawieniach wyszukiwania.{L2}"
+  },   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Witamy w $addonName$",

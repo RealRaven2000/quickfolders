@@ -257,14 +257,14 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} Deze nieuwste editie van $addonName$ lost geavanceerde tabblad eigenschappen op, zoals automatisch adresseren per tabblad bij het schrijven van een nieuwe e-mail. {P2}{P1} Het heeft ook veel meer functies die nu toegankelijk zijn op Mac en Linux. {P2}",
+    "message": "{P1} Deze nieuwste editie van $addonName$ corrigeert geavanceerde zoekinstellingen en lost verschillende lay-outproblemen op. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
+  },   
   "newsSection.license": {
     "message": "Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst"
   },
@@ -1800,8 +1800,8 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "18 december"
-  },  
+    "message": "29 april"
+  },    
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1906,8 +1906,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Elk item in het gereedschapsmenu (zoals ondersteuning of licentie) activeert nu de juiste instellingenpagina, zelfs als de instellingen al worden weergegeven.{L2}{L1} Extra instellingen voor QuickFolders zijn nu toegankelijk voor alle besturingssystemen. Deze zijn nu te bereiken met een klein tandwielicoon naast de hoofdoptie.{L2}{L1} Het laden van de configuratie vanuit de instellingen werkt weer [issue 425] {L2} {L1} Onnodige tekstschaduwen in sommige delen van de UI zijn verwijderd.{L2} {L1} Diverse problemen met hangende submenu's van mappen zijn verholpen. {L2} {L1} Verbeterd eigenschappenpaneel specifiek voor tabbladen{L2} {L1} Het contextmenu-item 'pictogram aanpassen' verdwijnt niet meer.{L2}"
-  },    
+    "message": "{L1} Nieuwe functie om nieuwsgroepen als gelezen te markeren [issue 458]{L2}{L1} Verbeterde Italiaanse vertalingen - dank aan Leopoldo Saggin voor zijn geweldige werk.{L2}{L1} Toegankelijkheidsverbeteringen voor quickMove en leeslijst.{L2} {L1} Diverse lay-outproblemen opgelost.{L2} {L1} Ctrl+Rechtsklik opent QuickFolders-opdrachten zoals verwacht. {L2} {L1} Een fout is opgelost bij het verplaatsen van e-mails terwijl alleen het bekeken account is beperkt. {L2} {L1} Problemen met het opslaan van uitsluitingen van meerdere e-mailaccounts in geavanceerde zoekinstellingen zijn opgelost.{L2}"
+  },      
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Welkom bij $addonName$",

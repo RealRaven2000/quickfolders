@@ -10,7 +10,10 @@ END LICENSE BLOCK */
 
 const REDUCTION_RENEW = "25%",
       REDUCTION_PRO = "40%",
-      REDUCTION_UPGRADE = "33%";
+      REDUCTION_UPGRADE = "33%",
+      SALES_DATE= "2024-04-29";
+
+
 
 addEventListener("click", async (event) => {
   switch (event.target.id) {

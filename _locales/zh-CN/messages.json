@@ -261,14 +261,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 这个最新版本的$addonName$修复了高级选项卡属性，例如在撰写新邮件时每个选项卡的自动 addressing。 {P2}{P1} 它还具有在Mac和Linux上现在可以访问的许多其他功能。 {P2}",
+    "message": "{P1} 这个最新版本的 $addonName$ 修复了高级搜索设置，并解决了一些布局问题。 {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },
+  },  
   "newsSection.license": {
     "message": "这项工作是独家资助的 通过出售许可证，如果您有兴趣在未来使用 QuickFolders，请考虑购买许可证或更新之前的许可证。"
   },
@@ -1735,8 +1735,8 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "12月18日"
-  },  
+    "message": "4月29日"
+  },   
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {
@@ -1841,8 +1841,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: 任何工具菜单项（如支持或许可）现在即使在已显示设置的情况下也会激活正确的设置页面。{L2}{L1} QuickFolders 的附加设置现在可在所有操作系统上访问。现在可通过主选项旁边的小齿轮图标访问这些设置。{L2}{L1} 从设置中加载配置再次可行 [issue 425] {L2} {L1} 删除了 UI 的某些部分中不需要的文本阴影.{L2} {L1} 解决了与挂起文件夹子菜单相关的各种问题。 {L2} {L1} 改进了特定选项卡属性面板{L2} {L1} 文件夹上下文菜单项'自定义图标'不再消失.{L2}"
-  }, 
+    "message": "{L1} 新功能：标记新闻组为已读 [issue 458]{L2}{L1} 改进意大利语翻译 - 感谢 Leopoldo Saggin 的出色工作。{L2}{L1} quickMove 和阅读列表的辅助功能改进。{L2} {L1} 修复了各种布局问题。{L2} {L1} Ctrl+右键单击按预期打开 QuickFolders 命令。 {L2} {L1} 修复了仅限于视图帐户时移动邮件时的错误。 {L2} {L1} 修复了在高级搜索设置中保存多个邮件帐户的排除时出现的问题。{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "欢迎使用 $addonName$",

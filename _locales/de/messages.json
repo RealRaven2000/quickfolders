@@ -258,14 +258,14 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Diese neueste Ausgabe von $addonName$ behebt erweiterte Tab-Eigenschaften wie automatische Adressierung pro Tab beim Verfassen neuer E-Mails. {P2}{P1} Sie verbessert den Zugriff auf weitere Funktionen, die jetzt auch auf Mac und Linux zugänglich sind. {P2}",
+    "message": "{P1} Diese neueste Ausgabe von $addonName$ verbessert erweiterte Sucheingabeneinstellungen und behebt eine Reihe von Layout-Problemen. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  }, 
+  },  
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -1760,7 +1760,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} erhältlich.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1789,7 +1789,7 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "18. Dezember"
+    "message": "29. April"
   },  
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1891,8 +1891,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Menüpunkte im Werkzeugmenü (wie z.B. Support oder Lizenz) aktivieren nun die richtige Einstellungsseite, auch wenn die Einstellungen bereits angezeigt werden.{L2}{L1} Zusätzliche Einstellungen für QuickFolders sind nun für alle Betriebssysteme zugänglich. Diese werden jetzt über ein kleines Rädchen neben der Hauptoption aufgerufen.{L2}{L1} Das Laden der Konfiguration aus den Einstellungen funktioniert wieder [issue 425] {L2} {L1} Unerwünschte Textschatten in einigen Teilen der Benutzeroberfläche wurden entfernt.{L2} {L1} Verschiedene Probleme mit hängenden Ordner-Untermenüs wurden behoben. {L2} {L1} Verbessertes Registerkarten-spezifisches Eigenschaftenfenster{L2} {L1} Der Kontextmenüpunkt 'Symbol anpassen' verschwindet nicht mehr.{L2}"
-  },   
+    "message": "{L1} Neue Funktion zum Markieren von Newsgroups als gelesen [issue 458]{L2}{L1} Verbesserte italienische Übersetzungen - vielen Dank an Leopoldo Saggin für seine großartige Arbeit.{L2}{L1} Barrierefreiheitsverbesserung: Die quickJump- und Leselistenschaltflächen wurden vergrössert, um das Ablegen von E-Mails zu vereinfachen.{L2} {L1} Verschiedene Layout-Probleme wurden behoben.{L2} {L1} Strg+Rechtsklick öffnet QuickFolders-Befehle wie erwartet. {L2} {L1} Ein Fehler beim Verschieben von E-Mails nur für das angezeigte Konto wurde behoben. {L2} {L1} Probleme beim Speichern von Ausschlüssen mehrerer E-Mail-Konten in den erweiterten Sucheingabeeinstellungen wurden behoben.{L2}"
+  },     
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Willkommen bei $addonName$",

@@ -210,7 +210,7 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Currently Thunderbird doesn't allow Add-ons to overwrite these shortcuts, we are trying to implement a workaround soon."
+    "message": "Currently Thunderbird uses these as built-in shortcuts, but you can free them using the Add-on tbkeys lite. Click the (?) button for more information:"
   },
   "lastName.label": {
     "message": "Last Name:"
@@ -268,7 +268,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1} This latest edition of $addonName$ fixes advanced tab properties such as automatic addressing per tab when writing new mail. {P2}{P1} It also has many more features that are now accessible on Mac and Linux. {P2}",
+    "message": "{P1} This latest edition of $addonName$ fixes problems in advanced search settings and addresses a number of layout issues. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "December 18th"
+    "message": "April 29th"
   }, 
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1955,7 +1955,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}6.4.1: Any tool menu item (such as support or license) now activates the correct settings page even when settings are displayed already.{L2}{L1} Additional settings for QuickFolders are now accessible to all operating systems. These are now accessed with a little sprocket icon beside the main option.{L2}{L1} Loading the configuration from settings works again [issue 425] {L2} {L1} Removed unwanted text shadows in some parts of UI.{L2} {L1} Fixed various problems with hanging folder submenus. {L2} {L1} Improved tab-specific properties panel{L2} {L1}The folder context menu item 'customize icon' doesn't disappear anymore.{L2}"
+    "message": "{L1} New feature to Mark Newsgroup Read [issue 458]{L2}{L1} Improved Italian translations - thanks to Leopoldo Saggin for his great work.{L2}{L1} Accessibility improvments for quickMove and reading list.{L2} {L1} Fixed various layout issues.{L2} {L1} Ctrl+Right-click opens QuickFolders Commands as expected. {L2} {L1} Fixed an error when moving mail while restricted to viewed account only. {L2} {L1} Fixed problems with saving exclusions of multiple mail accounts in advanced search settings.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
