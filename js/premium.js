@@ -57,8 +57,13 @@ var removedItems = [];
 					var links = navMenu[0].children;
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
-						if (href && href.indexOf("user="==-1))
-							links[i].setAttribute("href", href + "?user=" + user);
+						if (href && href.indexOf("user="==-1)) {
+							if (href.indexOf("?"==-1)) {
+								links[i].setAttribute("href", href + "?user=" + user);
+							} else {
+								links[i].setAttribute("href", href + "&user=" + user);
+							}
+						}
 					}
 				}
 			}
@@ -99,7 +104,22 @@ var removedItems = [];
 					}
 				}
 			);
+		} else {
+			// update all sales items:
+			let saleLabels = document.querySelectorAll(".saleName");
+			for (let s of saleLabels) {
+				s.textContent = sales_name; // e.g. "AUTUMN SALE"
+			}
+			let saleStarts =  document.querySelectorAll(".saleStart");
+			for (let s of saleStarts) {
+				s.textContent = sales_start_lbl; // e.g. "September 25th"
+			}			
+			let saleEnds =  document.querySelectorAll(".saleEnd");
+			for (let s of saleEnds) {
+				s.textContent = sales_end_lbl; // e.g. "October 9th"
+			}			
 		}
+
 
 	});
 	
