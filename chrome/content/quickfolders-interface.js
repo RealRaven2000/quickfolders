@@ -955,6 +955,7 @@ QuickFolders.Interface = {
 				let fontSize = prefs.ButtonFontSize || 12; // default size
 				toolbar2.style.fontSize = `${fontSize}px`;
 				cF.style.fontSize = `${fontSize}px`;
+				
 
 				if (ss) {
 					QuickFolders.Interface.updateSharedToolbarStyles(ss);
@@ -6675,6 +6676,9 @@ QuickFolders.Interface = {
       util.$("QuickFolders-Tools-Pane").setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
 			util.$("QuickFolders-Toolbar").setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 407]
 
+			util.$("QuickFolders-Category-Selection").style.fontSize= `${prefs.ButtonFontSize || 12}px`; // [issue 461]
+			util.$("QuickFolders-FindFolder").style.fontSize= `${prefs.ButtonFontSize || 12}px`; // [issue 461]
+			
 			let customIconSize = QuickFolders.Preferences.getIntPref("toolbar.customIconSize");
 			styleEngine.setElementStyle(ss,":root", "--qf-tabiconsize", `${customIconSize}px`);
 			return true;
