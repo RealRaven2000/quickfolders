@@ -1,4 +1,9 @@
 
+var sales_name = "SPRING SALE"; // .saleName
+var sales_start_lbl = "April 15th"; // .saleStart
+var sales_end_lbl = "April 29th";  // .saleEnd
+var sales_end = new Date("2024-04-29");
+
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 
@@ -6,7 +11,8 @@ var removableItems = [
 	"QuickFoldersFreeUser",
 	"QuickFoldersProUser",
 	"QuickFoldersProRenew",
-	"QuickFoldersStdUser"
+	"QuickFoldersStdUser",
+	"salesNotes"
 ];
 var removedItems = [];
 
