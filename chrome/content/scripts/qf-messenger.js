@@ -294,7 +294,7 @@ async function onLoad(activatedWhileWindowOpen) {
   // search panel & mini toolbar in QF toolbar
   WL.injectElements(`
     
-<hbox id="QuickFolders-left">
+<hbox id="QuickFolders-left" style="align-items: stretch !important;">
   <vbox id="QuickFolders-Tools-Pane" insertafter="QuickFolders-LabelBox">
     <hbox id="QuickFolders-Category-Box"
               ondragenter="QuickFolders.buttonDragObserver.dragEnter(event)">
@@ -330,6 +330,7 @@ async function onLoad(activatedWhileWindowOpen) {
                        ondrop="QuickFolders.buttonDragObserver.drop(event);"
                        ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
                        ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
+                       ondragleave="QuickFolders.buttonDragObserver.dragLeave(event);"
                        context="QuickFolders-readingListMenu"
                        collapsed="true"/>
         <toolbarbutton id="QuickFolders-quickMove"
@@ -340,6 +341,7 @@ async function onLoad(activatedWhileWindowOpen) {
                        ondrop="QuickFolders.buttonDragObserver.drop(event);"
                        ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
                        ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
+                       ondragleave="QuickFolders.buttonDragObserver.dragLeave(event);"
                        context="QuickFolders-quickMoveMenu"
                        />
         <search-textbox id="QuickFolders-FindFolder" 
