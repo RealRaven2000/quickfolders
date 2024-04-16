@@ -414,10 +414,11 @@ END LICENSE BLOCK */
     ## Improvement: activate the correct settings page (license check, Support or help) if the 
     ##   settings dialog or tab is already open
 
-  6.5 QuickFolders Pro - WIP
+  6.5 QuickFolders Pro - 15/04/2024
     ## Improved Italian Translations thanks to Leopoldo Saggin 
     ## Localized hard coded English strings (thanks to Leopoldo Saggin for finding these)
     ## Fixed layout issues in advanced tab settings
+    ## [issue 461] Accessibility improvements for fonts (quickJump) - increase font size of category and find folder elements
     ## [issue 462] Accessibility Improvement: increased (vertical) space around quickJump and reading list buttons
     ## [issue 458] Feature: Mark Newsgroup Read
     ## [issue 459] Ctrl+Right-click QuickFolders Commands don't work
@@ -427,15 +428,17 @@ END LICENSE BLOCK */
     ## [issue 451] quickMove error in conversation view (when results are restricted to current mail account)
     ## [issue 464] Advanced Search Settings - unchecking more multiple Accounts failed to save
     ## Add Alias to register dialog if already set in a license
+    ## Added tip about using tbkeys-lite on ALT+Number settings page
 
+  6.5.1 QuickFolders Pro  = 16/04/2024
+    ## [issue 467] Mark as Read (and similar commands) in Navigation bar may address wrong folder
 
+  6.6 QuickFolders Pro - WIP
     
 
 	TO DO next
 	==========
     ## [issue 423] Color Tabs with unread messages
-    ## [issue 462] Accessibility Improvement: increase (vertical) space around quickJump and reading list buttons
-    ## [issue 461] Accessibility improvements for fonts (quickJump) - make all UI Font Sizes increasable
     ## [issue ]
     ## [issue ]
     ## [issue ]

@@ -2848,19 +2848,17 @@ QuickFolders.Interface = {
         if (cFT)
           cFT.style.listStyleImage = "";
       }
+			return;
+		} 
 
-		}
-		else {
-			folderButton = util.getPopupNode(element);
-			entry = model.getButtonEntry(folderButton);
-			element.collapsed = true; // hide the menu item!
-	    model.setTabIcon	(folderButton, entry, "");
-			let folder = model.getMsgFolderFromUri(entry.uri)
-			if (folder && QuickFolders.FolderTree) {
-				if (QuickFolders.FolderTree.setFolderTreeIcon(folder, null)) {
-					QuickFolders.FolderTree.storeTreeIcons();
-				}
-				
+		folderButton = util.getPopupNode(element);
+		entry = model.getButtonEntry(folderButton);
+		element.collapsed = true; // hide the menu item!
+		model.setTabIcon	(folderButton, entry, "");
+		let folder = model.getMsgFolderFromUri(entry.uri)
+		if (folder && QuickFolders.FolderTree) {
+			if (QuickFolders.FolderTree.setFolderTreeIcon(folder, null)) {
+				QuickFolders.FolderTree.storeTreeIcons();
 			}
 		}
 	} ,
@@ -2881,8 +2879,7 @@ QuickFolders.Interface = {
       if (util.hasStandardLicense()) {
         maximumIcons = model.MAX_STANDARD_ICONS;
         isRestricted = true;
-      }
-      else {
+      } else {
         maximumIcons = 10000;
 			}
     }
@@ -2947,8 +2944,7 @@ QuickFolders.Interface = {
 										model.setTabIcon (folderButton, entry, iconURL); // will only modify stored entry, if tab not visible.
 									}
 								}
-							}
-							else {
+							} else {
 								model.setTabIcon	(folderButton, entry, iconURL, element);
 								let folder = model.getMsgFolderFromUri(entry.uri)
 								if (folder && QuickFolders.FolderTree) {
@@ -3167,8 +3163,7 @@ QuickFolders.Interface = {
 	} ,
 
 	onDeleteFolder: function onDeleteFolder(element) {
-		const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences;
+		const util = QuickFolders.Util;
     let folderButton = util.getPopupNode(element),
 				parent = folderButton.folder.parent;
 

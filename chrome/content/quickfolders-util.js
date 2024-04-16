@@ -1665,14 +1665,13 @@ allowUndo = true)`
   // get the parent button of a popup menu, in order to get its attributes:
   // - folder
   // - label
-  getPopupNode: function getPopupNode(callerThis) {
-    if (document.popupNode != null) {
-      if (document.popupNode.folder)
-        return document.popupNode;
+  getPopupNode: function (callerThis) {
+    if (callerThis?.ownerDocument?.popupNode != null && callerThis?.ownerDocument?.folder) {
+      return callerThis?.ownerDocument?.popupNode;
     }
-    if (callerThis.parentNode.triggerNode != null)
+    if (callerThis.parentNode.triggerNode != null) {
       return callerThis.parentNode.triggerNode;
-    else {
+    } else {
       let theParent = callerThis.parentNode;
       while (theParent!=null && theParent.tagName!="toolbarbutton")
         theParent = theParent.parentNode;
