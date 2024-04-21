@@ -199,8 +199,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "För närvarande tillåter inte Thunderbird tillägg att skriva över dessa genvägar, vi försöker implementera en lösning snart."
-  },
+    "message": "För närvarande använder Thunderbird dessa som inbyggda genvägar, men du kan frigöra dem med tillägget tbkeys lite. Klicka på (?) knappen för mer information:"
+  },  
   "lastName.label": {
     "message": "Efternamn:"
   },

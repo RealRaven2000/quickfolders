@@ -196,8 +196,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Atualmente, o Thunderbird não permite que os complementos substituam esses atalhos. Estamos tentando implementar uma solução alternativa em breve."
-  },
+    "message": "Atualmente, o Thunderbird utiliza estes como atalhos integrados, mas você pode liberá-los usando o complemento tbkeys lite. Clique no botão (?) para mais informações:"
+  },  
   "lastName.label": {
     "message": "Último nome:"
   },

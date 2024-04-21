@@ -199,8 +199,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Op dit moment staat Thunderbird niet toe dat add-ons deze snelkoppelingen overschrijven. We proberen binnenkort een oplossing te implementeren."
-  },
+    "message": "Momenteel gebruikt Thunderbird deze als ingebouwde sneltoetsen, maar je kunt ze vrijmaken met de Add-on tbkeys lite. Klik op de (?) knop voor meer informatie:"
+  },  
   "lastName.label": {
     "message": "Achternaam:"
   },

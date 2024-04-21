@@ -210,8 +210,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "ATTENZIONE: Attualmente Thunderbird non consente alle estensioni di utilizzare queste scorciatoie; stiamo cercando di implementare quanto prima una soluzione alternativa."
-  },
+    "message": "Attualmente Thunderbird utilizza questi come scorciatoie integrate, ma puoi liberarli utilizzando il componente aggiuntivo tbkeys lite. Fai clic sul pulsante (?) per ulteriori informazioni:"
+  },  
   "lastName.label": {
     "message": "Cognome:"
   },

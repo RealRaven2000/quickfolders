@@ -196,8 +196,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Obecnie Thunderbird nie pozwala na nadpisywanie tych skrótów przez dodatki, wkrótce postaramy się wprowadzić tymczasowe rozwiązanie."
-  },
+    "message": "Obecnie Thunderbird używa ich jako wbudowanych skrótów klawiszowych, ale możesz je zwolnić, korzystając z dodatku tbkeys lite. Kliknij przycisk (?) aby uzyskać więcej informacji:"
+  },  
   "lastName.label": {
     "message": "Nazwisko:"
   },

@@ -193,8 +193,9 @@
     "message": "Una licencia anual de QuickFolders Pro le proporciona todas las características Premium por un año. También permite apoyar, hacer crecer el producto y convertirlo en algo aún más impresionante."
   },
   "keyshortcuts.news": {
-    "message": "Actualmente Thunderbird no permite que los complementos sobrescriban estos atajos, estamos tratando de implementar una solución en breve."
+    "message": "Actualmente, Thunderbird utiliza estos como accesos directos integrados, pero puedes liberarlos usando el complemento tbkeys lite. Haz clic en el botón (?) para obtener más información:"
   },
+  
   "lastName.label": {
     "message": "Apellido:"
   },

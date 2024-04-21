@@ -187,7 +187,7 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "V trenutnem Thunderbirdu dodatki ne smejo preglasiti teh bližnjic. Poskušamo čim prej implementirati začasno rešitev."
+    "message": "Trenutno Thunderbird uporablja te kot vgrajene bližnjice, vendar jih lahko sprostite z dodatkom tbkeys lite. Kliknite na (?) gumb za več informacij:"
   },
   "lastName.label": {
     "message": "Priimek:"

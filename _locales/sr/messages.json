@@ -157,8 +157,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Тренутно Тандербирд не дозвољава додацима да пребришу ове пречице, ускоро ћемо покушати да имплементирамо привремено решење."
-  },
+    "message": "Trenutno Thunderbird koristi ove kao ugrađene prečice, ali možete ih osloboditi koristeći dodatak tbkeys lite. Kliknite na (?) dugme za više informacija:"
+  },  
   "lastName.label": {
     "message": "Презиме:"
   },

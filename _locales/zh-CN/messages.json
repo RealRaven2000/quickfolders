@@ -203,8 +203,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "目前 Thunderbird 不允许插件覆盖这些快捷键，我们会尽快实现一种解决方案。"
-  },
+    "message": "目前，Thunderbird 将这些作为内置快捷键使用，但您可以使用附加组件 tbkeys lite 将它们释放。单击 (?) 按钮获取更多信息："
+  },  
   "lastName.label": {
     "message": "姓氏"
   },

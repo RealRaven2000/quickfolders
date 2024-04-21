@@ -203,8 +203,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Actualment, Thunderbird no permet que les complements sobreescriuen aquests dreceres, estem intentant implementar una solució temporal aviat."
-  },
+    "message": "Actualment, Thunderbird utilitza aquestes tecles com a dreceres integrades, però les pots alliberar utilitzant l'add-on tbkeys lite. Fes clic al botó (?) per obtenir més informació:"
+  },  
   "lastName.label": {
     "message": "Cognoms:"
   },

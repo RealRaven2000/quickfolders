@@ -210,8 +210,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Actuellement Thunderbird ne permet pas aux modules complémentaires d'écraser ces raccourcis, nous essayons de mettre en place une solution de contournement prochainement."
-  },
+    "message": "Actuellement, Thunderbird utilise ces raccourcis comme raccourcis intégrés, mais vous pouvez les libérer en utilisant le module complémentaire tbkeys lite. Cliquez sur le bouton (?) pour plus d'informations :"
+  },  
     "lastName.label": {
     "message": "Nom :"
   },

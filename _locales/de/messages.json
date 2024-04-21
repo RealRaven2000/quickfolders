@@ -200,8 +200,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Derzeit erlaubt Thunderbird Add-ons nicht, diese Tastenkürzel zu überschreiben. Wir versuchen bald eine Lösung dafür zu implementieren."
-  },
+    "message": "Derzeit verwendet Thunderbird diese als integrierte Tastenkombinationen, aber Sie können sie mithilfe des Add-ons tbkeys lite freigeben. Klicken Sie auf die (?)-Schaltfläche für weitere Informationen:"
+  },  
   "lastName.label": {
     "message": "Nachname:"
   },

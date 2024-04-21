@@ -173,8 +173,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Jelenleg a Thunderbird nem engedi a kiegészítőknek, hogy felülírják ezeket a gyorsbillentyűket, hamarosan próbálunk egy megoldást végrehajtani."
-  },
+    "message": "Jelenleg a Thunderbird beépített gyorsbillentyűként használja ezeket, de felszabadíthatja őket a tbkeys lite bővítménnyel. További információkért kattintson a (?) gombra:"
+  },  
   "lastName.label": {
     "message": "Vezetéknév:"
   },

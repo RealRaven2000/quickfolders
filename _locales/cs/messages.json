@@ -106,8 +106,8 @@
     "message": "Roční licence pro QuickFolders Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější."
   },
   "keyshortcuts.news": {
-    "message": "V současné době Thunderbird nedovoluje doplňkům přepsat tyto zkratky, brzy se pokusíme implementovat provizorní řešení."
-  },
+    "message": "V současné době Thunderbird používá tyto klávesové zkratky jako vestavěné, ale můžete je uvolnit pomocí doplňku tbkeys lite. Klikněte na tlačítko (?) pro více informací:"
+  },  
   "lastName.label": {
     "message": "Příjmení:"
   },  

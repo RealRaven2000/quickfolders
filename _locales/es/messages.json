@@ -202,8 +202,8 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Actualmente Thunderbird no permite que los complementos sobrescriban estos atajos, estamos intentando implementar una solución alternativa pronto."
-  },
+    "message": "Actualmente, Thunderbird utiliza estos como accesos directos integrados, pero puedes liberarlos usando el complemento tbkeys lite. Haz clic en el botón (?) para obtener más información:"
+  },  
   "lastName.label": {
     "message": "Apellidos:"
   },
