@@ -430,7 +430,7 @@ menupopup.widerMenu menucaption {
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
 	padding-block: 0.2rem;   /* vertical */
-	padding-inline: 0.5rem;  /* horizontal */
+	padding-inline: 0.2rem;  /* horizontal */
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
