@@ -43,6 +43,56 @@ async function getDefaultIdentity(accountId) {
     return null; // should not happen
 }
 
+
+
+async function testCountFolders(includeFolders = false, debug = false){ 
+  let mAccounts = await messenger.accounts.list(includeFolders);
+  let fCount = 0;
+
+  if (includeFolders) {
+    function countSubFolders(f) {
+      if (!f) return 0;
+      if (!f.subFolders || !f.subFolders.length) return 1;
+      try {
+        return f.subFolders.reduce(
+          (n, fld) => {
+            let ct = countSubFolders(fld);
+            return n + ct;
+          },  1
+        )
+      }
+      catch(ex) {
+        console.log("exception in " + f.name)
+        return 0;
+      }
+    }
+    fCount = mAccounts.reduce( (n, ac) => {
+      let subCount = ac.folders.reduce( (m, fld) => {
+            let csf = countSubFolders(fld);
+            if (typeof m + csf == "undefined") {
+              debugger;
+            }
+            return m + csf;
+
+          }, 0
+      );
+      let val = n + subCount // ac.folders.length +
+
+      if (debug) { 
+        console.log(`ACCOUNT ${ac.name} : ${subCount} + ${n}`);
+      }
+      return val;
+
+    }, 0);
+  }  
+  if (debug) { 
+    console.log("TOTAL FOLDERS: " + fCount);
+  }
+  return fCount;
+};
+
+
+
 // format QF-EMAIL:DATE  // ;CRYPTO
 // format QS-EMAIL:DATE  // ;CRYPTO
 // example: QF-joe.bloggs@gotmail.com:2015-05-20;
@@ -97,6 +147,7 @@ export class Licenser {
     this.LicensedDaysLeft = 0;
     this.decryptedDate = "";
     this.decryptedMail = "";
+    this.lastTime = 0;
   }
   
   // public Interface - note that "description" can be consumed by the front end.
@@ -415,7 +466,15 @@ export class Licenser {
     // check mail accounts for setting
     // if not found return MailNotConfigured
     
-    let accounts = await messenger.accounts.list(); // [bug 1630786] permissions prevent users from updating
+    this.logDebug("List accounts ...\n" + this.logTime(true));
+    const includeFolders = false; // set to true for testing folder tree performance.
+    let accounts = await messenger.accounts.list(includeFolders); // [bug 1630786] permissions prevent users from updating`
+    let fCount = 0;
+
+    if (includeFolders) {
+      fCount = testCountFolders(includeFolders, this.debug);
+    }  
+    this.logDebug(`Found ${accounts.length} Accounts,including ${fCount} folders.\n${this.logTime()}` , accounts);
     let AllowFallbackToSecondaryIdentiy = false;
     
     if (this.key_type == 0 || this.key_type == 2) {
@@ -505,6 +564,27 @@ export class Licenser {
       }
       log(msg, detail);
     }
+  }  
+
+  logTime(reset = false) {
+    let timePassed = '';
+    let end;
+    try { // AG added time logging for test
+      if (reset) {
+        this.lastTime = 0;
+      }
+      end = new Date();
+      let endTime = end.getTime();
+      if (this.lastTime === 0) {
+        this.lastTime = endTime;
+        return "[logTime init]";
+      }
+      let elapsed = new String(endTime - this.lastTime); // time in milliseconds
+      timePassed = '[' + elapsed + ' ms]	 ';
+      this.lastTime = endTime; // remember last time
+    }
+    catch(e) {;}
+    return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   }  
 }
 
