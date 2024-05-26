@@ -342,29 +342,37 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
      so all your changes will stay intact even if you deinstall the extension or
      if it is (automatically) updated.
   </p>
+  </li>
 
   <li><a name="RestrictedWidth">Tabs with Restricted Width</a><br>
-  <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton { max-width: 120px ; }</div>
+    <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton { 
+      max-width: 120px ; 
+}</div>
+  </li>
   <li><a name="TransparentBackground">Transparent Background for better Theme Integration</a><br>
-  A lot of Themes modify (including Personas) the background of the toolbars, so you might not want to put a color on it.
-  <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat { background-color: transparent !important; }</div>
-  <li><a name="Spacing">Inserting a Space after the Inbox folder</a>
-  <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="Inbox"] { margin-right:10px !important; }</div>
+    A lot of Themes modify (including Personas) the background of the toolbars, so you might not want to put a color on it.
+    <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat { background-color: transparent !important; }</div>
+    <li><a name="Spacing">Inserting a Space after the Inbox folder</a>
+    <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="Inbox"] { 
+  margin-right:10px !important; 
+}</div>
+  </li>
   <li><a name="Icons">Special Icons</a><br>
-  For making this example work, create a Folder named "QF-icons" in the chrome folder of your user profile.
-  Then copy in Icon Images of size 16*16 pixels. You can now set a user defined icon based on the (start of the) label
-  on the QuickFolder tab.
-  <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="Paypal"] { list-style-image: url("QF-Icons/paypal.gif");} </div>
-  <li><a name="TinyMenus">Tiny Popup Menus</a>
-  <br>A space saver especially helpful when you have lots of subfolders
-  <div class=cssCode>menupopup.QuickFolders-folder-popup menuitem
-{
-  line-height: 10px !important;
-  max-height: 18px !important;
-  margin: 0px !important;
-  padding: 0px !important;
-  font-size:8px;
-} </div>
+    For making this example work, create a Folder named "QF-icons" in the chrome folder of your user profile.
+    Then copy in Icon Images of size 16*16 pixels. You can now set a user defined icon based on the (start of the) label
+    on the QuickFolder tab.
+    <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="Paypal"] { list-style-image: url("QF-Icons/paypal.gif");} </div>
+    <li><a name="TinyMenus">Tiny Popup Menus</a>
+    <br>A space saver especially helpful when you have lots of subfolders
+    <div class=cssCode>menupopup.QuickFolders-folder-popup menuitem
+  {
+    line-height: 10px !important;
+    max-height: 18px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    font-size:8px;
+  }</div>
+  </li>
 
   <li><a name="noTransitions">Disable transitions</a><br>
 <div class=cssCode>/* disable transitions */
@@ -372,6 +380,7 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
     -moz-transition-property: color, background-color, background-image, -moz-border-radius, -moz-box-shadow;
     -moz-transition-duration: 0s, 0s, 0s, 0s, 0s !important;
 }  </div>
+  </li>
 
   <li>Thick Borders<br>
   <div class=cssCode>#QuickFolders-Toolbar.toolbar-flat toolbarbutton
@@ -384,6 +393,7 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
   border-right-style: solid;
   -moz-border-radius: 4px 4px 0 0 !important;
 }</div>
+  </li>
 
   <li><a name="RightAligned">Right-aligned Tabs</a><br>
   <div class=cssCode>#QuickFolders-Toolbar
@@ -397,13 +407,16 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
 { direction: ltr !important; } </div>
 
 
-  <li><a name="Centered">Centered Tabs</a><br>
+  </li>
+  <li>
+    <a name="Centered">Centered Tabs</a><br>
   <div class=cssCode>#QuickFolders-Toolbar   {
   text-align:center !important;
 } </div>
 
+  </li>
 
-<li><a name="toolbar-order">Modify vertical order of toolbars</a><br>
+  <li><a name="toolbar-order">Modify vertical order of toolbars</a><br>
   The code below works from Thunderbird 115.* :
   <div class="cssCode">
   #toolbar-menubar {
@@ -423,10 +436,18 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
   }
 </div>
 
-
+  </li>
+  <li><a name="navigation-area">Background of area behind current folder (navigation) bar</a><br>
+    <div class="cssCode"> #QuickFolders-PreviewToolbarPanel {
+    background-color:blanchedalmond !important;
+  }
+</div>
+  </li>
 </ul>
 
-<P>If there are any special ones I haven't mentioned, please send me an email - see link at the bottom of the page. I will publish the best ones here. <br>Thanks!<br>&nbsp;&nbsp;Axel
+<p>
+  If there are any special ones I haven't mentioned, please send me an email - see link at 
+  the bottom of the page. I will publish the best ones here. <br>Thanks!<br>&nbsp;&nbsp;Axel
 </P>
 <script type="text/javascript"> TJK_ToggleDL(); </script>
 <br/>
