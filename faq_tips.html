@@ -316,18 +316,30 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
 <ul class=Tweaks>
 
   <li><a name="UserChrome">How to Edit userChrome.css</a><br>
-  <p>First you need to open the <i>Chrome subfolder</i> located in your Profile folder. <a href="http://www.gemal.dk/mozilla/profile.html">Where is my Mozilla profile located?</a>
-  The <i>Chrome subfolder</i> is designed to contain any user specific changes. It is also the designated place to have a "Layout File" called userChrome.css;
-  this doesn't exist by default but you can just create an empty text file of this name.</p>
-  <p>Example location <br/>
-  C:\Documents and Settings\<span class=specialFolder>JohnDoe</span>\Application Data\Mozilla\Thunderbird\Profiles\<span class=specialFolder>r4nd0mStr</span>.<span class=specialFolder>Default</span>\chrome
-  <br/>
-  <span class=specialFolder>JohnDoe</span> is your logon name <br/>
-  <span class=specialFolder>r4nd0mStr</span> is always a random string <br/>
-  <span class=specialFolder>Default</span> is the name of your THunderbird Profile (so it could differ as well)
+  <p>
+    In modern versions of Thunderbird you have to enable this user styling first using the configuration switch
+    <tt>toolkit.legacyUserProfileCustomizations.stylesheets = true</tt>. To get there open 
+    <i>Thunderbird Settings » General » Config Editor.
+    <br>
+    <img class="screenshot" src="images/config-userchrome.png" alt="user configuration">
   </p>
-  <p>Then all you need to do is insert any of the rule sets in the following chapters.
-     The good thing about this approach is that you do not change the extension folders themselves, so all your changes will stay intact even if you deinstall the extension or
+  <p>
+    Then you can open the <i>chrome subfolder</i> located in your Profile folder. 
+    <a href="http://www.gemal.dk/mozilla/profile.html">Where is my Mozilla profile located?</a>
+    You can find the chrome folder via Help » Troubleshooting Information from the app menu:
+    <br>
+    <img class="screenshot" src="images/help-profile-folder.png" alt="profile folder" >
+  </p>
+  <p>
+    The <i>chrome subfolder</i> is designed to contain any user specific changes. 
+    It is also the designated place to have a "Layout File" called userChrome.css;
+    this doesn't exist by default but you can just create an empty text file of this name.
+  </p>
+  <p>
+     Then all you need to do is insert any of the rule sets in the following chapters, and restart Thunderbird.
+
+     The good thing about this approach is that you do not change the extension folders themselves, 
+     so all your changes will stay intact even if you deinstall the extension or
      if it is (automatically) updated.
   </p>
 
