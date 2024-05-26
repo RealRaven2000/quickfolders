@@ -104,6 +104,9 @@
               data-pref-name="extensions.quickfolders.showFoldersWithNewMailItalic">__MSG_qf.checkbox.showNewMailItalics__</label>
             <label><input type="checkbox" preference="qfpg-ShowNewMail"
               data-pref-name="extensions.quickfolders.showNewMailHighlight">__MSG_qf.checkbox.highlightNewMail__</label>
+            <label class="indent"><input type="checkbox" preference="qfpg-ShowNewMailOutline"
+              data-pref-name="extensions.quickfolders.showNewMailHighlight.outline">__MSG_qf.checkbox.highlightNewMail.outline__</label>
+  
           </div>
           <div class="vbox">
             <label><input type="checkbox" preference="qfpg-ShowUnread"
@@ -270,7 +273,7 @@
                 <div class="vbox">
                   <label><input type="checkbox" id="qfHideMailcommandsUnlessCTRL"
                     preference="qfpa-FolderMenu-CTRL" data-pref-name="extensions.quickfolders.folderMenu.CTRL">__MSG_qf.label.menus.hideQFunlessCTRL__</label>
-                  <label class=" themeable"><input type="checkbox" id="qfOpenInNewTab" preference="qfpa-FolderMenu-openNewTab" data-pref-name="extensions.quickfolders.folderMenu.openNewTab">Open In New Tab</label>
+                  <label class=" themeable"><input type="checkbox" id="qfOpenInNewTab" preference="qfpa-FolderMenu-openNewTab" data-pref-name="extensions.quickfolders.folderMenu.openNewTab">__MSG_qf.label.menus.openInNewTab__</label>
                   <label><input type="checkbox" id="qfGetMail"
                     preference="qfpa-FolderMenu-getMailForInbox" data-pref-name="extensions.quickfolders.folderMenu.getMessagesForInbox">__MSG_qf.checkbox.menus.getMailForInbox__</label>
                   <label><input type="checkbox" id="qfGetMail"
@@ -315,8 +318,7 @@
           <div class="vbox" id="currentFolderBackgroundContainer">
             <div class="hbox" flex="1" id="currentFolderStyle">
               <input type="text" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
-                data-pref-name="extensions.quickfolders.currentFolderBar.background"
-                onblur="options.sanitizeCSS(this);" />
+                data-pref-name="extensions.quickfolders.currentFolderBar.background" />
               <select id="QuickFolders-CurrentFolder-Background-Select">
                   <!-- list order must correspond with BGCHOICE enum -->
                   <option value="default">__MSG_qf.currentFolderBackground.default__</option>

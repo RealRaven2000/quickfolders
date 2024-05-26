@@ -63,6 +63,23 @@ const doHandleCommand = async (message, sender) => {
   preselectTab(activatePrefsPage);
 }
 
+function sanitizeCSS(el) {
+  try {
+    let val = el.value;
+    let colon = val.indexOf(':');
+    if (colon>=0) val = val.substr(colon+1);
+    let semicolon = val.indexOf(';');
+    if (semicolon>0) val = val.substr(0,semicolon);
+    val = val.trim ? val.trim() : val;
+    return val;
+    // this.updateCSSpreview();
+  } catch (ex) {
+    // may be forbidden by CSS:
+    console.warn("sanitizeCSS", ex);
+    return el.value; // return original value
+  }
+}
+
 
 var licenseInfo;
 async function initLicenseInfo() {
@@ -243,6 +260,12 @@ icSize.addEventListener("change", async (event) => {
   messenger.runtime.sendMessage({ command:"updateUserStyles" });
 });
 
+/* CSP violation in Tb 125.0b5 */
+let customBackground = document.getElementById("currentFolderBackground");
+customBackground.addEventListener("blur", async (event) => {
+  customBackground.value = sanitizeCSS(customBackground);
+});
+
 
 // add bool preference reactions
 for (let chk of document.querySelectorAll("input[type=checkbox]")) {
@@ -253,6 +276,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     case "showFoldersWithMessagesItalic":
     case "showFoldersWithNewMailItalic":
     case "showNewMailHighlight":
+    case "showNewMailHighlight.outline":
     case "showUnreadOnButtons":
     case "showTotalNumber":
     case "showCountInSubFolders":
@@ -582,6 +606,11 @@ async function loadPrefs() {
 		if (element instanceof HTMLInputElement) {
       if (element.getAttribute("type") === "checkbox") {
         element.checked = await browser.LegacyPrefs.getPref(prefName);
+        if (element.checked != await browser.LegacyPrefs.getPref(prefName)) {
+          debugger;
+        }
+
+
       } 
       else if (element.getAttribute("type") === "text" ||
         element.dataset.prefType === "string"

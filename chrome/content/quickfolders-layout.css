@@ -393,14 +393,21 @@ menupopup.widerMenu menucaption {
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread > label,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unreadSubOnly > label {
 	border-radius: 3px;
-	color: #fff;
-	box-shadow: inset 0 0 6px #080808;
-	text-shadow: 1px 1px 1px rgba(40, 40, 40, 0.9);
-	padding: 0 3px;
+	box-shadow: inset 0 0 4px #080808;
+  padding: 1px 3px;
+  margin-block: -1px;
 	border-style: dotted;
 	border-color: #aaa;
 	border-width: 1px;
 }
+
+#QuickFolders-FoldersBox.outlineBiff toolbarbutton[biffState-NewMail].has-unread > label,
+#QuickFolders-FoldersBox.outlineBiff toolbarbutton[biffState-NewMail].has-unreadSubOnly > label {
+  color: #fff;
+  -webkit-text-stroke: rgba(30, 0, 0, 0.6) thin;
+  font-weight: 900; 
+}
+
 
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unreadSubOnly,
@@ -430,7 +437,7 @@ menupopup.widerMenu menucaption {
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
 	padding-block: 0.2rem;   /* vertical */
-	padding-inline: 0.2rem;  /* horizontal */
+	padding-inline: 0.3rem;  /* horizontal */
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
@@ -727,8 +734,10 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 
 #QuickFolders-FoldersBox toolbarbutton.icon .toolbarbutton-icon,
 #QuickFolders-CurrentFolderTools toolbarbutton.icon .toolbarbutton-icon {
-  margin-right: 0.2em;
-  margin-left: 0.2em;
+  margin-inline-start: 1px;
+  margin-inline-end: 0.2em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 	/* give enough space to icons even in smaller themes */
 	box-sizing: content-box;
 	min-height: 16px;
