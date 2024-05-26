@@ -687,6 +687,10 @@ QuickFolders.Interface = {
 
 		this.FoldersBox.className = "folderBarContainer " + theme.cssToolbarClassName; // [Bug 26575]
 
+		if (QuickFolders.Preferences.isHighlightNewMailOutline) {
+			this.FoldersBox.className += " outlineBiff";
+		}
+
 		if (QuickFolders.Model.selectedFolders.length)
 			sDebug += " - Number of Folders = " + QuickFolders.Model.selectedFolders.length;
 
@@ -2007,8 +2011,7 @@ QuickFolders.Interface = {
 								const makeCopy = false;
 								let uris = QuickFolders.Util.getSelectedMsgUris();
 								QuickFolders.Util.moveMessages(button.folder, uris, makeCopy);
-							}
-              else {
+							} else {
                 this.onButtonClick(button,e,false);
 							}
             }
@@ -2598,9 +2601,9 @@ QuickFolders.Interface = {
         cssClass += " has-messages";
 		}
 
-		if (gotNew && QuickFolders.Preferences.isHighlightNewMail)
+		if (gotNew && QuickFolders.Preferences.isHighlightNewMail) {
 			button.setAttribute("biffState-NewMail","true");
-		else {
+		} else {
 			if (button.getAttribute("biffState-NewMail"))
 				button.removeAttribute("biffState-NewMail");
 		}
@@ -4267,7 +4270,8 @@ QuickFolders.Interface = {
         if (prefs.getBoolPref("folderMenu.openNewTab")) {
           let newTabMenuItem = doc.getElementById("QF_folderPaneContext-openNewTab");
           // folder listener sometimes throws here?
-          let label = newTabMenuItem && newTabMenuItem.label ? newTabMenuItem.label.toString() : "Open in New Tab";
+					
+          let label = newTabMenuItem?.label ? newTabMenuItem.label.toString() : util.getBundleString("qf.label.menus.openInNewTab");
           let menuitem = this.createMenuItem("", label, doc);
           // oncommand="gFolderTreeController.newFolder();"
           menuitem.className = "cmd menuitem-iconic";
@@ -4711,8 +4715,9 @@ QuickFolders.Interface = {
 						sCount="";
 
 					menuitem.setAttribute("class","hasUnread menuitem-iconic");
-					if (subfolder.hasNewMessages && prefs.isHighlightNewMail)
+					if (subfolder.hasNewMessages && prefs.isHighlightNewMail) {
 						menuitem.setAttribute("biffState-NewMail","true");
+					}
 					menuitem.setAttribute("label", menuLabel + sCount);
 				}
 				else {
@@ -4930,14 +4935,35 @@ QuickFolders.Interface = {
 		}
 		try {
 			if (isCtrlKey) {
+				if (MsgOpenNewTabForFolders) {
+					let folder = QuickFolders.Model.getMsgFolderFromUri(folderUri);
+					MsgOpenNewTabForFolders([folder], {
+						evt,
+						folderPaneVisible: true,
+						messagePaneVisible: true,
+						background: false
+					});
+					return;
+				}
+
+				// older code
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
-          tabmail.openTab("mail3PaneTab", {folder: folderUri, messagePaneVisible:true } );
+          let tab = tabmail.openTab("mail3PaneTab", 
+					  {
+							folder: folderUri, 
+							messagePaneVisible:true, 
+							background: false, 
+							disregardOpener: true 
+						} 
+					);
+					// we need to make sure tab.chromeBrowser.contentWindow is initialized first!
 					setTimeout(
 						() => {
+							util.logDebug({contentWindow:tab.chromeBrowser?.contentWindow});
 							QuickFolders_MySelectFolder(folderUri);
 						},
-						200
+						600
 					); 
 					return;
 				}
