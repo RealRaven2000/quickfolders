@@ -63,7 +63,7 @@ var Register = {
         form.removeAttribute("collapsed");
       }
     }
-    let buy = document.getElementById("buyBox");
+    let buy = document.getElementById("registrationPurchaseActions");
     if (buy) {
       if (collapsed) {
         buy.setAttribute("collapsed", "true")

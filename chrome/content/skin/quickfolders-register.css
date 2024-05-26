@@ -52,7 +52,7 @@ td {
   vertical-align: top;
 }
 
-#thePage, #buyBox {
+#thePage, #registrationPurchaseActions {
   background-color: #ffffff;
 	-moz-box-align: start;
 	border: 1px solid rgba(88,88,88,0.4);
@@ -63,7 +63,7 @@ td {
 	box-shadow: 2px 2px 4px rgba(80, 80, 80, 0.4);
 }
 
-#buyBox {
+#registrationPurchaseActions {
 	box-shadow: inset 2px 2px 4px rgba(80, 80, 80, 0.4);
 	background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
 	padding: 6px 10px 4px 0 !important;
@@ -166,7 +166,7 @@ td {
   pointer-events: none
 }
 
-#licenseTerms[collapsed], #buyBox[collapsed], .form[collapsed] {
+#licenseTerms[collapsed], #registrationPurchaseActions[collapsed], .form[collapsed] {
   display: none;
 }
 #licenseTermSwitcher:hover #toggleSwitchLicenseTerms {

@@ -663,3 +663,9 @@ label.url:hover {
 .url {
   cursor:pointer;
 }
+
+/* Tb129.0b5 checkbox bug */
+
+input[type="checkbox"] {
+	appearance: checkbox !important;
+}
