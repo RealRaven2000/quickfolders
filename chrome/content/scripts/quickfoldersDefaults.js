@@ -16,6 +16,7 @@ pref("extensions.quickfolders.showTotalNumber", false);
 pref("extensions.quickfolders.showFoldersWithMessagesItalic", false);
 pref("extensions.quickfolders.showFoldersWithNewMailItalic", true); // Bug 25864
 pref("extensions.quickfolders.showNewMailHighlight", true); // better visibility of new mail
+pref("extensions.quickfolders.showNewMailHighlight.outline", true);
 pref("extensions.quickfolders.showRecentTab", false);
 pref("extensions.quickfolders.showQuickMove", true);
 pref("extensions.quickfolders.collapseCategories", false);

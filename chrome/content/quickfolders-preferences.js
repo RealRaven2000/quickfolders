@@ -122,6 +122,10 @@ QuickFolders.Preferences = {
 	get isHighlightNewMail() {
 		return this.getBoolPref("showNewMailHighlight");
 	} ,
+
+	get isHighlightNewMailOutline() {
+		return this.getBoolPref("showNewMailHighlight.outline");
+	} ,
 	
 	get isItalicsNewMail() { // xxx experimental
 		return this.getBoolPref("showFoldersWithNewMailItalic");
