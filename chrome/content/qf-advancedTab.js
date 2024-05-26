@@ -341,10 +341,15 @@ QuickFolders.AdvancedTab = {
 		} catch(ex) {;}
 	} ,
 	
-	sanitizeCSS: function sanitizeCSS(el) {
-		const util = QuickFolders.Util;
-		el.value = util.sanitizeCSSvalue(el.value);
-		this.updateCSSpreview();
+	sanitizeCSS: function (el) {
+    try {
+      const util = QuickFolders.Util;
+      el.value = util.sanitizeCSSvalue(el.value);
+      this.updateCSSpreview();
+    } catch (ex) {
+      // may be forbidden by CSS:
+      QuickFolders.Util.logException("sanitizeCSS", ex);
+    }
 	},	
   
   updatePicker: function updatePicker(textbox) {
