@@ -32,7 +32,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         util.logDebug("fileFilters()\nPath does not exist: " + dPath);
       }
     }
-    fp.init(win, "", fileOpenMode); // second parameter: prompt
+
+    fp.init(util.getFileInitArg(win), "", fileOpenMode); // second parameter: prompt
     filterText = util.getBundleString("qf.fpJsonFile");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';
@@ -98,11 +99,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     let result = await new Promise(resolve => { fp.open(resolve); } );
     
     switch(mode) {
-      case "load":
-        return load(result, fp)
+      case "load": return load(result, fp)
         
-      case "save":
-        return save(result, fp, jsonData);
+      case "save": return save(result, fp, jsonData);
     }
 
     throw new Error("Invalid mode!");
@@ -165,9 +164,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         
         async storeConfig(config) {
           // see options.copyFolderEntries
-          const Cc = Components.classes,
-                Ci = Components.interfaces,
-                util = win.QuickFolders.Util,
+          const util = win.QuickFolders.Util,
                 prefs = win.QuickFolders.Preferences,
                 sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
           let obj = JSON.parse(sFolderString),
