@@ -430,10 +430,18 @@ END LICENSE BLOCK */
     ## Add Alias to register dialog if already set in a license
     ## Added tip about using tbkeys-lite on ALT+Number settings page
 
-  6.5.1 QuickFolders Pro  = 16/04/2024
+  6.5.1 QuickFolders Pro - 16/04/2024
     ## [issue 467] Mark as Read (and similar commands) in Navigation bar may address wrong folder
 
   6.6 QuickFolders Pro - WIP
+    ## [issue 468] Improved readability & layout for "newly arrived" mail - outlined instead of text shadow
+                   (biffstate - true) and added an option to disable special font
+    ## [issue 471] Settings Advanced - Hardcoded Localisation for 'Open in New Tab'
+    ## [issue 474] Ctrl+click on a subfolder should open new tab, this was fixed.
+    ## optimize licenser (omit folders while listing accounts)
+    ## [issue 475] Support moving multiple folders with quickMove
+    ## [issue 476] Fix file picker which is broken in Thunderbird 125 [bug 1882701]
+    ## [issue 480] quickMove doesn't fully complete on Tb 128
     
 
 	TO DO next
@@ -1857,6 +1865,7 @@ var QuickFolders = {
       const isDropMail = (types.includes("text/x-moz-message"));
       const isDropFolder = (types.includes("text/x-moz-folder"));
       const isDropButton = (DropTarget && DropTarget.tagName=="toolbarbutton");
+      const isDropFile = (types.includes("application/x-moz-file"));
     
       // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
       if (DropTarget) {
@@ -1872,7 +1881,7 @@ var QuickFolders = {
 
       let isMoveFolderQuickMove = false;
 
-      if (isDropMail || isDropFolder || isDropButton) {
+      if (isDropMail || isDropFolder || isDropButton || isDropFile) {
         evt.preventDefault();
         evt.stopPropagation();
       }
@@ -2026,6 +2035,9 @@ var QuickFolders = {
             QuickFolders.LocalErrorLogger("Exception in QuickFolders.drop:" + e); 
           };
         }
+      } else if (isDropFile) {  // eml file?
+        util.logToConsole("dropping eml file: currently unsupported.");
+        debugger;
       } else if (isDropButton) {  // reordering button positions
         // was "text/unicode"
         let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
@@ -2330,8 +2342,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
           if (!(theTreeView._rowMap[parentIndex]).open)
             theTreeView._toggleRow(parentIndex, true); // server
             */
-        }
-        else {
+        } else {
           util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
         }
       }
@@ -2730,12 +2741,13 @@ QuickFolders.FolderListener = {
 }
 
 QuickFolders.CopyListener = {
-  OnStartCopy: function copyLst_OnStartCopy() { },
-  OnProgress: function copyLst_OnProgress(Progress, ProgressMax) { },
-  SetMessageKey: function copyLst_SetMessageKey(key) { },
-  GetMessageId: function copyLst_GetMessageId(msgId) { // out ACString aMessageId 
+  onStartCopy: function () { },
+  onProgress: function (Progress, ProgressMax) { },
+  setMessageKey: function (key) { },
+  getMessageId: function (msgId) { // out ACString aMessageId 
+    return null;
   },
-  OnStopCopy: function copyLst_OnStopCopy(status) { // in nsresult aStatus
+  onStopCopy: function (status) { // in nsresult aStatus
     if (QuickFolders.bookmarks && Components.isSuccessCode(status)) {
       if (QuickFolders.bookmarks.dirty) {
         let invalidCount = 0;
@@ -2766,8 +2778,17 @@ QuickFolders.CopyListener = {
         }
       }
     }
+  },
+  // legacy functions < Tb125
+  OnStartCopy: function () { },
+  OnProgress: function (Progress, ProgressMax) { },
+  SetMessageKey: function (key) { },
+  GetMessageId: function (msgId) { // out ACString aMessageId 
+    return null;
+  },
+  OnStopCopy: function(status) {
+    this.onStopCopy(status)
   }
-  
 }
 
 QuickFolders.LocalErrorLogger = function(msg) {
