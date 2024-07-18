@@ -737,13 +737,12 @@ QuickFolders.Util = {
   } ,
 
   // change: let's pass back the messageList that was moved / copied
-  moveMessages: async function moveMessages(targetFolder, messageUris, makeCopy) {
+  moveMessages: async function (targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
           util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences; 
-          
-    let mw = msgWindow; // global
-    let isMove = (!makeCopy);
+          mw =  top?.msgWindow || msgWindow; // global
+
+    const isMove = (!makeCopy);
     let step = 0;
     if (!messageUris) 
       return null;
@@ -770,10 +769,7 @@ QuickFolders.Util = {
           isTargetDifferent = false,
           sourceFolder;
       util.logDebug(`moveMessages  with readStatus = ${readStatus}`);
-      let segmentedMsgArray = [], // group messages by source folder...
-          segmentIndex = -1;
-          
-          
+      const segmentedMsgArray = []; // group messages by source folder...
           
       for (let i = 0; i < messageUris.length; i++) {
         let messageUri = messageUris[i],
@@ -849,35 +845,57 @@ QuickFolders.Util = {
             msgHeaders.push(segment.messages[m].msg);
             origIds.push(segment.messages[m].msg.messageId);
           }          
-          
+
           let p = await new Promise((resolve, reject) => {
-              MailServices.copy.copyMessages(
-                sourceFolder,
-                msgHeaders,
-                targetFolder,
-                isMove && sourceFolder.canDeleteMessages,
-                {
-                  OnStartCopy() {},
-                  OnProgress(progress, progressMax) {},
-                  SetMessageKey(key) {},
-                  GetMessageId(messageId) {},
-                  OnStopCopy(status) {
-                    if (status == Cr.NS_OK) {
-                      resolve(); // returns to await
-                    } else {
-                      reject(status); // this throws !
-                    }
-                  },
-                },
-                mw,  // msgWindow
-                true   // allowUndo
-              );
-            });
+            // AUTF8String getMessageId()
+            // [issue 480] - [Bug 1887047]
+            // camelCase methods new since Thunderbird 125
+            const param5 = {
+              onStartCopy() {},
+              onProgress(progress, progressMax) {},
+              setMessageKey(key) {},
+              getMessageId(messageId) {
+                return null;
+              },
+              onStopCopy(status) {
+                if (status == Cr.NS_OK) {
+                  debugger;
+                  resolve(); // returns to await
+                } else {
+                  debugger;
+                  reject(status); // this throws !
+                }
+              },
+
+              OnStartCopy() {},
+              OnProgress(progress, progressMax) {},
+              SetMessageKey(key) {},
+              GetMessageId(messageId) {},
+              OnStopCopy(status) {
+                if (status == Cr.NS_OK) {
+                  debugger;
+                  resolve(); // returns to await
+                } else {
+                  debugger;
+                  reject(status); // this throws !
+                }
+              }              
+            }            
+            MailServices.copy.copyMessages(
+              sourceFolder,
+              msgHeaders,
+              targetFolder,
+              isMove && sourceFolder.canDeleteMessages,
+              param5,
+              mw,  // msgWindow
+              true   // allowUndo
+            );
+          });
           // we get here only after success!
           // fix bookmarks
           
           messageIdList.push(...origIds);  // [issue 385] do not wrap array in array!
-          QuickFolders.CopyListener.OnStopCopy(status); 
+          QuickFolders.CopyListener.onStopCopy(status); 
           
         } catch (ex) {
           Cu.reportError(ex);
@@ -915,7 +933,7 @@ QuickFolders.Util = {
       if (QuickFolders.Preferences.isDebugOption("dnd,quickMove,dragToNew")) {
         console.log(
         `QuickFolders.Util.moveMessages()
-  calling CopyMessages (
+  calling copyMessages (
 sourceFolder = ${sourceFolder.prettyName} ,
 messages = ${messageList} ,
 destinationFolder = ${targetFolder.prettyName} ,
@@ -2305,9 +2323,17 @@ allowUndo = true)`
       return false;
     } 
     return (f.URI.startsWith("mailbox://nobody@smart%20mailboxes/"));
-  }
+  },
 
-  
+	getFileInitArg: function(win) {
+		// [bug 1882701] nsIFilePicker.init() first parameter changed from Tb125
+		if (!win) return null;
+		if (this.versionGreaterOrEqual(this.ApplicationVersion, "125")) {    
+			return win.browsingContext;
+		}
+		return win;
+	}
+
   
 };  // QuickFolders.Util
 
