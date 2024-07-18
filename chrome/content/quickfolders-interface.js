@@ -2969,7 +2969,7 @@ QuickFolders.Interface = {
     };
 
 
-    fp.init(window, "Select an icon file", nsIFilePicker.modeOpen);
+    fp.init(util.getFileInitArg(window), "Select an icon file", nsIFilePicker.modeOpen);
     fp.appendFilters(nsIFilePicker.filterImages);
 		// needs to be initialized with something that makes sense (UserProfile/QuickFolders)
 
@@ -7146,10 +7146,9 @@ QuickFolders.Interface = {
 
 	moveFolders: function moveFolders(fromFolders, isCopy, targetFolder) {
 		// [Bug 26517] support multiple folder moves - added "count" and transmitting URIs
-		const Cc = Components.classes,
-		      Ci = Components.interfaces,
-					util = QuickFolders.Util;
+		const util = QuickFolders.Util;
     let arrCount = fromFolders.length;
+		debugger;
 
 		function isChildFolder(f)	 {
       for (let i=0; i<fromFolders.length; i++) {
@@ -7567,8 +7566,6 @@ QuickFolders.Interface = {
   // moved from QuickFolders.Options!
   showAboutConfig: function(clickedElement, filter, readOnly, updateUI = false) {
     const name = "Preferences:ConfigManager",
-          Cc = Components.classes,
-          Ci = Components.interfaces,
           util = QuickFolders.Util;
     let mediator = Services.wm,
         isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
@@ -7624,8 +7621,7 @@ QuickFolders.Interface = {
   
   pasteFolderEntriesFromClipboard: function () {
     // originally this was located in QF.options.pasteFolderEntries
-    const Cc = Components.classes,
-          Ci = Components.interfaces,
+    const Ci = Components.interfaces,
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable),
