@@ -419,6 +419,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Ressalta carpetes amb correu nou"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+  "message": "També ressalta el nom (millor amb fons foscos o de colors)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrosegar a nova Subcarpeta"
   },

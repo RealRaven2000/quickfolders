@@ -399,6 +399,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Označi mape z novo pošto"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Prav tako obkroži ime (najboljše s temnimi / barvnimi ozadji)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Povleci v novo podmapo"
   },

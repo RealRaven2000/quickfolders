@@ -409,6 +409,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "高亮有新邮件的文件夹"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "同时勾勒名称（最适合深色/彩色背景）"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "拖动到新子文件夹"
   },

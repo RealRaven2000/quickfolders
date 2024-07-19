@@ -408,6 +408,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Mappen met nieuwe berichten accentueren"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Omlijn ook de naam (het beste met donkere / gekleurde achtergronden)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Naar nieuwe submap slepen"
   },

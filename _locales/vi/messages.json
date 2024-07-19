@@ -258,6 +258,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Làm nổi bật các thư mục có thư mới"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Cũng làm nổi bật tên (tốt nhất với nền tối / có màu)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Kéo vào một thư mục con mới"
   },

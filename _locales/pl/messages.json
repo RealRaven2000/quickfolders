@@ -411,6 +411,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "wyróżniaj foldery z nowymi wiadomościami"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Obrysuj również nazwę (najlepiej na ciemnym / kolorowym tle)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Przeciągnij do nowego subfolderu"
   },

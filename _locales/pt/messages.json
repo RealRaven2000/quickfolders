@@ -408,6 +408,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Destacar pastas com novas mensagens"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Também destaque o nome (melhor com fundos escuros / coloridos)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrastar para nova subpasta"
   },

@@ -411,6 +411,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "有新郵件時資料夾高亮度顯示"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "同時勾勒名稱（最適合深色/彩色背景）"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "拖曳到新的子資料夾"
   },

@@ -414,6 +414,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Färgmarkera mappar med nya meddelanden"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Markera även namnet (bäst med mörka / färgade bakgrunder)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Dra till ny undermapp"
   },

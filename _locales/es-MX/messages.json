@@ -409,6 +409,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Resaltar las carpetas con nuevos mensajes de correo"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "También resaltar el nombre (mejor con fondos oscuros / de colores)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrastrar a una nueva subcarpeta"
   },

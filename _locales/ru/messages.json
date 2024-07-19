@@ -414,6 +414,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Подсвечивать папки с новыми сообщениями"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Также выделите имя (лучше всего на темном / цветном фоне)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Перетащить, создавая под-папку"
   },

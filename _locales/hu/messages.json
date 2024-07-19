@@ -376,6 +376,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Új üzeneteket tartalmazó mappák kiemelése"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Emelje ki a nevet is (legjobb sötét / színes háttérrel)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Húzza az új almappába"
   },

@@ -357,6 +357,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Истакни фасцикле када стигне нова порука"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Такође истакните име (најбоље са тамним / обојеним позадинама)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Превуци у нову подфасицклу"
   },

@@ -425,6 +425,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Evidenzia le cartelle con nuovi messaggi"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Evidenzia anche il nome (meglio con sfondi scuri / colorati)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Trascina nella nuova sottocartella"
   },

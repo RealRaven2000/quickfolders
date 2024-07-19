@@ -412,6 +412,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Verzeichnisse mit neuer Post hervorheben"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Auch den Namen umreißen (am besten mit dunklem / farbigem Hintergrund)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Drag+Drop in Neues Verzeichnis"
   },

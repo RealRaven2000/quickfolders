@@ -428,7 +428,10 @@
   "qf.checkbox.highlightNewMail": {
     "message": "Mettre en surbrillance les dossiers avec de nouveaux messages"
   },
-  "qf.checkbox.menus.dragToNewFolder": {
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Encadrer également le nom (de préférence avec des arrière-plans sombres / colorés)"
+  },
+   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Glisser vers un nouveau sous-dossier"
   },
   "qf.checkbox.menus.emptyJunk": {

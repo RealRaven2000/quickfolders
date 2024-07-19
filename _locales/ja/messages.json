@@ -396,6 +396,9 @@
   "qf.checkbox.highlightNewMail": {
     "message": "新着メールのあるフォルダを強調する"
   },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "名前もアウトライン表示 (暗い背景や色付き背景に最適)"
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "新しいサブフォルダにドラッグする"
   },
