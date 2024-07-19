@@ -131,6 +131,15 @@ async function addFolderPaneMenu() {
 
       // determine folder of clicked tree item:
       const selectedFolder = event?.selectedFolder || null;
+      // new multiple folders selection
+      const selectedFolders = event?.selectedFolders || null;
+
+      // multiple folders are selected, we cannot execute
+      if (selectedFolders && selectedFolders.length>1) {
+        console.log("QuickFolders: addFolderPaneMenu -  cannot execute, multiple folders are selected!");
+        return;
+      }
+
       const selectedAccount = event?.selectedAccount || null;
       let URI = null;  
       if (selectedFolder) {
