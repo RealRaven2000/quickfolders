@@ -268,7 +268,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1} This latest edition of $addonName$ fixes problems in advanced search settings and addresses a number of layout issues. {P2}",
+    "message": "{P1} Thunderbird 128 was first release on the 11th of July. The latest edition of $addonName$ is now compatible. Please visit the full change log in the link below to see possible related issues and how they have been addressed. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1958,7 +1958,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} New feature to Mark Newsgroup Read [issue 458]{L2}{L1} Improved Italian translations - thanks to Leopoldo Saggin for his great work.{L2}{L1} Accessibility improvments for quickMove and reading list.{L2} {L1} Fixed various layout issues.{L2} {L1} Ctrl+Right-click opens QuickFolders Commands as expected. {L2} {L1} Fixed an error when moving mail while restricted to viewed account only. {L2} {L1} Fixed problems with saving exclusions of multiple mail accounts in advanced search settings.{L2}"
+    "message": "{L1} QuickFolders was made compatible with Thunderbird's brand new ESR version 128. [issue 454]{L2}{L1} We improved readability and layout for newly arrived mail and added an option to disable its special font. [issue 468]{L2}{L1} QuickFolders now supports moving multiple selected folders with quickMove [issue 475]{L2} {L1} Fixed: Ctrl+click on a subfolder now opens a new tab again.{L2} {L1} Fixed file picker which was broken in Thunderbird 125 [issue 476] {L2} {L1} Fixed: quickMove didn't fully complete on Thunderbird 128 [issue 480] {L2} {L1} Known Issue: The verification of QuickFolders licenses currently doesn't work when the license is bound to an exchange account when it is accessed using Owl. This is likely due to a bug in the web extensions API.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

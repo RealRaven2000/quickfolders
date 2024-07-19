@@ -258,14 +258,14 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Diese neueste Ausgabe von $addonName$ verbessert erweiterte Sucheingabeneinstellungen und behebt eine Reihe von Layout-Problemen. {P2}",
+    "message": "{P1} Thunderbird 128 wurde erstmals am 11. Juli veröffentlicht. Die neueste Ausgabe von $addonName$ ist jetzt kompatibel. Bitte besuchen Sie das vollständige Änderungsprotokoll über den untenstehenden Link, um mögliche verwandte Probleme und deren Lösungen zu sehen. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -1894,8 +1894,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Neue Funktion zum Markieren von Newsgroups als gelesen [issue 458]{L2}{L1} Verbesserte italienische Übersetzungen - vielen Dank an Leopoldo Saggin für seine großartige Arbeit.{L2}{L1} Barrierefreiheitsverbesserung: Die quickJump- und Leselistenschaltflächen wurden vergrössert, um das Ablegen von E-Mails zu vereinfachen.{L2} {L1} Verschiedene Layout-Probleme wurden behoben.{L2} {L1} Strg+Rechtsklick öffnet QuickFolders-Befehle wie erwartet. {L2} {L1} Ein Fehler beim Verschieben von E-Mails nur für das angezeigte Konto wurde behoben. {L2} {L1} Probleme beim Speichern von Ausschlüssen mehrerer E-Mail-Konten in den erweiterten Sucheingabeeinstellungen wurden behoben.{L2}"
-  },     
+    "message": "{L1} QuickFolders wurde mit der brandneuen ESR-Version 128 von Thunderbird kompatibel gemacht. [issue 454]{L2}{L1} Wir haben die Lesbarkeit und das Layout für neu eingegangene E-Mails verbessert und eine Option hinzugefügt, um die spezielle Schriftart zu deaktivieren. [issue 468]{L2}{L1} QuickFolders unterstützt jetzt das Verschieben mehrerer ausgewählter Ordner mit quickMove [issue 475]{L2} {L1} Behoben: Strg+Klick auf einen Unterordner öffnet wieder einen neuen Tab.{L2} {L1} Dateiauswahl, die in Thunderbird 125 defekt war, behoben [issue 476] {L2} {L1} Behoben: quickMove wurde in Thunderbird 128 nicht vollständig abgeschlossen [issue 480] {L2} {L1} Bekanntes Problem: Die Überprüfung von QuickFolders-Lizenzen funktioniert derzeit nicht, wenn die Lizenz an ein Exchange-Konto gebunden ist und über Owl darauf zugegriffen wird. Dies liegt wahrscheinlich an einem Fehler in der Web-Extensions-API.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Willkommen bei $addonName$",

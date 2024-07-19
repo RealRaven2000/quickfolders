@@ -265,14 +265,14 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} Aquesta última edició de $addonName$ soluciona la configuració de cerca avançada i adreça diversos problemes de disseny. {P2}",
+    "message": "{P1} Thunderbird 128 es va llançar per primera vegada l'11 de juliol. L'última edició de $addonName$ ara és compatible. Si us plau, visiteu el registre complet de canvis en l'enllaç a continuació per veure possibles problemes relacionats i com s'han solucionat. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Com que aquest treball es finança exclusivament amb la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessats a utilitzar QuickFolders en el futur."
   },
@@ -1851,8 +1851,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funcionalitat per marcar els grups de notícies com llegits [issue 458]{L2}{L1} Millora de les traduccions italianes - gràcies a Leopoldo Saggin per la seva gran feina.{L2}{L1} Millores en l'accessibilitat per a quickMove i la llista de lectures.{L2} {L1} S'han resolt diversos problemes d'estructura.{L2} {L1} Ctrl+Click dret obre els comandaments de QuickFolders com es preveia. {L2} {L1} S'ha solucionat un error en moure els correus mentre està restringit al compte visualitzat. {L2} {L1} S'han corregit problemes amb el guardat d'exclusions de diversos comptes de correu a la configuració de cerca avançada.{L2}"
-  },  
+    "message": "{L1} QuickFolders es va fer compatible amb la nova versió ESR 128 de Thunderbird. [issue 454]{L2}{L1} Hem millorat la llegibilitat i el disseny del correu nou i hem afegit una opció per desactivar la seva font especial. [issue 468]{L2}{L1} QuickFolders ara admet el moviment de diverses carpetes seleccionades amb quickMove [issue 475]{L2} {L1} Solucionat: Ctrl+clic en una subcarpeta ara obre una nova pestanya novament.{L2} {L1} S'ha solucionat el selector de fitxers que estava trencat a Thunderbird 125 [issue 476] {L2} {L1} Solucionat: quickMove no es completava completament a Thunderbird 128 [issue 480] {L2} {L1} Problema conegut: La verificació de les llicències de QuickFolders actualment no funciona quan la llicència està vinculada a un compte d'intercanvi quan s'accedeix mitjançant Owl. Això és probablement degut a un error a l'API d'extensions web.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvingut a $addonName$",

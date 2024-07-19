@@ -257,14 +257,14 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Denna senaste utgåva av $addonName$ fixar avancerade sökinställningar och löser flera layoutproblem. {P2}",
+    "message": "{P1} Thunderbird 128 släpptes första gången den 11 juli. Den senaste utgåvan av $addonName$ är nu kompatibel. Besök den fullständiga ändringsloggen på länken nedan för att se eventuella relaterade problem och hur de har åtgärdats. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
   },
@@ -1921,8 +1921,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny funktion för att markera nyhetsgrupper som lästa [issue 458]{L2}{L1} Förbättrade italienska översättningar - tack till Leopoldo Saggin för hans fantastiska arbete.{L2}{L1} Tillgänglighetsförbättringar för quickMove och läslista.{L2} {L1} Olika layoutproblem har åtgärdats.{L2} {L1} Ctrl+Högerklick öppnar QuickFolders-kommandon som förväntat. {L2} {L1} Ett fel har åtgärdats när du flyttar e-post när det är begränsat till endast visat konto. {L2} {L1} Problem med att spara uteslutningar av flera e-postkonton i avancerade sökinställningar har åtgärdats.{L2}"
-  },  
+    "message": "{L1} QuickFolders gjordes kompatibel med Thunderbirds helt nya ESR-version 128. [issue 454]{L2}{L1} Vi förbättrade läsbarheten och layouten för nyanländ e-post och lade till ett alternativ för att inaktivera dess specialteckensnitt. [issue 468]{L2}{L1} QuickFolders stöder nu flyttning av flera valda mappar med quickMove [issue 475]{L2} {L1} Åtgärdat: Ctrl+klick på en undermapp öppnar nu en ny flik igen.{L2} {L1} Åtgärdade filväljaren som var trasig i Thunderbird 125 [issue 476] {L2} {L1} Åtgärdat: quickMove slutfördes inte helt i Thunderbird 128 [issue 480] {L2} {L1} Känd fråga: Verifiering av QuickFolders-licenser fungerar för närvarande inte när licensen är bunden till ett Exchange-konto när det nås via Owl. Detta beror förmodligen på ett fel i web extensions API.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

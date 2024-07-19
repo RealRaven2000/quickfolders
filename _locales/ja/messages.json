@@ -245,14 +245,14 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} この最新版の $addonName$ は、高度な検索設定を修正し、複数のレイアウトの問題を解決します。 {P2}",
+    "message": "{P1} Thunderbird 128は7月11日に初めてリリースされました。 $addonName$の最新バージョンは現在互換性があります。 以下のリンクで完全な変更履歴を確認し、関連する問題とその対処方法をご覧ください。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "この作業は独占的に資金提供されています。 ライセンスの販売により、将来的に QuickFolders を使用することに関心がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
   },
@@ -1799,8 +1799,8 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} ニュースグループを既読としてマークする新機能 [issue 458]{L2}{L1} イタリア語の翻訳が改善されました - Leopoldo Saggin さんの素晴らしい仕事に感謝します。{L2}{L1} quickMove と読書リストのアクセシビリティの改善。{L2} {L1} さまざまなレイアウトの問題が修正されました。{L2} {L1} Ctrl+右クリックで QuickFolders コマンドが期待どおりに開きます。 {L2} {L1} 表示されているアカウントに制限された場合にメールを移動する際のエラーが修正されました。 {L2} {L1} 複数のメールアカウントの除外を保存する際の問題が修正されました。{L2}"
-  },    
+    "message": "{L1} QuickFolders は Thunderbird の新しい ESR バージョン 128 と互換性があります。 [issue 454]{L2}{L1} 新着メールの読みやすさとレイアウトを改善し、特殊フォントを無効にするオプションを追加しました。 [issue 468]{L2}{L1} QuickFolders は、quickMove を使用して複数の選択したフォルダーを移動することをサポートするようになりました [issue 475]{L2} {L1} 修正: サブフォルダーを Ctrl+クリックすると、新しいタブが再び開きます。{L2} {L1} Thunderbird 125 で壊れていたファイル ピッカーを修正しました [issue 476] {L2} {L1} 修正: Thunderbird 128 で quickMove が完全に完了しませんでした [issue 480] {L2} {L1} 既知の問題: QuickFolders ライセンスの検証は、ライセンスが Owl を使用してアクセスされる Exchange アカウントにバインドされている場合、現在機能しません。 これは、おそらく Web 拡張機能 API のバグが原因です。{L2}"
+  }, 
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ へようこそ",

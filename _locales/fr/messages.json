@@ -268,14 +268,14 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} Cette dernière édition de $addonName$ corrige les paramètres de recherche avancés et résout plusieurs problèmes de mise en page. {P2}",
+    "message": "{P1} Thunderbird 128 a été publié pour la première fois le 11 juillet. La dernière édition de $addonName$ est maintenant compatible. Veuillez visiter le journal des modifications complet dans le lien ci-dessous pour voir les problèmes éventuels et comment ils ont été résolus. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler la précédente si vous souhaitez utiliser QuickFolders à l'avenir"
   },
@@ -1947,8 +1947,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Nouvelle fonctionnalité pour marquer les groupes de discussion comme lus [issue 458]{L2}{L1} Améliorations des traductions italiennes - merci à Leopoldo Saggin pour sa formidable contribution.{L2}{L1} Améliorations de l'accessibilité pour quickMove et la liste de lecture.{L2} {L1} Correction de plusieurs problèmes de mise en page.{L2} {L1} Ctrl+Clic droit ouvre les commandes QuickFolders comme prévu. {L2} {L1} Correction d'une erreur lors du déplacement des e-mails restreint au compte visualisé. {L2} {L1} Correction des problèmes avec la sauvegarde des exclusions de plusieurs comptes de messagerie dans les paramètres de recherche avancée.{L2}"
-  },    
+    "message": "{L1} QuickFolders a été rendu compatible avec la toute nouvelle version ESR 128 de Thunderbird. [issue 454]{L2}{L1} Nous avons amélioré la lisibilité et la mise en page du courrier nouvellement arrivé et ajouté une option pour désactiver sa police spéciale. [issue 468]{L2}{L1} QuickFolders prend désormais en charge le déplacement de plusieurs dossiers sélectionnés avec quickMove [issue 475]{L2} {L1} Correction : Ctrl+clic sur un sous-dossier ouvre à nouveau un nouvel onglet.{L2} {L1} Correction du sélecteur de fichiers qui était cassé dans Thunderbird 125 [issue 476] {L2} {L1} Correction : quickMove ne s'est pas complètement terminé sur Thunderbird 128 [issue 480] {L2} {L1} Problème connu : La vérification des licences QuickFolders ne fonctionne actuellement pas lorsque la licence est liée à un compte Exchange lorsqu'il est accédé via Owl. Cela est probablement dû à un bug dans l'API des extensions Web.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenue sur $addonName$",

@@ -245,14 +245,14 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Ta najnovejša različica $addonName$ popravlja napredne nastavitve iskanja in rešuje več težav s postavitvijo. {P2}",
+    "message": "{P1} Thunderbird 128 je bil prvič izdan 11. julija. Najnovejša izdaja $addonName$ je zdaj združljiva. Obiščite celoten dnevnik sprememb na spodnji povezavi, da vidite morebitne povezane težave in kako so bile rešene. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
   },
@@ -1858,7 +1858,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija za označevanje novic kot prebrane [issue 458]{L2}{L1} Izboljšane italijanske prevode - hvala Leopoldu Sagginu za odlično delo.{L2}{L1} Izboljšave dostopnosti za quickMove in seznam za branje.{L2} {L1} Odpravljeni različni težave z razporeditvijo.{L2} {L1} Ctrl+Desni klik odpre ukaze QuickFolders kot pričakovano. {L2} {L1} Popravljena napaka pri premikanju pošte, ko je omejena samo na prikazan račun. {L2} {L1} Popravljene težave pri shranjevanju izključitev več računov za e-pošto v naprednih nastavitvah iskanja.{L2}"
+    "message": "{L1} QuickFolders je bil združljiv z novo različico ESR 128 Thunderbirda. [issue 454]{L2}{L1} Izboljšali smo berljivost in postavitev za novo prispele e-pošte ter dodali možnost onemogočanja posebne pisave. [issue 468]{L2}{L1} QuickFolders zdaj podpira premikanje več izbranih map s quickMove [issue 475]{L2} {L1} Popravljeno: Ctrl+klik na podmapo zdaj znova odpre nov zavihek.{L2} {L1} Popravljen izbirnik datotek, ki je bil pokvarjen v Thunderbird 125 [issue 476] {L2} {L1} Popravljeno: quickMove se ni popolnoma zaključil v Thunderbird 128 [issue 480] {L2} {L1} Znana težava: Preverjanje licenc QuickFolders trenutno ne deluje, ko je licenca vezana na račun Exchange, ko se dostopa prek Owl. To je verjetno posledica napake v API-ju spletnih razširitev.{L2}"
   },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

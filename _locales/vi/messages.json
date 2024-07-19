@@ -140,14 +140,14 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1} Phiên bản mới nhất của $addonName$ sửa các cài đặt tìm kiếm nâng cao và giải quyết nhiều vấn đề về bố cục. {P2}",
+    "message": "{P1} Thunderbird 128 được phát hành lần đầu tiên vào ngày 11 tháng 7. Phiên bản mới nhất của $addonName$ hiện đã tương thích. Vui lòng truy cập nhật ký thay đổi đầy đủ trong liên kết dưới đây để xem các sự cố có liên quan và cách chúng đã được giải quyết. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Công việc này được tài trợ độc quyền bằng cách bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai."
   },
@@ -1414,8 +1414,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Tính năng mới để Đánh dấu Nhóm tin nhắn là đã đọc [issue 458]{L2}{L1} Cải thiện bản dịch tiếng Ý - cảm ơn Leopoldo Saggin về công việc tuyệt vời của anh ấy.{L2}{L1} Cải thiện tính khả dụng cho quickMove và danh sách đọc.{L2} {L1} Sửa một số vấn đề về bố cục.{L2} {L1} Ctrl+Click phải mở các lệnh QuickFolders như mong đợi. {L2} {L1} Sửa lỗi khi di chuyển thư trong khi chỉ hạn chế cho tài khoản được xem. {L2} {L1} Sửa các vấn đề với việc lưu trữ các loại trừ của nhiều tài khoản thư trong cài đặt tìm kiếm nâng cao.{L2}"
-  },   
+    "message": "{L1} QuickFolders đã được làm tương thích với phiên bản ESR 128 mới của Thunderbird. [issue 454]{L2}{L1} Chúng tôi đã cải thiện khả năng đọc và bố cục cho thư mới đến và thêm tùy chọn để tắt phông chữ đặc biệt của nó. [issue 468]{L2}{L1} QuickFolders hiện hỗ trợ di chuyển nhiều thư mục đã chọn với quickMove [issue 475]{L2} {L1} Đã sửa: Ctrl+nhấp vào một thư mục con hiện lại mở một tab mới.{L2} {L1} Đã sửa bộ chọn tệp bị hỏng trong Thunderbird 125 [issue 476] {L2} {L1} Đã sửa: quickMove không hoàn thành đầy đủ trong Thunderbird 128 [issue 480] {L2} {L1} Vấn đề đã biết: Việc xác minh giấy phép QuickFolders hiện không hoạt động khi giấy phép được liên kết với tài khoản trao đổi khi truy cập bằng Owl. Điều này có thể do lỗi trong API tiện ích mở rộng web.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

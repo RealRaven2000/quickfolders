@@ -228,14 +228,14 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A $addonName$ legújabb kiadása kijavítja a fejlett keresési beállításokat és több elrendezési problémát is megold. {P2}",
+    "message": "{P1} A Thunderbird 128 először július 11-én jelent meg. A $addonName$ legújabb kiadása most kompatibilis. Kérjük, látogasson el az alábbi linken található teljes változási naplóba, hogy lássa a kapcsolódó problémákat és azok megoldásait. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
@@ -1667,8 +1667,9 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Új funkció a hírcsoportok megjelölésére olvasottként [issue 458]{L2}{L1} Javított olasz fordítások - köszönet Leopoldo Saggin-nak a nagyszerű munkájáért.{L2}{L1} Hozzáférhetőségi javítások a quickMove és az olvasási lista számára.{L2} {L1} Különböző elrendezési problémák javítása.{L2} {L1} Ctrl+Jobb kattintás megnyitja a QuickFolders parancsokat a várt módon. {L2} {L1} Hiba javítása a levél mozgatásakor, miközben csak a megtekintett fiókra van korlátozva. {L2} {L1} Problémák javítása több e-mail-fiók kizárásának mentésekor az előrehaladott keresési beállításokban.{L2}"
-  },  
+    "message": "{L1} A QuickFolders kompatibilissé vált a Thunderbird vadonatúj ESR 128-as verziójával. [issue 454]{L2}{L1} Javítottuk az újonnan érkezett levelek olvashatóságát és elrendezését, és hozzáadtunk egy opciót a speciális betűtípus letiltásához. [issue 468]{L2}{L1} A QuickFolders mostantól támogatja több kijelölt mappa mozgatását a quickMove segítségével [issue 475]{L2} {L1} Javítva: A Ctrl+kattintás egy almappára ismét új lapot nyit meg.{L2} {L1} Javítva a fájlválasztó, amely a Thunderbird 125-ben hibás volt [issue 476] {L2} {L1} Javítva: A quickMove nem fejeződött be teljesen a Thunderbird 128-ban [issue 480] {L2} {L1} Ismert probléma: A QuickFolders licenc ellenőrzése jelenleg nem működik, ha a licenc egy Exchange-fiókhoz van kötve, amikor az Owl segítségével férnek hozzá. Ez valószínűleg egy hibának köszönhető a web extensions API-ban.{L2}"
+  },
+
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

@@ -257,14 +257,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 這個最新版本的 $addonName$ 修復了高級搜尋設置，並解決了一些版面配置問題。 {P2}",
+    "message": "{P1} Thunderbird 128 於 7 月 11 日首次發行。最新版本的 $addonName$ 現在兼容。請訪問下面的鏈接查看完整的變更日誌，以了解可能的相關問題以及如何解決這些問題。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證。"
   },
@@ -1859,7 +1859,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 新功能：標記新聞組為已讀 [issue 458]{L2}{L1} 改善義大利文翻譯 - 感謝 Leopoldo Saggin 做出的傑出工作。{L2}{L1} quickMove 和閱讀清單的可存取性改善。{L2} {L1} 修正了各種版面配置問題。{L2} {L1} 按 Ctrl+右鍵單擊打開 QuickFolders 命令，如預期。 {L2} {L1} 修正了僅在查看帳戶時移動郵件時出現的錯誤。 {L2} {L1} 修正了在進階搜尋設置中保存多個郵件帳戶的排除時出現的問題。{L2}"
+    "message": "{L1} QuickFolders 與 Thunderbird 的全新 ESR 版本 128 兼容。 [issue 454]{L2}{L1} 我們改進了新到郵件的可讀性和佈局，並添加了禁用特殊字體的選項。 [issue 468]{L2}{L1} QuickFolders 現在支持使用 quickMove 移動多個選定的文件夾 [issue 475]{L2} {L1} 修復：Ctrl+單擊子文件夾現在再次打開新標籤頁。{L2} {L1} 修復了在 Thunderbird 125 中損壞的文件選擇器 [issue 476] {L2} {L1} 修復：quickMove 在 Thunderbird 128 中未完全完成 [issue 480] {L2} {L1} 已知問題：當許可證綁定到使用 Owl 訪問的 Exchange 帳戶時，QuickFolders 許可證驗證當前不起作用。這可能是由於 web extensions API 中的錯誤導致的。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
