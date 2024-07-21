@@ -433,7 +433,8 @@ END LICENSE BLOCK */
   6.5.1 QuickFolders Pro - 16/04/2024
     ## [issue 467] Mark as Read (and similar commands) in Navigation bar may address wrong folder
 
-  6.6 QuickFolders Pro - WIP
+  6.6 QuickFolders Pro - 21/07/2024
+    ## [issue 454] Made QuickFolders compatible with Thunderbird 128
     ## [issue 468] Improved readability & layout for "newly arrived" mail - outlined instead of text shadow
                    (biffstate - true) and added an option to disable special font
     ## [issue 471] Settings Advanced - Hardcoded Localisation for 'Open in New Tab'
@@ -441,13 +442,12 @@ END LICENSE BLOCK */
     ## optimize licenser (omit folders while listing accounts)
     ## [issue 475] Support moving multiple folders with quickMove
     ## [issue 476] Fix file picker which is broken in Thunderbird 125 [bug 1882701]
-    ## [issue 480] quickMove doesn't fully complete on Tb 128
+    ## [issue 480] Fixed: quickMove doesn't fully complete on Tb 128
     
 
 	TO DO next
 	==========
     ## [issue 423] Color Tabs with unread messages
-    ## [issue ]
     ## [issue ]
     ## [issue ]
 
