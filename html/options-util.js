@@ -44,7 +44,6 @@ QuickFolders.Util = {
       }
     }
     catch(ex) { // Bug 26387
-      debugger;
       console.error("getSystemColor(" + sColorString + ") failed", ex);
       return "#000000";
     }

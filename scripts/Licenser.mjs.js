@@ -70,6 +70,8 @@ async function testCountFolders(includeFolders = false, debug = false){
       let subCount = ac.folders.reduce( (m, fld) => {
             let csf = countSubFolders(fld);
             if (typeof m + csf == "undefined") {
+              // this is a test function, having the debugger statement here is ok
+              // as this function is not usually or easily executed by any user
               debugger;
             }
             return m + csf;

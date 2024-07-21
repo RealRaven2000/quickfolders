@@ -459,7 +459,7 @@ QuickFolders.Preferences = {
 		else {
 		  const Ci = Components.interfaces, 
 			      Cc = Components.classes;
-			if (this.isDebug) debugger;
+			if (this.isDebug) { debugger; }
 			var str = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
 			str.data = v;
 			Services.prefs.setComplexValue("extensions.quickfolders." + p, Ci.nsISupportsString, str);

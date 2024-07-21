@@ -485,7 +485,7 @@ QuickFolders.Util = {
       }
     }
     catch(ex) { // Bug 26387
-      if (prefs.isDebug) debugger;
+      if (prefs.isDebug) { debugger; }
       this.logException('getSystemColor(' + sColorString + ') failed', ex);
       return "#000000";
     }
@@ -684,7 +684,6 @@ QuickFolders.Util = {
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
     trans.addDataFlavor("text/x-moz-folder");
     trans.addDataFlavor("text/x-moz-newsfolder");
-    if (!evt) debugger;
     if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
 
     // alert ("numDropItems = " + dragSession.numDropItems + ", isDataFlavorSupported=" + dragSession.isDataFlavorSupported("text/x-moz-folder"));
@@ -859,10 +858,8 @@ QuickFolders.Util = {
               },
               onStopCopy(status) {
                 if (status == Cr.NS_OK) {
-                  debugger;
                   resolve(); // returns to await
                 } else {
-                  debugger;
                   reject(status); // this throws !
                 }
               },
@@ -873,10 +870,8 @@ QuickFolders.Util = {
               GetMessageId(messageId) {},
               OnStopCopy(status) {
                 if (status == Cr.NS_OK) {
-                  debugger;
                   resolve(); // returns to await
                 } else {
-                  debugger;
                   reject(status); // this throws !
                 }
               }              

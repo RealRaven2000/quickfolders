@@ -201,8 +201,7 @@ QuickFolders.FilterList = {
 			// document.removeChild(el);
 		}
     const util = QuickFolders.Util;
-    // if (util.Debug) debugger;
-		// check whether [Bug 450302] has landed
+    // check whether [Bug 450302] has landed
 		let nativeSearchBox = document.getElementById("searchBox"),
 		    //move buttons to the correct place
 		    buttonTop = document.getElementById("qf-reorderButtonTop"),

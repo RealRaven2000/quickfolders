@@ -400,7 +400,7 @@ QuickFolders.Options = {
   // set the custom value entered by user (only if custom is actually selected)
   setCurrentToolbarBackgroundCustom: async function() {
     const prefs = QuickFolders.Preferences;   
-    if (await prefs.isDebugOption('options')) debugger;
+    if (await prefs.isDebugOption('options')) { debugger; }
     let setting = document.getElementById('currentFolderBackground'),
         backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');    
     if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
@@ -617,7 +617,7 @@ QuickFolders.Options = {
     if (myTheme) {
       try {
         getElement("QuickFolders-Theme-Selector").value = themeId;
-        getElement("Quickfolders-Theme-Author").textContent =  myTheme.author;
+        getElement("Quickfolders-Theme-Author").textContent = myTheme.author;
 
         // textContent wraps, value doesnt
         let themeDescription = messenger.i18n.getMessage("qf.themes." + themeId + ".description") || "N/A";

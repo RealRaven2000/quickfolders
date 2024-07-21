@@ -257,7 +257,7 @@ var CatWin = {
     const util = QuickFolders.Util,
           model = QuickFolders.Model;
 		util.logDebugOptional("categories","deleteSelectedCategory()");
-		if (QuickFolders.Preferences.isDebugOption("categories")) debugger;
+		if (QuickFolders.Preferences.isDebugOption("categories")) { debugger; }
 		// improve routine - make sure we can select multiple items
 		let selectedItems = this.CategoriesListBox.selectedItems, // array
 		    selCount = selectedItems.length;

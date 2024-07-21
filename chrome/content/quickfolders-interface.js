@@ -411,7 +411,7 @@ QuickFolders.Interface = {
 		}
 		// Thunderbird 52 fix for [Bug 26592] - recent folder clicks not working
 		if (button && (button.tagName == "menuitem" || button.tagName == "menupopup")) {
-			if (prefs.isDebugOption("popupmenus")) debugger;
+			if (prefs.isDebugOption("popupmenus")) { debugger; }
 
 			let menuitem = button;
 			if (menuitem.folder) {
@@ -541,7 +541,7 @@ QuickFolders.Interface = {
 			util.popupRestrictedFeature("skipUnreadFolder", txt, 2);
     }
 
-		if (prefs.isDebugOption("navigation")) debugger;
+		if (prefs.isDebugOption("navigation")) { debugger; }
 		folder = util.getNextUnreadFolder(currentFolder);
 
 		if (folder) {
@@ -1134,7 +1134,7 @@ QuickFolders.Interface = {
 		    menuList = this.CategoryMenu,
 		    menuPopup = menuList.menupopup;
 		util.logDebug("updateCategories() - [" + lCatCount + " Categories]");
-		if (prefs.isDebugOption("categories")) debugger;
+		if (prefs.isDebugOption("categories")) { debugger; }
 
     try {
       if (lCatCount > 0 && menuList && menuPopup) {
@@ -1216,7 +1216,7 @@ QuickFolders.Interface = {
           prefs = QuickFolders.Preferences;
 
     util.logDebug("updateMainWindow()...");
-		if (prefs.isDebugOption("interface.update")) debugger;
+		if (prefs.isDebugOption("interface.update")) { debugger; }
 		logCSS("============================\n" + "updateMainWindow…");
 		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 
@@ -2086,6 +2086,7 @@ QuickFolders.Interface = {
     // we can now refresh the popup menu!
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface;
+		var DEBUG_ME = false;
     let folder = button ? (button.folder || null)  : null;
     if (evt) {
       let evtText;
@@ -2129,8 +2130,7 @@ QuickFolders.Interface = {
           "addPopupSet(" + popupId + ", " + folder.prettyName + ", " + entry + ", o= " + offset + ", " + button.id ? button.id : button +", noCommands=" + noCommands + ")");
         QI.addPopupSet( {popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:noCommands, event:evt} );
       }
-    }
-    else {
+    } else {
       util.logDebugOptional("interface,popupmenus", "showPopup(" + button.id + ", " + popupId + ", NO EVENT)");
     }
 
@@ -2193,7 +2193,7 @@ QuickFolders.Interface = {
 			} // CTRL KEY HELD
 
 			if (!p) {
-				debugger;
+				if (DEBUG_ME) { debugger; }
 				return;
 			}
 
@@ -2201,10 +2201,9 @@ QuickFolders.Interface = {
 			if (popupId=="QuickFolders-ToolbarPopup" && evt) {
 				// find all menu items with class "dbgMenu" and uncollapse them
 				let nodes = p.children;
-				//debugger;
 				if (!nodes) {
-					debugger;
-				//	return;
+					if (DEBUG_ME) { debugger; }
+					//	return;
 				}
 				for (let i=0; i<nodes.length; i++) {
 					if(nodes[i].classList.contains("dbgMenu")) {
@@ -2676,8 +2675,8 @@ QuickFolders.Interface = {
   },
 
 	onButtonClick: function (button, evt, isMouseClick) {
-    let util = QuickFolders.Util,
-        QI = QuickFolders.Interface;
+    const util = QuickFolders.Util,
+        	QI = QuickFolders.Interface;
 		util.logDebugOptional("mouseclicks","onButtonClick - isMouseClick = " + isMouseClick);
 		// this may happen when we right-click the menu with CTRL
 		try {
@@ -2687,7 +2686,11 @@ QuickFolders.Interface = {
 				return;
 			}
 		}
-		catch(ex) { debugger; }
+		catch(ex) { 
+			if (util.isDebug) {
+				debugger; // this should never happen ?
+			}
+		}
 
 		try {
 			if (QI.PaintModeActive) {
@@ -3058,7 +3061,6 @@ QuickFolders.Interface = {
 
 		let forcePopup = QuickFolders.Preferences.isDebugOption("advancedTabProperties.forcePopup"); // for debugging on Mac
 		let forceRaised = false; // for testing alwaysRaised
-		debugger;
 
 		QuickFolders.Util.logDebug(rect);
 		if (isHTMLprops) {
@@ -3985,7 +3987,7 @@ QuickFolders.Interface = {
           util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 		let msg = evt.type + " event from popup - QI.clickHandler()";
-		if (prefs.isDebugOption("popupmenus")) debugger;
+		if (prefs.isDebugOption("popupmenus")) { debugger; }
 		if (evt.target) {
 			let isTagHandler = true,
 					isIdHandler = true,
@@ -4914,7 +4916,7 @@ QuickFolders.Interface = {
 	// special function for menu item that is both a popup (has child folders) and represents a clickable folder
 	onSelectParentFolder: function onSelectParentFolder(folderUri, evt) {
 		QuickFolders.Util.logDebugOptional ("interface,popupmenus", "onSelectParentFolder: " + folderUri);
-		if (QuickFolders.Preferences.isDebugOption("folders.select")) debugger;
+		if (QuickFolders.Preferences.isDebugOption("folders.select")) { debugger; }
 		this.onSelectSubFolder(folderUri, evt);
 		evt.stopPropagation(); // avoid oncommand bubbling up!
 		QuickFolders.Interface.collapseParentMenus(evt.target);
@@ -5458,8 +5460,6 @@ QuickFolders.Interface = {
 					continue;
 				}
 
-				//
-				// if (matchPos == 0 && prefs.isDebugOption("quickMove")) debugger;
 				if (matchPos == 0
 				   &&
 				   !parents.some(p => (p.uri == folderEntry.uri))) {  
@@ -7148,7 +7148,6 @@ QuickFolders.Interface = {
 		// [Bug 26517] support multiple folder moves - added "count" and transmitting URIs
 		const util = QuickFolders.Util;
     let arrCount = fromFolders.length;
-		debugger;
 
 		function isChildFolder(f)	 {
       for (let i=0; i<fromFolders.length; i++) {

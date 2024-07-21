@@ -295,12 +295,11 @@ var Register = {
   } ,
   
   goPro: function goPro(license_type, isRenew = false) {
-    const productDetail = "https://sites.fastspring.com/quickfolders/product/quickfolders",
-					prefs =  QuickFolders.Preferences,
+    const prefs =  QuickFolders.Preferences,
           util = QuickFolders.Util;
     // redirect to registration site; pass in the feature that brought user here
     // short order process
-    if (util.isDebug) debugger;
+    if (util.isDebug) { debugger; }
     let shortOrder,
 		    featureName = document.getElementById("referrer").value; // hidden field
     if (isRenew || license_type==3) {
@@ -310,26 +309,24 @@ var Register = {
 			case 0:  // pro license
 				if (isRenew) { 
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
-				}
-				else // NEW
+				} else { // NEW
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
-				
+        }
 			  break;
 			case 1: // domain license
         if (isRenew) { 
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
-        }
-        else
+        } else {
           shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
+        }
 			  break;
 			case 2: // standard license
 				if (isRenew) { 
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersstdrenewal";
-				}
-				else
+				} else {
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersstandard";
+        }
 			  break;
-
 			case 3: // upgrade standard to pro
 				shortOrder = "https://sites.fastspring.com/quickfolders/product/quickfoldersupgrade"; // product to be created
 			  break;

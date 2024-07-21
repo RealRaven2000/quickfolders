@@ -17,3 +17,7 @@
 **Known Issues**
 
 *   Currently the verification of QuickFolders licenses does not work when the license is bound to an exchange account when it is accessed using Owl. This is due to a bug in the [extensions.accounts](https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api) Webextensions API - which doesn't include them when using accounts.list() - which we hope will be fixed very soon.
+
+
+**Etc**
+*   6.6.1: removed non-conditional debugger statements.

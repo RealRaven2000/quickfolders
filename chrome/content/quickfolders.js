@@ -443,6 +443,10 @@ END LICENSE BLOCK */
     ## [issue 475] Support moving multiple folders with quickMove
     ## [issue 476] Fix file picker which is broken in Thunderbird 125 [bug 1882701]
     ## [issue 480] Fixed: quickMove doesn't fully complete on Tb 128
+
+  6.6.1 QuickFolders Pro - 21/07/2024
+    ## removed non-conditional debugger statements.
+    ## Holidays!
     
 
 	TO DO next
@@ -1021,7 +1025,7 @@ var QuickFolders = {
 		canDrop: function (e,s) {
 			try {
 				// this.util.logDebugOptional("dnd","toolbarDragObserver.canDrop - Session.canDrop = " +  s.canDrop);
-				if (this.prefs.isDebugOption('dnd') && (!s || s && !s.canDrop)) debugger;
+				if (this.prefs.isDebugOption('dnd') && (!s || s && !s.canDrop)) { debugger; }
 				if (s) {
 					s.canDrop = true;
 				}
@@ -1441,8 +1445,7 @@ var QuickFolders = {
 		},
 
 		startDrag: function(event, transferData, action) {
-      if (!event || !transferData) debugger;
-			// transferData.data = new TransferData(); // legacy code
+      // if (!event || !transferData) { debugger; }
 			// check event.originalTarget and event.target
 			QuickFolders.Util.threadPaneOnDragStart(event);
 		}
@@ -1872,7 +1875,7 @@ var QuickFolders = {
         DropTarget.classList.remove("dragover");
       }
       
-			if (prefs.isDebugOption("dnd")) debugger;
+			if (prefs.isDebugOption("dnd")) { debugger; }
       try {
         util.logDebugOptional("dnd", "buttonDragObserver.drop flavour (types[0])=" + contentType);
         util.logToConsole("dragSession = ", dragSession);
@@ -2037,7 +2040,6 @@ var QuickFolders = {
         }
       } else if (isDropFile) {  // eml file?
         util.logToConsole("dropping eml file: currently unsupported.");
-        debugger;
       } else if (isDropButton) {  // reordering button positions
         // was "text/unicode"
         let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);

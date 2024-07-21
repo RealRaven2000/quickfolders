@@ -162,7 +162,7 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 		var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		
 		if (!folder.URI) return;
-		if (preferences.isDebugOption('composer')) debugger;
+		if (preferences.isDebugOption('composer')) { debugger; }
     
 		let entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
     try {
@@ -230,7 +230,7 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 				  identity: null,
 					toAddress: ''
 				};
-		if (preferences.isDebugOption('composer')) debugger;
+		if (preferences.isDebugOption('composer')) { debugger; }
 		
 		// we need to check all parent folders for entries as well.
 		if (currentFolder && currentFolder.URI) {

@@ -35,12 +35,9 @@ QuickFolders.SearchDialog = {
   } ,
   
   onLoad: function(event)  {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-          nsMsgSearchScope = Ci.nsMsgSearchScope,
-          util = QuickFolders.Util;
+    const util = QuickFolders.Util;
     
-    if (QuickFolders.Preferences.isDebug)  debugger;
+    if (QuickFolders.Preferences.isDebug) { debugger; }
     util.logDebug('QF-Search Load'); // this is exectued after SearchDialog.js searchOnLoad() !
     if (window.arguments && window.arguments[0]) {
       let args = window.arguments[0],
