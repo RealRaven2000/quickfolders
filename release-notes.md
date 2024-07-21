@@ -11,6 +11,8 @@
 *   Ctrl+click on a subfolder should open new tab, this was fixed. [issue #474]
 *   Fixed file picker which is broken in Thunderbird 125 [bug 1882701] [issue #476]
 *   Fixed: quickMove doesn't fully complete on Tb 128 [issue #480]
+*   Fixed:  Opening folder in Tab from menu (using CTRL + Click) - search box was missing in new tab [issue #353]
+
 
 **Known Issues**
 
