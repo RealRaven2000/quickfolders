@@ -324,11 +324,12 @@
     -->
 
     <a name="6.6">&nbsp;</a>
+    <a name="6.6.1">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.*" 
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.6.1" 
 			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
-				 Version 6.6 - WIP
+				 Version 6.6.1 - 22/07/2024
 		  </a>
       </h4>
       <ul>
@@ -347,11 +348,12 @@
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/471">[issue 471]</a>
 				</li>
 				<li> 
-					Support moving multiple folders with quickMove. This seems to work well
-					when tested - also we should now not show the context menu in the 
-					folder pane popup when multiple folders are selected. 
+					QuickFolders now supports moving multiple selected folders with quickMove.
+					
+					This apparently worked well when tested - we also  should now not display the 
+					context menu in the  folder pane popup when multiple folders are selected. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/475">[issue 475]</a>
-					(see background function addFolderPaneMenu())
+					(To do: check background function <tt>addFolderPaneMenu()</tt>)
 				</li>
 				<li> 
 					Optimized licenser (omits folders while listing accounts)
@@ -377,13 +379,12 @@
 			<ul>
 				<h4 class="inList">Known Issues</h4>
 				<li> 
-					CUrrently the verification of QuickFolders licenses does not work 
+					Currently the verification of QuickFolders licenses does not work 
 					when the license is bound to an exchange account when it is
 					accessed using Owl. This is due to a bug in the 
 					<a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a>
 					Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
 					which we hope will be fixed very soon.
-
 				</li>
 			</ul>
 
