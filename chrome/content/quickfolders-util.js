@@ -315,13 +315,12 @@ QuickFolders.Util = {
    * @text - [optional] additional text
    * @level: 0 pro, 1 domain, 2 standard. defaults to pro feature
    */
-  popupRestrictedFeature: async function popupRestrictedFeature(featureName, text, level = 0) {
-    let notifyBox,
-        util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        maindoc = util.getMail3PaneWindow().document,
-        licenseInfo = util.licenseInfo,
-        levelSelect = (level==2) ? "standard" : "premium";
+  popupRestrictedFeature: async function (featureName, text, level = 0) {
+    let notifyBox;
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences,
+          licenseInfo = util.licenseInfo,
+          levelSelect = (level==2) ? "standard" : "premium";
     if (util.hasValidLicense()) {
       switch (level) {
         case 0:  // premium feature
@@ -360,9 +359,9 @@ QuickFolders.Util = {
         hotKey = util.getBundleString("qf.notification.premium.btn.hotKey"),
         nbox_buttons;
     // overwrite for renewal
-    if (QuickFolders.Util.licenseInfo.isExpired)
+    if (QuickFolders.Util.licenseInfo.isExpired) {
       regBtn = util.getBundleString("qf.notification.premium.btn.renewLicense");
-    else if (licenseInfo.keyType == 2) { // overwrite for upgrade
+    } else if (licenseInfo.keyType == 2) { // overwrite for upgrade
       regBtn = util.getBundleString("qf.notification.premium.btn.upgrade");
     }
     if (notifyBox) {
@@ -393,7 +392,7 @@ QuickFolders.Util = {
 
       if (notifyBox.shown) { // new notification format (Post Tb 99)
         newNotification = 
-          notifyBox.appendNotification( 
+          await notifyBox.appendNotification( 
             notificationKey, // "String identifier that can uniquely identify the type of the notification."
             {
               priority: notifyBox.PRIORITY_INFO_HIGH,
@@ -404,22 +403,31 @@ QuickFolders.Util = {
       }
       else {
         newNotification = 
-          notifyBox.appendNotification( theText, 
+          await notifyBox.appendNotification( theText, 
             notificationKey, 
             imgSrc, 
             notifyBox.PRIORITY_INFO_HIGH, 
             nbox_buttons ); 
       }
-          
-      // setting img was removed in Tb91  
-      if (newNotification.messageImage.tagName == "span") {
+
+      let containerSelector; // 
+      switch (newNotification?.messageImage?.tagName) {
+        case "span":
+          containerSelector = ".container";  // Tb 115
+          break;
+        case "img":
+          containerSelector = ".icon-container";  // Tb 128
+          break;
+      }      
+             
+      if (containerSelector) {
         // style needs to go into shadowroot
         let linkEl = document.createElement("link");
         linkEl.setAttribute("rel", "stylesheet");
         linkEl.setAttribute("href", "chrome://quickfolders-skins/content/qf-notifications.css");
         newNotification.shadowRoot.insertBefore(linkEl, newNotification.shadowRoot.firstChild.nextSibling); 
         
-        let container = newNotification.shadowRoot.querySelector(".container");
+        let container = newNotification.shadowRoot.querySelector(containerSelector);
         if (container) {
           let im = document.createElement("img");
           im.setAttribute("src", imgSrc);
@@ -431,18 +439,11 @@ QuickFolders.Util = {
         }
         
       }          
-    }
-    else {
+    } else {
       // code should not be called, on SM we would have a sliding notification for now
       // fallback for systems that do not support notification (currently: SeaMonkey)
       util.logDebugOptional("premium", "fallback for systems without notification-box…");
       let result = Services.prompt.alert(null, title, theText);
-          // check = {value: false},   // default the checkbox to true  
-          // dontShow = util.getBundleString("qf.notification.dontShowAgain",
-          //            "Do not show this message again.") + ' [' + featureName + ']',
-          
-      //if (check.value==true)
-      //  util.disableFeatureNotification(featureName);
     }
   } ,
 

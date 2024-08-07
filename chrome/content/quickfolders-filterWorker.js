@@ -28,7 +28,7 @@ QuickFolders.FilterWorker = {
 	* 
 	* @param {bool} start or stop filter mode
 	*/  
-	toggle_FilterMode: function(active) {
+	toggle_FilterMode: async function(active) {
     function removeOldNotification(box, active, id) {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
@@ -85,7 +85,7 @@ QuickFolders.FilterWorker = {
 					
 				
           if (notifyBox.shown) { // new notification format (Post Tb 99)
-            notifyBox.appendNotification( 
+            await notifyBox.appendNotification( 
               notificationKey, // "String identifier that can uniquely identify the type of the notification."
               {
                 priority: notifyBox.PRIORITY_INFO_LOW,
@@ -96,7 +96,7 @@ QuickFolders.FilterWorker = {
             );
           }
           else {
-            notifyBox.appendNotification(theText, 
+            await notifyBox.appendNotification(theText, 
                 notificationKey , 
                 "chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
                 notifyBox.PRIORITY_INFO_LOW, 
@@ -104,23 +104,12 @@ QuickFolders.FilterWorker = {
                   eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
             ); 
           }
-							
-				}
-				else {
-					// fallback for systems that do not support notification (currently: SeaMonkey)
-					let check = {value: false};   // default the checkbox to true  
-						
-					let result = Services.prompt.alertCheck(null, title, theText, dontShow, check);
-					if (check.value==true)
-						QuickFolders.FilterWorker.showMessage(false);
 				}
 			}
-		}
-    else {
+		} else {
       if (typeof window.quickFilters.isNewAssistantMode == 'undefined') {
         QuickFolders.FilterWorker.FilterModeLegacy = true;
-      }
-      else {
+      } else {
         // setting this flag to false - avoids calling createFilter explicitely and leaves it to the 
         // new MsgFolderListener.msgsMoveCopyCompleted handler...
         QuickFolders.FilterWorker.FilterModeLegacy = !(window.quickFilters.isNewAssistantMode);
@@ -152,15 +141,16 @@ QuickFolders.FilterWorker = {
 			// tidy up notifications
 			if (!active && notifyBox) {
 				let item = notifyBox.getNotificationWithValue(notificationKey);
-				if(item)
+				if(item) {
 					notifyBox.removeNotification(item, true);
+				}
 			}
 		}
 			
 		// sync with quickFilters
 		if (isQuickFilters) {
 			if (active != window.quickFilters.Worker.FilterMode) {
-				window.quickFilters.Worker.toggleFilterMode(active);
+				await window.quickFilters.Worker.toggleFilterMode(active);
 				if (!active && notifyBox) {
 					let item = notifyBox.getNotificationWithValue("quickFilters-filter");
 					if(item)
