@@ -112,6 +112,90 @@ function showSplash(msg="") {
 function showInstalled() {
   let url = browser.runtime.getURL("popup/installed.html");
   browser.windows.create({ url, type: "popup", width: 910, height: 800, allowScriptsToClose: true });
+} 
+
+async function filterMailsRegex(searchOptions, tabId = null) {
+  const group =searchOptions.group;   // 0 for full match
+  const searchSelected = searchOptions.searchSelected;
+  const searchCriteria =  searchOptions.searchCriteria;  // if fields is null, do not change this!
+  let pattern = searchOptions.pattern; // allow overwriting in debugger for test!
+  const isEmpty = (!pattern); // non empty search string, reset!
+
+
+  const regex = new RegExp(pattern, "gm");
+  let results, searchVal = "";
+
+  if (isEmpty) {
+    // reset search!
+  }
+
+  // context.extension.tabManager.getWrapper(tabInfo).id
+  if (!tabId) {
+    const currentTab = await messenger.tabs.getCurrent();
+    if (!currentTab) return;
+    tabId = currentTab.id;
+  }
+  const selectedMessages = await messenger.mailTabs.getSelectedMessages(tabId);
+  if (selectedMessages.messages.length == 0) {
+    // do nothing? 
+    // or reset search.
+    return;
+  }
+  // https://webextension-api.thunderbird.net/en/latest/mailTabs.html#mailtabs-quickfiltertextdetail
+  let searchTextProps = {}; // the text property is a QuickFilterTextDetail object!
+  let message = selectedMessages.messages[0];
+  // retrieve a search text value from the selected message:
+  if (searchSelected.includes("subject")) {
+    results = regex.exec(message.subject);
+    if (results?.length > group) {
+      searchVal = results[group];
+    }
+  }
+  if (!searchVal && searchSelected.includes("recipients")) {
+    results = regex.exec(message.recipients.join(" "));
+    if (results?.length > group) {
+      searchVal = results[group];
+    }
+  }
+  
+  if (!searchVal && searchSelected.includes("sender")) {
+    results = regex.exec(message.author);
+    if (results?.length > group) {
+      searchVal = results[group];
+    }
+  }
+
+  if (!searchVal && searchSelected.includes("body")) {
+    const fullMessage = await messenger.messages.getFull(message.messageId);
+    if (fullMessage) {
+      results = regex.exec(fullMessage.body);
+      if (results?.length > group) {
+        searchVal = results[group];
+      }
+    }
+  }  
+  
+
+  if (searchCriteria.includes("subject")) {
+    searchTextProps.subject = true;
+  }
+  if (searchCriteria.includes("recipients")) {
+    searchTextProps.recipients = true;
+  }
+  if (searchCriteria.includes("sender")) {
+    searchTextProps.author = true;
+  }
+  if (searchCriteria.includes("body")) {
+    searchTextProps.body = true;
+  }  
+  searchTextProps.text = searchVal;
+
+  // we need to pass an object that contains obj.text=QuickFilterTextDetail !
+  if (tabId) {
+    await browser.mailTabs.setQuickFilter(tabId, {text: searchTextProps} );  
+  } else {
+    await browser.mailTabs.setQuickFilter( {text: searchTextProps} );  
+  }
 }
 
 // future function for icon support  [issue 399]
@@ -528,6 +612,11 @@ async function main() {
         
       case "storeToolbarStatus": // store toolbar visibilities in tabsession
         await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
+        break;
+
+      case "filterMailsRegex": // filter based on current mail!
+        let regexOption = JSON.parse(data.searchOptions);
+        await filterMailsRegex(regexOption, data.tabId);
         break;
 
       case "readToolbarStatus": // store toolbar visibilities in tabsession

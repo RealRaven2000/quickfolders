@@ -97,6 +97,11 @@ async function onLoad(activatedWhileWindowOpen) {
       ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
       ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
       tooltiptext="__MSG_qf.tooltip.RecentFolders__"/>
+    <toolbarbutton id="QuickFolders-findRelated"
+      class="icon"
+      tooltiptext="Regex quick Filter"
+      onclick="QuickFolders.Interface.findRelated(event);"
+       />    
 
     <toolbarseparator special="qfMsgFolderNavigation" />
 

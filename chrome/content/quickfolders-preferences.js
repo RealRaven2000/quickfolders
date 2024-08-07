@@ -516,6 +516,12 @@ QuickFolders.Preferences = {
   get supportsCustomIcon() {
     return true; // may be forbidden in future Thunderbird versions? 91+
   },
+
+	get supportsFindRelated() {
+		if (!QuickFolders.Util.licenseInfo.isValid) return false;
+		if (QuickFolders.Util.licenseInfo.keyType == 2) return false;
+		return this.getBoolPref("currentFolderBar.showFindRelated");
+	},
 	
 	unhideSmallIcons() {
 		// option: make "small icons" option visible again in customize toolbar palette

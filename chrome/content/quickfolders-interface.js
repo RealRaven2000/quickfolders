@@ -464,19 +464,17 @@ QuickFolders.Interface = {
 		}
   },
 
-	onClickThreadTools: function onClickThreadTools(button, evt) {
+	onClickThreadTools: function (button, evt) {
     // [issue 320] use CTRL modifier to 
     // mark folder as read and jump to next unread folder
     if (evt.ctrlKey) {
       if (QuickFolders.Util.licenseInfo.status == "Valid" && QuickFolders.Util.licenseInfo.keyType!=2) {
         QuickFolders.Util.CurrentFolder.markAllMessagesRead(msgWindow);
-      }
-      else {
+      } else {
         let featureText = QuickFolders.Util.getBundleString("qfMarkAllRead.next")
         QuickFolders.Util.popupRestrictedFeature("markFolderReadAndSkip", `(${featureText})`);
       }
-    }
-    else {
+    } else {
       goDoCommand("cmd_markThreadAsRead");
     }
 		evt.stopPropagation();
@@ -524,7 +522,7 @@ QuickFolders.Interface = {
     }
 	} ,
 
-	onToggleNavigation: function onToggleNavigation(button) {
+	onToggleNavigation: function (button) {
 		button.checked = !button.checked;
 	} ,
 
@@ -857,15 +855,20 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					styleEngine = QuickFolders.Styles;
-		let isSingleMessageWindow = false;
           
 		function collapseConfigItem(id, isShownSetting, checkParent) {
 			let element = doc3pane.getElementById(id);
 			// safeguard for copied ids (such as button-previous / button-next)
-			if (checkParent && element.parentNode.id.indexOf("QuickFolders") < 0)
+			if (checkParent && element.parentNode.id.indexOf("QuickFolders") < 0) {
 				return;
-			if (element)
-				element.setAttribute("collapsed", !prefs.getBoolPref(isShownSetting));
+			}
+			if (element) {
+				let collapseSetting = !isShownSetting; // if bool we can use param directly
+				if (typeof isShownSetting === "string") {
+					collapseSetting = !prefs.getBoolPref(isShownSetting);
+				}
+				element.setAttribute("collapsed", collapseSetting);
+			}
 			return element;
 		}
 
@@ -889,6 +892,7 @@ QuickFolders.Interface = {
 			collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
 			collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
 			collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
+			collapseConfigItem("QuickFolders-findRelated", QuickFolders.Preferences.supportsFindRelated);
 			let repairBtn = collapseConfigItem("QuickFolders-RepairFolderBtn", "currentFolderBar.showRepairFolderButton");
 			if (repairBtn && repairBtn.getAttribute("collapsed")=="false") {
 			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
@@ -6078,12 +6082,15 @@ QuickFolders.Interface = {
         QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, "QuickFoldersCurrentFolder", prefs.ColoredTabStyle, true, false);
 				const CurrentFolderRemoveIconBtn = doc.getElementById("QuickFolders-RemoveIcon");
 				const CurrentFolderSelectIconBtn = doc.getElementById("QuickFolders-SelectIcon");
+				const CurrentFolderFindRelatedBtn = doc.getElementById("QuickFolders-findRelated");
+				if (CurrentFolderFindRelatedBtn) {
+					CurrentFolderFindRelatedBtn.collapsed = !prefs.supportsFindRelated;
+				}
         if (QuickFolders.FolderTree && CurrentFolderRemoveIconBtn) {
           if (!prefs.supportsCustomIcon) {
             CurrentFolderSelectIconBtn.collapsed = true;
             CurrentFolderRemoveIconBtn.collapsed = true;
-          }
-          else {
+          } else {
             let hasIcon =
               prefs.getBoolPref("currentFolderBar.folderTreeIcon")
               ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
@@ -7139,9 +7146,9 @@ QuickFolders.Interface = {
 		*/
 	} ,
 
-	toggle_FilterMode: function (active) {
+	toggle_FilterMode: async function (active) {
 		QuickFolders.Util.logDebugOptional("interface", "toggle_FilterMode(" + active + ")");
-		QuickFolders.FilterWorker.toggle_FilterMode(active);
+		await QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
 
 	moveFolders: function moveFolders(fromFolders, isCopy, targetFolder) {
@@ -7567,8 +7574,7 @@ QuickFolders.Interface = {
     const name = "Preferences:ConfigManager",
           util = QuickFolders.Util;
     let mediator = Services.wm,
-        isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
-        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
+        uri = "about:config";
     
     let w = mediator.getMostRecentWindow(name), win;
     if (clickedElement) {
@@ -7602,7 +7608,7 @@ QuickFolders.Interface = {
     w.focus();
     w.addEventListener('load', 
       function () {
-        let id = (isTbModern) ? "about-config-search" : "textbox";
+        let id = "about-config-search";
         let flt = w.document.getElementById(id);
         if (flt) {
            flt.value=filter;
@@ -7738,7 +7744,83 @@ QuickFolders.Interface = {
     catch(ex) {
       QuickFolders.Util.logException("QuickFolders.Interface.copyCurrentFolderInfo failed", ex);
     }
-  }
+  },
+
+	findRelated: function(event) {
+		// filter based on current mail
+		const regexOption = {
+			pattern : "",
+			group : 0,
+			searchSelected: ["subject"],
+			searchCriteria: ["subject","sender","recipients"]
+		}
+		// use this to reset, we may do this in background instead. store json array in LegacyPrefsfor now
+		const regexOptionDefault = { // also supports "body"
+			fields: ["sender", "recipients", "subject"]
+		}
+
+		try {
+			if (event.button==2) { // right-click
+				QuickFolders.Interface.showAboutConfig(null, "extensions.quickfolders.findRelated", true);
+				return;
+			}
+
+			regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
+			if (!regexOption.pattern) {
+				// .prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+				
+				const input = { value: "" }; // inOut
+				const check = { value: false }; // not used
+				const result = Services.prompt.prompt(
+					null, 
+					QuickFolders.Util.getBundleString("findRelated.prompt.title"),
+					QuickFolders.Util.getBundleString("findRelated.prompt.enterPattern"),
+					input, 
+					null, 
+					check
+				);
+				if (!result) return; // Cancel
+				const searchPattern = input.value;
+				if (!searchPattern) return;
+				QuickFolders.Preferences.setStringPref("findRelated.pattern", searchPattern);
+				regexOption.pattern = searchPattern;
+			}
+			regexOption.searchSelected = 
+				JSON.parse(QuickFolders.Preferences.getStringPref("findRelated.searchSelected"));
+			regexOption.searchCriteria = 
+				JSON.parse(QuickFolders.Preferences.getStringPref("findRelated.searchCriteria"));
+		  regexOption.group = QuickFolders.Preferences.getIntPref("findRelated.group");
+			regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
+		}
+		catch(ex) {
+			QuickFolders.Util.logException("invalid regex filter parameter!", ex);
+			return;
+		}
+
+		const uris = QuickFolders.Util.getSelectedMsgUris(); // make sure only a single one is selected
+		if (uris.length!=1) {
+			return;
+		}
+
+		let currentTabId = null;
+		try {
+			var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+			const extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+			const tabInfo = window.gTabmail.currentTabInfo;
+			currentTabId = extension.tabManager.getWrapper(tabInfo).id;
+		} catch(ex) {
+			// leave tabId as null, and simply leave it out to use the default (activate tab of current window)
+			// https://webextension-api.thunderbird.net/en/latest/mailTabs.html#setquickfilter-tabid-properties
+			// https://webextension-api.thunderbird.net/en/128-esr-mv2/mailTabs.html#getselectedmessages-tabid
+		}
+
+		QuickFolders.Util.notifyTools.notifyBackground({ 
+				func: "filterMailsRegex", 
+				searchOptions: JSON.stringify(regexOption),
+				tabId: currentTabId
+		  }
+		);
+	}
   
 
 }; // Interface

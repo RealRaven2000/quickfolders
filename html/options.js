@@ -288,6 +288,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     case "showQuickMove":
     case "bookmarks.showButton":
     case "showRecentTab":
+    case "currentFolderBar.showFindRelated":
     case "currentFolderBar.showRecentButton":
     case "currentFolderBar.navigation.showButtons":
     case "currentFolderBar.folderNavigation.showButtons":
@@ -389,6 +390,9 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       break;
     case "quickMove.useHotkey":
       filterConfig="quickfolders.quickMove"; retVal=false;
+      break;
+    case "currentFolderBar.showFindRelated":
+      filterConfig="quickfolders.findRelated"; retVal=false;
       break;
   }
   

@@ -208,7 +208,7 @@ button.active::marker {
   background: url("ico/goup.svg") no-repeat;
 }
 .showIconButton {
-  background:url("chrome://messenger/skin/icons/image.svg") no-repeat;
+  background:url("ico/image.svg") no-repeat;
 	padding-left: 18px;
 }
 .navigationBar {
@@ -226,6 +226,13 @@ button.active::marker {
 	padding-left: 18px;  
   stroke: #e9a400;  
 }
+.findRelated {
+  background: url("ico/wildcard_filters.svg") no-repeat;
+  --iconStroke: currentColor;
+  --star-stroke:  #b50000;
+  --star-fill: #fff86d;
+  stroke: var(--star-stroke);
+}
 .repairFolder {
   background:url("ico/repairFolder.svg") no-repeat;
   -moz-context-properties: fill, stroke !important;
@@ -239,7 +246,7 @@ button.active::marker {
   fill-opacity: 0.5;
 }
 .bookmarks {
-  background: url("chrome://messenger/skin/icons/tag.svg") no-repeat;
+  background: url("ico/tag.svg") no-repeat;
 }
 .toolbarMenu{
   background: url("ico/settings.svg") no-repeat;

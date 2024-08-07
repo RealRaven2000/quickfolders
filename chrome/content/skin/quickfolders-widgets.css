@@ -123,14 +123,14 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-paintBucketActive {
-  -moz-appearance: none !important; /* make sure we can fill in a background color */
+  appearance: none !important; /* make sure we can fill in a background color */
 	min-height: 22px;
 	border-radius: 5px;
 	border: 1px solid #BBB;
 }
 
 #quickFoldersNavToggle {
-	-moz-appearance: none !important;
+	appearance: none !important;
 	-moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
 	list-style-image: url('ico/navigation-mode.svg');
 	margin-left: -2px;
@@ -167,6 +167,10 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 
 #quickFoldersPreviousUnread {
 	list-style-image: url("chrome://messenger/skin/icons/previousmsg.svg");
+}
+
+#QuickFolders-findRelated {
+	list-style-image: url("ico/wildcard_filters.svg") !important;
 }
 
 #quickFoldersNextUnread {
