@@ -20,7 +20,7 @@ button[dlgtype="extra2"] {
 
 .dialog-button-box button[dlgtype="extra2"] {
 	margin: 2px 0px;
-	-moz-appearance: none;
+	appearance: none;
 	color: #fff;
 	font-weight: bold;
 	transition-property: box-shadow, margin;

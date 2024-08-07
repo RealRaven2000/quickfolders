@@ -2,6 +2,23 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <path fill="context-fill" fill-opacity="context-fill-opacity" d="M5 0a2 2 0 00-2 2v3h2V4h6v-.01c0-.05.1.01.15.01H14v6h-1v2h1a2 2 0 002-2V4a2 2 0 00-2-2h-2.85L9.58.54A2 2 0 008.22 0zm0 2h3.22l1.07 1H5z"/>
-  <path fill="context-stroke" stroke-opacity="context-stroke-opacity" d="M10.51 5.98h-5.5c-1.33 0-1.33 2.5 0 2.5h2.6l-4.3 4.3c-.98.94.97 2.89 1.91 1.91l4.3-4.3v2.6c0 1.33 2.49 1.33 2.49 0v-5.5c0-.7-.82-1.48-1.36-1.5z"/>
+  <style>
+   path {
+      --fill: currentColor;
+      --highlight: var(--new-highlight,#0488d5);
+   }
+
+   @media (prefers-color-scheme: dark) {
+      path {
+        --fill: white;
+        --highlight: var(--new-highlight,#0aa5ff);
+      }
+   }
+  </style>  
+  <path 
+    style="fill:var(--fill);"
+    d="M5 0a2 2 0 00-2 2v3h2V4h6v-.01c0-.05.1.01.15.01H14v6h-1v2h1a2 2 0 002-2V4a2 2 0 00-2-2h-2.85L9.58.54A2 2 0 008.22 0zm0 2h3.22l1.07 1H5z"/>
+  <path 
+    style="fill:var(--highlight);"
+   fill="context-stroke" stroke-opacity="context-stroke-opacity" d="M10.51 5.98h-5.5c-1.33 0-1.33 2.5 0 2.5h2.6l-4.3 4.3c-.98.94.97 2.89 1.91 1.91l4.3-4.3v2.6c0 1.33 2.49 1.33 2.49 0v-5.5c0-.7-.82-1.48-1.36-1.5z"/>
 </svg>

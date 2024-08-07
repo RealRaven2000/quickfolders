@@ -1,8 +1,8 @@
 /* platform styles - Linux */
 toolbar.quickfolders-flat ,
 toolbar.quickfolders-pills {
-  /* in linux -moz-appearance is 'toolbar' and this overrides any coloring of background / borders */
-  -moz-appearance: none !important; 
+  /* in linux appearance is 'toolbar' and this overrides any coloring of background / borders */
+  appearance: none !important; 
 }
 
 #qf-options {

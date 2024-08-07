@@ -69,6 +69,13 @@ pref("extensions.quickfolders.tooltips.virtualFlag", true);
 pref("extensions.quickfolders.tooltips.msgFolderFlags", false);
 pref("extensions.quickfolders.autoValidateFolders", true); // check if folder exists when clicking a tab
 pref("extensions.quickfolders.treeIconsDelay", 7500); // repair icons [Bug 26566] - deprecated from TB102
+
+pref("extensions.quickfolders.findRelated.pattern","");
+pref("extensions.quickfolders.findRelated.group",0);
+pref("extensions.quickfolders.findRelated.searchSelected","[\"subject\"]");
+pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"author\",\"recipients\"]");
+
+
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar", true);
 pref("extensions.quickfolders.showCurrentFolderToolbar.messageWindow", false);
@@ -76,6 +83,7 @@ pref("extensions.quickfolders.showCurrentFolderToolbar.singleMailTab", true);
 pref("extensions.quickfolders.currentFolderBar.showClose", false);
 pref("extensions.quickfolders.currentFolderBar.showRecentButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFilterButton", true);
+pref("extensions.quickfolders.currentFolderBar.showFindRelated", false);
 pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton", false);
 pref("extensions.quickfolders.currentFolderBar.showIconButtons", true);
 pref("extensions.quickfolders.currentFolderBar.showRepairFolderButton", false);

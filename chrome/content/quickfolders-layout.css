@@ -155,7 +155,7 @@ toolbarbutton#QuickFolders-quickMove.dragover image {
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-readingList {
-	list-style-image: url("chrome://messenger/skin/icons/tag.svg");
+	list-style-image: url("skin/ico/tag.svg");
   -moz-context-properties: fill;
   fill: currentColor;
 }
