@@ -3,17 +3,23 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
-   path {
-      --fill: currentColor;
+  @media (prefers-color-scheme: light) {
+    :root {
+      --basiccolor: rgb(20,20,20);
+      --fill: var(--basiccolor);
+      --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
       --highlight: var(--new-highlight,#0488d5);
-   }
+    }
+  }
 
-   @media (prefers-color-scheme: dark) {
-      path {
-        --fill: white;
-        --highlight: var(--new-highlight,#0aa5ff);
-      }
-   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --basiccolor: rgb(251,251,254);
+      --fill: var(--basiccolor);
+      --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
+      --highlight: var(--new-highlight,#0aa5ff);
+    }
+  }
   </style>  
     <path 
       style="fill:var(--fill);"

@@ -384,6 +384,29 @@ async function onLoad(activatedWhileWindowOpen) {
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
+  const myToolbar = document.getElementById("QuickFolders-Toolbar");
+  if (myToolbar) {
+    // inject brighttext if necessary
+    // for some reason this is not generated automatically
+    // which leads to badly matching icons in the toolbar...
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      myToolbar.setAttribute("brighttext",true);
+    }
+  }
+  const themeHandler = {
+    handleEvent(event) {
+      window.QuickFolders.Interface.patchToolbarTheme(event, {
+        win: window,
+        doc: document,
+        toolbarId: "QuickFolders-Toolbar"
+      });
+    }
+  }
+  window.addEventListener("activate", themeHandler);
+  window.addEventListener("windowlwthemeupdate", themeHandler);
+  window.addEventListener("toolbarvisibilitychange", themeHandler);
+
+
   // window.QuickFolders.initDocAndWindow(window);
   // [issue 378]
   /*
@@ -505,6 +528,8 @@ function onUnload(isAddOnShutDown) {
   catch(ex) {
     console.log(ex);
   }
-  
+  window.removeEventListener("activate", themeHandler);
+  window.removeEventListener("windowlwthemeupdate", themeHandler);  
+  window.removeEventListener("toolbarvisibilitychange", themeHandler);  
   
 }

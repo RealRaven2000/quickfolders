@@ -4,14 +4,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
   <style>
    path {
-      --fill: currentColor;
-      --stroke: currentColor;
+      --basiccolor: rgb(20,20,20);
+      --fill: var(--basiccolor);
+      --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
    }
 
    @media (prefers-color-scheme: dark) {
       path {
-        --fill: white;
-        --stroke: white;
+        --basiccolor: rgb(251,251,254);
+        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
       }
    }
   </style>  

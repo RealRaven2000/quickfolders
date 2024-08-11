@@ -12,14 +12,15 @@ QuickFolders.TabListener = {
   selectTab: function(evt){
     try {
       if (QuickFolders) {
-        let util = QuickFolders.Util,
-            QI = QuickFolders.Interface,
-            tabmail = document.getElementById("tabmail");
+        const util = QuickFolders.Util,
+              QI = QuickFolders.Interface,
+              tabmail = document.getElementById("tabmail");
         util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - ");
 				let info = tabmail.currentTabInfo;
 				if (!info) { return; }
-					
         let tabMode = QI.CurrentTabMode; // util.getTabMode(info);
+
+        const isMailTab = ["mail3PaneTab","mailMessageTab","message"].includes(tabMode);
 				
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode, info );
 				
@@ -64,8 +65,7 @@ QuickFolders.TabListener = {
             // force reselection when we return to a folder tab
             QI.lastTabSelected = null;
             QI.setTabSelectTimer();
-          }
-          else {
+          } else {
             util.logDebug("TabListener single message - could not determine currently displayed Message.");
           }
         } else {
@@ -74,7 +74,22 @@ QuickFolders.TabListener = {
             QI.setTabSelectTimer(); // there is no need for this if it is not a mail tab.
           }
         }
-        
+        if (isMailTab) {
+          // ensure dark mode
+          window.setTimeout(
+            () => {
+              util.logDebugOptional("interface","Calling patchToolbarTheme()");
+              QI.patchToolbarTheme({type:"activate"}, {
+                win: window,
+                doc: info.chromeBrowser.contentDocument,
+                toolbarId: "QuickFolders-CurrentFolderTools"
+              });
+            },
+            500
+          );
+        }
+    
+
         // for non-folder tabs: reset lastTabSelected to force refresh of current folder 
         // when we go back to a folder tab
         if (tabMode != "mail3PaneTab") {

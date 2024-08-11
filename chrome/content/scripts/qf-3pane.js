@@ -51,6 +51,8 @@ async function notificationHandler(data) {
 }
 
 
+var globalThemehandler;
+
 async function onLoad(activatedWhileWindowOpen) {
   const WAIT_FOR_3PANE = 1000;
   // const win = window;
@@ -244,6 +246,30 @@ async function onLoad(activatedWhileWindowOpen) {
       // relocate to make it visible (bottom of thread)
       win.QuickFolders.Interface.liftNavigationbar(contentDoc);    // passes HTMLDocument "about:3pane"
 
+      const myToolbar = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+      if (myToolbar) {
+        // inject brighttext if necessary
+        // for some reason this is not generated automatically
+        // which leads to badly matching icons in the toolbar...
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          myToolbar.setAttribute("brighttext",true);
+        }
+      }
+
+      const themeHandler = {
+        handleEvent(event) {
+          window.QuickFolders.Util.logDebugOptional("interface","3pane themeHandler..");
+          window.QuickFolders.Interface.patchToolbarTheme(event, {
+            win: win,
+            doc: contentDoc,
+            toolbarId: "QuickFolders-CurrentFolderTools"
+          });
+        }
+      }      
+      win.addEventListener("windowlwthemeupdate", themeHandler);
+      globalThemehandler = themeHandler; // keep a reference to unload
+    
+
       // remember whether toolbar was shown, and make invisible or initialize if necessary
       // default to folder view
       const prefs = win.QuickFolders.Preferences;
@@ -313,4 +339,7 @@ function onUnload(isAddOnShutown) {
   removeBtn('quickfilters-current-runbutton');
   removeBtn('quickfilters-current-msg-runbutton');
   removeBtn('quickfilters-current-searchfilterbutton');
+
+  window.removeEventListener("windowlwthemeupdate", globalThemehandler);  
+  globalThemehandler = null;
 }

@@ -762,8 +762,7 @@ QuickFolders.Interface = {
 						isFirst = false;
 						offset++;
 					}
-				}
-				else {
+				} else {
 					// now just update the folder count on the button label, if it changed.
 					// button is not newly created. Also it is not recolored.
 					if (folder) {
@@ -7820,7 +7819,33 @@ QuickFolders.Interface = {
 				tabId: currentTabId
 		  }
 		);
-	}
+	},
+
+  patchToolbarTheme: function(event, toolbarObj) {
+    const eventType = event?.type;
+    if (!eventType) return false;
+		QuickFolders.Util.logDebugOptional("interface",`patchToolbarTheme(${eventType})`, toolbarObj, event);
+
+    switch (eventType) {
+      case "activate":
+      case "windowlwthemeupdate":
+      case "toolbarvisibilitychange": // this.inferFromText(event.type, event.visible);
+        const toolbar = toolbarObj.doc.getElementById(toolbarObj.toolbarId);
+        if (!toolbar) {
+          QuickFolders.Util.logDebug(`patchToolbarTheme(${eventType})\nDid not find toolbar ${toolbarObj.toolbarId}`);
+          return false;
+        }
+        if (toolbarObj.win.matchMedia && toolbarObj.win.matchMedia('(prefers-color-scheme: dark)').matches) {
+          toolbar.setAttribute("brighttext",true);
+        } else {
+          toolbar.removeAttribute("brighttext");
+        }
+        break;
+      default:
+        return false;
+    }
+    return true;
+  }
   
 
 }; // Interface

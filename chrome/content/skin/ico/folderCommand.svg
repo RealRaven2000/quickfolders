@@ -2,17 +2,28 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill-opacity="context-fill-opacity">
-  <style> 
-   path {
-      --fill: currentColor;
-      --wrench: #0022AA;
+  <style>
+  <style>
+   @media (prefers-color-scheme: light) {
+      :root {
+         --basiccolor: rgb(20,20,20);
+         --fill: var(--basiccolor);
+         --fill-opacity: var(--toolbarbutton-icon-fill-opacity,0.9);
+         --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
+        --wrench: #0022AA;
+      }
    }
+
    @media (prefers-color-scheme: dark) {
-      path {
-        --fill: white;
+      :root {
+        --basiccolor: rgb(251,251,254);
+        --fill: var(--basiccolor);
+        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
         --wrench: #0044FF;
       }
    }
+  </style>  
+
   </style> 
   <path 
     style="fill:var(--fill);" 

@@ -4,19 +4,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
    path {
-      --fill: currentColor;
+      --basiccolor: var(--in-content-page-color,rgb(20,20,20));
+      --fill: var(--basiccolor);
+      --fill-opacity: 0.9;
       --highlight: var(--new-highlight,#0488d5);
    }
 
    @media (prefers-color-scheme: dark) {
       path {
-        --fill: white;
+        --basiccolor: var(--in-content-page-color,rgb(251,251,254));
+        --fill: var(--basiccolor);
+        --fill-opacity: 0.8;
         --highlight: var(--new-highlight,#0aa5ff);
       }
    }
   </style>  
   <path 
-    style="fill:var(--fill);"
+    style="fill:var(--fill);fill-opacity:var(--fill-opacity);"
     d="M5 0a2 2 0 00-2 2v3h2V4h6v-.01c0-.05.1.01.15.01H14v6h-1v2h1a2 2 0 002-2V4a2 2 0 00-2-2h-2.85L9.58.54A2 2 0 008.22 0zm0 2h3.22l1.07 1H5z"/>
   <path 
     style="fill:var(--highlight);"

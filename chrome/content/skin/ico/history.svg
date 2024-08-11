@@ -3,18 +3,25 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
-   path {
-      --fill: currentColor;
-      --hands: currentColor;
+   @media (prefers-color-scheme: light) {
+    :root {
+        --basiccolor: rgb(20,20,20);
+        --fill: var(--basiccolor);
+        --hands: var(--basiccolor);
+        --stroke: color-mix(in srgb, var(--basiccolor); 20%, transparent);
+    }
    }
 
    @media (prefers-color-scheme: dark) {
-      path {
-        --fill: yellow;
+      :root {
+        --basiccolor: yellow;
+        --fill: var(--basiccolor);
         --hands: white;
+        --stroke: color-mix(in srgb, var(--basiccolor); 20%, transparent);
       }
    }
-  </style>
+  </style> 
+
   <path 
     style="fill:var(--fill);"
     d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14A6 6 0 118 2a6 6 0 010 12z"/>

@@ -3,18 +3,20 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill">
   <style>
-   path {
-      --fill: #0488d5;
-      --balloon1: #e9a400;
-      --balloon2: #dd22bb;
-   }
-
-   @media (prefers-color-scheme: dark) {
-      path {
+      @media (prefers-color-scheme: light) {
+      :root {
         --fill: #0488d5;
         --balloon1: #e9a400;
-        --balloon2: #cc0099;
+        --balloon2: #dd22bb;
       }
+    }
+
+   @media (prefers-color-scheme: dark) {
+    :root {
+      --fill: #0488d5;
+      --balloon1: #e9a400;
+      --balloon2: #cc0099;
+    }
    }
   </style> 
   <path d="M5 12h1v3H5z"/>
