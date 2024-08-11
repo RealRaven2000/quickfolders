@@ -447,6 +447,12 @@ END LICENSE BLOCK */
   6.6.1 QuickFolders Pro - 21/07/2024
     ## removed non-conditional debugger statements.
     ## Holidays!
+
+  6.7 QuickFolders Pro - WIP
+    ## [issue 486] Fixed: notification popup for restricted features leads to exception + icon not displayed 
+    ## [issue 489] Improved Dark theme support - Make coloring of svg icons without requiring
+                   the  Mozilla specific config switch svg.context-properties.content.enabled
+    ## [issue 488] Experimental feature: regex filter based on currently selected mail 
     
 
 	TO DO next
@@ -659,7 +665,7 @@ var QuickFolders = {
         // but didn't toggle the QuickFolders assistant mode!
         if (!QuickFolders.FilterWorker.FilterMode) {
           if (window.quickFilters.Util.AssistantActive) {
-            QuickFolders.FilterWorker.toggle_FilterMode(true);
+            await QuickFolders.FilterWorker.toggle_FilterMode(true);
           }
         }
       }
