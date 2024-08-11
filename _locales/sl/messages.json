@@ -133,6 +133,18 @@
   "firstName.label": {
     "message": "Ime:"
   },
+  "findRelated.btn.label": {
+    "message": "Najdi povezane e-pošte"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Poišči podobna e-poštna sporočila na podlagi izbranega sporočila in vzorcev iskanja, ki jih določi uporabnik"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Najdi povezane e-pošte: Iskanje po vzorcu"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Prosimo, vnesite iskalni vzorec!"
+  },
   "freeLicense": {
     "message": "V primeru, da ste nedavno prispevali k projektu QuickFolders ali ste sodelovali pri razvoju, kot je prevajanje ali pisanje popravkov, ste morda upravičeni do brezplačnega ključa za dovoljenje. Navežite stik z mano iz zavihka za podporo v možnostih QuickFolders."
   },
@@ -499,7 +511,7 @@
     "message": "Zavihek Nedavne mapep"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Desni klik za nastavitev"
+    "message": "Kliknite na konfiguracijsko kolo za konfiguracije"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Razširi podmape v pojavnih menijih"

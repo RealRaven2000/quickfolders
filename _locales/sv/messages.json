@@ -145,6 +145,18 @@
   "firstName.label": {
     "message": "Förnamn:"
   },
+  "findRelated.btn.label": {
+    "message": "Hitta relaterade e-postmeddelanden"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Hitta liknande e-postmeddelanden baserat på det valda meddelandet och användardefinierade sökmönster"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Hitta relaterade e-postmeddelanden: Mönstersökning"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Ange ett sökmönster!"
+  },
   "freeLicense": {
     "message": "Om du tidigare har donerat till QuickFolders-projektet eller har bidragit med arbetsinsatser inom projektet, t.ex. genom att översätta eller skriva korrigeringskod, så kan du vara berättigad till en gratis licensnyckel. Kontakta oss via supportfliken i QuickFolders inställningar."
   },

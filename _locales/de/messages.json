@@ -146,6 +146,18 @@
   "firstName.label": {
     "message": "Vorname:"
   },
+  "findRelated.btn.label": {
+    "message": "Verwandte E-Mails finden"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Ähnliche E-Mails basierend auf der ausgewählten E-Mail und benutzerdefinierten Suchmustern finden"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Verwandte E-Mails finden: Mustersuche"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Bitte geben Sie ein Suchmuster ein!"
+  },
   "freeLicense": {
     "message": "Falls Sie in letzter Zeit dem QuickFolders Projekt gespendet oder mit Arbeit beigetragen haben, z.B. durch Übersetzung oder Softwarepatches, können Sie für eine Gratislizenz qualifiziert sein. Kontaktieren Sie mich einfach vom 'Support' Reiter im QuickFolders Optionen Dialog."
   },
@@ -518,7 +530,7 @@
     "message": "Zuletzt verwendete Ordner Tab"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Rechtsklick für weitere Konfiguration"
+    "message": "Klicken Sie auf das Konfigurationsrad für die Einstellungen"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Unterverzeichnisse in Kontext Menüs"

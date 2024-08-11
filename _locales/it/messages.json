@@ -156,6 +156,18 @@
   "firstName.label": {
     "message": "Nome:"
   },
+  "findRelated.btn.label": {
+    "message": "Trova e-mail correlate"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Trova e-mail simili basati sull'e-mail selezionata e sui modelli di ricerca definiti dall'utente"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Trova e-mail correlate: Ricerca per modello"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Inserisci un modello di ricerca!"
+  },
   "freeLicense": {
     "message": "Se si è effettuata recentemente una donazione a favore del progetto QuickFolders o se si è dato un contributo al suo sviluppo (per es. traducendolo o creando delle patch), si è idonei a ricevere una chiave di registrazione gratuita. Contattatemi tramite la scheda \"Supporto\" presente nelle \"Opzioni di QuickFolders\"."
   },
@@ -531,7 +543,7 @@
     "message": "Scheda Cartelle recenti"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Per effettuare la configurazione, fare clic col pulsante dx del mouse"
+    "message": "Fai clic sulla rotella di configurazione per le impostazioni"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Espande le sottocartelle in un menu a pop-up"

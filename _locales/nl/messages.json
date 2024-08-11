@@ -145,6 +145,18 @@
   "firstName.label": {
     "message": "Voornaam:"
   },
+  "findRelated.btn.label": {
+    "message": "Zoek gerelateerde e-mails"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Vind vergelijkbare e-mails op basis van de geselecteerde e-mail en door de gebruiker gedefinieerde zoekpatronen"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Zoek gerelateerde e-mails: Patroon zoeken"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Voer een zoekpatroon in!"
+  },
   "freeLicense": {
     "message": "Als u onlangs aan het QuickFolders-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met mij op via het tabblad Ondersteuning in de QuickFolders-opties."
   },
@@ -511,7 +523,7 @@
     "message": "Tabblad Recente mappen"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Klik met rechts voor instellingen"
+    "message": "Klik op het configuratiewiel voor instellingen"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Submappen uitvouwen in pop-upmenu’s"

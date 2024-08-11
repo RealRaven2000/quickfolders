@@ -156,6 +156,18 @@
   "firstName.label": {
     "message": "First Name:"
   },
+  "findRelated.btn.label": {
+     "message": "Find related mails"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Find similar mails based on the selected mail and user-defined search patterns"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Find related mails: Pattern Search"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Please enter a search pattern!"
+  },
   "freeLicense": {
     "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
   },
@@ -531,7 +543,7 @@
     "message": "Recent Folders Tab"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Right click for configuration"
+    "message": "Click the config wheel for configurationS"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expand Subfolders in popup menus"

@@ -145,6 +145,18 @@
   "firstName.label": {
     "message": "名："
   },
+  "findRelated.btn.label": {
+    "message": "查找相關郵件"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "根據所選郵件和用戶定義的搜索模式查找類似郵件"
+  },  
+  "findRelated.prompt.title": {
+    "message": "查找相關郵件：模式搜索"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "請輸入搜索模式！"
+  },
   "freeLicense": {
     "message": "如果您最近贊助QuickFolders計畫或分擔一些工作，像是翻譯或撰寫修補程式，您將可以獲得一個免費的購買證明金鑰。請從QuickFolders選項中的支援分頁跟我聯絡。"
   },
@@ -514,7 +526,7 @@
     "message": "最近的文件夾選項卡"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "以滑鼠右鍵點選來確認"
+    "message": "點擊配置輪進行配置"
   },
   "qf.checkbox.showSubfolders": {
     "message": "在彈出式選單中顯示子資料夾"

@@ -133,6 +133,18 @@
   "firstName.label": {
     "message": "名:"
   },
+  "findRelated.btn.label": {
+    "message": "関連メールを探す"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "選択したメールとユーザー定義の検索パターンに基づいて類似メールを検索"
+  },  
+  "findRelated.prompt.title": {
+    "message": "関連メールを探す: パターン検索"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "検索パターンを入力してください!"
+  },
   "freeLicense": {
     "message": "QuickFolders プロジェクトに最近ご寄付いただいた方や開発に貢献 (翻訳やパッチ提供) していただいている方は、無料ライセンスキーの取得資格があります。QuickFolders オプションのサポートタブからお問い合わせください。"
   },
@@ -499,7 +511,7 @@
     "message": "[最近のフォルダ]タブ"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "右クリックで設定を開きます"
+    "message": "設定ホイールをクリックして設定します"
   },
   "qf.checkbox.showSubfolders": {
     "message": "ポップアップメニューにサブフォルダを展開する"

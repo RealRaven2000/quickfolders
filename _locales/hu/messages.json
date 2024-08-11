@@ -455,7 +455,7 @@
     "message": "Legutóbbi mappák lap"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Kattintson jobb gombbal a beállításokhoz"
+    "message": "Kattintson a beállító kerékre a konfiguráláshoz"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Fülek kiterjesztése a felugró ablakokban"

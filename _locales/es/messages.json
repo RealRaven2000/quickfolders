@@ -148,6 +148,18 @@
   "firstName.label": {
     "message": "Nombre:"
   },
+  "findRelated.btn.label": {
+    "message": "Buscar correos relacionados"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Encuentra correos similares basados en el correo seleccionado y patrones de búsqueda definidos por el usuario"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Buscar correos relacionados: Búsqueda por patrón"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "¡Por favor, ingrese un patrón de búsqueda!"
+  },
   "freeLicense": {
     "message": "Si recientemente ha donado al proyecto QuickFolders o ha realizado trabajos de contribución, como traducir o escribir parches, puede cumplir los requisitos para obtener una clave de licencia gratuita. Contacte conmigo desde la pestaña de soporte en las Opciones de QuickFolders."
   },
@@ -523,7 +535,7 @@
     "message": "Pestaña de carpetas recientes"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Haga clic secundario para ir a la configuración"
+    "message": "Haga clic en la rueda de configuración para configuraciones"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subcarpetas en menús emergentes"

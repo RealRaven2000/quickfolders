@@ -142,6 +142,18 @@
   "firstName.label": {
     "message": "Primeiro nome:"
   },
+  "findRelated.btn.label": {
+    "message": "Encontrar e-mails relacionados"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Encontre e-mails semelhantes com base no e-mail selecionado e nos padrões de pesquisa definidos pelo usuário"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Encontrar e-mails relacionados: Pesquisa por padrão"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Por favor, insira um padrão de pesquisa!"
+  },
   "freeLicense": {
     "message": "Se você fez uma doação recentemente para o projeto QuickFolders, ou contribuiu com algum trabalho como tradução ou correção, pode ser elegível a receber uma chave de licença gratuita. Entre em contato comigo a partir da aba de suporte na janela de opções do QuickFolders."
   },
@@ -514,7 +526,7 @@
     "message": "Aba Pastas Recentes"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Botão direito do mouse para configuração"
+    "message": "Clique na roda de configuração para configurações"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subpastas no menu de contexto"

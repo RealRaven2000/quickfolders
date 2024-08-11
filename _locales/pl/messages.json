@@ -145,6 +145,18 @@
   "firstName.label": {
     "message": "Imię:"
   },
+  "findRelated.btn.label": {
+    "message": "Znajdź powiązane maile"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Znajdź podobne maile na podstawie wybranego maila i zdefiniowanych przez użytkownika wzorców wyszukiwania"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Znajdź powiązane maile: Wyszukiwanie wzorca"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Wprowadź wzorzec wyszukiwania!"
+  },
   "freeLicense": {
     "message": "Jeśli niedawno przekazałeś/przekazałaś dotację na rzecz QuickFolders lub brałeś/brałaś udział przy jego tworzeniu, np. poprzez tłumaczenie, czy tworzenie kodu, możesz uzyskać za darmo klucz licencyjny. Skontaktuj się z autorem dodatku, używając przycisku znajdującego się na karcie „Pomoc techniczna” w opcjach QuickFolders."
   },
@@ -514,7 +526,7 @@
     "message": "Karta Ostatnie foldery"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Kliknij prawym przyciskiem, by zmienić konfigurację"
+    "message": "Kliknij na koło konfiguracji, aby dostosować ustawienia"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Wyświetlaj subfoldery w menu podręcznym"

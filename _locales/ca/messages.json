@@ -149,6 +149,18 @@
   "firstName.label": {
     "message": "Nom:"
   },
+  "findRelated.btn.label": {
+    "message": "Cercar correus relacionats"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Cerca correus similars basats en el correu seleccionat i en patrons de cerca definits per l'usuari"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Cercar correus relacionats: Cerca per patró"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Si us plau, introduïu un patró de cerca!"
+  },
   "freeLicense": {
     "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
   },
@@ -525,7 +537,7 @@
     "message": "Pestanya Carpetes recents"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Botó dret per configurar"
+    "message": "Feu clic a la roda de configuració per a les configuracions"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subcarpetes al menú emergent"

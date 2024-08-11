@@ -156,6 +156,18 @@
   "firstName.label": {
     "message": "Prénom :"
   },
+  "findRelated.btn.label": {
+    "message": "Trouver les e-mails similaires"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Trouvez des e-mails similaires en fonction de l'e-mail sélectionné et des modèles de recherche définis par l'utilisateur"
+  },  
+  "findRelated.prompt.title": {
+    "message": "Trouver les e-mails similaires : Recherche de modèle"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Veuillez entrer un modèle de recherche!"
+  },
   "freeLicense": {
     "message": "Si vous avez fait un don récemment au projet QuickFolders ou y avez contribué en le traduisant ou en écrivant des patchs, vous pourriez être éligible à une clé de licence gratuite. Contactez-moi par l'onglet d'aide dans les options de QuickFolders."
   },
@@ -534,7 +546,7 @@
     "message": "Onglet des dossiers récents"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Clic droit pour la configuration"
+    "message": "Napsauta asetusrattaita määrittelyjä varten"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Développer les sous-dossiers dans des menus popup"
