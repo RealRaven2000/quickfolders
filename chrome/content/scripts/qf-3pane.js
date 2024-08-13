@@ -101,7 +101,7 @@ async function onLoad(activatedWhileWindowOpen) {
       tooltiptext="__MSG_qf.tooltip.RecentFolders__"/>
     <toolbarbutton id="QuickFolders-findRelated"
       class="icon"
-      tooltiptext="Regex quick Filter"
+      tooltiptext="__MSG_findRelated.prompt.title__"
       onclick="QuickFolders.Interface.findRelated(event);"
        />    
 

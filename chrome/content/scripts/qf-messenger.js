@@ -405,6 +405,7 @@ async function onLoad(activatedWhileWindowOpen) {
   window.addEventListener("activate", themeHandler);
   window.addEventListener("windowlwthemeupdate", themeHandler);
   window.addEventListener("toolbarvisibilitychange", themeHandler);
+  window.QuickFolders.themeHandler = themeHandler;
 
 
   // window.QuickFolders.initDocAndWindow(window);
@@ -502,6 +503,10 @@ function onUnload(isAddOnShutDown) {
   for (let m in mylisteners) {
     window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
   }
+  // tidy up key listener!
+  if (window.QuickFolders.keyListen) {
+    window.QuickFolders.removeKeyListeners.call(window.QuickFolders, window);
+  }
   
   // if quickFilters buttons are in the UI, move them back to the hidden panel in the toolbar!
   function stashQuickFiltersButton(id, toParent) {
@@ -528,8 +533,8 @@ function onUnload(isAddOnShutDown) {
   catch(ex) {
     console.log(ex);
   }
-  window.removeEventListener("activate", themeHandler);
-  window.removeEventListener("windowlwthemeupdate", themeHandler);  
-  window.removeEventListener("toolbarvisibilitychange", themeHandler);  
+  window.removeEventListener("activate", window.QuickFolders.themeHandler);
+  window.removeEventListener("windowlwthemeupdate", window.QuickFolders.themeHandler);  
+  window.removeEventListener("toolbarvisibilitychange", window.QuickFolders.themeHandler);  
   
 }
