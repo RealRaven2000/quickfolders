@@ -653,13 +653,33 @@ QuickFolders.Options = {
     return myTheme;
   },
   
-  enableElement: function (id, isEnabled) {
-    let el = document.getElementById(id);
+  enableInputElement: function (id, isEnabled) {
+    const el = document.getElementById(id);
     if (el) {
       el.disabled = !isEnabled;
-    }
-    else {
+    } else {
       QuickFolders.Util.logDebug("Couldn't find element: " + id);
+    }
+  },
+
+  enableProFeatureLabels: function(isEnabled) {
+    // this replaces the icon with the [Pro] logo!
+    for (let el of document.querySelectorAll(".proFeature")) { 
+      if (isEnabled) {
+        el.removeAttribute("disabled");
+      } else {
+        el.setAttribute("disabled",true);
+      }
+    }
+  },
+
+  initStandardFeatureLabels: function(hasLicense) {
+    for (let el of document.querySelectorAll(".stdFeature")) {
+      if (hasLicense) {
+        el.removeAttribute("restricted");
+      } else {
+        el.setAttribute("restricted",true);
+      }
     }
   },
 
@@ -667,10 +687,14 @@ QuickFolders.Options = {
     let elements = ["premiumConfig", "chkQuickJumpHotkey", "chkQuickJumpHotkey", "chkQuickMoveHotkey", "chkQuickCopyHotkey",
                     "chkSkipFolderHotkey", "qf-QuickJumpShortcut", "qf-QuickMoveShortcut", "qf-QuickCopyShortcut",
                     "chkQuickMoveAutoFill", "qf-SkipFolderShortcut", "menuQuickMoveFormat", "quickmove-path-depth",
-                    "quickMoveAdvanced", "chkCategories", "moveMailOptions", "moveMailOptions-quickMove"];
+                    "quickMoveAdvanced", "chkCategories", "moveMailOptions", "moveMailOptions-quickMove", "chkFindRelated"];
+    // 1. disabled input element
     for (let e of elements) {
-      QuickFolders.Options.enableElement(e, isEnabled);
+      QuickFolders.Options.enableInputElement(e, isEnabled);
     }
+    // 2. replace the icons with the [PRO] label
+    QuickFolders.Options.enableProFeatureLabels(isEnabled);
+
     QuickFolders.Options.enableStandardConfig(isEnabled);
   },
 
@@ -679,8 +703,10 @@ QuickFolders.Options = {
         elements = ["chkConfigIncludeTabs", "chkConfigIncludeGeneral", "chkConfigIncludeLayout", "btnLoadConfig"],
         backupRestore = getElement("backupRestore");
     for (let e of elements) {
-      QuickFolders.Options.enableElement(e, isEnabled);
+      QuickFolders.Options.enableInputElement(e, isEnabled);
     }
+    QuickFolders.Options.initStandardFeatureLabels(isEnabled);
+
     if (isEnabled) { backupRestore.removeAttribute("disabled"); }
     else { backupRestore.setAttribute("disabled",true); }
   },
@@ -727,8 +753,7 @@ QuickFolders.Options = {
           if (licenseInfo.keyType==2) { // standard license
             QuickFolders.Options.showValidationMessage(validationStandard, silent);
             QuickFolders.Options.enableStandardConfig(true);
-          }
-          else {
+          } else {
             QuickFolders.Options.enablePremiumConfig(true);
             QuickFolders.Options.showValidationMessage(validationPassed, silent);
             getElement('dialogProductTitle').value = "QuickFolders Pro";

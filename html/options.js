@@ -88,6 +88,11 @@ async function initLicenseInfo() {
   
   if (licenseInfo.licenseKey) {
     await validateLicenseInOptions(true);
+    QuickFolders.Options.initStandardFeatureLabels(licenseInfo.isValid); // any license key.
+  } else {
+    // add the [pro] icon to features that are restricted
+    QuickFolders.Options.enableProFeatureLabels(false);
+    QuickFolders.Options.initStandardFeatureLabels(false);
   }
   
   // add an event listener for changes:
@@ -308,6 +313,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
         QuickFolders.Options.toggleBoolPreference(chk);
       });
       break;
+    case "currentFolderBar.skipUnreadFolder":
     case "currentFolderBar.iconcolor.custom": // fall-through
     case "currentFolderBar.background.lightweight":
       chk.addEventListener("change", async (event) => {

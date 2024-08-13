@@ -194,6 +194,24 @@ button.active::marker {
   background-image: url("ico/pro-expired.svg");
 }
 
+/* disabled features  without pro */
+label.proFeature[disabled] {
+	background: url("ico/pro-default.svg") no-repeat !important;
+  background-position: left center !important;
+}
+label.proFeature[disabled].noIcon input[type="checkbox"] {
+  margin-left: 22px;
+}
+
+/* show that this feature needs at least a standard license
+   without that we display a sliding notification */
+label.stdFeature[restricted]:hover {
+	background: url("ico/licensed-feature.svg") no-repeat !important;
+  background-position: left center !important;
+}
+
+
+
 
 .themeable {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;  
