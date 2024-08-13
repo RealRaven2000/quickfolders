@@ -529,8 +529,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Zuletzt verwendete Ordner Tab"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Klicken Sie auf das Konfigurationsrad für die Einstellungen"
+  "configurable.tooltip": {
+    "message": "Klicken Sie auf das Konfigurationsrad für weitere Einstellungen"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Unterverzeichnisse in Kontext Menüs"
@@ -1750,7 +1750,7 @@
     "message": "Neuer Unterordner…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Überspringen"
+    "message": "Ungelesene Mails überspringen"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Email in das Verzeichnis {2} kopiert;{1} Emails in das Verzeichnis {2} kopiert"

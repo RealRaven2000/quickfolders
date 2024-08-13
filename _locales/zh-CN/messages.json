@@ -523,8 +523,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "最近的文件夹选项卡"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "点击配置轮进行配置"
+  "configurable.tooltip": {
+    "message": "点击设置齿轮以获取更多配置选项"
   },
   "qf.checkbox.showSubfolders": {
     "message": "在弹出菜单中关联子文件夹"
@@ -1699,7 +1699,7 @@
     "message": "新建子文件夹…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "跳过"
+    "message": "跳过未读邮件"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "邮件已复制到文件夹 {2}；{1} 封邮件已复制到文件夹 {2}"

@@ -525,8 +525,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Karta Ostatnie foldery"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Kliknij na koło konfiguracji, aby dostosować ustawienia"
+  "configurable.tooltip": {
+    "message": "Kliknij na kółko konfiguracji, aby uzyskać więcej opcji konfiguracji"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Wyświetlaj subfoldery w menu podręcznym"
@@ -1755,7 +1755,7 @@
     "message": "Nowy subfolder…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Pomiń"
+    "message": "Pomiń nieprzeczytane e-maile"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Wiadomość skopiowana do folderu {2};{1} wiadomości skopiowanych do folderu (2)"

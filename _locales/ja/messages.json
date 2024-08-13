@@ -510,8 +510,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "[最近のフォルダ]タブ"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "設定ホイールをクリックして設定します"
+  "configurable.tooltip": {
+    "message": "設定ホイールをクリックして、さらに構成オプションを表示します"
   },
   "qf.checkbox.showSubfolders": {
     "message": "ポップアップメニューにサブフォルダを展開する"
@@ -1650,7 +1650,7 @@
     "message": "新しいサブフォルダ…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "スキップ"
+    "message": "未読メールをスキップ"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "{1} 通のメールを {2} フォルダへコピーしました"

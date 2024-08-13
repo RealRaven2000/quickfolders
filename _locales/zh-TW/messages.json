@@ -525,8 +525,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "最近的文件夾選項卡"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "點擊配置輪進行配置"
+  "configurable.tooltip": {
+    "message": "點擊設置齒輪以獲取更多配置選項"
   },
   "qf.checkbox.showSubfolders": {
     "message": "在彈出式選單中顯示子資料夾"
@@ -1711,7 +1711,7 @@
     "message": "新子資料夾…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "跳過"
+    "message": "跳過未讀郵件"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "信件複製到資料夾{2};{1}信件複製到資料夾{2}"

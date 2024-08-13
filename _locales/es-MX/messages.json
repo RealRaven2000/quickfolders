@@ -526,8 +526,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Pestaña de carpetas recientes"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Haga clic en la rueda de configuración para configuraciones"
+  "configurable.tooltip": {
+    "message": "Haga clic en la rueda de configuración para más opciones de configuración"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subcarpetas en menús emergentes"
@@ -1738,7 +1738,7 @@
     "message": "Nueva Subcarpeta…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Saltar"
+    "message": "Saltar correos no leídos"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Correo copiado a la carpeta {2};{1} mensajes copiados a la carpeta {2}"

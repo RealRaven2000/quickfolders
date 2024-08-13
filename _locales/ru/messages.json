@@ -528,8 +528,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Вкладка «Последние папки»"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Нажмите на колесо конфигурации для настройки"
+  "configurable.tooltip": {
+    "message": "Щелкните на значок настроек для дополнительных параметров"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Раскрывать папки из этой папке в меню"
@@ -1791,7 +1791,7 @@
     "message": "Новая под-папка…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Пропустить"
+    "message": "Пропустить непрочитанные письма"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Письмо скопировано в папку {2};{1} письма скопированы в папку {2}"

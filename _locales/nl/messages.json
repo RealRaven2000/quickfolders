@@ -522,8 +522,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Tabblad Recente mappen"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Klik op het configuratiewiel voor instellingen"
+  "configurable.tooltip": {
+    "message": "Klik op het configuratiewiel voor meer configuratie-opties"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Submappen uitvouwen in pop-upmenu’s"
@@ -1761,7 +1761,7 @@
     "message": "Nieuwe submap…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Overslaan"
+    "message": "Ongelezen e-mails overslaan"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Bericht gekopieerd naar map {2};{1} berichten gekopieerd naar map {2}"

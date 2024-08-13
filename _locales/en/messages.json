@@ -542,8 +542,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Recent Folders Tab"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Click the config wheel for configurationS"
+  "configurable.tooltip": {
+    "message": "Click the config wheel for more configuration options"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expand Subfolders in popup menus"
@@ -1812,7 +1812,7 @@
     "message": "New Subfolder…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip"
+    "message": "Skip unread mails"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Mail copied to folder {2};{1} mails copied to folder {2}"

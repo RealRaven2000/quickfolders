@@ -510,8 +510,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Zavihek Nedavne mapep"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Kliknite na konfiguracijsko kolo za konfiguracije"
+  "configurable.tooltip": {
+    "message": "Kliknite na kolesce za več možnosti konfiguracije"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Razširi podmape v pojavnih menijih"

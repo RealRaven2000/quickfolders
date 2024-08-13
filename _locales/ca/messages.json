@@ -536,8 +536,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Pestanya Carpetes recents"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Feu clic a la roda de configuració per a les configuracions"
+  "configurable.tooltip": {
+    "message": "Feu clic a la roda de configuració per a més opcions de configuració"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subcarpetes al menú emergent"
@@ -1703,7 +1703,7 @@
     "message": "Nova subcarpeta…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Omet"
+    "message": "Ometre els correus electrònics no llegits"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Correu copiat a la carpeta {2};{1} correus copiats a la carpeta {2}"

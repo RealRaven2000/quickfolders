@@ -542,8 +542,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Scheda Cartelle recenti"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Fai clic sulla rotella di configurazione per le impostazioni"
+  "configurable.tooltip": {
+    "message": "Fai clic sulla ruota delle impostazioni per altre opzioni di configurazione"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Espande le sottocartelle in un menu a pop-up"
@@ -1812,7 +1812,7 @@
     "message": "Nuova sottocartella…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Salta"
+    "message": "Salta le email non lette"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Messaggio copiato nella cartella {2}; {1} messaggi copiati nella cartella {2}"

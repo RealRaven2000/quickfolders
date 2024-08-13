@@ -545,8 +545,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Onglet des dossiers récents"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Napsauta asetusrattaita määrittelyjä varten"
+  "configurable.tooltip": {
+    "message": "Cliquez sur la roue de configuration pour plus d'options"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Développer les sous-dossiers dans des menus popup"
@@ -1799,8 +1799,9 @@
     "message": "Nouveau sous-dossier…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Passer"
+    "message": "Ignorer les e-mails non lus"
   },
+
   "quickfoldersQuickCopiedMails": {
     "message": "Message copié vers le dossier {2};{1} messages copiés vers le dossier {2}"
   },

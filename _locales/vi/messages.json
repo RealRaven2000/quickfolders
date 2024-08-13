@@ -315,8 +315,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Tab thư mục gần đâyt"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Nhấp vào bánh xe cấu hình để cấu hình"
+  "configurable.tooltip": {
+    "message": "Nhấp vào bánh răng cài đặt để có thêm tùy chọn cấu hình"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Mở rộng các thư mục con trong trình đơn tự bung"

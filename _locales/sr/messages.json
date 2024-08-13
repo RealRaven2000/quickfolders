@@ -468,8 +468,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Картица Недавни фолдери"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Притисните десни клик да бисте подесили"
+  "configurable.tooltip": {
+    "message": "Кликните на точкић за додатне опције конфигурације"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Развиј подфасцикле у искачућим менијима"

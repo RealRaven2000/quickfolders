@@ -525,8 +525,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Aba Pastas Recentes"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Clique na roda de configuração para configurações"
+  "configurable.tooltip": {
+    "message": "Clique na roda de configuração para mais opções de configuração"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subpastas no menu de contexto"
@@ -1737,7 +1737,7 @@
     "message": "Nova subpasta…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Pular"
+    "message": "Pular e-mails não lidos"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Email copiado para a pasta {2};{1} emails copiados para a pasta {2}"

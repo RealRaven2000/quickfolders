@@ -531,8 +531,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Fliken Senaste mappar"
   },
-  "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Högerklicka för inställningar"
+  "configurable.tooltip": {
+    "message": "Klicka på konfigurationshjulet för fler alternativ"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Visa undermappar i popup-menyer"
@@ -1773,7 +1773,7 @@
     "message": "Ny undermapp…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Hoppa över"
+    "message": "Hoppa över olästa e-postmeddelanden"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Meddelandet har kopierats till mappen {2};{1} meddelanden har kopierats till mappen {2}"
