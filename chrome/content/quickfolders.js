@@ -449,10 +449,14 @@ END LICENSE BLOCK */
     ## Holidays!
 
   6.7 QuickFolders Pro - WIP
+    ## Added compatibility with Thunderbird 130
     ## [issue 486] Fixed: notification popup for restricted features leads to exception + icon not displayed 
     ## [issue 489] Improved Dark theme support - Make coloring of svg icons without requiring
                    the  Mozilla specific config switch svg.context-properties.content.enabled
+                   also removed font dependence by converting all texts to paths
     ## [issue 488] Experimental feature: regex filter based on currently selected mail 
+    ## [issue 491] Keyboard shortcuts (such as ALT+Left ALT+Right) stopped working in Tb 128.
+    ## improved tooltips in settings window
     
 
 	TO DO next
@@ -745,51 +749,35 @@ var QuickFolders = {
 		}
 		catch(e) { return false; }
 	} ,
-  
-  // rename folder - Thunderbird 
-  /*  DEPRECATED MONKEY PATCH CODE
-  renameFolder: function qf_rename(aFolder) {
-    let folder = aFolder || null; // gFolderTreeView.getSelectedFolders()[0];
-
-    //xxx no need for uri now
-    let controller = gFolderTreeController; // this
-    function renameCallback(aName, aUri) {
-      if (aUri != folder.URI)
-        Components.utils.reportError("got back a different folder to rename!");
-
-      controller._tree.view.selection.clearSelection();
-      // QuickFolders specific, payload on RenameCompleted
-      QuickFolders.FolderListener.newFolderName = aName;
-      QuickFolders.FolderListener.oldFolderUri = folder.URI;
-      // Actually do the rename
-      folder.rename(aName, msgWindow);
-    }
-    window.openDialog("chrome://messenger/content/renameFolderDialog.xhtml",
-                      "",
-                      "chrome,modal,centerscreen",
-                      {preselectedURI: folder.URI,
-                       okCallback: renameCallback, 
-                       name: folder.prettyName});
-  },
-  */
      
 	initKeyListeners: function () {
 			const win = window,
 			      prefs = QuickFolders.Preferences;
 			// only add event listener on startup if necessary as we don't
 			// want to consume unnecessary performance during keyboard presses!
-			if (prefs.isKeyboardListeners) {
-				if(!QuickFolders.Interface.boundKeyListener) {
-					win.addEventListener("keypress", this.keyListen = function(e) {
-						QuickFolders.Interface.windowKeyPress(e,'down');
-					}, true);
-					win.addEventListener("keyup", function(e) {
-						QuickFolders.Interface.windowKeyPress(e,'up');
-					}, true);
-					QuickFolders.Interface.boundKeyListener = true;
-				}
-			}
+			if (!prefs.isKeyboardListeners) { return; }
+
+      if(!QuickFolders.Interface.boundKeyListener) {
+        win.addEventListener("keydown", this.keyListen = function(e) {
+          // https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
+          // keypress is deprecated. let's use keydown instead
+          QuickFolders.Interface.windowKeyPress(e,'down');
+        }, true);
+        /*
+        win.addEventListener("keyup", function(e) {
+          QuickFolders.Interface.windowKeyPress(e,'up');
+        }, true);
+        */
+        QuickFolders.Interface.boundKeyListener = true;
+      }
 	},
+
+  removeKeyListeners: function(win) {
+    if (this.keyListen) {
+      win.removeEventListener("keydown", this.keyListen);
+    }
+
+  },
 	
 	initTabsFromEntries: function initTabsFromEntries(folderEntries) {
     const util = QuickFolders.Util,

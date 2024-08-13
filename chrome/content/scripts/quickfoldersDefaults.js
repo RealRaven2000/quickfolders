@@ -88,6 +88,7 @@ pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton", false);
 pref("extensions.quickfolders.currentFolderBar.showIconButtons", true);
 pref("extensions.quickfolders.currentFolderBar.showRepairFolderButton", false);
 pref("extensions.quickfolders.currentFolderBar.navigation.showButtons", true);
+pref("extensions.quickfolders.currentFolderBar.skipUnreadFolder", true);
 pref("extensions.quickfolders.currentFolderBar.folderNavigation.showButtons", false);
 pref("extensions.quickfolders.currentFolderBar.background","linear-gradient(to top, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%)");
 pref("extensions.quickfolders.currentFolderBar.background.selection","lightweight");

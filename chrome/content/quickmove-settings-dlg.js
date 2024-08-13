@@ -43,7 +43,7 @@
             chk.checked = true;
           }
           chk.addEventListener("click", function(evt) { qmSettings.toggleAccountExclusion(chk, evt)} );
-          chk.addEventListener("keypress", function(evt) { qmSettings.toggleAccountExclusion(chk, evt)} );
+          chk.addEventListener("keydown", function(evt) { qmSettings.toggleAccountExclusion(chk, evt)} );
           // container.appendChild(label);
           // container.appendChild(chk);
           // accountsbox.appendChild(container);
@@ -64,28 +64,28 @@
       let chkLock = document.getElementById('chkLockAccounts');
       chkLock.checked = globalQuickMoveSettings.isLockInAccount;
       chkLock.addEventListener("click", function(evt) { qmSettings.toggleLockInAccount(chkLock, evt)} );
-      chkLock.addEventListener("keypress", function(evt) { qmSettings.toggleLockInAccount(chkLock, evt)} );
+      chkLock.addEventListener("keydown", function(evt) { qmSettings.toggleLockInAccount(chkLock, evt)} );
       
       let chkSilent = document.getElementById('chkSilent');
       chkSilent.checked = globalQuickMoveSettings.isSilent;
       chkSilent.addEventListener("click", function(evt) { qmSettings.toggleSilent(chkSilent, evt)} );
-      chkSilent.addEventListener("keypress", function(evt) { qmSettings.toggleSilent(chkSilent, evt)} );
+      chkSilent.addEventListener("keydown", function(evt) { qmSettings.toggleSilent(chkSilent, evt)} );
       
       
       let chkEsc = document.getElementById('chkEscapeClearsList');
       chkEsc.checked = globalQuickMoveSettings.isClearList;
       chkEsc.addEventListener("click", function(evt) { qmSettings.toggleClearList(chkEsc, evt)} );
-      chkEsc.addEventListener("keypress", function(evt) { qmSettings.toggleClearList(chkEsc, evt)} );
+      chkEsc.addEventListener("keydown", function(evt) { qmSettings.toggleClearList(chkEsc, evt)} );
       
       let chkGoNext = document.getElementById('chkGoNext');
       chkGoNext.checked = globalQuickMoveSettings.isGoNext;
       chkGoNext.addEventListener("click", function(evt) { qmSettings.toggleGoNext(chkGoNext, evt)} );
-      chkGoNext.addEventListener("keypress", function(evt) { qmSettings.toggleGoNext(chkGoNext, evt)} );
+      chkGoNext.addEventListener("keydown", function(evt) { qmSettings.toggleGoNext(chkGoNext, evt)} );
       
       let chkReopen = document.getElementById('chkReopen');
       chkReopen.checked = globalQuickMoveSettings.isReopen;
       chkReopen.addEventListener("click", function(evt) { qmSettings.toggleReopen(chkReopen, evt)} );
-      chkReopen.addEventListener("keypress", function(evt) { qmSettings.toggleReopen(chkReopen, evt)} );
+      chkReopen.addEventListener("keydown", function(evt) { qmSettings.toggleReopen(chkReopen, evt)} );
       
       
       let maxResults = document.getElementById('maxResults');
@@ -104,7 +104,7 @@
       let list = globalQuickMoveSettings.excludedIds,
           isModified = false,
           txtDebug = "";
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       if (el.id) {
         if (el.checked) {
           if (!list.includes(el.id)) {
@@ -130,31 +130,31 @@
     
     toggleLockInAccount: function(el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.premium.lockInAccount", isChecked);
     },
     
     toggleSilent: function(el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.premium.silentMode", isChecked);
     },
     
     toggleClearList: function(el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.premium.escapeClearsList", isChecked);
     },
     
     toggleGoNext: function(el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.gotoNextMsgAfterMove", isChecked);
     },
     
     toggleReopen: function(el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keypress" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.reopenMsgTabAfterMove", isChecked);
     },
     

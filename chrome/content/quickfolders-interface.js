@@ -979,17 +979,19 @@ QuickFolders.Interface = {
 				  "hideFolderNavigation=" + hideFolderNavigation + "\n"
 				);
 
-				for (let n=0; n< toolbar2.children.length; n++)
-				{
+				for (let n=0; n< toolbar2.children.length; n++) {
 					let node = toolbar2.children[n],
 							special = node.getAttribute("special");
 					if (special && special=="qfMsgFolderNavigation") {
 						node.collapsed = hideMsgNavigation;
-					}
-					else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
+					} else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
 						// hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
 						node.collapsed = hideFolderNavigation;
 					}
+				}
+				const skippy = doc3pane.getElementById("quickFoldersSkipFolder");
+				if (skippy) {
+					skippy.collapsed = !prefs.getBoolPref("currentFolderBar.skipUnreadFolder");
 				}
         
         toolbar2.setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
@@ -1747,7 +1749,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	windowKeyPress: function windowKeyPress(e,dir) {
+	windowKeyPress: function (e,dir) {
     function logEvent(eventTarget) {
 			try {
 				util.logDebugOptional("events", "KeyboardEvent on unknown target"
@@ -1885,8 +1887,7 @@ QuickFolders.Interface = {
                   QuickMove.addFolders(folders, iscopy);
                   QuickMove.update();
                 }
-              }
-              else {
+              } else {
                 let messageUris  = util.getSelectedMsgUris();
                 if (messageUris) {
                   let currentFolder = util.CurrentFolder;
@@ -1898,21 +1899,19 @@ QuickFolders.Interface = {
               }
               isHandled = true;
             }
-          }
-					else {
+          } else {
 						if (isShiftOnly && prefs.isSkipFolderShortcut && (theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase())) {
 							QuickFolders.Interface.onSkipFolder();
 							isHandled = true;
 						}
 					}
         }
-
-      }
-			else {
-        if (util.licenseInfo.keyType == 2)
+      } else {
+        if (util.licenseInfo.keyType == 2){
           util.logDebugOptional("premium.quickJump", "Standard license: no shortcuts supported");
-        else
+				} else {
           util.logDebugOptional("premium.quickJump", "hasValidLicense returned false");
+				}
 			}
     } // quickMove / quickJump
 
@@ -2025,8 +2024,7 @@ QuickFolders.Interface = {
     if (isHandled) {
       e.preventDefault();
       e.stopPropagation();
-    }
-		else if (isShortcutMatched) {
+    } else if (isShortcutMatched) {
 			util.logDebugOptional("events.keyboard", "quickJump / quickMove Shortcut was matched but not consumed.\n"
 			  + "suspended=" + QuickFolders.quickMove.suspended);
 		}
