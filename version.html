@@ -361,8 +361,11 @@
 							The feature is currently experimental but I am already using it successfully for the "follow-up" of orders
 						</p>
 					</li>
-					<li> </li>
-					<li> </li>
+					<li> 
+						Made skip unread folder button configurable so that it can be removed from 
+						the Navigation bar if not wanted.
+					</li>
+					<li> Improved tooltips in settings window. </li>
 				</ul>
 
 				<ul>
@@ -382,8 +385,9 @@
 				<ul>
 					<h4 class="inList">Known Issues</h4>
 					<li> 
-						Currently the verification of QuickFolders licenses fails when the license is bound to an exchange account when it is
-						accessed using Owl. This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+						Currently the verification of QuickFolders licenses fails when the license is bound to an 
+						exchange account when it is accessed using the Owl Protocol. 
+						This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
 						which we hope will be fixed very soon. 
 						See: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/482">[issue 482]</a>
 						<p>
@@ -476,12 +480,15 @@
 			<ul>
 				<h4 class="inList">Known Issues</h4>
 				<li> 
-					Currently the verification of QuickFolders licenses does not work 
-					when the license is bound to an exchange account when it is
-					accessed using Owl. This is due to a bug in the 
-					<a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a>
-					Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
-					which we hope will be fixed very soon.
+					Currently the verification of QuickFolders licenses fails when the license is bound to an 
+					exchange account when it is accessed using the Owl Protocol. 
+					This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+					which we hope will be fixed very soon. 
+					See: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/482">[issue 482]</a>
+					<p>
+						For up to date news on this, please see the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1909005"> Related bug </a> 
+						on Thunderbird's Bugzilla
+					</p>				
 				</li>
 			</ul>
 
