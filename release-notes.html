@@ -9,15 +9,72 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
 
 <b>Improvements</b>
 <ul>
-  <li> [issue 489] Improved Dark theme support - Make coloring of svg icons without requiring
-       the  Mozilla specific config switch svg.context-properties.content.enabled <a href="https://github.com/RealRaven2000/QuickFolders/issues/489">[issue 489]</a> </li>
-  <li> Experimental feature: regex filter based on currently selected mail. <a href="https://github.com/RealRaven2000/QuickFolders/issues/488">[issue 488]</a>   </li>
+  <li> 
+    <p>
+      Experimental feature: find related mails through pattern matching the currently selected mail.  <a href="https://github.com/RealRaven2000/QuickFolders/issues/488">[issue 488]</a>
+    </p>
+    <p>
+      <img src="images/findRelated-button.png" alt="find related emails - button" class="screenshot"  width="299" height="122" />
+    </p>
+    <p>
+      This works via a pattern search which is applied to fields of the currently selected email via a 
+      search mask (regular expression).
+      In this example, it extracts a term in brackets from the subject and then 
+      filters the messages according to this pattern:
+    </p>
+    <p>
+      <img src="images/findRelated-diagram.png" alt="find related emails - process"
+      class="screenshot"  width="471" height="339"/>
+    </p>
+    <p>
+      The function automatically carries out 3 steps here:<br>
+    </p>
+    <p>
+        <span class="number"
+      style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">1</span>
+      Determine term</p>
+      <p>
+        <span class="number"
+      style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">2</span>
+      insert the term found in the search field.
+    </p>
+    <p>
+      <span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">3</span>
+      initialize "Filter by" - selection of fields<br>
+    </p>
+    
+    <p>
+      It is currently configured via right-click:      
+    </p>
+    
+    <p>
+      <img src="images/findRelated-settings.png" alt="Find related emails - Settings"
+          class="screenshot" width="664" height="162">/>
+    </p>
+    
+    <p><span class="number"
+      style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">1</span>  
+      Search mask and regex group number (0 for entire match)<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">2</span>  Where is text extracted in the highlighted email<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">3</span>
+      How should the search be carried out.
+    </p>
+    <p>
+      The feature is currently experimental but I am already using it successfully for the "follow-up" of orders
+    </p>
+  </li>
 </ul>
-
 
 <b>Bug Fixes</b>
 <ul>
-  <li> Fixed: notification popup for restricted features leads to exception + icon not displayed. <a href="https://github.com/RealRaven2000/QuickFolders/issues/486">[issue 486]</a> </li>
+  <li> 
+    Fixed: in Thunderbird 128 the notification popup for restricted features leads 
+    to an exception and may lead to failure of some features on systems without
+    a Pro license.
+    <a href="https://github.com/RealRaven2000/QuickFolders/issues/486">[issue 486]</a>  
+  </li>
+  <li> 
+    Keyboard shortcuts (such as ALT+Left ALT+Right) stopped working in Thunderbird 128.
+    <a href="https://github.com/RealRaven2000/QuickFolders/issues/491">[issue 491]</a>
+  </li>
 </ul>
 
 <b>Known Issues</b>
@@ -26,6 +83,11 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
     Currently the verification of QuickFolders licenses fails when the license is bound to an exchange account when it is
     accessed using Owl. This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
     which we hope will be fixed very soon. 
+    See: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/482">[issue 482]</a>
+    <p>
+      For up to date news on this, please see the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1909005"> Related bug </a> 
+      on Thunderbird's Bugzilla
+    </p>
   </li>
 </ul>
 
