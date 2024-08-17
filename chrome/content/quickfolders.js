@@ -450,12 +450,14 @@ END LICENSE BLOCK */
 
   6.7 QuickFolders Pro - WIP
     ## Added compatibility with Thunderbird 130
-    ## [issue 486] Fixed: notification popup for restricted features leads to exception + icon not displayed 
+    ## [issue 488] Experimental feature: regex filter based on currently selected mail 
     ## [issue 489] Improved Dark theme support - Make coloring of svg icons without requiring
                    the  Mozilla specific config switch svg.context-properties.content.enabled
                    also removed font dependence by converting all texts to paths
-    ## [issue 488] Experimental feature: regex filter based on currently selected mail 
+    ## Added option to remove skip unread folder
+    ## [issue 486] Fixed: notification popup for restricted features leads to exception + icon not displayed 
     ## [issue 491] Keyboard shortcuts (such as ALT+Left ALT+Right) stopped working in Tb 128.
+    ## Shortcuts (such as Shift+M and Shift+J) are unexpectedly triggered when typed in quick search
     ## improved tooltips in settings window
     
 

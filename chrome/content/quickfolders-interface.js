@@ -1808,7 +1808,8 @@ QuickFolders.Interface = {
 							"html:input",      			// Thunderbird 78 textboxes.
 							"search-textbox", 		 	// Thunderbird 78 search boxes 
 							"xul:search-textbox",  	// Thunderbird 115 search boxes  [issue ]
-							"global-search-bar",     // Thunderbird 115 global search [issue ]
+							"global-search-bar",    // Thunderbird 115 global search [issue ]
+							"search-bar",           // Thunderbird 128 quick search
 							"findbar"              	// [Bug 26654] in-mail search
 						].includes(tag)
           )
