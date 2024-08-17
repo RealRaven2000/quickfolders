@@ -228,7 +228,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A Thunderbird 128 először július 11-én jelent meg. A $addonName$ legújabb kiadása most kompatibilis. Kérjük, látogasson el az alábbi linken található teljes változási naplóba, hogy lássa a kapcsolódó problémákat és azok megoldásait. {P2}",
+    "message": "{P1} Folytattam a kompatibilitás javítását a Thunderbird legújabb, ESR128 verziójával. A $addonName$ legújabb kiadása mostantól a v130 verzióig futtatható. Kérjük, látogasson el az alábbi hivatkozásra a teljes változási napló megtekintéséhez, ahol láthatja a kapcsolódó problémákat és azok megoldásait. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1667,9 +1667,8 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} A QuickFolders kompatibilissé vált a Thunderbird vadonatúj ESR 128-as verziójával. [issue 454]{L2}{L1} Javítottuk az újonnan érkezett levelek olvashatóságát és elrendezését, és hozzáadtunk egy opciót a speciális betűtípus letiltásához. [issue 468]{L2}{L1} A QuickFolders mostantól támogatja több kijelölt mappa mozgatását a quickMove segítségével [issue 475]{L2} {L1} Javítva: A Ctrl+kattintás egy almappára ismét új lapot nyit meg.{L2} {L1} Javítva a fájlválasztó, amely a Thunderbird 125-ben hibás volt [issue 476] {L2} {L1} Javítva: A quickMove nem fejeződött be teljesen a Thunderbird 128-ban [issue 480] {L2} {L1} Ismert probléma: A QuickFolders licenc ellenőrzése jelenleg nem működik, ha a licenc egy Exchange-fiókhoz van kötve, amikor az Owl segítségével férnek hozzá. Ez valószínűleg egy hibának köszönhető a web extensions API-ban.{L2}"
+    "message": "{L1} Új funkció a kapcsolódó e-mailek keresésére a jelenleg megjelenített e-mailből kinyert keresési kifejezésekkel. [issue 488]{L2}{L1} Javított sötét téma támogatás [issue 489]{L2}{L1} Kompatibilitás a Thunderbird 130-cal {L2}{L1} Javítva: A billentyűparancsok (mint például ALT+Bal, ALT+Jobb) nem működtek a Tb 128-ban. {L2}{L1} Javítva: Az értesítési előugró ablak a korlátozott funkciókhoz kivételt okozott. {L2}{L1} Ismert probléma: Jelenleg a QuickFolders licencek érvényesítése meghiúsul, ha a licenc egy Exchange fiókhoz van kötve, amelyet Owl-on keresztül érnek el. Ez egy Webextensions API hibának köszönhető, amelyet a Thunderbird hamarosan javítani fog. Ha problémája van ezzel, kérem, lépjen kapcsolatba velem közvetlenül a QuickFolders beállításainak támogatási oldaláról.{L2}"
   },
-
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

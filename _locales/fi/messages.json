@@ -128,7 +128,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 julkaistiin ensimmäisen kerran 11. heinäkuuta. Uusin $addonName$-versio on nyt yhteensopiva. Vieraile alla olevassa linkissä nähdäksesi täydellisen muutoslokin, mahdolliset siihen liittyvät ongelmat ja niiden ratkaisut. {P2}",
+    "message": "{P1} Olen jatkanut yhteensopivuuden parantamista Thunderbirdin uusimman version, ESR128, kanssa. Uusin versio $addonName$ voi nyt toimia jopa v130 asti. Käy alla olevasta linkistä nähdäksesi mahdolliset liittyvät ongelmat ja miten ne on ratkaistu. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -312,7 +312,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders tehtiin yhteensopivaksi Thunderbirdin uuden ESR-version 128 kanssa. [issue 454]{L2}{L1} Paransimme juuri saapuneiden viestien luettavuutta ja ulkoasua sekä lisäsimme vaihtoehdon erityisen fontin poistamiseen käytöstä. [issue 468]{L2}{L1} QuickFolders tukee nyt useiden valittujen kansioiden siirtämistä quickMove:lla [issue 475]{L2} {L1} Korjattu: Ctrl+klikkaus alikansioon avaa nyt taas uuden välilehden.{L2} {L1} Korjattu tiedostovalitsin, joka oli rikki Thunderbirdissä 125 [issue 476] {L2} {L1} Korjattu: quickMove ei suorittanut loppuun Thunderbirdissä 128 [issue 480] {L2} {L1} Tunnettu ongelma: QuickFolders-lisenssien tarkistaminen ei tällä hetkellä toimi, kun lisenssi on sidottu vaihtotiliin, kun siihen pääsee Owl:n kautta. Tämä johtuu todennäköisesti virheestä web extensions API:ssa.{L2}"
+    "message": "{L1} Uusi ominaisuus, jolla voit löytää liittyviä sähköposteja nykyisestä viestistä haetuilla hakutermeillä. [issue 488]{L2}{L1} Parannettu tumman teeman tuki [issue 489]{L2}{L1} Yhteensopivuus Thunderbird 130:n kanssa {L2}{L1} Korjattu: Pikanäppäimet (kuten ALT+Vasen, ALT+Oikea) lakkasivat toimimasta Tb 128:ssa. {L2}{L1} Korjattu: Rajoitettujen ominaisuuksien ilmoitusponnahdusikkuna aiheutti poikkeuksen. {L2}{L1} Tunnettu ongelma: Tällä hetkellä QuickFolders-lisenssien vahvistus epäonnistuu, kun lisenssi on sidottu Exchange-tiliin, johon päästään käyttämällä Owl:ia. Tämä johtuu Webextensions API:ssa olevasta virheestä, joka korjataan pian Thunderbirdissä. Jos sinulla on ongelmia tämän kanssa, ota yhteyttä suoraan QuickFolders-asetusten tukisivulta.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

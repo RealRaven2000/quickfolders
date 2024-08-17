@@ -257,7 +257,7 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128は7月11日に初めてリリースされました。 $addonName$の最新バージョンは現在互換性があります。 以下のリンクで完全な変更履歴を確認し、関連する問題とその対処方法をご覧ください。 {P2}",
+    "message": "{P1} Thunderbirdの最新バージョンESR128との互換性をさらに向上させました。$addonName$ の最新バージョンは、v130まで実行できるようになりました。関連する問題とその対処方法については、以下のリンクから完全な変更ログをご覧ください。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1811,7 +1811,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders は Thunderbird の新しい ESR バージョン 128 と互換性があります。 [issue 454]{L2}{L1} 新着メールの読みやすさとレイアウトを改善し、特殊フォントを無効にするオプションを追加しました。 [issue 468]{L2}{L1} QuickFolders は、quickMove を使用して複数の選択したフォルダーを移動することをサポートするようになりました [issue 475]{L2} {L1} 修正: サブフォルダーを Ctrl+クリックすると、新しいタブが再び開きます。{L2} {L1} Thunderbird 125 で壊れていたファイル ピッカーを修正しました [issue 476] {L2} {L1} 修正: Thunderbird 128 で quickMove が完全に完了しませんでした [issue 480] {L2} {L1} 既知の問題: QuickFolders ライセンスの検証は、ライセンスが Owl を使用してアクセスされる Exchange アカウントにバインドされている場合、現在機能しません。 これは、おそらく Web 拡張機能 API のバグが原因です。{L2}"
+    "message": "{L1} 現在表示されているメールから抽出された検索用語を使用して関連メールを検索する新機能。 [issue 488]{L2}{L1} ダークテーマのサポートが改善されました [issue 489]{L2}{L1} Thunderbird 130との互換性 {L2}{L1} 修正: ALT+左、ALT+右などのキーボードショートカットがTb 128で動作しなくなりました。 {L2}{L1} 修正: 制限機能の通知ポップアップで例外が発生しました。 {L2}{L1} 既知の問題: 現在、QuickFoldersライセンスの検証が、Owlを使用してアクセスされるExchangeアカウントにライセンスが関連付けられている場合に失敗します。これは、Thunderbirdが間もなく修正するWebextensions APIのバグが原因です。この問題が発生した場合は、QuickFolders設定のサポートページから直接ご連絡ください。{L2}"
   }, 
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -170,7 +170,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 byl poprvé vydán 11. července. Nejnovější vydání $addonName$ je nyní kompatibilní. Navštivte prosím úplný seznam změn na níže uvedeném odkazu a zjistěte možné související problémy a jejich řešení. {P2}",
+    "message": "{P1} Pokračoval jsem ve zlepšování kompatibility s nejnovější verzí Thunderbird, ESR128. Nejnovější verze $addonName$ nyní může běžet až do verze v130. Navštivte prosím celý seznam změn v níže uvedeném odkazu a zjistěte, jaké problémy byly vyřešeny. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -383,7 +383,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders bylo přizpůsobeno nové verzi Thunderbird ESR 128. [issue 454]{L2}{L1} Zlepšili jsme čitelnost a rozvržení nově příchozí pošty a přidali jsme možnost zakázat speciální písmo. [issue 468]{L2}{L1} QuickFolders nyní podporuje přesouvání více vybraných složek pomocí quickMove [issue 475]{L2} {L1} Opraveno: Ctrl+kliknutí na podsložku nyní opět otevírá novou kartu.{L2} {L1} Opraveno: výběr souboru, který byl nefunkční v Thunderbird 125 [issue 476] {L2} {L1} Opraveno: quickMove se v Thunderbird 128 nedokončilo [issue 480] {L2} {L1} Známý problém: Ověřování licencí QuickFolders aktuálně nefunguje, když je licence vázána na účet Exchange, když je přistupováno pomocí Owl. Pravděpodobně se jedná o chybu v API webových rozšíření.{L2}"
+    "message": "{L1} Nová funkce pro nalezení souvisejících e-mailů pomocí vyhledávacích termínů extrahovaných z aktuálně zobrazeného e-mailu. [issue 488]{L2}{L1} Vylepšená podpora tmavého motivu [issue 489]{L2}{L1} Kompatibilita s Thunderbridem 130 {L2}{L1} Opraveno: Klávesové zkratky (např. ALT+Vlevo, ALT+Vpravo) přestaly fungovat v Tb 128. {L2}{L1} Opraveno: Vyskakovací oznámení pro omezené funkce způsobovalo výjimku. {L2}{L1} Známý problém: Ověření licencí QuickFolders v současné době selhává, když je licence vázána na účet Exchange, ke kterému je přistupováno pomocí Owl. To je způsobeno chybou v API Webextensions, kterou Thunderbird brzy opraví. Pokud máte s tímto problém, kontaktujte mě prosím přímo ze stránky podpory v nastavení QuickFolders.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

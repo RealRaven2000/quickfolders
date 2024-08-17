@@ -264,7 +264,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 se lanzó por primera vez el 11 de julio. La última edición de $addonName$ ahora es compatible. Por favor, visite el registro completo de cambios en el enlace a continuación para ver posibles problemas relacionados y cómo se han abordado. {P2}",
+    "message": "{P1} He seguido mejorando la compatibilidad con la versión más reciente de Thunderbird, ESR128. La última edición de $addonName$ ahora puede ejecutarse hasta la v130. Por favor, visite el registro de cambios completo en el enlace a continuación para ver posibles problemas relacionados y cómo se han solucionado. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1898,7 +1898,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders se hizo compatible con la nueva versión ESR 128 de Thunderbird. [issue 454]{L2}{L1} Mejoramos la legibilidad y el diseño del correo recién llegado y añadimos una opción para desactivar su fuente especial. [issue 468]{L2}{L1} QuickFolders ahora admite mover varias carpetas seleccionadas con quickMove [issue 475]{L2} {L1} Corregido: Ctrl+clic en una subcarpeta ahora abre una nueva pestaña nuevamente.{L2} {L1} Corregido el selector de archivos que estaba roto en Thunderbird 125 [issue 476] {L2} {L1} Corregido: quickMove no se completó completamente en Thunderbird 128 [issue 480] {L2} {L1} Problema conocido: La verificación de licencias de QuickFolders actualmente no funciona cuando la licencia está vinculada a una cuenta de intercambio cuando se accede a ella mediante Owl. Esto probablemente se deba a un error en la API de extensiones web.{L2}"
+    "message": "{L1} Nueva función para encontrar correos electrónicos relacionados a través de términos de búsqueda extraídos del correo electrónico actualmente mostrado. [issue 488]{L2}{L1} Mejorado el soporte para el tema oscuro [issue 489]{L2}{L1} Compatibilidad con Thunderbrid 130 {L2}{L1} Corregido: Los atajos de teclado (como ALT+Izquierda, ALT+Derecha) dejaron de funcionar en Tb 128. {L2}{L1} Corregido: La notificación emergente para funciones restringidas causaba una excepción. {L2}{L1} Problema conocido: Actualmente, la verificación de las licencias de QuickFolders falla cuando la licencia está vinculada a una cuenta de Exchange cuando se accede a través de Owl. Esto se debe a un error en la API de Webextensions que será corregido pronto por Thunderbird. Si tiene problemas con esto, por favor contácteme directamente desde la página de soporte en la configuración de QuickFolders.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

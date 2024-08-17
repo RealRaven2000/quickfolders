@@ -257,14 +257,14 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 je bil prvič izdan 11. julija. Najnovejša izdaja $addonName$ je zdaj združljiva. Obiščite celoten dnevnik sprememb na spodnji povezavi, da vidite morebitne povezane težave in kako so bile rešene. {P2}",
+    "message": "{P1} Nadaljeval sem z izboljševanjem združljivosti z najnovejšo različico Thunderbird, ESR128. Zadnja izdaja $addonName$ lahko zdaj deluje do v130. Obiščite celoten seznam sprememb na spodnji povezavi, če želite izvedeti več o morebitnih povezanih težavah in kako so bile odpravljene. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  }, 
+  },
   "newsSection.license": {
     "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
   },
@@ -1870,7 +1870,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders je bil združljiv z novo različico ESR 128 Thunderbirda. [issue 454]{L2}{L1} Izboljšali smo berljivost in postavitev za novo prispele e-pošte ter dodali možnost onemogočanja posebne pisave. [issue 468]{L2}{L1} QuickFolders zdaj podpira premikanje več izbranih map s quickMove [issue 475]{L2} {L1} Popravljeno: Ctrl+klik na podmapo zdaj znova odpre nov zavihek.{L2} {L1} Popravljen izbirnik datotek, ki je bil pokvarjen v Thunderbird 125 [issue 476] {L2} {L1} Popravljeno: quickMove se ni popolnoma zaključil v Thunderbird 128 [issue 480] {L2} {L1} Znana težava: Preverjanje licenc QuickFolders trenutno ne deluje, ko je licenca vezana na račun Exchange, ko se dostopa prek Owl. To je verjetno posledica napake v API-ju spletnih razširitev.{L2}"
+    "message": "{L1} Nova funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega e-poštnega sporočila. [issue 488]{L2}{L1} Izboljšana podpora za temno temo [issue 489]{L2}{L1} Združljivost s Thunderbird 130 {L2}{L1} Popravljeno: Bližnjice na tipkovnici (kot sta ALT+Levo, ALT+Desno) so prenehale delovati v Tb 128. {L2}{L1} Popravljeno: Obvestilo za omejene funkcije je povzročilo izjemo. {L2}{L1} Znana težava: Trenutno preverjanje licenc QuickFolders ne uspe, ko je licenca vezana na račun Exchange, do katerega dostopate prek Owl. To je posledica napake v API-ju Webextensions, ki jo bo Thunderbird kmalu odpravil. Če imate težave s tem, me prosimo kontaktirajte neposredno prek strani za podporo v nastavitvah QuickFolders.{L2}"
   },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

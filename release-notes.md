@@ -1,7 +1,7 @@
 **Improvements**
 
-*   Improved Dark theme support - Make coloring of svg icons without requiring the Mozilla specific config switch svg.context-properties.content.enabled. \[issue #489\]
 *   Experimental feature: regex filter based on currently selected mail. \[issue #488\]
+*   Improved Dark theme support - Make coloring of svg icons without requiring the Mozilla specific config switch svg.context-properties.content.enabled. \[issue #489\]
 *   Added compatibility with Thunderbird 130
 
 **Bug Fixes**

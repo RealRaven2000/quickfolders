@@ -273,14 +273,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 于 7 月 11 日首次发布。最新版本的 $addonName$ 现在兼容。请访问下面的链接查看完整的变更日志，以了解可能的相关问题以及如何解决这些问题。 {P2}",
+    "message": "{P1} 我继续改进了与最新版本的 Thunderbird ESR128 的兼容性。$addonName$ 的最新版本现在可以运行到 v130。请访问下面的链接查看完整的更改日志，了解可能的相关问题及其处理方式。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "这项工作是独家资助的 通过出售许可证，如果您有兴趣在未来使用 QuickFolders，请考虑购买许可证或更新之前的许可证。"
   },
@@ -1856,7 +1856,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders 与 Thunderbird 的全新 ESR 版本 128 兼容。 [issue 454]{L2}{L1} 我们改进了新到邮件的可读性和布局，并添加了禁用特殊字体的选项。 [issue 468]{L2}{L1} QuickFolders 现在支持使用 quickMove 移动多个选定的文件夹 [issue 475]{L2} {L1} 修复：Ctrl+单击子文件夹现在再次打开新标签页。{L2} {L1} 修复了在 Thunderbird 125 中损坏的文件选择器 [issue 476] {L2} {L1} 修复：quickMove 在 Thunderbird 128 中未完全完成 [issue 480] {L2} {L1} 已知问题：当许可证绑定到使用 Owl 访问的 Exchange 帐户时，QuickFolders 许可证验证当前不起作用。这可能是由于 web extensions API 中的错误导致的。{L2}"
+    "message": "{L1} 新功能，通过从当前显示的电子邮件中提取的搜索词找到相关电子邮件。 [issue 488]{L2}{L1} 改进了对暗黑主题的支持 [issue 489]{L2}{L1} 兼容 Thunderbird 130 {L2}{L1} 修复：键盘快捷键（如 ALT+左、ALT+右）在 Tb 128 中停止工作。 {L2}{L1} 修复：受限功能的通知弹出窗口引发了异常。 {L2}{L1} 已知问题：目前，当许可绑定到通过 Owl 访问的 Exchange 帐户时，QuickFolders 许可证验证失败。这是由于 Webextensions API 中的错误，Thunderbird 将很快修复。如果您遇到此问题，请直接从 QuickFolders 设置中的支持页面与我联系。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

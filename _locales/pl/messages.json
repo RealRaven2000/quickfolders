@@ -266,14 +266,14 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 werd voor het eerst uitgebracht op 11 juli. De nieuwste editie van $addonName$ is nu compatibel. Bezoek de volledige changelog via de onderstaande link om mogelijke gerelateerde problemen en hoe deze zijn opgelost te zien. {P2}",
+    "message": "{P1} Kontynuowałem poprawę zgodności z najnowszą wersją Thunderbird, ESR128. Najnowsza wersja $addonName$ może teraz działać do wersji v130. Proszę odwiedzić pełny dziennik zmian w poniższym linku, aby zobaczyć możliwe powiązane problemy i ich rozwiązania. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
   },
@@ -1915,8 +1915,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders został dostosowany do nowej wersji ESR 128 programu Thunderbird. [issue 454]{L2}{L1} Poprawiliśmy czytelność i układ nowo otrzymanej poczty oraz dodaliśmy opcję wyłączenia specjalnej czcionki. [issue 468]{L2}{L1} QuickFolders obsługuje teraz przenoszenie wielu wybranych folderów za pomocą quickMove [issue 475]{L2} {L1} Naprawiono: Ctrl+kliknięcie na podfolder ponownie otwiera nową kartę.{L2} {L1} Naprawiono wybór pliku, który był zepsuty w Thunderbird 125 [issue 476] {L2} {L1} Naprawiono: quickMove nie został w pełni ukończony w Thunderbird 128 [issue 480] {L2} {L1} Znany problem: Weryfikacja licencji QuickFolders obecnie nie działa, gdy licencja jest powiązana z kontem Exchange, gdy jest ono dostępne za pomocą Owl. Prawdopodobnie jest to spowodowane błędem w API rozszerzeń internetowych.{L2}"
-  }, 
+    "message": "{L1} Nowa funkcja wyszukiwania powiązanych e-maili na podstawie terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanego e-maila. [issue 488]{L2}{L1} Ulepszona obsługa ciemnego motywu [issue 489]{L2}{L1} Zgodność z Thunderbird 130 {L2}{L1} Naprawiono: Skróty klawiaturowe (takie jak ALT+Lewo, ALT+Prawo) przestały działać w Tb 128. {L2}{L1} Naprawiono: Powiadomienie o ograniczonych funkcjach powodowało wyjątek. {L2}{L1} Znany problem: Obecnie weryfikacja licencji QuickFolders nie powodzi się, gdy licencja jest powiązana z kontem Exchange, do którego dostęp uzyskuje się za pomocą Owl. Wynika to z błędu w API Webextensions, który wkrótce zostanie naprawiony przez Thunderbird. Jeśli masz z tym problemy, skontaktuj się ze mną bezpośrednio ze strony wsparcia w ustawieniach QuickFolders.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Witamy w $addonName$",

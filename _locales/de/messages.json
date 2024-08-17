@@ -270,14 +270,14 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Thunderbird 128 wurde erstmals am 11. Juli veröffentlicht. Die neueste Ausgabe von $addonName$ ist jetzt kompatibel. Bitte besuchen Sie das vollständige Änderungsprotokoll über den untenstehenden Link, um mögliche verwandte Probleme und deren Lösungen zu sehen. {P2}",
+    "message": "{P1} Ich habe die Kompatibilität mit der neuesten Version von Thunderbird, ESR128, weiter verbessert. Die neueste Version von $addonName$ kann jetzt bis v130 ausgeführt werden. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link, um mögliche verwandte Probleme und deren Behebung zu sehen. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
-  }, 
+  },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -1906,7 +1906,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} QuickFolders wurde mit der brandneuen ESR-Version 128 von Thunderbird kompatibel gemacht. [issue 454]{L2}{L1} Wir haben die Lesbarkeit und das Layout für neu eingegangene E-Mails verbessert und eine Option hinzugefügt, um die spezielle Schriftart zu deaktivieren. [issue 468]{L2}{L1} QuickFolders unterstützt jetzt das Verschieben mehrerer ausgewählter Ordner mit quickMove [issue 475]{L2} {L1} Behoben: Strg+Klick auf einen Unterordner öffnet wieder einen neuen Tab.{L2} {L1} Dateiauswahl, die in Thunderbird 125 defekt war, behoben [issue 476] {L2} {L1} Behoben: quickMove wurde in Thunderbird 128 nicht vollständig abgeschlossen [issue 480] {L2} {L1} Bekanntes Problem: Die Überprüfung von QuickFolders-Lizenzen funktioniert derzeit nicht, wenn die Lizenz an ein Exchange-Konto gebunden ist und über Owl darauf zugegriffen wird. Dies liegt wahrscheinlich an einem Fehler in der Web-Extensions-API.{L2}"
+    "message": "{L1} Neue Funktion zum Finden verwandter E-Mails über Suchbegriffe, die aus der aktuell angezeigten E-Mail extrahiert wurden. [issue 488]{L2}{L1} Verbesserte Unterstützung von dunklen Themes [issue 489]{L2}{L1} Kompatibilität mit Thunderbird 130 {L2}{L1} Behoben: Tastenkombinationen (wie ALT+Links, ALT+Rechts) funktionierten in Tb 128 nicht mehr. {L2}{L1} Behoben: Das Benachrichtigungs-Popup für eingeschränkte Funktionen verursachte eine Ausnahme. {L2}{L1} Bekanntes Problem: Derzeit schlägt die Überprüfung der QuickFolders-Lizenzen fehl, wenn die Lizenz an ein Exchange-Konto gebunden ist, das über Owl abgerufen wird. Dies liegt an einem Fehler in der Webextensions-API, der bald von Thunderbird behoben wird. Wenn Sie Probleme damit haben, kontaktieren Sie mich bitte direkt über die Support-Seite in den QuickFolders-Einstellungen.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
