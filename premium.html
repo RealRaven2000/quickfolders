@@ -246,6 +246,12 @@
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span><br> + keyboard shortcut</td>
         </tr>
+        <tr>
+          <th><a href="#findrelated">Find releated mails</a></th>
+          <td><span class="check negative">✘</span></td>
+          <td><span class="check negative">✘</span></td>
+          <td><span class="check">✔</span>find related mails through pattern matching the currently selected mail. </td>
+        </tr>				
 				<tr>
           <th><a href="#quickFiltersCurrent">Advanced quickFilters support</a></th>
           <td><span class="check negative">✘</span></td>
@@ -421,6 +427,56 @@
 				</td>
 			</tr>
 			 
+			<tr>
+				<td>Find related mails</td>
+				<td>
+<a name="findRelated"> </a>
+					<h4>Find related Emails</h4>
+					<p>
+						This works via a pattern search which is applied to fields of the currently selected email via a 
+						search mask (regular expression). In this example, it extracts a term in brackets from the subject and then 
+						filters the messages according to this pattern:
+					</p>
+					<p>
+						<img src="images/findRelated-diagram.png" alt="find related emails - process"
+						class="screenshot"  width="471" height="339"/>
+					</p>
+					<p>
+						The function automatically carries out 3 steps here:<br>
+					</p>
+					<p>
+							<span class="number"
+						style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">1</span>
+						Determine term</p>
+						<p>
+							<span class="number"
+						style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">2</span>
+						insert the term found in the search field.
+					</p>
+					<p>
+						<span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">3</span>
+						initialize "Filter by" - selection of fields<br>
+					</p>
+					<p>
+						It is currently configured via right-click:      
+					</p>
+					
+					<p>
+						<img src="images/findRelated-settings.png" alt="Find related emails - Settings"
+								class="screenshot" width="664" height="162">/>
+					</p>
+					
+					<p><span class="number"
+						style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">1</span>  
+						Search mask and regex group number (0 for entire match)<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">2</span>  Where is text extracted in the highlighted email<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">3</span>
+						How should the search be carried out.
+					</p>
+
+				</td>
+			</tr>
+			 
+
+
 			<tr>
 				<td>quickFilters buttons in Navigation bar</td>
 				<td>
