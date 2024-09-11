@@ -115,11 +115,16 @@ function showInstalled() {
 } 
 
 async function filterMailsRegex(searchOptions, tabId = null) {
-  const group =searchOptions.group;   // 0 for full match
+  const DEFAULT_BEHAVIOR = {
+    isSelectPrevious: await messenger.LegacyPrefs.getPref("extensions.quickfolders.findRelated.behavior.selectPrevious")
+  }
+  
+  const group = searchOptions.group;   // 0 for full match
   const searchSelected = searchOptions.searchSelected;
   const searchCriteria =  searchOptions.searchCriteria;  // if fields is null, do not change this!
   let pattern = searchOptions.pattern; // allow overwriting in debugger for test!
   const isEmpty = (!pattern); // non empty search string, reset!
+  const behavior = searchOptions.behavior || DEFAULT_BEHAVIOR;
 
 
   const regex = new RegExp(pattern, "gm");
@@ -144,6 +149,7 @@ async function filterMailsRegex(searchOptions, tabId = null) {
   // https://webextension-api.thunderbird.net/en/latest/mailTabs.html#mailtabs-quickfiltertextdetail
   let searchTextProps = {}; // the text property is a QuickFilterTextDetail object!
   let message = selectedMessages.messages[0];
+  const currentMessageHdrId = message.headerMessageId;
   // retrieve a search text value from the selected message:
   if (searchSelected.includes("subject")) {
     results = regex.exec(message.subject);
@@ -174,6 +180,14 @@ async function filterMailsRegex(searchOptions, tabId = null) {
       }
     }
   }  
+
+  if (searchVal) {
+    // Remember last extracted search term, so we can use this for a search reset
+    // when user clicks "next unread message"
+    // we MUST reset this whenever use changes to a different folder!!!
+    // folder listener?
+    messenger.LegacyPrefs.setPref("extensions.quickfolders.findRelated.lastSearchVal", searchVal);
+  }
   
 
   if (searchCriteria.includes("subject")) {
@@ -195,6 +209,14 @@ async function filterMailsRegex(searchOptions, tabId = null) {
     await browser.mailTabs.setQuickFilter(tabId, {text: searchTextProps} );  
   } else {
     await browser.mailTabs.setQuickFilter( {text: searchTextProps} );  
+  }
+  if (behavior.isSelectPrevious) {
+    // select currentMessageId then go "up" to the previously received / sent mail
+    const options = {color:"white", background:"rgb(80,0,0)"};
+    const txt = "filterMailsRegex";
+    console.log(`QuickFolders %c${txt}`, 
+      `color: ${options.color}; background: ${options.background}`, 
+      `TO DO: select previous message from id: ${currentMessageHdrId}`);
   }
 }
 

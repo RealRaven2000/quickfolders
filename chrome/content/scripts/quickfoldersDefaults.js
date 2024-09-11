@@ -74,6 +74,10 @@ pref("extensions.quickfolders.findRelated.pattern","");
 pref("extensions.quickfolders.findRelated.group",0);
 pref("extensions.quickfolders.findRelated.searchSelected","[\"subject\"]");
 pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"author\",\"recipients\"]");
+pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false);
+pref("extensions.quickfolders.findRelated.lastSearchVal","");
+pref("extensions.quickfolders.findRelated.behavior.goNextResetsSearch", false);
+
 
 
 // Current Folder Toolbar

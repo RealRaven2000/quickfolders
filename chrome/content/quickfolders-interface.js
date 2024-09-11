@@ -493,7 +493,7 @@ QuickFolders.Interface = {
     }
 	} ,
 
-	onGoNextMsg: function (button) {
+	onGoNextMsg: async function (button) {
 		const tabMode = QuickFolders.Interface.CurrentTabMode;
 		const isSingleMessage = 
 		  (tabMode == "mailMessageTab");
@@ -512,6 +512,30 @@ QuickFolders.Interface = {
 		if (button.previousSibling.checked) {
 			goDoCommand("cmd_nextMsg");
 		}	else {
+			// [issue 494] check if quickFilterBar needs to be reset?
+			const doc3 = QuickFolders.Util.document3pane;
+			let quickFilterBar, filterer;
+			const isResetSearch = QuickFolders.Preferences.getBoolPref("findRelated.behavior.goNextResetsSearch");
+
+			if (isResetSearch && doc3) {
+				quickFilterBar = doc3?.ownerGlobal?.quickFilterBar;
+				filterer = quickFilterBar?._filterer;
+			}
+			
+			if (filterer && filterer.visible && filterer?.filterValues?.text) {
+				// compare to last findRelated value
+				const currentSearchText = filterer?.filterValues.text;
+				const lastSearchString = QuickFolders.Preferences.getStringPref("findRelated.lastSearchVal");
+				if (currentSearchText?.text == lastSearchString) {
+					// reset search (and consume last searchval?)
+					if (filterer.userHitEscape()) {
+						quickFilterBar.updateSearch();
+						quickFilterBar.reflectFiltererState();
+					}
+					QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
+				}
+				
+			}
 			goDoCommand("cmd_nextUnreadMsg");
 		}
     // mailTabs.js =>  DefaultController.doCommand(aCommand, aTab);
@@ -1924,13 +1948,15 @@ QuickFolders.Interface = {
             isHandled = true;
             break;
           case "ArrowLeft":
-            if (!this.goPreviousQuickFolder())
+            if (!this.goPreviousQuickFolder()) {
               this.goPreviousSiblingFolder();
+						}
             isHandled = true;
             break;
           case "ArrowRight":
-            if (!this.goNextQuickFolder())
+            if (!this.goNextQuickFolder()) {
               this.goNextSiblingFolder();
+						}
             isHandled = true;
             break;
           case "ArrowDown":
@@ -2000,7 +2026,7 @@ QuickFolders.Interface = {
 
           if (shortcut >= 0 && shortcut < 10) {
             isHandled = true;
-            if (dir == "down") return;
+            if (dir == "up") return; // [issue 493]
             if(shortcut == 0) {
               shortcut = 10;
             }
@@ -3349,17 +3375,23 @@ QuickFolders.Interface = {
 
 	} ,
 
-	onGetMessages: function onGetMessages(element) {
-		let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder;
-    util.logDebugOptional("interface", "QuickFolders.Interface.onGetMessages()");
+	onGetMessages: function (element) {
+		const util = QuickFolders.Util,
+					btn = util.getPopupNode(element),
+        	folder = btn?.folder;
+    util.logDebugOptional("interface", "QuickFolders.Interface.onGetMessages()", {popupNode: btn, folder:folder});
+		if (!folder) {
+			util.logToConsole("could not retrieve folder from menu / button: ",  {element: element, popupNode: btn, folder:folder})
+			return;
+		}
 		// Get new Messages (Inbox)
 		if ((	folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP
 				||
 				folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX))
 		{
-      if (folder.server.type != "none")
+      if (folder.server.type != "none") {
         GetNewMsgs(folder.server, folder);
+			}
 		}
 	} ,
 
@@ -7752,11 +7784,9 @@ QuickFolders.Interface = {
 			searchSelected: ["subject"],
 			searchCriteria: ["subject","sender","recipients"]
 		}
-		// use this to reset, we may do this in background instead. store json array in LegacyPrefsfor now
-		const regexOptionDefault = { // also supports "body"
-			fields: ["sender", "recipients", "subject"]
-		}
-
+		// to use specific behavior in a search we can add something like this:
+		// regexOption.behavior = {}; regexOption.isSelectPrevious = true
+		
 		try {
 			if (event.button==2) { // right-click
 				QuickFolders.Interface.showAboutConfig(null, "extensions.quickfolders.findRelated", true);
