@@ -493,6 +493,29 @@ QuickFolders.Interface = {
     }
 	} ,
 
+	resetQuickFilter: function() {
+		// [issue 494] check if quickFilterBar needs to be reset?
+		const doc3 = QuickFolders.Util.document3pane;
+		if (!doc3) return;
+
+		const quickFilterBar = doc3?.ownerGlobal?.quickFilterBar;
+		const filterer = quickFilterBar?._filterer;
+		
+		if (filterer && filterer.visible && filterer?.filterValues?.text) {
+			// compare to last findRelated value
+			const currentSearchText = filterer?.filterValues.text;
+			const lastSearchString = QuickFolders.Preferences.getStringPref("findRelated.lastSearchVal");
+			if (currentSearchText?.text == lastSearchString) {
+				// reset search (and consume last searchval?)
+				if (filterer.userHitEscape()) {
+					quickFilterBar.updateSearch();
+					quickFilterBar.reflectFiltererState();
+				}
+				QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
+			}
+		}
+	},
+
 	onGoNextMsg: async function (button) {
 		const tabMode = QuickFolders.Interface.CurrentTabMode;
 		const isSingleMessage = 
@@ -509,33 +532,13 @@ QuickFolders.Interface = {
 				}
 			}
 		}
+		const isResetSearch = QuickFolders.Preferences.getBoolPref("findRelated.behavior.goNextResetsSearch");
+		if (isResetSearch) {
+			QuickFolders.Interface.resetQuickFilter();
+		}
 		if (button.previousSibling.checked) {
 			goDoCommand("cmd_nextMsg");
 		}	else {
-			// [issue 494] check if quickFilterBar needs to be reset?
-			const doc3 = QuickFolders.Util.document3pane;
-			let quickFilterBar, filterer;
-			const isResetSearch = QuickFolders.Preferences.getBoolPref("findRelated.behavior.goNextResetsSearch");
-
-			if (isResetSearch && doc3) {
-				quickFilterBar = doc3?.ownerGlobal?.quickFilterBar;
-				filterer = quickFilterBar?._filterer;
-			}
-			
-			if (filterer && filterer.visible && filterer?.filterValues?.text) {
-				// compare to last findRelated value
-				const currentSearchText = filterer?.filterValues.text;
-				const lastSearchString = QuickFolders.Preferences.getStringPref("findRelated.lastSearchVal");
-				if (currentSearchText?.text == lastSearchString) {
-					// reset search (and consume last searchval?)
-					if (filterer.userHitEscape()) {
-						quickFilterBar.updateSearch();
-						quickFilterBar.reflectFiltererState();
-					}
-					QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
-				}
-				
-			}
 			goDoCommand("cmd_nextUnreadMsg");
 		}
     // mailTabs.js =>  DefaultController.doCommand(aCommand, aTab);
@@ -827,7 +830,7 @@ QuickFolders.Interface = {
         label.id = "QuickFolders-Instructions-Label";
         label.classList.add("QuickFolders-Empty-Toolbar-Label");
         label.setAttribute("crop","end");
-        label.textContent = txt;
+        label.textContent = "<" + txt + ">";
         this.FoldersBox.appendChild(label);
       }
     }
