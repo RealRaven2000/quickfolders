@@ -448,7 +448,7 @@ END LICENSE BLOCK */
     ## removed non-conditional debugger statements.
     ## Holidays!
 
-  6.7 QuickFolders Pro - WIP
+  6.7 QuickFolders Pro - 17/08/2024
     ## Added compatibility with Thunderbird 130
     ## [issue 488] Experimental feature: regex filter based on currently selected mail 
     ## [issue 489] Improved Dark theme support - Make coloring of svg icons without requiring
@@ -459,7 +459,12 @@ END LICENSE BLOCK */
     ## [issue 491] Keyboard shortcuts (such as ALT+Left ALT+Right) stopped working in Tb 128.
     ## Shortcuts (such as Shift+M and Shift+J) are unexpectedly triggered when typed in quick search
     ## improved tooltips in settings window
+
+  6.8 QuickFolders Pro - WIP
+    ## [issue 493] Move mail to folder using CTRL+Number not working
+    ## [issue 494] Settings tab for find related functinos
     
+
 
 	TO DO next
 	==========
