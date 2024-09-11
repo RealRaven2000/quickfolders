@@ -205,6 +205,9 @@ img.screenshot {
   margin: 0.7em 2em 0.7em 0;
 	max-width: 100%;
 }
+.image-columns img.screenshot {
+	max-width: unset;
+}
 
 img.gallery {
 	border-radius: 10px;
