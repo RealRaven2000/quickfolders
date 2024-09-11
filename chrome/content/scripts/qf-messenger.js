@@ -282,7 +282,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
         <vbox id="QuickFolders-Folders-Pane"  flex="1">
           <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
-            <label class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</label>
+            <div class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</div>
           </box>
         </vbox>
       </toolbar>

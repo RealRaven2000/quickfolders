@@ -598,8 +598,10 @@ toolbarbutton#QuickFoldersCurrentFolder {
 }
 
 .QuickFolders-Empty-Toolbar-Label {
-	max-height:28px;
-	min-width: 85%;
+	align-self: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .quickfolders-toolbarbuttons toolbarbutton {
