@@ -684,13 +684,19 @@ QuickFolders.Options = {
   },
 
   enablePremiumConfig : function (isEnabled) {
-    let elements = ["premiumConfig", "chkQuickJumpHotkey", "chkQuickJumpHotkey", "chkQuickMoveHotkey", "chkQuickCopyHotkey",
+    const elements = ["premiumConfig", "chkQuickJumpHotkey", "chkQuickJumpHotkey", "chkQuickMoveHotkey", "chkQuickCopyHotkey",
                     "chkSkipFolderHotkey", "qf-QuickJumpShortcut", "qf-QuickMoveShortcut", "qf-QuickCopyShortcut",
                     "chkQuickMoveAutoFill", "qf-SkipFolderShortcut", "menuQuickMoveFormat", "quickmove-path-depth",
                     "quickMoveAdvanced", "chkCategories", "moveMailOptions", "moveMailOptions-quickMove", "chkFindRelated"];
     // 1. disabled input element
     for (let e of elements) {
       QuickFolders.Options.enableInputElement(e, isEnabled);
+    }
+    const findRelatedTab = document.querySelector(".qfFindRelated");
+    if (isEnabled) {
+      findRelatedTab.removeAttribute("collapsed");
+    } else {
+      findRelatedTab.setAttribute("collapsed",true);
     }
     // 2. replace the icons with the [PRO] label
     QuickFolders.Options.enableProFeatureLabels(isEnabled);

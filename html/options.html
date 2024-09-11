@@ -48,9 +48,10 @@
         <li class="quickFoldersGeneral"><button id="QuickFolders-General" value="QuickFolders-Options-general" isTab="true" class="active" tabNo="0">__MSG_qf.tab.general__</button></li>
         <li class="quickFoldersAdvanced"><button value="QuickFolders-Options-advanced" isTab="true" tabNo="1">__MSG_qf.tab.advanced__</button></li>
         <li class="qfLayout"><button value="QuickFolders-Options-layout" isTab="true" tabNo="2">__MSG_qf.tab.layout__</button></li>
-        <li class="qfHelp"><button value="QuickFolders-Options-quickhelp" isTab="true" tabNo="3">__MSG_qf.tab.quickhelp__</button></li>
-        <li class="qfSupport"><button value="QuickFolders-Options-support" isTab="true" tabNo="4">__MSG_qf.tab.support__</button></li>
-        <li class="qfLicenses"><button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true" tabNo="5">__MSG_qf.tab.gopro__</button></li>
+        <li class="qfFindRelated" collapsed="true"><button value="QuickFolders-Options-findRelated" isTab="true" tabNo="3">__MSG_qf.tab.findRelated__</button></li>
+        <li class="qfHelp"><button value="QuickFolders-Options-quickhelp" isTab="true" tabNo="4">__MSG_qf.tab.quickhelp__</button></li>
+        <li class="qfSupport"><button value="QuickFolders-Options-support" isTab="true" tabNo="5">__MSG_qf.tab.support__</button></li>
+        <li class="qfLicenses"><button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true" tabNo="6">__MSG_qf.tab.gopro__</button></li>
       </ul>
     </nav>
 
@@ -405,6 +406,7 @@
         </div>
       </section>
 
+      
       <section id="QuickFolders-Options-layout" orient="vertical">
       <!--
         <preferences id="prefsLayout">
@@ -681,6 +683,47 @@
         </fieldset>
       </section>
       
+      <section id="QuickFolders-Options-findRelated" orient="vertical">
+        <div class="description">__MSG_findRelated.btn.tooltip__</div>
+        <hr>
+        <div class="hbox">
+          <div class="vbox">
+            <label>Entries</label>
+            <select id="findRelatedList" size="6" style="field-sizing: content; max-height: 8em;">
+              <option value="0">Find [bracket topic]</option>
+              <option value="1">Dear Senders</option>
+              <option value="2">It's a demo still...</option>
+            </select>
+          </div>
+          <div class="vbox">
+            <button id="updateFindRelated">Update</button>
+            <button id="addFindRelated">Add</button>
+            <button id="deleteFindRelated">Delete</button>
+          </div>
+          <div class="vbox">
+            <label>
+              Title: <input type="text" id="findRelatedTitle"></label>
+            </label>
+            <label>
+              Search Pattern: <input type="text" id="findRelatedPattern"></label>
+            </label>
+            <label>Retrieve search string from which fields:</label>
+            <label><input type="checkbox" class="manual"></input> Subject</label>
+            <label><input type="checkbox" class="manual"></input> Sender</label>
+            <label><input type="checkbox" class="manual"></input> Recients</label>
+            <label><input type="checkbox" class="manual"></input> Body</label>
+            <label>Search which fields:</label>
+            <label><input type="checkbox" class="manual"></input> Subject</label>
+            <label><input type="checkbox" class="manual"></input> Sender</label>
+            <label><input type="checkbox" class="manual"></input> Recients</label>
+            <label><input type="checkbox" class="manual"></input> Body</label>
+          </div>
+
+        </div>
+
+      </section>
+
+
       <section id="QuickFolders-Options-quickhelp" orient="vertical" class="align_center">
         <div id="quickHelpPane" flex="1"  class="vbox niceFont">
           <div class="vbox" id="quickHelpTextPane">

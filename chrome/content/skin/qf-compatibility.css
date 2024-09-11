@@ -193,6 +193,9 @@ button.active::marker {
 .qfLicenses button.expired {
   background-image: url("ico/pro-expired.svg");
 }
+.qfFindRelated button {
+  background-image: url("ico/wildcard_filters.svg");
+}
 
 /* disabled features  without pro */
 label.proFeature[disabled] {
