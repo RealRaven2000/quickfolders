@@ -274,6 +274,9 @@ customBackground.addEventListener("blur", async (event) => {
 
 // add bool preference reactions
 for (let chk of document.querySelectorAll("input[type=checkbox]")) {
+  if (chk.classList.contains("manual")) {
+    continue; // checkboxes without data binding
+  }
   let dataPref = chk.getAttribute("data-pref-name").replace("extensions.quickfolders.","");
   switch (dataPref) {
     case "showShortcutNumber":
