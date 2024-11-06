@@ -70,10 +70,11 @@ pref("extensions.quickfolders.tooltips.msgFolderFlags", false);
 pref("extensions.quickfolders.autoValidateFolders", true); // check if folder exists when clicking a tab
 pref("extensions.quickfolders.treeIconsDelay", 7500); // repair icons [Bug 26566] - deprecated from TB102
 
+pref("extensions.quickfolders.findRelated.list", ""); // json structure
 pref("extensions.quickfolders.findRelated.pattern","");
 pref("extensions.quickfolders.findRelated.group",0);
 pref("extensions.quickfolders.findRelated.searchSelected","[\"subject\"]");
-pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"author\",\"recipients\"]");
+pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"sender\",\"recipients\"]");
 pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false);
 pref("extensions.quickfolders.findRelated.lastSearchVal","");
 pref("extensions.quickfolders.findRelated.behavior.goNextResetsSearch", false);

@@ -354,7 +354,7 @@ async function onLoad(activatedWhileWindowOpen) {
         <toolbarbutton id="QuickFolders-FindFolder-Help"
                        class="popupButton"
                        label=""
-                       tooltiptext="help with search"
+                       tooltiptext="__MSG_quickfolders.findFolder.help__"
                        collapsed="true"
                        onclick="QuickFolders.Interface.quickMoveHelp(this);"
                        />

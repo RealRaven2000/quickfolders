@@ -688,11 +688,8 @@
         <hr>
         <div class="hbox">
           <div class="vbox">
-            <label>Entries</label>
+            <label class="sectionlegend">Entries</label>
             <select id="findRelatedList" size="6" style="field-sizing: content; max-height: 8em;">
-              <option value="0">Find [bracket topic]</option>
-              <option value="1">Dear Senders</option>
-              <option value="2">It's a demo still...</option>
             </select>
           </div>
           <div class="vbox">
@@ -707,16 +704,25 @@
             <label>
               Search Pattern: <input type="text" id="findRelatedPattern"></label>
             </label>
-            <label>Retrieve search string from which fields:</label>
-            <label><input type="checkbox" class="manual"></input> Subject</label>
-            <label><input type="checkbox" class="manual"></input> Sender</label>
-            <label><input type="checkbox" class="manual"></input> Recients</label>
-            <label><input type="checkbox" class="manual"></input> Body</label>
-            <label>Search which fields:</label>
-            <label><input type="checkbox" class="manual"></input> Subject</label>
-            <label><input type="checkbox" class="manual"></input> Sender</label>
-            <label><input type="checkbox" class="manual"></input> Recients</label>
-            <label><input type="checkbox" class="manual"></input> Body</label>
+            <label>
+              Search Group (0 for complete match): <input type="number" id="findRelatedGroup"></label>
+            </label>
+            <div class="hbox">
+              <vbox id="searchSelectedFields">
+                <label class="sectionlegend">Retrieve search string from:</label>
+                <label><input type="checkbox" class="manual" term="subject"></input> Subject</label>
+                <label><input type="checkbox" class="manual" term="sender"></input> Sender</label>
+                <label><input type="checkbox" class="manual" term="recipients"></input> Recipients</label>
+                <label><input type="checkbox" class="manual" term="body"></input> Body</label>
+              </vbox>
+              <vbox id="searchCriteriaFields">
+                <label class="sectionlegend">Search:</label>
+                <label><input type="checkbox" class="manual" term="subject"></input> Subject</label>
+                <label><input type="checkbox" class="manual" term="sender"></input> Sender</label>
+                <label><input type="checkbox" class="manual" term="recipients"></input> Recipients</label>
+                <label><input type="checkbox" class="manual" term="body"></input> Body</label>
+              </vbox>
+            </div>
           </div>
 
         </div>

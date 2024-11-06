@@ -424,6 +424,8 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   }
 }
 
+QuickFolders.Options.configureRelatedTab();
+
 // we cannot transmit the element, so removing the first parameter
 async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
   // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!

@@ -666,3 +666,24 @@ label.url:hover {
 input[type="checkbox"] {
 	appearance: checkbox !important;
 }
+
+/* listbox */
+#findRelatedList {
+	font-size: 0.9em;
+	padding: 0;
+	min-width: 12em;
+}
+
+#findRelatedList option {
+	padding-inline: 0.8em;
+}
+
+#findRelatedGroup {
+	width: 7em;
+}
+
+label.sectionlegend {
+	font-weight: bold;
+	margin-right: 1.5em;
+}
+  
