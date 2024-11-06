@@ -321,7 +321,7 @@ QuickFolders.Preferences = {
 	TABS_STRIPED: 0,
 	TABS_FILLED: 1,
 
-	existsCharPref: function existsCharPref(pref) {
+	existsCharPref: function (pref) {
 		try {
 			if(Services.prefs.prefHasUserValue(pref))
 				return true;
@@ -332,7 +332,7 @@ QuickFolders.Preferences = {
 		return false;
 	},
 
-	existsBoolPref: function existsBoolPref(pref) {
+	existsBoolPref: function (pref) {
 		try {
 			if(Services.prefs.prefHasUserValue(pref))
 				return true;
@@ -343,7 +343,7 @@ QuickFolders.Preferences = {
 		return false;
 	},
 
-	getUserStyle: function getUserStyle(sId, sType, sDefault) {
+	getUserStyle: function (sId, sType, sDefault) {
 		// note: storing color as string in order to store OS specific colors like Menu, Highlight
 		// usage: getUserStyle("ActiveTab","background-color","HighLight")
 		// usage: getUserStyle("ActiveTab","color", "HighlightText")
@@ -369,12 +369,12 @@ QuickFolders.Preferences = {
 		return sReturnValue;
 	},
 
-	setUserStyle: function setUserStyle(sId, sType, sValue) {
+	setUserStyle: function (sId, sType, sValue) {
 		let sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		Services.prefs.setStringPref(sStyleName, sValue);
 	},
 
-	getIntPreference: function getIntPreference(p) {
+	getIntPreference: function (p) {
 		try {
 			return Services.prefs.getIntPref(p);
 		}
@@ -384,11 +384,11 @@ QuickFolders.Preferences = {
 		}
 	},
 
-	setIntPreference: function setIntPreference(p, v) {
+	setIntPreference: function (p, v) {
 		return Services.prefs.setIntPref(p, v);
 	},
 
-	getBoolPrefSilent: function getBoolPrefSilent(p) {
+	getBoolPrefSilent: function (p) {
 		try {
 			return Services.prefs.getBoolPref(p);
 		}
@@ -397,7 +397,7 @@ QuickFolders.Preferences = {
 		}
 	},
 
-	getBoolPrefVerbose: function getBoolPrefVerbose(p) {
+	getBoolPrefVerbose: function (p) {
 		try {
 			return Services.prefs.getBoolPref(p);
 		}
@@ -407,7 +407,7 @@ QuickFolders.Preferences = {
 		}
 	},
 	
-	getBoolPref: function getBoolPref(p) {
+	getBoolPref: function (p) {
 	  let ans;
 	  try {
 	    ans = Services.prefs.getBoolPref("extensions.quickfolders." + p);
@@ -419,7 +419,7 @@ QuickFolders.Preferences = {
 		return ans;
 	},
 
-	setBoolPref: function setBoolPref(p, v) {
+	setBoolPref: function (p, v) {
 		return Services.prefs.setBoolPref("extensions.quickfolders." + p, v);
 	},
 	
@@ -437,7 +437,7 @@ QuickFolders.Preferences = {
 		return ans;
 	},
 	
-	getStringPref: function getStringPref(p) {
+	getStringPref: function (p) {
     let prefString ='',
 		    key = "extensions.quickfolders." + p;        
 		  
@@ -453,7 +453,7 @@ QuickFolders.Preferences = {
     }
 	},
 	
-	setStringPref: function setStringPref(p, v) {
+	setStringPref: function (p, v) {
 		if (Services.prefs.setStringPref)
 			return Services.prefs.setStringPref("extensions.quickfolders." + p, v);
 		else {
@@ -474,14 +474,14 @@ QuickFolders.Preferences = {
 		return this.setIntPreference("extensions.quickfolders." + p, v);
 	},
 
-	setShowCurrentFolderToolbar: function setShowCurrentFolderToolbar(b, selector) {
+	setShowCurrentFolderToolbar: function (b, selector) {
 		let tag = "showCurrentFolderToolbar";
 		if (selector)
 			tag = tag + "." + selector;
 		return Services.prefs.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
-	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(selector) {
+	isShowCurrentFolderToolbar: function (selector) {
 		let tag = "showCurrentFolderToolbar";
 		if (selector) {
 			tag = tag + "." + selector;
@@ -489,7 +489,7 @@ QuickFolders.Preferences = {
 		return QuickFolders.Preferences.getBoolPref(tag, false);
 	},
 
-	setBoolPrefVerbose: function setBoolPrefVerbose(p, v) {
+	setBoolPrefVerbose: function (p, v) {
 		try {
 			return Services.prefs.setBoolPref(p, v);
 		} 

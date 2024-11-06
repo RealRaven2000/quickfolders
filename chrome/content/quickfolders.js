@@ -461,8 +461,12 @@ END LICENSE BLOCK */
     ## improved tooltips in settings window
 
   6.8 QuickFolders Pro - WIP
+    ## [issue 494] Settings tab for find related functions
     ## [issue 493] Move mail to folder using CTRL+Number not working
-    ## [issue 494] Settings tab for find related functinos
+    ## [issue 497] quickMove / quickJump steals focus while typing shortcut combos in QNote.
+    ## [issue 504] Clicking a QuickFolders tab from a search result (show as list) should open a new tab.
+    ## [issue 488] Find Related Mails: extend UI to add a selection of multiple searches 
+    ## hide current folder bar in search results tab
     
 
 
@@ -2136,84 +2140,89 @@ function QuickFolders_MyChangeSelection(tree, newIndex) {
 // the core function for selecting a folder
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
-	const util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        model = QuickFolders.Model,
-        QI = QuickFolders.Interface,
-				Ci = Components.interfaces,
-				Cc = Components.classes;
-	function getTabURI(info) {
-	  // note: tabmail is declared further down - it is in scope.
-		if (!info)
-			return null;
-    // info.mode.name == 'mail3PaneTab' 
-		if (info.folderPaneVisible || info.folder ) {
-		  return info.folder.URI; //Tb
+  const util = QuickFolders.Util,
+    prefs = QuickFolders.Preferences,
+    model = QuickFolders.Model,
+    QI = QuickFolders.Interface;
+  function getTabURI(info) {
+    if (!info) return null;
+    // info.mode.name == 'mail3PaneTab'
+    if (info.folderPaneVisible || info.folder) {
+      return info.folder.URI; //Tb
     }
-		return '';
-	}
+    return "";
+  }
   //during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
-	util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
-	
-	if (!folderUri) return false;
+  util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
+  if (!folderUri) return false;
 
+  // TEST: for (let i of gTabmail.tabInfo) { console.log(i?.folder?.prettyName , i.mode.name)}
   // TB 115
-  // should we support "mailMessageTab"  ??
-  if (!["mail3PaneTab", "mailMessageTab"].includes( window.gTabmail.currentTabInfo.mode.name)) {
-    QuickFolders.Util.logDebug("QuickFolders_MySelectFolder exit, because of tabMode: " + window.gTabmail.currentTabInfo.mode.name);
+  const currentTabInfo = gTabmail.currentTabInfo;
+  if (!["mail3PaneTab", "mailMessageTab"].includes(currentTabInfo.mode.name)) {
+    QuickFolders.Util.logDebug(
+      "QuickFolders_MySelectFolder exit, because of tabMode: " +currentTabInfo.mode.name
+    );
     return false;
   }
+  let msgFolder,
+    isInvalid = false;
+  try {
+    msgFolder = model.getMsgFolderFromUri(folderUri, true);
+    if (prefs.getBoolPref("autoValidateFolders")) {
+      isInvalid = !util.doesMailFolderExist(msgFolder);
+    }
+  } catch (ex) {
+    util.logException("Exception validating folder: ", ex);
+    isInvalid = true;
+  }
 
-	let msgFolder,
-	    isInvalid = false;
-	try {
-	  msgFolder = model.getMsgFolderFromUri(folderUri, true);  
-		if (prefs.getBoolPref("autoValidateFolders")) {
-		  isInvalid = (!util.doesMailFolderExist(msgFolder));
-		}
-	}
-	catch (ex) {
-	  util.logException("Exception validating folder: ", ex);
-	  isInvalid = true;
-	}
-	
-	if (isInvalid) {
-	  // invalid folder; suggest to correct this!
-    util.logDebugOptional("folders.select","detected invalid folder, trying to correct entry table.");
-		let folderEntry = model.getFolderEntry(folderUri);
+  if (isInvalid) {
+    // invalid folder; suggest to correct this!
+    util.logDebugOptional(
+      "folders.select",
+      "detected invalid folder, trying to correct entry table."
+    );
+    let folderEntry = model.getFolderEntry(folderUri);
     if (!folderEntry) return false;
     if (folderEntry.disableValidation) {
       // do nothing. a pending rename invalidated this entry
-      util.logToConsole("This may be a folder entry pointing to an invalid folder location: \n" + folderUri);
-    }
-    else {
-			switch(QI.deleteFolderPrompt(folderEntry, false)) {
-			  case 1: // delete 
-				  // save changes right away!
-					prefs.storeFolderEntries(model.selectedFolders);
+      util.logToConsole(
+        "This may be a folder entry pointing to an invalid folder location: \n" + folderUri
+      );
+    } else {
+      switch (QI.deleteFolderPrompt(folderEntry, false)) {
+        case 1: // delete
+          // save changes right away!
+          prefs.storeFolderEntries(model.selectedFolders);
           // update the model
           QI.updateFolders(true, true);
-				  break;
-				case 0: // don't delete
-				  break;
-			};
+          break;
+        case 0: // don't delete
+          break;
+      }
       return false;
-		}
-	}
-	QuickFolders.currentURI = folderUri;
-	
-	let i, isExistFolderInTab = false,
-	    tabmail = document.getElementById("tabmail");
-	if (tabmail) {
-    util.logDebugOptional("folders.select","try to find open tab with folder...");
-    for (let info of gTabmail.tabInfo) {  
-      if (info.mode.name != "mail3PaneTab") { // [issue 389]
+    }
+  }
+  QuickFolders.currentURI = folderUri;
+
+  let i,
+    isExistFolderInTab = false,
+    tabmail = document.getElementById("tabmail");
+  if (tabmail) {
+    util.logDebugOptional("folders.select", "try to find open tab with folder...");
+    for (let info of gTabmail.tabInfo) {
+      if (info.mode.name != "mail3PaneTab") {
+        // [issue 389]
         continue;
       }
       let tabURI = getTabURI(info);
-      if (!tabURI) continue; 
-      if (folderUri == tabURI && info != gTabmail.currentTabInfo ) {
-        util.logDebugOptional("folders.select","matched folder to open tab, switching to tab " + i);
+      if (!tabURI) continue;
+      if (folderUri == tabURI && info != gTabmail.currentTabInfo) {
+        util.logDebugOptional(
+          "folders.select",
+          "matched folder to open tab, switching to tab " + i
+        );
         // strangely switching to tab 0 causes an unnecessary updateFolders call
         if (tabmail.switchToTab) {
           tabmail.switchToTab(info); // switch to first tab with this URI
@@ -2223,100 +2232,123 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
         break;
       }
     }
-    util.logDebugOptional("folders.select", isExistFolderInTab ? "...found folder in existing mail Tab." : "...folder is currently not open in any Tab.");
-	}
+    util.logDebugOptional(
+      "folders.select",
+      isExistFolderInTab
+        ? "...found folder in existing mail Tab."
+        : "...folder is currently not open in any Tab."
+    );
+  }
 
   if (!msgFolder) {
-    util.logDebugOptional("folders.select", "No valid folder found for this Uri - maybe caused by a pending rename on IMAP Server.");
+    util.logDebugOptional(
+      "folders.select",
+      "No valid folder found for this Uri - maybe caused by a pending rename on IMAP Server."
+    );
     return false; // no valid folder (may be from rename)
   }
-	// new behavior: OPEN NEW TAB
-	// if single message is shown, open folder in a new Tab...
-	if (QI.CurrentTabMode == "mailMessageTab" || QI.CurrentTabMode =="glodaList") {
-	  if (!isExistFolderInTab) {
-		  if (prefs.getBoolPref('behavior.nonFolderView.openNewTab')) {
-        util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
-				QI.openFolderInNewTab(msgFolder);
-			}
-			else {  // switch to first tab
-        util.logDebugOptional("folders.select", "tab is not selected, openNewTab disabled, switching to tab 0");
-			  tabmail.switchToTab(0);
-			}
-		}
-		else
-	    return true; // avoid closing the single message
-	}
+  // new behavior: OPEN NEW TAB
+  // if single message is shown, open folder in a new Tab...
+  if (QI.CurrentTabMode == "mailMessageTab" 
+      || QI.CurrentTabMode == "glodaList" 
+      || currentTabInfo?.folder === null) {
+    // no URI / folder===null. is this a search result tab? [issue 504]
+        
+    if (isExistFolderInTab) {
+      return true; // avoid closing the single message
+    }
+    if (prefs.getBoolPref("behavior.nonFolderView.openNewTab")) {
+      util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
+      QI.openFolderInNewTab(msgFolder);
+    } else {
+      // switch to first tab
+      util.logDebugOptional(
+        "folders.select",
+        "tab is not selected, openNewTab disabled, switching to tab 0"
+      );
+      tabmail.switchToTab(0);
+    }
+  }
 
-	let Flags = util.FolderFlags,
-			isRoot = (msgFolder.rootFolder.URI == msgFolder.URI);
+  let Flags = util.FolderFlags,
+    isRoot = msgFolder.rootFolder.URI == msgFolder.URI;
 
-  util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags
-	  + (isRoot ? "\nThis is a ROOT folder" : ""));
-
-  let forceSelect = prefs.isChangeFolderTreeViewEnabled;
+  util.logDebugOptional(
+    "folders.select",
+    `folder [${msgFolder.prettyName}] flags = ${msgFolder.flags}` +
+      (isRoot ? "\nThis is a ROOT folder" : "")
+  );
 
   // TB 115 - this will not select the folder if it is not contained in the current view!
-  gTabmail.currentTabInfo.folder = msgFolder;
-  
+  currentTabInfo.folder = msgFolder;
 
   // ############################
   // ############################
   // ############### ?????????? TEST IN 115 ==>
   // ############################
   // ############################
-  
+
   // about3Pane.folderPane
   // let isCompact = gFolderTreeView.toggleCompactMode ? (gFolderTreeView._tree.getAttribute("compact") == "true") : false;
 
   let about3Pane = tabmail.currentAbout3Pane;
-  const folderPane = about3Pane.folderPane; 
+  const folderPane = about3Pane.folderPane;
   if (folderPane.activeModes) {
     QuickFolders.activeTreeViewModes = folderPane.activeModes; // backup array of view modes.
   }
 
-  let folderRow; 
-  try { folderRow = folderPane.getRowForFolder(msgFolder); }
-  catch(ex) {
-
-  }
-  util.logDebugOptional("folders.select","folderRow = " + folderRow);
-  if (!folderRow) {  // null == folderIndex
+  let folderRow;
+  try {
+    folderRow = folderPane.getRowForFolder(msgFolder);
+  } catch (ex) {}
+  util.logDebugOptional("folders.select", "folderRow = " + folderRow);
+  if (!folderRow) {
+    // null == folderIndex
     util.ensureNormalFolderView(); // make sure "all" is displayed!
     about3Pane.displayFolder(folderUri);
   }
-  
+
   if (msgFolder.parent) {
-    util.logDebugOptional("folders.select","ensureFolderViewTab()");
+    util.logDebugOptional("folders.select", "ensureFolderViewTab()");
 
     if (!folderRow) {
-      util.logDebugOptional("folders.select","ensureNormalFolderView()");
+      util.logDebugOptional("folders.select", "ensureNormalFolderView()");
       folderRow = folderPane.getRowForFolder(msgFolder, ["all"]);
-      util.logDebugOptional("folders.select","folderRow[all] = ", folderRow);
+      util.logDebugOptional("folders.select", "folderRow[all] = ", folderRow);
     }
 
     let parentRow = folderPane.getRowForFolder(msgFolder.parent);
-    util.logDebugOptional("folders.select","parent row: ", parentRow); // was parentIndex
+    util.logDebugOptional("folders.select", "parent row: ", parentRow); // was parentIndex
     // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-    let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
-                     + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
-                     + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
+    let specialFlags =
+      Flags.MSG_FOLDER_FLAG_INBOX +
+      Flags.MSG_FOLDER_FLAG_QUEUE +
+      Flags.MSG_FOLDER_FLAG_SENTMAIL +
+      Flags.MSG_FOLDER_FLAG_TRASH +
+      Flags.MSG_FOLDER_FLAG_DRAFTS +
+      Flags.MSG_FOLDER_FLAG_TEMPLATES +
+      Flags.MSG_FOLDER_FLAG_JUNK +
+      Flags.MSG_FOLDER_FLAG_ARCHIVES;
     if (msgFolder.flags & specialFlags) {
       // is this folder a smartfolder?
-      let isSmartView = (folderPane.activeModes && folderPane.activeModes.includes("smart"));
-      
-      if (folderUri.indexOf("nobody@smart")>0 && !parentRow && !isSmartView) {
-        util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
+      let isSmartView = folderPane.activeModes && folderPane.activeModes.includes("smart");
+
+      if (folderUri.indexOf("nobody@smart") > 0 && !parentRow && !isSmartView) {
+        util.logDebugOptional(
+          "folders.select",
+          "smart folder detected, switching treeview mode..."
+        );
         // toggle to smartfolder view and reinitalize folder variable!
         if (!folderPane.activeModes.includes("smart")) {
           let modes = folderPane.activeModes;
           modes.push("smart");
           folderPane.activeModes = modes; // ? not sur whether this is legal ? TB115
         }
-        msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
+        msgFolder = model.getMsgFolderFromUri(folderUri); // folderResource.QueryInterface(Ci.nsIMsgFolder);
         parentRow = folderPane.getRowForFolder(msgFolder.parent);
       }
-      
-      isSmartView = (folderPane.activeModes.includes("smart"));
+
+      isSmartView = folderPane.activeModes.includes("smart");
 
       // a special folder, its parent is a smart folder?
       if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || isSmartView) {
@@ -2335,8 +2367,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
           }
         }
         */
-      }
-      else { // all other views:
+      } else {
+        // all other views:
         if (null !== parentRow) {
           QuickFolders.Util.logTb115(
             `QuickFolders_MySelectFolder(): toggleRow for parent folder: ${parentRow} `
@@ -2346,7 +2378,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
             theTreeView._toggleRow(parentIndex, true); // server
             */
         } else {
-          util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
+          util.logDebugOptional(
+            "folders.select",
+            `Can not make visible: ${msgFolder.URI} - not in current folder view?` 
+          );
         }
       }
     }
@@ -2354,55 +2389,61 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 
   if (folderRow != null) {
     try {
-      util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
-        msgFolder.URI);
-      // added forceSelect = true
+      util.logDebugOptional(
+        "folders.select",
+        `Selecting folder via treeview.select(${msgFolder.prettyName})..\n${msgFolder.URI}`
+      );
       // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
       gTabmail.currentTabInfo.folder = msgFolder;
 
       // theTreeView.selectFolder (msgFolder, true);
       QuickFolders.Util.logTb115("ensureRowIsVisible()..");
       // theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+    } catch (e) {
+      util.logException("Exception selecting via treeview: ", e);
     }
-    catch(e) { util.logException("Exception selecting via treeview: ", e);};
   }
 
   // Restore last the view mode (?)
   if (!prefs.isChangeFolderTreeViewEnabled) {
-    // this only works in Thunderbird 78 - Tb91 has the activeModes array... 
+    // this only works in Thunderbird 78 - Tb91 has the activeModes array...
     QuickFolders.Util.logTb115("Restore last view mode.. (folderPane.activeModes?)");
     // do something with folderPane.activeModes
     // folderPane.activeModes = QuickFolders.activeTreeViewModes;
   }
 
   let isTabSelected = false;
-  //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); 
-  if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) { // || folderUri.indexOf("nobody@smart")>0
+  //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex);
+  if (msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL) {
+    // || folderUri.indexOf("nobody@smart")>0
     isTabSelected = true;
   }
-	
-	// could not find folder!
-	if (!folderRow) {
-    util.logDebugOptional("folders.select", 'Could not find folder in tree (folderRow = ' + folderRow + ')');
-		return false;
-	}
-	
-	// speed up the highlighting... - is this only necessary on MAC ?
-	if (highlightTabFirst) {
-	  let entry = model.getFolderEntry(folderUri);
-		if (entry) {
-      util.logDebugOptional("folders.select", 'onTabSelected() - highlighting speed hack');
-		  isTabSelected = true;
-		}
-	}	
-  
+
+  // could not find folder!
+  if (!folderRow) {
+    util.logDebugOptional(
+      "folders.select",
+      `Could not find folder in tree (folderRow = ${folderRow})`
+    );
+    return false;
+  }
+
+  // speed up the highlighting... - is this only necessary on MAC ?
+  if (highlightTabFirst) {
+    let entry = model.getFolderEntry(folderUri);
+    if (entry) {
+      util.logDebugOptional("folders.select", "onTabSelected() - highlighting speed hack");
+      isTabSelected = true;
+    }
+  }
+
   if (isTabSelected) {
     QuickFolders.Interface.onTabSelected();
   }
 
-	if (prefs.isFocusPreview && (QuickFolders.Interface.getThreadPane())) {
-    util.logDebugOptional("folders.select", 'setFocusThreadPane()');
-		QuickFolders.Interface.setFocusThreadPane();
+  if (prefs.isFocusPreview && QuickFolders.Interface.getThreadPane()) {
+    util.logDebugOptional("folders.select", "setFocusThreadPane()");
+    QuickFolders.Interface.setFocusThreadPane();
     /* [issue 417] Message list scrolls to top when switching folders
     let doc = QuickFolders.Util.document3pane;
     if (doc) {
@@ -2410,8 +2451,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       doc.commandDispatcher.rewindFocus();
     }
     */
-	}	
-	return true;
+  }
+  return true;
 }; // MySelectFolder
 
 
@@ -2450,7 +2491,7 @@ QuickFolders.FolderListener = {
     }
     catch(e) {
       // write to TB status bar??
-      try{QuickFolders.Util.logToConsole("Error: " + msg);} catch(e) {;};
+      try{QuickFolders.Util.logToConsole(`Error: ${msg}`);} catch(e) {;};
     };
 	},
   
@@ -2461,7 +2502,7 @@ QuickFolders.FolderListener = {
       const util = QuickFolders.Util,
             Ci = Components.interfaces;
       let f = item.QueryInterface(Ci.nsIMsgFolder);
-      util.logDebugOptional("listeners.folder", "onFolderAdded\n" + f.prettyName + "\n"  + f.URI);
+      util.logDebugOptional("listeners.folder", `onFolderAdded\n${f.prettyName}\n${f.URI}`);
       let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
       if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
         util.touch(fld || f); // set MRUTime, unless folder was deleted.
@@ -2501,7 +2542,7 @@ QuickFolders.FolderListener = {
           logDebug = util.logDebug.bind(util),
           logDebugOptional = util.logDebugOptional.bind(util),
           logToConsole = util.logToConsole.bind(util);
-			logDebugOptional("listeners.folder", "OnItemRemoved\n" + f.prettyName + "\nFROM " + fromURI);
+			logDebugOptional("listeners.folder", `OnItemRemoved\n${f.prettyName}\nFROM ${fromURI}`);
 			QuickFolders.FolderListener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
 			if (fromURI !== toURI && toURI) {
@@ -2511,22 +2552,20 @@ QuickFolders.FolderListener = {
 						// we should not do this when deleting, we need to delete the Tab!
 						let newParent = Model.getMsgFolderFromUri(toURI).parent;
 						if (newParent && (newParent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)) {
-							logDebug ("Folder  " + f.name + " moved to Trash. Leaving Tab URI unchanged for deletion.");
-						}
-						else {
-							logDebugOptional("folders,listeners.folder","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
+							logDebug (`Folder  ${f.name} moved to Trash. Leaving Tab URI unchanged for deletion.`);
+						} else {
+							logDebugOptional("folders,listeners.folder",
+                `Trying to move Tab ${f.name} from URI \n${fromURI}\n to URI \n${toURI}`);
 							let ct = Model.moveFolderURI(fromURI, toURI);
 							logDebug ("Successfully updated " + ct + " URIs for folder " + f.name);
 							QuickFolders.Interface.updateFolders(true, true);
 						}
-					}
-					else {
-						let s = "Failed to update URI of folder: " + f.name + " please remove it manually and add to QuickFolders bar";
+					} else {
+						let s = `Failed to update URI of folder: ${f.name} please remove it manually and add to QuickFolders bar`;
 						logToConsole (s);
 						util.alert(s);
 					}
-				}
-				else {
+				} else {
 					let entry = Model.getFolderEntry(folderUri);
 					if (entry) {
 						QI.deleteFolderPrompt(entry);
@@ -2651,7 +2690,7 @@ QuickFolders.FolderListener = {
 								let folders = GetSelectedMsgFolders(),
 										itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
 								if (!itemFound) {
-									log("events", "FolderLoaded - belated on folder " + item.prettyName + " - NOT shown in current folder bar!");
+									log("events", `FolderLoaded - belated on folder ${item.prettyName} - NOT shown in current folder bar!`);
 								}
 							}
 							catch (ex) {
@@ -2696,7 +2735,7 @@ QuickFolders.FolderListener = {
 			}
 		}
 		catch(e) {
-      QuickFolders.FolderListener.ELog("Exception in FolderListener.onFolderEvent {" + eString + "}:\n" + e)
+      QuickFolders.FolderListener.ELog(`Exception in FolderListener.onFolderEvent {${eString}}:\n` + e);
     };
   },
   

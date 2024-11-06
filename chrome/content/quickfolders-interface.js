@@ -900,131 +900,213 @@ QuickFolders.Interface = {
 
 		util.logDebugOptional("interface.currentFolderBar", "updateNavigationBar() - " + window.location, doc3pane);
 		try {
-			let tabMode = tabInfo ? QuickFolders.Util.getTabMode(tabInfo) : QuickFolders.Interface.CurrentTabMode;
-			if (!doc3pane || doc3pane.target) { // if called from background, this will be an event
-				if (!["mail:3pane","mail3PaneTab", "mailMessageTab" ].includes(tabMode)) {
-					// no curent folder tab here!
-					util.logDebugOptional("interface.currentFolderBar",`Early Exit: no current folder bar in tab mode ${tabMode} !`);
-					return false;
-				}
-				doc3pane = QuickFolders.Util.document3pane;  // wrong, but hack for now to use 1st folder tab
-				util.logDebugOptional("interface.currentFolderBar", "Fallback to global document3pane!", doc3pane);
-			}
-			if (!tabMode) { isSingleMessageWindow = true ;}
-			
+      // hide current folder bar if no folder => search results!
+      if (!doc3pane.defaultView.tabOrWindow.folder) {
+        return false;
+      }
 
-			collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
-			collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
-			collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
-			collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
-			collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
-			collapseConfigItem("QuickFolders-findRelated", QuickFolders.Preferences.supportsFindRelated);
-			let repairBtn = collapseConfigItem("QuickFolders-RepairFolderBtn", "currentFolderBar.showRepairFolderButton");
-			if (repairBtn && repairBtn.getAttribute("collapsed")=="false") {
-			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
-			}
+      let tabMode = tabInfo
+        ? QuickFolders.Util.getTabMode(tabInfo)
+        : QuickFolders.Interface.CurrentTabMode;
+      if (!doc3pane || doc3pane.target) {
+        // if called from background, this will be an event
+        if (!["mail:3pane", "mail3PaneTab", "mailMessageTab"].includes(tabMode)) {
+          // no curent folder tab here!
+          util.logDebugOptional(
+            "interface.currentFolderBar",
+            `Early Exit: no current folder bar in tab mode ${tabMode} !`
+          );
+          return false;
+        }
+        doc3pane = QuickFolders.Util.document3pane; // wrong, but hack for now to use 1st folder tab
+        util.logDebugOptional(
+          "interface.currentFolderBar",
+          "Fallback to global document3pane!",
+          doc3pane
+        );
+      }
+      if (!tabMode) {
+        isSingleMessageWindow = true;
+      }
 
+      collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
+      collapseConfigItem(
+        "QuickFolders-currentFolderFilterActive",
+        "currentFolderBar.showFilterButton"
+      );
+      collapseConfigItem(
+        "QuickFolders-Recent-CurrentFolderTool",
+        "currentFolderBar.showRecentButton"
+      );
+      collapseConfigItem(
+        "QuickFolders-currentFolderMailFolderCommands",
+        "currentFolderBar.showFolderMenuButton"
+      );
+      collapseConfigItem(
+        "QuickFolders-currentFolderIconCommands",
+        "currentFolderBar.showIconButtons"
+      );
+      collapseConfigItem("QuickFolders-findRelated", QuickFolders.Preferences.supportsFindRelated);
+      let repairBtn = collapseConfigItem(
+        "QuickFolders-RepairFolderBtn",
+        "currentFolderBar.showRepairFolderButton"
+      );
+      if (repairBtn && repairBtn.getAttribute("collapsed") == "false") {
+        repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
+      }
 
-			// In Thunderbird 115 the style sheet is in a separate document.
-			let toolbar2 = doc3pane.getElementById ("QuickFolders-CurrentFolderTools");
-			if (toolbar2) {
-				// selected or current message / (FUTURE) thread dragging; let's piggyback "isThread"...
-				// FUTURE: use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
-				//         this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
-				let button = toolbar2.querySelector("#QuickFolders-CurrentMail");
-				if (button) {
-					this.setEventAttribute(button, "ondragstart","QuickFolders.messageDragObserver.startDrag(event,true)");
-				}			
-				
-				let theme = prefs.CurrentTheme,
-						ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
-						background = prefs.getStringPref("currentFolderBar.background"),
-            presetChoice = prefs.getStringPref("currentFolderBar.background.selection"); // needed for fill!
-        toolbar2.setAttribute("theme",presetChoice);
-				if (ss) try {
-					styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools", "background-image", background, true);
-
-					let mw = util.$("messengerWindow");
-					if (mw) {
-						let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
-						if (prefs.getBoolPref("currentFolderBar.background.lightweight")) {
-							if (backImage && backImage!="none") {
-								styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", backImage);  
-							} else {
-								styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "var(--lwt-header-image)", true);
-							}
-							styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-position", "right 0px top -75%"); 
-							styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "0.98");
-						}
-						else {
-							styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "none"); // was #QuickFolders-PreviewToolbarPanel
-							styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "1.0");
-						}
-					}
-					let ftCol = 
-						prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
-						prefs.getStringPref("currentFolderBar.iconcolor") :
-						"currentColor";
-					styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] > toolbarbutton.icon", "fill", ftCol);
-					// don't overwrite the navigation button as it leads to illegible text!
-					// styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
-				} catch (ex) {
-					util.logDebugOptional("interface.currentFolderBar", "no style sheet.");
-				}
-        
-				// find (and move) button if necessary
-				let cF = toolbar2.querySelector("[id=QuickFoldersCurrentFolder]"),
-				    leftSpace = doc3pane.getElementById("QF-CurrentLeftSpacer"),
-				    rightSpace = doc3pane.getElementById("QF-CurrentRightSpacer");
-				leftSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexLeft"));
-				rightSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexRight"));
-
-				// add styling to current folder via a fake container
-				if (cF && cF.parentNode) {
-					cF.parentNode.className = theme.cssToolbarClassName;
+      // In Thunderbird 115 the style sheet is in a separate document.
+      let toolbar2 = doc3pane.getElementById("QuickFolders-CurrentFolderTools");
+      if (toolbar2) {
+        // selected or current message / (FUTURE) thread dragging; let's piggyback "isThread"...
+        // FUTURE: use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
+        //         this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
+        let button = toolbar2.querySelector("#QuickFolders-CurrentMail");
+        if (button) {
+          this.setEventAttribute(
+            button,
+            "ondragstart",
+            "QuickFolders.messageDragObserver.startDrag(event,true)"
+          );
         }
 
-				// set current Folder 
-				// support larger fonts - should have a knock-on effect for min-height
-				let fontSize = prefs.ButtonFontSize || 12; // default size
-				toolbar2.style.fontSize = `${fontSize}px`;
-				cF.style.fontSize = `${fontSize}px`;
-				
+        let theme = prefs.CurrentTheme,
+          ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
+          background = prefs.getStringPref("currentFolderBar.background"),
+          presetChoice = prefs.getStringPref("currentFolderBar.background.selection"); // needed for fill!
+        toolbar2.setAttribute("theme", presetChoice);
+        if (ss)
+          try {
+            styleEngine.setElementStyle(
+              ss,
+              "toolbar#QuickFolders-CurrentFolderTools",
+              "background-image",
+              background,
+              true
+            );
 
-				if (ss) {
-					QuickFolders.Interface.updateSharedToolbarStyles(ss);
-				}
-				
-				const isNoFolderMode = (tabMode !="mail3PaneTab");
+            let mw = util.$("messengerWindow");
+            if (mw) {
+              let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
+              if (prefs.getBoolPref("currentFolderBar.background.lightweight")) {
+                if (backImage && backImage != "none") {
+                  styleEngine.setElementStyle(
+                    ss,
+                    ".QuickFolders-NavigationPanel",
+                    "background-image",
+                    backImage
+                  );
+                } else {
+                  styleEngine.setElementStyle(
+                    ss,
+                    ".QuickFolders-NavigationPanel",
+                    "background-image",
+                    "var(--lwt-header-image)",
+                    true
+                  );
+                }
+                styleEngine.setElementStyle(
+                  ss,
+                  ".QuickFolders-NavigationPanel",
+                  "background-position",
+                  "right 0px top -75%"
+                );
+                styleEngine.setElementStyle(
+                  ss,
+                  "toolbar#QuickFolders-CurrentFolderTools",
+                  "opacity",
+                  "0.98"
+                );
+              } else {
+                styleEngine.setElementStyle(
+                  ss,
+                  ".QuickFolders-NavigationPanel",
+                  "background-image",
+                  "none"
+                ); // was #QuickFolders-PreviewToolbarPanel
+                styleEngine.setElementStyle(
+                  ss,
+                  "toolbar#QuickFolders-CurrentFolderTools",
+                  "opacity",
+                  "1.0"
+                );
+              }
+            }
+            let ftCol = prefs.getBoolPref("currentFolderBar.iconcolor.custom")
+              ? prefs.getStringPref("currentFolderBar.iconcolor")
+              : "currentColor";
+            styleEngine.setElementStyle(
+              ss,
+              "#QuickFolders-CurrentFolderTools[theme=custom] > toolbarbutton.icon",
+              "fill",
+              ftCol
+            );
+            // don't overwrite the navigation button as it leads to illegible text!
+            // styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
+          } catch (ex) {
+            util.logDebugOptional("interface.currentFolderBar", "no style sheet.");
+          }
 
-				let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
-						hideFolderNavigation = isNoFolderMode ||  !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons");
-						// retired currentFolderBar.navigation.showToggle
-				util.logDebugOptional("interface",
+        // find (and move) button if necessary
+        let cF = toolbar2.querySelector("[id=QuickFoldersCurrentFolder]"),
+          leftSpace = doc3pane.getElementById("QF-CurrentLeftSpacer"),
+          rightSpace = doc3pane.getElementById("QF-CurrentRightSpacer");
+        leftSpace.setAttribute("flex", prefs.getIntPref("currentFolderBar.flexLeft"));
+        rightSpace.setAttribute("flex", prefs.getIntPref("currentFolderBar.flexRight"));
+
+        // add styling to current folder via a fake container
+        if (cF && cF.parentNode) {
+          cF.parentNode.className = theme.cssToolbarClassName;
+        }
+
+        // set current Folder
+        // support larger fonts - should have a knock-on effect for min-height
+        let fontSize = prefs.ButtonFontSize || 12; // default size
+        toolbar2.style.fontSize = `${fontSize}px`;
+        cF.style.fontSize = `${fontSize}px`;
+
+        if (ss) {
+          QuickFolders.Interface.updateSharedToolbarStyles(ss);
+        }
+
+        const isNoFolderMode = tabMode != "mail3PaneTab";
+
+        let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
+          hideFolderNavigation =
+            isNoFolderMode || !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons");
+        // retired currentFolderBar.navigation.showToggle
+        util.logDebugOptional(
+          "interface",
           "Current Folder Bar - Collapsing optional Navigation Elements:\n" +
-				  "hideMsgNavigation=" + hideMsgNavigation + "\n" +
-				  "hideFolderNavigation=" + hideFolderNavigation + "\n"
-				);
+            "hideMsgNavigation=" +
+            hideMsgNavigation +
+            "\n" +
+            "hideFolderNavigation=" +
+            hideFolderNavigation +
+            "\n"
+        );
 
-				for (let n=0; n< toolbar2.children.length; n++) {
-					let node = toolbar2.children[n],
-							special = node.getAttribute("special");
-					if (special && special=="qfMsgFolderNavigation") {
-						node.collapsed = hideMsgNavigation;
-					} else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
-						// hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
-						node.collapsed = hideFolderNavigation;
-					}
-				}
-				const skippy = doc3pane.getElementById("quickFoldersSkipFolder");
-				if (skippy) {
-					skippy.collapsed = !prefs.getBoolPref("currentFolderBar.skipUnreadFolder");
-				}
-        
-        toolbar2.setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
-			}
+        for (let n = 0; n < toolbar2.children.length; n++) {
+          let node = toolbar2.children[n],
+            special = node.getAttribute("special");
+          if (special && special == "qfMsgFolderNavigation") {
+            node.collapsed = hideMsgNavigation;
+          } else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
+            // hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
+            node.collapsed = hideFolderNavigation;
+          }
+        }
+        const skippy = doc3pane.getElementById("quickFoldersSkipFolder");
+        if (skippy) {
+          skippy.collapsed = !prefs.getBoolPref("currentFolderBar.skipUnreadFolder");
+        }
 
-		}
+        toolbar2.setAttribute(
+          "iconsize",
+          prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"
+        ); // [issue 191]
+      }
+    }
     catch (ex) {
       util.logException("updateNavigationBar()", ex);
 			return false;
@@ -1778,127 +1860,139 @@ QuickFolders.Interface = {
 
 	windowKeyPress: function (e,dir) {
     function logEvent(eventTarget) {
-			try {
-				util.logDebugOptional("events", "KeyboardEvent on unknown target"
-					+ "\n" + "  id: " + (eventTarget.id || "(no id)")
-					+ "\n" + "  nodeName: " + (eventTarget.nodeName || "null")
-					+ "\n" + "  tagName: "  + (eventTarget.tagName || "none"));
-			}
-			catch (e) {;}
+      try {
+        util.logDebugOptional(
+          "events",
+          "KeyboardEvent on unknown target" +
+            "\n" +
+            "  id: " +
+            (eventTarget.id || "(no id)") +
+            "\n" +
+            "  nodeName: " +
+            (eventTarget.nodeName || "null") +
+            "\n" +
+            "  tagName: " +
+            (eventTarget.tagName || "none")
+        );
+      } catch (e) {}
     }
-		function logKey(event) {
-			if (!prefs.isDebugOption("events.keyboard")) return;
-      util.logDebugOptional("events.keyboard",
-				(isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "") +
-			  "key = " + e.key + " = "  + (e.key.toLowerCase() + "\n" +
-        "keyCode = " + e.keyCode));
-		}
+    function logKey(event) {
+      if (!prefs.isDebugOption("events.keyboard")) return;
+      util.logDebugOptional(
+        "events.keyboard",
+        (isAlt ? "ALT + " : "") +
+          (isCtrl ? "CTRL + " : "") +
+          (isShift ? "SHIFT + " : "") +
+          "key = " +
+          e.key +
+          " = " +
+          (e.key.toLowerCase() + "\n" + "keyCode = " + e.keyCode)
+      );
+    }
     const QI = QuickFolders.Interface,
-					util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences;
-		let isAlt = e.altKey,
-		    isCtrl = e.ctrlKey,
-		    isShift = e.shiftKey,
-        eventTarget = e.target,
-        isHandled = false,
-				isShortcutMatched = false,
-        tabmode = null; // move down to optimize text entries.
+      util = QuickFolders.Util,
+      prefs = QuickFolders.Preferences;
+    let isAlt = e.altKey,
+      isCtrl = e.ctrlKey,
+      isShift = e.shiftKey,
+      eventTarget = e.target,
+      isHandled = false,
+      isShortcutMatched = false,
+      tabmode = null; // move down to optimize text entries.
 
     // Ctrl+Alt+F for refresh, should always work.
-		if (isCtrl && isAlt && dir!="up" && prefs.isUseRebuildShortcut) {
-			if (e.key.toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
+    if (isCtrl && isAlt && dir != "up" && prefs.isUseRebuildShortcut) {
+      if (e.key.toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
         tabmode = QuickFolders.Interface.CurrentTabMode;
-        if ((tabmode == "mailMessageTab" || tabmode == "mail3PaneTab" || tabmode == '3pane')) {
+        if (tabmode == "mailMessageTab" || tabmode == "mail3PaneTab" || tabmode == "3pane") {
           this.updateFolders(true, false);
           try {
-            util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
-                + (isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "")
-                + prefs.RebuildShortcutKey);
+            util.logDebugOptional(
+              "events",
+              "Shortcuts rebuilt, after pressing " +
+                (isAlt ? "ALT + " : "") +
+                (isCtrl ? "CTRL + " : "") +
+                (isShift ? "SHIFT + " : "") +
+                prefs.RebuildShortcutKey
+            );
             util.showStatusMessage("QuickFolders tabs were rebuilt", true);
-          } catch(e) {;};
+          } catch (e) {}
         }
-			}
-		}
+      }
+    }
 
     // shortcuts should only work in thread tree, folder tree and email preview (exclude conversations as it might be in edit mode)
     let tag = eventTarget.tagName ? eventTarget.tagName.toLowerCase() : "";
-    if (   eventTarget.id != "threadTree"
-        && eventTarget.id != "folderTree"
-        && eventTarget.id != "accountTree"
-        && (
-          (tag
-            &&
-						[
-							"textarea",        			// Postbox quick reply
-							"textbox",         			// any textbox
-							"input",           			// Thunderbird 68 textboxes.
-							"html:input",      			// Thunderbird 78 textboxes.
-							"search-textbox", 		 	// Thunderbird 78 search boxes 
-							"xul:search-textbox",  	// Thunderbird 115 search boxes  [issue ]
-							"global-search-bar",    // Thunderbird 115 global search [issue ]
-							"search-bar",           // Thunderbird 128 quick search
-							"findbar"              	// [Bug 26654] in-mail search
-						].includes(tag)
-          )
-					||
-					(eventTarget.baseURI
-					  &&
-					 eventTarget.baseURI.toString().lastIndexOf("chrome://conversations",0)===0) // Bug 26202. replaced startswith
-				)
-       )
-    {
+    if (
+			!["threadTree","folderTree","accountTree"].includes(eventTarget.id) &&
+      ((tag &&
+        [
+          "textarea", // Postbox quick reply
+          "textbox", // any textbox
+          "input", // Thunderbird 68 textboxes.
+          "html:input", // Thunderbird 78 textboxes.
+          "search-textbox", // Thunderbird 78 search boxes
+          "xul:search-textbox", // Thunderbird 115 search boxes  [issue ]
+          "global-search-bar", // Thunderbird 115 global search [issue ]
+          "search-bar", // Thunderbird 128 quick search
+          "findbar", // [Bug 26654] in-mail search
+        ].includes(tag)) ||
+        (eventTarget.baseURI &&
+          eventTarget.baseURI.toString().lastIndexOf("chrome://conversations", 0) === 0)) // Bug 26202. replaced startswith
+    ) {
       logEvent(eventTarget);
       return;
     }
-
-
-
+		// QNote and other web extensions.
+		if (eventTarget.classList && eventTarget.classList.contains("webextension-popup-browser")) {
+			return;
+    }
 		// tag = body for CTRL+F (in mail search)
-    if (!tabmode) tabmode = QuickFolders.Interface.CurrentTabMode;
-		if (["mailMessageTab", "mail3PaneTab", "folder", "3pane", "glodaList"].includes(tabmode)) {
-			logKey(e);
+		tabmode = tabmode || QuickFolders.Interface.CurrentTabMode;
+    if (["mailMessageTab", "mail3PaneTab", "folder", "3pane", "glodaList"].includes(tabmode)) {
+      logKey(e);
       let QuickMove = QuickFolders.quickMove;
       // only Pro users get the shortcuts!!
-      if (util.hasValidLicense() && util.licenseInfo.keyType!=2) {
-				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!="up",
-            isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!="up",
-				    theKeyPressed = e.key.toLowerCase();
-				util.logDebugOptional("premium.quickJump", "hasValidLicense = true\n" +
-				  "quickJump Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
-				  "quickMove Shortcut = " + prefs.isQuickMoveShortcut + ", " + prefs.QuickMoveShortcutKey + "\n" +
-					"Key Pressed: [" + theKeyPressed + "]");
+      if (util.hasValidLicense() && util.licenseInfo.keyType != 2) {
+        let isShiftOnly = !isAlt && !isCtrl && isShift && dir != "up",
+          isNoAccelerator = !isAlt && !isCtrl && !isShift && dir != "up",
+          theKeyPressed = e.key.toLowerCase();
+        util.logDebugOptional(
+          "premium.quickJump",
+          "hasValidLicense = true\n" +
+            `quickJump Shortcut = ${prefs.isQuickJumpShortcut}, ${prefs.QuickJumpShortcutKey}\n` +
+            `quickMove Shortcut = ${prefs.isQuickMoveShortcut}, ${prefs.QuickMoveShortcutKey}\n` +
+            `Key Pressed: [${theKeyPressed}]`
+        );
 
         /** [SHIFT-]J  Jump to Folder **/
         if ((isShiftOnly || isNoAccelerator) && prefs.isQuickJumpShortcut) {
           let requireShift = prefs.isQuickJumpShift;
-          if (theKeyPressed == prefs.QuickJumpShortcutKey.toLowerCase()
-              && (isShiftOnly && requireShift || !isShiftOnly && !requireShift)
-              ) {
-						isShortcutMatched = true;
+          if (
+            theKeyPressed == prefs.QuickJumpShortcutKey.toLowerCase() &&
+            ((isShiftOnly && requireShift) || (!isShiftOnly && !requireShift))
+          ) {
+            isShortcutMatched = true;
             logEvent(eventTarget);
             if (QuickMove.isActive && QuickMove.hasMails) {
-              if (!QuickMove.suspended)
-                QuickMove.toggleSuspendMove(); // suspend move to jump; also reflect in menu.
+              if (!QuickMove.suspended) QuickMove.toggleSuspendMove(); // suspend move to jump; also reflect in menu.
               QuickMove.suspended = true; // for safety in case previous UI operation goes wrong
             }
             QuickFolders.Interface.findFolder(true, "quickJump");
             isHandled = true;
           }
-        }
-				else
-					util.logDebugOptional("premium.quickJump","jump conditions not fullfilled");
+        } else util.logDebugOptional("premium.quickJump", "jump conditions not fullfilled");
 
         /** [SHIFT-]M  Move to Folder **/
         /** [SHIFT-]T  Copy to Folder **/
         /** SHIFT-S  Skip Folder **/
         if ((isShiftOnly || isNoAccelerator) && !isHandled) {
-          let ismove = (theKeyPressed == prefs.QuickMoveShortcutKey.toLowerCase()),
-              iscopy = (theKeyPressed == prefs.QuickCopyShortcutKey.toLowerCase());
-          if (ismove && prefs.isQuickMoveShortcut
-              ||
-              iscopy && prefs.isQuickCopyShortcut) {
-            let requireShift = (ismove && prefs.isQuickMoveShift) || (iscopy && prefs.isQuickCopyShift);
-						isShortcutMatched = (isShiftOnly && requireShift || !isShiftOnly && !requireShift);
+          let ismove = theKeyPressed == prefs.QuickMoveShortcutKey.toLowerCase(),
+            iscopy = theKeyPressed == prefs.QuickCopyShortcutKey.toLowerCase();
+          if ((ismove && prefs.isQuickMoveShortcut) || (iscopy && prefs.isQuickCopyShortcut)) {
+            let requireShift =
+              (ismove && prefs.isQuickMoveShift) || (iscopy && prefs.isQuickCopyShift);
+            isShortcutMatched = (isShiftOnly && requireShift) || (!isShiftOnly && !requireShift);
             if (isShortcutMatched) {
               logEvent(eventTarget);
               QuickMove.suspended = false;
@@ -1911,12 +2005,12 @@ QuickFolders.Interface = {
               // [issue 75] support moving folders through quickMove
               if (eventTarget && eventTarget.getAttribute("id") == "folderTree") {
                 let folders = GetSelectedMsgFolders(); // [issue 436]
-                if (folders.length) { 
+                if (folders.length) {
                   QuickMove.addFolders(folders, iscopy);
                   QuickMove.update();
                 }
               } else {
-                let messageUris  = util.getSelectedMsgUris();
+                let messageUris = util.getSelectedMsgUris();
                 if (messageUris) {
                   let currentFolder = util.CurrentFolder;
                   while (messageUris.length) {
@@ -1928,23 +2022,28 @@ QuickFolders.Interface = {
               isHandled = true;
             }
           } else {
-						if (isShiftOnly && prefs.isSkipFolderShortcut && (theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase())) {
-							QuickFolders.Interface.onSkipFolder();
-							isHandled = true;
-						}
-					}
+            if (
+              isShiftOnly &&
+              prefs.isSkipFolderShortcut &&
+              theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase()
+            ) {
+              QuickFolders.Interface.onSkipFolder();
+              isHandled = true;
+            }
+          }
         }
       } else {
-        if (util.licenseInfo.keyType == 2){
+        if (util.licenseInfo.keyType == 2) {
           util.logDebugOptional("premium.quickJump", "Standard license: no shortcuts supported");
-				} else {
+        } else {
           util.logDebugOptional("premium.quickJump", "hasValidLicense returned false");
-				}
-			}
+        }
+      }
     } // quickMove / quickJump
 
-    if (["mail3PaneTab", "folder", "3pane"].includes(tabmode)) { // only allow these shortcuts on the 3pane window!
-      if (!isCtrl && isAlt && (dir != "up") && prefs.isUseNavigateShortcuts) {
+    if (["mail3PaneTab", "folder", "3pane"].includes(tabmode)) {
+      // only allow these shortcuts on the 3pane window!
+      if (!isCtrl && isAlt && dir != "up" && prefs.isUseNavigateShortcuts) {
         switch (e.code) {
           case "ArrowUp":
             this.goUpFolder();
@@ -1953,17 +2052,17 @@ QuickFolders.Interface = {
           case "ArrowLeft":
             if (!this.goPreviousQuickFolder()) {
               this.goPreviousSiblingFolder();
-						}
+            }
             isHandled = true;
             break;
           case "ArrowRight":
             if (!this.goNextQuickFolder()) {
               this.goNextSiblingFolder();
-						}
+            }
             isHandled = true;
             break;
-          case "ArrowDown":
-          { // ALT + down
+          case "ArrowDown": {
+            // ALT + down
             let f = util.CurrentFolder;
             if (f) {
               // let folderEntry = QuickFolders.Model.getFolderEntry(f.URI);
@@ -1971,23 +2070,23 @@ QuickFolders.Interface = {
               if (!btn) {
                 // trigger the context menu of current folder button, if it is on screen
                 let toolpanel = QI.CurrentFolderBar;
-                if (toolpanel && toolpanel.parentNode.style["display"]!="none") {
+                if (toolpanel && toolpanel.parentNode.style["display"] != "none") {
                   btn = QuickFolders.Interface.CurrentFolderTab;
                 }
               }
               if (btn) {
                 let popupId = btn.getAttribute("popupId");
-                if (popupId) { // linux avoid this getting triggered twice
+                if (popupId) {
+                  // linux avoid this getting triggered twice
                   let activePopup = document.getElementById(popupId);
 
                   if (document.getElementById(popupId))
-                  // show only subfolders, without commands!
-                  QI.showPopup(btn, popupId, null, true); // leave event argument empty
-                }
-                else {
+                    // show only subfolders, without commands!
+                    QI.showPopup(btn, popupId, null, true); // leave event argument empty
+                } else {
                   if (btn.hasContextListener) {
                     let event = document.createEvent("mouseevent");
-                    event.QFtype="NavDown"; // use this to signal popup menu to focus on first subfolder
+                    event.QFtype = "NavDown"; // use this to signal popup menu to focus on first subfolder
                     event.initEvent("contextmenu", true, true);
                     btn.dispatchEvent(event);
                   }
@@ -1996,56 +2095,81 @@ QuickFolders.Interface = {
             }
             isHandled = true;
           }
-          
         } // code switch
       }
 
       if (prefs.isUseKeyboardShortcuts) {
         let shouldBeHandled =
-          (!prefs.isUseKeyboardShortcutsCTRL && isAlt)
-          ||
+          (!prefs.isUseKeyboardShortcutsCTRL && isAlt) ||
           (prefs.isUseKeyboardShortcutsCTRL && isCtrl);
 
         if (shouldBeHandled) {
-          let sFriendly = (isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "") + e.key + " : code=" + e.code,
-              shortcut = -1;
+          let sFriendly =
+              (isAlt ? "ALT + " : "") +
+              (isCtrl ? "CTRL + " : "") +
+              (isShift ? "SHIFT + " : "") +
+              e.key +
+              " : code=" +
+              e.code,
+            shortcut = -1;
           util.logDebugOptional("events", "windowKeyPress[" + dir + "]" + sFriendly);
           // determine the shortcut number
-          
+
           if (dir == "up" || dir == "down") {
             switch (e.code) {
-              case "Digit0": shortcut = 0; break;
-              case "Digit1": shortcut = 1; break;
-              case "Digit2": shortcut = 2; break;
-              case "Digit3": shortcut = 3; break;
-              case "Digit4": shortcut = 4; break;
-              case "Digit5": shortcut = 5; break;
-              case "Digit6": shortcut = 6; break;
-              case "Digit7": shortcut = 7; break;
-              case "Digit8": shortcut = 8; break;
-              case "Digit9": shortcut = 9; break;
+              case "Digit0":
+                shortcut = 0;
+                break;
+              case "Digit1":
+                shortcut = 1;
+                break;
+              case "Digit2":
+                shortcut = 2;
+                break;
+              case "Digit3":
+                shortcut = 3;
+                break;
+              case "Digit4":
+                shortcut = 4;
+                break;
+              case "Digit5":
+                shortcut = 5;
+                break;
+              case "Digit6":
+                shortcut = 6;
+                break;
+              case "Digit7":
+                shortcut = 7;
+                break;
+              case "Digit8":
+                shortcut = 8;
+                break;
+              case "Digit9":
+                shortcut = 9;
+                break;
             }
           }
 
           if (shortcut >= 0 && shortcut < 10) {
             isHandled = true;
             if (dir == "up") return; // [issue 493]
-            if(shortcut == 0) {
+            if (shortcut == 0) {
               shortcut = 10;
             }
 
             //alert(shortcut);
-            let offset = prefs.isShowRecentTab ? shortcut+1 : shortcut,
-                button = this.buttonsByOffset[offset - 1];
-            if(button) {
-              if(isShift) {
-								// replacing MsgMoveMessage() function
-								const makeCopy = false;
-								let uris = QuickFolders.Util.getSelectedMsgUris();
-								QuickFolders.Util.moveMessages(button.folder, uris, makeCopy);
-							} else {
-                this.onButtonClick(button,e,false);
-							}
+            let offset = prefs.isShowRecentTab ? shortcut + 1 : shortcut,
+              button = this.buttonsByOffset[offset - 1];
+						util.logDebugOptional("events", "shortcut is between 0...9", {button, offset});
+            if (button) {
+              if (isShift) {
+                // replacing MsgMoveMessage() function
+                const makeCopy = false;
+                let uris = QuickFolders.Util.getSelectedMsgUris();
+                QuickFolders.Util.moveMessages(button.folder, uris, makeCopy);
+              } else {
+                this.onButtonClick(button, e, false);
+              }
             }
           }
         }
@@ -2055,10 +2179,14 @@ QuickFolders.Interface = {
       e.preventDefault();
       e.stopPropagation();
     } else if (isShortcutMatched) {
-			util.logDebugOptional("events.keyboard", "quickJump / quickMove Shortcut was matched but not consumed.\n"
-			  + "suspended=" + QuickFolders.quickMove.suspended);
-		}
-	} ,
+      util.logDebugOptional(
+        "events.keyboard",
+        "quickJump / quickMove Shortcut was matched but not consumed.\n" +
+          "suspended=" +
+          QuickFolders.quickMove.suspended
+      );
+    }
+  } ,
 
 	getButtonByFolder: function(folder) {
 		for (let i = 0; i < this.buttonsByOffset.length; i++) {
@@ -6922,7 +7050,7 @@ QuickFolders.Interface = {
 			const isFromWindow = optionsOrEvent["isFromWindow"] || false;
 			const isCurrent = !isEvent && !isFromWindow && (typeof optionsOrEvent.display == "boolean")  && !(optionsOrEvent.doc); // toggle, from a dropdown menu
 
-			let selector = typeof (optionsOrEvent.selector == "string") ? optionsOrEvent.selector : "";
+			let selector = typeof (optionsOrEvent.selector) == "string" ? optionsOrEvent.selector : "";
 
       // determine selector from context
       const windowType = document.getElementById("messengerWindow").getAttribute("windowtype");
@@ -6973,8 +7101,7 @@ QuickFolders.Interface = {
 						doc = win.document;
 						break;
 				}
-			}
-			else {
+			} else {
 				doc = optionsOrEvent.doc;
 			}
       
@@ -6985,6 +7112,10 @@ QuickFolders.Interface = {
           + "|  not changing UI, early exit: doc is empty!"      + "\n"
           + "|================================================|"  );
         return;
+      }
+			// hide current folder bar if no folder => search results!
+			if (!doc.defaultView.tabOrWindow.folder) {
+        isVisible = false; // search results cannot use this
       }
 
 			let toolbarId = "QuickFolders-PreviewToolbarPanel"; // (selector=="messageWindow") ? "QuickFolders-PreviewToolbarPanel-Single" : 
