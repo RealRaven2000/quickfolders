@@ -102,7 +102,7 @@ async function onLoad(activatedWhileWindowOpen) {
     <toolbarbutton id="QuickFolders-findRelated"
       class="icon"
       tooltiptext="__MSG_findRelated.prompt.title__"
-      onclick="QuickFolders.Interface.findRelated(event);"
+      onclick="QuickFolders.Interface.findRelated_Click(event);"
        />    
 
     <toolbarseparator special="qfMsgFolderNavigation" />

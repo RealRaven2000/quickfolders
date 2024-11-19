@@ -26,7 +26,10 @@ const activateTab = (event) => {
     document.getElementById(activeTabSheetId).classList.add("active");
     btn.classList.add("active");
     // store last selected tab
-    browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", btn.getAttribute("tabNo"));
+    browser.LegacyPrefs.setPref(
+      "extensions.quickfolders.lastSelectedOptionsTab",
+      btn.getAttribute("tabId")
+    );
   }
 }
 
@@ -667,15 +670,15 @@ async function loadPrefs() {
 	}  
 }
 
-
 // preselect the correct tab.
 // force a mode "helpOnly" "supportOnly" "licenseKey"
+// change selectedTab from numeral to string!!
 async function preselectTab(mode=null) {
   let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab"),
       selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
     // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
-  let selTab = optionParams ? optionParams.get("selectedTab") : "";
+  let selTab = optionParams ? optionParams.get("selectedTab") : ""; 
   if (!mode) {
     mode = optionParams ? optionParams.get("mode") : "";
   }
@@ -684,13 +687,13 @@ async function preselectTab(mode=null) {
   }
   switch (mode) {
     case "helpOnly":
-      selectOptionsPane = 3;
+      selectOptionsPane = "help";
       break;
     case "supportOnly":
-      selectOptionsPane = 4;
+      selectOptionsPane = "support";
       break;
     case "licenseKey":
-      selectOptionsPane = 5;
+      selectOptionsPane = "license";
       break;
     default:
       if (mode) {
@@ -700,7 +703,7 @@ async function preselectTab(mode=null) {
   // select the tab:
   let tabs = document.querySelectorAll("#QuickFolders-Options-Tabbox button");
   Array.from(tabs).forEach(button => {
-    if (button.getAttribute("tabNo").toString() == selectOptionsPane.toString()) {
+    if (button.getAttribute("tabId").toString() == selectOptionsPane.toString()) {
       selectedTabElement = button;
     }
   });

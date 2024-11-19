@@ -1054,8 +1054,8 @@ QuickFolders.Options = {
     hdr.setAttribute("collapsed", true);
   },
 
-  selectRelatedFields:  function(sectionId, selectionArray) {
-    QuickFolders.Util.logDebug("selected item with:", { sectionId, selectionArray });    
+  selectRelatedFields_toCheckboxes: function (sectionId, selectionArray) {
+    QuickFolders.Util.logDebug("selected item with:", { sectionId, selectionArray });
     const sec = document.getElementById(sectionId);
     if (!sec) return;
     const chkOptions = sec.querySelectorAll("input[type=checkbox]");
@@ -1071,12 +1071,11 @@ QuickFolders.Options = {
       selectionArray.map((item) => (item === "author" ? "sender" : item));
       option.checked = selectionArray.some((el) => el === searchType);
     }
-  },  
+  },
 
-  selectFindRelated: async function (evt) {
-
+  selectFindRelated_listItem: async function (evt) {
     function parseFields(arrayString) {
-      const results =  JSON.parse(arrayString || "[]");
+      const results = JSON.parse(arrayString || "[]");
 
       return results;
     }
@@ -1084,8 +1083,8 @@ QuickFolders.Options = {
     if (idx < 0) {
       return;
     }
-    let selOption = evt.target.selectedOptions[0];
-    console.log("selectFindRelated", evt, selOption);
+    let selOption = evt.target.selectedOptions[0]; // first in selection!
+    console.log("selectFindRelated_listItem", evt, selOption);
     if (isNaN(selOption.value)) {
       return;
     }
@@ -1099,8 +1098,8 @@ QuickFolders.Options = {
     // subject, sender, recipients, body
     // the default term 'author' (wrong!) needs to be replaced with 'sender'
 
-    this.selectRelatedFields("searchSelectedFields", parseFields(item.searchSelected));
-    this.selectRelatedFields("searchCriteriaFields", parseFields(item.searchCriteria));
+    this.selectRelatedFields_toCheckboxes("searchSelectedFields", parseFields(item.searchSelected));
+    this.selectRelatedFields_toCheckboxes("searchCriteriaFields", parseFields(item.searchCriteria));
   },
   loadFindRelated: async function () {
     const prefs = QuickFolders.Preferences;
@@ -1109,7 +1108,7 @@ QuickFolders.Options = {
     try {
       findRelatedList = JSON.parse(jsonList || "{}");
     } catch (ex) {
-      util.logException(
+      QuickFolders.Util.logException(
         "Exception during QuickFolders.Options.configureRelatedTab: ",
         { jsonList },
         ex
@@ -1128,30 +1127,143 @@ QuickFolders.Options = {
         searchSelected: await prefs.getStringPref("findRelated.searchSelected"), // containing an array of options
         searchCriteria: await prefs.getStringPref("findRelated.searchCriteria"), // containing an array of options
       });
-      console.log("loadFindRelated retrieved:" , { findRelatedList });
+      console.log("loadFindRelated retrieved:", { findRelatedList });
     }
-    return findRelatedList;     
+    return findRelatedList;
   },
+  storeFindRelated: async function (findRel) {
+    const prefs = QuickFolders.Preferences;
+    // load the different items
+
+    QuickFolders.Util.logMissing("QuickFolders.Options.storeFindRelated()");
+    const jsonList = JSON.stringify(findRel);
+    await prefs.setStringPref("findRelated.list", jsonList);
+  },
+
+  readFindRelatedFromUI: async function () {
+    function buildSelectionString(optionElements) {
+      const fields = [];
+      for (let f of optionElements) {
+        console.log(f);
+        if (f.checked) {
+          fields.push(f.getAttribute("term"));
+        }
+      }
+      return JSON.stringify(fields); // make these json arrays for easier storage
+    }
+    const search = {
+      title: document.getElementById("findRelatedTitle").value,
+      pattern: document.getElementById("findRelatedPattern").value,
+      group: parseInt(document.getElementById("findRelatedGroup").value, 10) || 0,
+    };
+    const searchSelectedFields = document
+      .getElementById("searchSelectedFields")
+      .querySelectorAll("input[type=checkbox]");
+    search.searchSelected = buildSelectionString(searchSelectedFields);
+
+    const searchCriteriaFields = document
+      .getElementById("searchCriteriaFields")
+      .querySelectorAll("input[type=checkbox]");
+    search.searchCriteria = buildSelectionString(searchCriteriaFields);
+    return search;
+  },
+
+  addFindRelated: async function () {
+    const listElement = document.getElementById("findRelatedList");
+    const idx = listElement.selectedIndex;
+    if (idx < 0) return;
+
+    const search = await QuickFolders.Options.readFindRelatedFromUI();
+    let findRelatedList = await QuickFolders.Options.loadFindRelated();
+    console.log("add to findRelated item:", {
+      el: search,
+    });
+    findRelatedList.items.push(search);
+    const option = new Option(search.title, findRelatedList.length); 
+    listElement.options.add(option);
+
+    console.log("new findRelated item:", { search });
+    this.storeFindRelated(findRelatedList);
+  },
+
+  updateFindRelated: async function () {
+    console.log("update");
+    const listElement = document.getElementById("findRelatedList");
+    // update element:
+    const idx = listElement.selectedIndex;
+    if (idx < 0) return;
+    const search = await QuickFolders.Options.readFindRelatedFromUI();
+
+    let findRelatedList = await QuickFolders.Options.loadFindRelated();
+    console.log("update findRelated item:", { el: findRelatedList.items[idx] });
+
+    let selectedOption = listElement.options.item(idx);
+    selectedOption.label = search.title; // only update title, update backend for the rest
+
+    let theElement = findRelatedList.items[idx];
+    for (const key in search) {
+      if (search.hasOwnProperty(key)) {
+        // Check if the property is one of the JSON string fields and convert as needed
+        if (key === "searchSelected" || key === "searchCriteria") {
+          try {
+            theElement[key] = JSON.parse(search[key]) ? search[key] : "[]"; // string: json array
+          } catch (e) {
+            // If it's not a valid JSON string, store it as a simple string
+            theElement[key] = search[key];
+          }
+        } else {
+          // Copy other properties as they are
+          theElement[key] = search[key];
+        }
+      }
+    }
+    console.log("updated item:", { element: theElement, index: idx, findRelatedList });
+    this.storeFindRelated(findRelatedList);
+  },
+
+  removeFindRelated: async function () {
+    console.log("remove");
+    const findRelatedList = await QuickFolders.Options.loadFindRelated();
+    const listElement = document.getElementById("findRelatedList");
+    const idx = listElement.selectedIndex;
+    if (idx < 0) return;
+    console.log("delete findRelated item:", { listElement });
+    const deleted = findRelatedList.items.splice(idx, 1); // returns array of deleted
+    listElement.remove(idx);
+    console.log("removed item:", { ...deleted });
+    this.storeFindRelated(findRelatedList);
+  },
+
   populateFindRelated: async function (listElement) {
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
     console.log(`populateFindRelated - ${findRelatedList.items.length} items`, listElement);
     // HTMLOptionsCollection
     for (let i = 0; i < findRelatedList.items.length; i++) {
-      const item = findRelatedList.items[0];
+      const item = findRelatedList.items[i];
       const option = new Option(item.title, i, i == 0, i == 0); // select first element
       listElement.options.add(option);
     }
     listElement.dispatchEvent(new Event("change", { bubbles: true }));
   },
+
   configureRelatedTab: async function () {
     // load the different items
     let findRelatedTab = document.querySelector(".qfFindRelated");
     if (!findRelatedTab.getAttribute("collapsed")) {
       let related = document.getElementById("findRelatedList");
       related.addEventListener("change", (evt) => {
-        QuickFolders.Options.selectFindRelated(evt);
+        QuickFolders.Options.selectFindRelated_listItem(evt);
       });
       QuickFolders.Options.populateFindRelated(related);
+      document.getElementById("addFindRelated").addEventListener("click", (evt) => {
+        QuickFolders.Options.addFindRelated();
+      });
+      document.getElementById("updateFindRelated").addEventListener("click", (evt) => {
+        QuickFolders.Options.updateFindRelated();
+      });
+      document.getElementById("deleteFindRelated").addEventListener("click", (evt) => {
+        QuickFolders.Options.removeFindRelated();
+      });
     }
   },
 };  // QuickFolders.Options

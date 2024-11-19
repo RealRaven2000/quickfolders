@@ -150,12 +150,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Vind vergelijkbare e-mails op basis van de geselecteerde e-mail en door de gebruiker gedefinieerde zoekpatronen"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Zoekpatronen configureren…"
+  },
   "findRelated.prompt.title": {
     "message": "Zoek gerelateerde e-mails: Patroon zoeken"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Voer een zoekpatroon in!"
+    "message": "Om deze functie te gebruiken, hoef je slechts één zoekpatroon in te stellen."
   },
   "freeLicense": {
     "message": "Als u onlangs aan het QuickFolders-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met mij op via het tabblad Ondersteuning in de QuickFolders-opties."
@@ -212,7 +215,7 @@
   },
   "keyshortcuts.news": {
     "message": "Momenteel gebruikt Thunderbird deze als ingebouwde sneltoetsen, maar je kunt ze vrijmaken met de Add-on tbkeys lite. Klik op de (?) knop voor meer informatie:"
-  },  
+  },
   "lastName.label": {
     "message": "Achternaam:"
   },
@@ -294,7 +297,7 @@
   },
   "pricing.section.hint": {
     "message": "Opmerking: de prijs varieert afhankelijk van het licentiemodel, het land, het btw-tarief, huidige kortingen of reeds gekochte licenties."
-  },  
+  },
   "pricing.title": {
     "message": "Prijzen"
   },
@@ -871,7 +874,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Menugrootte (0 voor standaard):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Menu-instellingen"
   },
@@ -976,7 +979,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Licentiestatus controleren…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Ongeldige tabbladen verwijderen"
   },
@@ -1334,7 +1337,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Aangepaste pictogramgrootte"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Grote werkbalkpictogrammen"
   },
@@ -1346,7 +1349,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Bovenste opvulling"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Recente mappen"
   },
@@ -1395,10 +1398,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Huidige conversatie - sleep naar een QuickFolders-tabblad om conversatie te verplaatsen"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Updates"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },
   "qf.youtube.description": {
@@ -1535,7 +1538,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Berichten zoeken"
-  },  
+  },
   "qfGetMail": {
     "message": "Berichten ophalen"
   },
@@ -1559,7 +1562,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Markeer alle nieuwsberichten als gelezen"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Map + submappen als gelezen markeren"
   },
@@ -1816,7 +1819,7 @@
   },
   "special-offer-expiry": {
     "message": "29 april"
-  },    
+  },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1922,7 +1925,7 @@
   },
   "whats-new-list": {
     "message": "{L1} Nieuwe functie om gerelateerde e-mails te vinden via zoektermen die zijn geëxtraheerd uit de momenteel weergegeven e-mail. [issue 488]{L2}{L1} Verbeterde ondersteuning voor het donkere thema [issue 489]{L2}{L1} Compatibiliteit met Thunderbird 130 {L2}{L1} Opgelost: Sneltoetsen (zoals ALT+Links, ALT+Rechts) werkten niet meer in Tb 128. {L2}{L1} Opgelost: Meldingspop-up voor beperkte functies veroorzaakte een uitzondering. {L2}{L1} Bekend probleem: Momenteel mislukt de verificatie van QuickFolders-licenties wanneer de licentie is gekoppeld aan een Exchange-account dat wordt benaderd met Owl. Dit komt door een bug in de Webextensions API die binnenkort door Thunderbird wordt opgelost. Als je problemen hiermee ondervindt, neem dan rechtstreeks contact met mij op via de ondersteuningspagina in de QuickFolders-instellingen.{L2}"
-  },  
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Welkom bij $addonName$",

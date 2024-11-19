@@ -150,12 +150,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "根據所選郵件和用戶定義的搜索模式查找類似郵件"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "設定搜尋模式…"
+  },
   "findRelated.prompt.title": {
     "message": "查找相關郵件：模式搜索"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "請輸入搜索模式！"
+    "message": "要使用此功能，您只需設定至少一個搜尋模式。"
   },
   "freeLicense": {
     "message": "如果您最近贊助QuickFolders計畫或分擔一些工作，像是翻譯或撰寫修補程式，您將可以獲得一個免費的購買證明金鑰。請從QuickFolders選項中的支援分頁跟我聯絡。"
@@ -212,7 +215,7 @@
   },
   "keyshortcuts.news": {
     "message": "目前，Thunderbird 使用這些作為內建快速鍵，但您可以使用附加元件 tbkeys lite 來釋放它們。按一下 (?) 按鈕以取得更多資訊："
-  },  
+  },
   "lastName.label": {
     "message": "姓："
   },
@@ -294,7 +297,7 @@
   },
   "pricing.section.hint": {
     "message": "注意：價格因許可證型號、國家/地區、增值稅稅率、當前折扣或已購買的許可證而異。"
-  },  
+  },
   "pricing.title": {
     "message": "價錢"
   },
@@ -317,7 +320,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "備份 / 還原"
   },
@@ -988,7 +991,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "檢查許可證狀態..."
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "刪除無效標籤"
   },
@@ -1322,7 +1325,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "自訂圖示大小"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "大工具欄圖標"
   },
@@ -1334,7 +1337,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "頂部填充"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "最近使用的資料夾"
   },
@@ -1383,10 +1386,10 @@
   "qf.tooltip.threadIcon": {
     "message": "現在的主題郵件串 - 拖曳至QuickFolders分頁來移動對話串"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "更新"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "不要打開帶有版本歷史記錄的選項卡"
   },
   "qf.youtube.description": {
@@ -1502,7 +1505,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "搜尋郵件"
-  },   
+  },
   "qfGetMail": {
     "message": "获取消息"
   },
@@ -1521,7 +1524,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "將所有新聞標記為已讀"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "標記 資料夾 + 子資料夾 為已讀"
   },
@@ -1766,7 +1769,7 @@
   },
   "special-offer-expiry": {
     "message": "4月29日"
-  },  
+  },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
     "placeholders": {

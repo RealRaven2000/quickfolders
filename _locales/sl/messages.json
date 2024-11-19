@@ -138,12 +138,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Poišči podobna e-poštna sporočila na podlagi izbranega sporočila in vzorcev iskanja, ki jih določi uporabnik"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Nastavi iskalne vzorce…"
+  },
   "findRelated.prompt.title": {
     "message": "Najdi povezane e-pošte: Iskanje po vzorcu"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Prosimo, vnesite iskalni vzorec!"
+    "message": "Za uporabo te funkcije je dovolj, da nastavite vsaj en iskalni vzorec."
   },
   "freeLicense": {
     "message": "V primeru, da ste nedavno prispevali k projektu QuickFolders ali ste sodelovali pri razvoju, kot je prevajanje ali pisanje popravkov, ste morda upravičeni do brezplačnega ključa za dovoljenje. Navežite stik z mano iz zavihka za podporo v možnostih QuickFolders."
@@ -282,7 +285,7 @@
   },
   "pricing.section.hint": {
     "message": "Opomba: Cena se razlikuje glede na model licence, državo, stopnjo DDV, trenutne popuste ali že kupljene licence."
-  },  
+  },
   "pricing.title": {
     "message": "Cenitev"
   },
@@ -305,7 +308,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Varnostno kopiranje / obnovitev"
   },
@@ -847,7 +850,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Velikost pisave menija (0 za privzeto):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Nastavitev menija"
   },
@@ -955,7 +958,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Preverite status licence…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Odstranite neveljavne zavihke"
   },
@@ -1304,7 +1307,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Prilagojena velikost ikone"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Velike ikone orodne vrstice"
   },
@@ -1316,7 +1319,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Vrhnji rob"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Nedavne mape"
   },
@@ -1493,7 +1496,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Iskanje sporočil"
-  },  
+  },
   "qfGetMail": {
     "message": "Prejmi sporočila"
   },
@@ -1523,7 +1526,7 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Označi mapo + podmape kot prebrane"
-  },     
+  },
   "qfMenuColor": {
     "message": "Barva"
   },
@@ -1765,7 +1768,7 @@
   },
   "special-offer-expiry": {
     "message": "29. april"
-  },  
+  },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1871,7 +1874,7 @@
   },
   "whats-new-list": {
     "message": "{L1} Nova funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega e-poštnega sporočila. [issue 488]{L2}{L1} Izboljšana podpora za temno temo [issue 489]{L2}{L1} Združljivost s Thunderbird 130 {L2}{L1} Popravljeno: Bližnjice na tipkovnici (kot sta ALT+Levo, ALT+Desno) so prenehale delovati v Tb 128. {L2}{L1} Popravljeno: Obvestilo za omejene funkcije je povzročilo izjemo. {L2}{L1} Znana težava: Trenutno preverjanje licenc QuickFolders ne uspe, ko je licenca vezana na račun Exchange, do katerega dostopate prek Owl. To je posledica napake v API-ju Webextensions, ki jo bo Thunderbird kmalu odpravil. Če imate težave s tem, me prosimo kontaktirajte neposredno prek strani za podporo v nastavitvah QuickFolders.{L2}"
-  },  
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Dobrodošli v $addonName$",

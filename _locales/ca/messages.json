@@ -154,12 +154,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Cerca correus similars basats en el correu seleccionat i en patrons de cerca definits per l'usuari"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Configura els patrons de cerca…"
+  },
   "findRelated.prompt.title": {
     "message": "Cercar correus relacionats: Cerca per patró"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Si us plau, introduïu un patró de cerca!"
+    "message": "Per utilitzar aquesta funció, només cal que configureu almenys un patró de cerca."
   },
   "freeLicense": {
     "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
@@ -216,7 +219,7 @@
   },
   "keyshortcuts.news": {
     "message": "Actualment, Thunderbird utilitza aquestes tecles com a dreceres integrades, però les pots alliberar utilitzant l'add-on tbkeys lite. Fes clic al botó (?) per obtenir més informació:"
-  },  
+  },
   "lastName.label": {
     "message": "Cognoms:"
   },
@@ -284,7 +287,7 @@
         "example": "QuickFolders"
       }
     }
-  }, 
+  },
   "newsSection.license": {
     "message": "Com que aquest treball es finança exclusivament amb la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessats a utilitzar QuickFolders en el futur."
   },
@@ -302,7 +305,7 @@
   },
   "pricing.section.hint": {
     "message": ""
-  },  
+  },
   "pricing.title": {
     "message": ""
   },
@@ -325,7 +328,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Còpia de seguretat / restauració"
   },
@@ -432,7 +435,7 @@
     "message": "Ressalta carpetes amb correu nou"
   },
   "qf.checkbox.highlightNewMail.outline": {
-  "message": "També ressalta el nom (millor amb fons foscos o de colors)"
+    "message": "També ressalta el nom (millor amb fons foscos o de colors)"
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrosegar a nova Subcarpeta"
@@ -984,7 +987,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Comprova l'estat de la llicència…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Elimina les pestanyes no vàlides"
   },
@@ -1379,10 +1382,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Conversa Actual - arrossega cap a una pestanaya de QuickFolders per moure la Conversa"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Actualitzacions"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },
   "qf.youtube.description": {
@@ -1498,7 +1501,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Cerca missatges"
-  },  
+  },
   "qfGetMail": {
     "message": "Recupera Missatges"
   },
@@ -1516,7 +1519,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Marcar totes les notícies com llegides"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Marca carpeta + subcarpetes com a llegit"
   },
@@ -1758,7 +1761,7 @@
   },
   "special-offer-expiry": {
     "message": "29 d'abril"
-  },  
+  },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {

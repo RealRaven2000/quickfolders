@@ -45,13 +45,20 @@
 
     <nav class="tabs" id="QuickFolders-Options-Tabbox" orient="vertical">
       <ul>
-        <li class="quickFoldersGeneral"><button id="QuickFolders-General" value="QuickFolders-Options-general" isTab="true" class="active" tabNo="0">__MSG_qf.tab.general__</button></li>
-        <li class="quickFoldersAdvanced"><button value="QuickFolders-Options-advanced" isTab="true" tabNo="1">__MSG_qf.tab.advanced__</button></li>
-        <li class="qfLayout"><button value="QuickFolders-Options-layout" isTab="true" tabNo="2">__MSG_qf.tab.layout__</button></li>
-        <li class="qfFindRelated" collapsed="true"><button value="QuickFolders-Options-findRelated" isTab="true" tabNo="3">__MSG_qf.tab.findRelated__</button></li>
-        <li class="qfHelp"><button value="QuickFolders-Options-quickhelp" isTab="true" tabNo="4">__MSG_qf.tab.quickhelp__</button></li>
-        <li class="qfSupport"><button value="QuickFolders-Options-support" isTab="true" tabNo="5">__MSG_qf.tab.support__</button></li>
-        <li class="qfLicenses"><button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true" tabNo="6">__MSG_qf.tab.gopro__</button></li>
+        <li class="quickFoldersGeneral">
+          <button id="QuickFolders-General" value="QuickFolders-Options-general" isTab="true" class="active" tabId="general">__MSG_qf.tab.general__</button></li>
+        <li class="quickFoldersAdvanced">
+          <button value="QuickFolders-Options-advanced" isTab="true" tabId="advanced">__MSG_qf.tab.advanced__</button></li>
+        <li class="qfLayout">
+          <button value="QuickFolders-Options-layout" isTab="true" tabId="layout">__MSG_qf.tab.layout__</button></li>
+        <li class="qfFindRelated" collapsed="true">
+          <button value="QuickFolders-Options-findRelated" isTab="true" tabId="findRelated">__MSG_qf.tab.findRelated__</button></li>
+        <li class="qfHelp">
+          <button value="QuickFolders-Options-quickhelp" isTab="true" tabId="help">__MSG_qf.tab.quickhelp__</button></li>
+        <li class="qfSupport">
+          <button value="QuickFolders-Options-support" isTab="true" tabId="support">__MSG_qf.tab.support__</button></li>
+        <li class="qfLicenses">
+          <button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true" tabId="license">__MSG_qf.tab.gopro__</button></li>
       </ul>
     </nav>
 
@@ -697,12 +704,12 @@
             <button id="addFindRelated">Add</button>
             <button id="deleteFindRelated">Delete</button>
           </div>
-          <div class="vbox">
+          <div class="vbox" style="flex-grow:2;">
             <label>
               Title: <input type="text" id="findRelatedTitle"></label>
             </label>
             <label>
-              Search Pattern: <input type="text" id="findRelatedPattern"></label>
+              Search Pattern: <input type="text" id="findRelatedPattern" style="flex-grow: 1;"></label>
             </label>
             <label>
               Search Group (0 for complete match): <input type="number" id="findRelatedGroup"></label>

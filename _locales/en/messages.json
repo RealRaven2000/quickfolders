@@ -157,16 +157,19 @@
     "message": "First Name:"
   },
   "findRelated.btn.label": {
-     "message": "Find related mails"
+    "message": "Find related mails"
   },
   "findRelated.btn.tooltip": {
     "message": "Find similar mails based on the selected mail and user-defined search patterns"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Configure search patterns…"
+  },
   "findRelated.prompt.title": {
     "message": "Find related mails: Pattern Search"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Please enter a search pattern!"
+    "message": "To use this feature, set up at least one search pattern."
   },
   "freeLicense": {
     "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
@@ -234,18 +237,18 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "To compare the features of the different licenses, {linkStart}read this list{linkEnd}."
   },
-  "licenseTerms.hide" : {
+  "licenseTerms.hide": {
     "message": "🡇 Continue to License Selection 🡇"
   },
-  "licenseTerms.show" : {
+  "licenseTerms.show": {
     "message": "Show license terms"
   },
   "licenseTypes": {
     "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
-  },  
+  },
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
   },
@@ -278,7 +281,7 @@
   },
   "newsHead": {
     "message": "Latest News"
-  },  
+  },
   "newsSection": {
     "message": "{P1} I have continued improving compatibility with the newest version of Thunderbird, ESR128. The latest edition of $addonName$ can now run up to v130. Please visit the full change log in the link below to see possible related issues and how they have been addressed. {P2}",
     "placeholders": {
@@ -290,7 +293,7 @@
   },
   "newsSection.license": {
     "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future."
-  },  
+  },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
@@ -305,7 +308,7 @@
   },
   "pricing.section.hint": {
     "message": "Note: The price varies depending on the license model, country, VAT rate, current discounts or licenses already purchased."
-  },  
+  },
   "pricing.title": {
     "message": "Pricing"
   },
@@ -327,7 +330,7 @@
       "bookmarkType": {
         "content": "$1"
       }
-    }    
+    }
   },
   "qf.backupAndRestore": {
     "message": "Backup / Restore"
@@ -439,7 +442,7 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Also outline the name (best with dark / colored backgrounds)"
-  },  
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Drag to new Subfolder"
   },
@@ -900,7 +903,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Menu font size (0 for default):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Menu Configuration"
   },
@@ -993,7 +996,7 @@
   },
   "qf.licenseValidation.standard": {
     "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
-  },  
+  },
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
@@ -1060,7 +1063,7 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Repair Tree Icons"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "Latest Update News…"
   },
   "qf.menuitem.quickfolders.support": {
@@ -1323,6 +1326,9 @@
   "qf.tab.advanced": {
     "message": "Advanced"
   },
+  "qf.tab.findRelated": {
+    "message": "Find related"
+  },
   "qf.tab.general": {
     "message": "General"
   },
@@ -1440,10 +1446,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Updates"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Do not open tab with version history"
   },
   "qf.youtube.description": {
@@ -1581,7 +1587,7 @@
   "qfFolderRepairedMsg": {
     "message": "Folder was repaired:"
   },
-  "qfFolderSearchMessages":{
+  "qfFolderSearchMessages": {
     "message": "Search Messages"
   },
   "qfGetMail": {
@@ -1607,7 +1613,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Mark Newsgroup Read"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Mark folder + subfolders Read"
   },
@@ -1722,7 +1728,7 @@
       "tabName": {
         "content": "$1"
       }
-    }    
+    }
   },
   "qfTidyDeadFolders": {
     "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
@@ -1746,34 +1752,34 @@
     "message": "Stop displaying version history after updates?"
   },
   "quickMove.help.head": {
-    "message" : "Help for {1}"
+    "message": "Help for {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Advanced Features"
+    "message": "Advanced Features"
   },
   "quickMove.help.l1a": {
-    "message" : "Type the start of a folder name or words in it, delimited by space."
-  }, 
+    "message": "Type the start of a folder name or words in it, delimited by space."
+  },
   "quickMove.help.l1b": {
-    "message" : "The following characters are regarded as word boundaries and don't need to be typed:"
-  }, 
+    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+  },
   "quickMove.help.l2a": {
-    "message" : "Type {1} for entering grandparent/parent/searched folder."
-  }, 
+    "message": "Type {1} for entering grandparent/parent/searched folder."
+  },
   "quickMove.help.l2b": {
-    "message" : "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
-  }, 
+    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+  },
   "quickMove.help.l3a": {
-    "message" : "Type {1} for skipping any folders in between."
-  }, 
+    "message": "Type {1} for skipping any folders in between."
+  },
   "quickMove.help.l3b": {
-    "message" : "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
   },
   "quickMove.help.l4a": {
-    "message" : "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
-  }, 
+    "message": "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
+  },
   "quickMove.help.advanced": {
-    "message" : "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
   },
   "quickMove.singleMessage.goNext": {
     "message": "Display next mail after moving current one"
@@ -1786,6 +1792,9 @@
   },
   "quickfolders.findFolder.placeHolder": {
     "message": "folder name"
+  },
+  "quickfolders.findFolder.help": {
+    "message": "help with search"
   },
   "quickfolders.quickMove.menu.cancel": {
     "message": "Cancel quickMove"
@@ -1847,7 +1856,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1859,13 +1868,13 @@
         "example": "50%"
       }
     }
-  },  
+  },
   "special-offer-upgrade-condition": {
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
     "message": "April 29th"
-  }, 
+  },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
     "placeholders": {

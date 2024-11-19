@@ -154,12 +154,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "根据所选邮件和用户定义的搜索模式查找类似邮件"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "配置搜索模式…"
+  },
   "findRelated.prompt.title": {
     "message": "查找相关邮件：模式搜索"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "请输入搜索模式！"
+    "message": "要使用此功能，您只需设置至少一个搜索模式。"
   },
   "freeLicense": {
     "message": "如果您最近捐助了 QuickFolders 项目或者帮助其完成工作，例如翻译项目或者撰写补丁，您可能有资格获得一个免费的授权密钥。请使用 QuickFolders 选项中的支持选项卡与我联系。"
@@ -216,7 +219,7 @@
   },
   "keyshortcuts.news": {
     "message": "目前，Thunderbird 将这些作为内置快捷键使用，但您可以使用附加组件 tbkeys lite 将它们释放。单击 (?) 按钮获取更多信息："
-  },  
+  },
   "lastName.label": {
     "message": "姓氏"
   },
@@ -298,7 +301,7 @@
   },
   "pricing.section.hint": {
     "message": "注意：价格因许可证型号、国家/地区、增值税税率、当前折扣或已购买的许可证而异。"
-  },  
+  },
   "pricing.title": {
     "message": "价钱"
   },
@@ -983,7 +986,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "检查许可证状态..."
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "删除无效标签(T)"
   },
@@ -1311,7 +1314,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "自定义图标大小"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "大工具栏图标"
   },
@@ -1323,7 +1326,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "顶部填充"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "最近的文件夹"
   },
@@ -1372,10 +1375,10 @@
   "qf.tooltip.threadIcon": {
     "message": "当前对话 - 拖曳至导航卡可移动对话"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "更新"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "不要打开带有版本历史记录的选项卡"
   },
   "qf.youtube.description": {
@@ -1491,7 +1494,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "搜索邮件"
-  },  
+  },
   "qfGetMail": {
     "message": "獲取訊息"
   },
@@ -1509,7 +1512,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "标记所有新闻为已读"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "标记文件夹+子文件夹为已读"
   },
@@ -1751,7 +1754,7 @@
   },
   "special-offer-expiry": {
     "message": "4月29日"
-  },   
+  },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {

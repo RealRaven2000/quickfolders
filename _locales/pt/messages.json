@@ -147,12 +147,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Encontre e-mails semelhantes com base no e-mail selecionado e nos padrões de pesquisa definidos pelo usuário"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Configurar padrões de pesquisa…"
+  },
   "findRelated.prompt.title": {
     "message": "Encontrar e-mails relacionados: Pesquisa por padrão"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Por favor, insira um padrão de pesquisa!"
+    "message": "Para usar este recurso, basta configurar pelo menos um padrão de busca."
   },
   "freeLicense": {
     "message": "Se você fez uma doação recentemente para o projeto QuickFolders, ou contribuiu com algum trabalho como tradução ou correção, pode ser elegível a receber uma chave de licença gratuita. Entre em contato comigo a partir da aba de suporte na janela de opções do QuickFolders."
@@ -209,7 +212,7 @@
   },
   "keyshortcuts.news": {
     "message": "Atualmente, o Thunderbird utiliza estes como atalhos integrados, mas você pode liberá-los usando o complemento tbkeys lite. Clique no botão (?) para mais informações:"
-  },  
+  },
   "lastName.label": {
     "message": "Último nome:"
   },
@@ -291,7 +294,7 @@
   },
   "pricing.section.hint": {
     "message": "Nota: O preço varia consoante o modelo de licença, país, taxa de IVA, descontos em vigor ou licenças já adquiridas."
-  },  
+  },
   "pricing.title": {
     "message": "Preços"
   },
@@ -314,7 +317,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Restauração de backup"
   },
@@ -877,7 +880,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Tamanho da fonte do menu (0 para padrão):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Configuração de menu"
   },
@@ -982,7 +985,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Verifique o status da licença…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Remover guias inválidas"
   },
@@ -1328,7 +1331,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Tamanho do ícone personalizado"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Ícones grandes da barra de ferramentas"
   },
@@ -1340,7 +1343,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Preenchimento superior"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Pastas recentes"
   },
@@ -1389,10 +1392,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Conversa atual - arraste para uma aba do QuickFolders para mover a Conversação"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Atualizações"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Não abra guia com histórico de versões"
   },
   "qf.youtube.description": {
@@ -1553,7 +1556,7 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Marcar pasta + subpastas como lidas"
-  },  
+  },
   "qfMenuColor": {
     "message": "Cor"
   },
@@ -1792,7 +1795,7 @@
   },
   "special-offer-expiry": {
     "message": "29 de abril"
-  },  
+  },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {

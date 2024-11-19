@@ -120,12 +120,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Пронађите сличне имејлове на основу изабраног имејла и кориснички дефинисаних шаблона претраге"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Подеси обрасце за претрагу…"
+  },
   "findRelated.prompt.title": {
     "message": "Пронађи повезане имејлове: Претрага по шаблону"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Унесите шаблон за претрагу!"
+    "message": "Да бисте користили ову функцију, довољно је подесити бар један образац претраге."
   },
   "freeLicense": {
     "message": "Ако сте недавно донирали за QuickFolders или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка QuickFolders."
@@ -170,7 +173,7 @@
   },
   "keyshortcuts.news": {
     "message": "Trenutno Thunderbird koristi ove kao ugrađene prečice, ali možete ih osloboditi koristeći dodatak tbkeys lite. Kliknite na (?) dugme za više informacija:"
-  },  
+  },
   "lastName.label": {
     "message": "Презиме:"
   },
@@ -252,7 +255,7 @@
   },
   "pricing.section.hint": {
     "message": "Напомена: Цена варира у зависности од модела лиценце, земље, стопе ПДВ-а, тренутних попуста или већ купљених лиценци."
-  },  
+  },
   "pricing.title": {
     "message": "Прицинг"
   },
@@ -274,11 +277,11 @@
       "bookmarkType": {
         "content": "$1"
       }
-    }    
+    }
   },
   "qf.backupAndRestore": {
     "message": "Бацкуп / Ресторе"
-  },  
+  },
   "qf.button.add": {
     "message": "Додај!"
   },
@@ -781,7 +784,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Veličina fonta menija (0 za podrazumevano):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Подешавање менија"
   },
@@ -877,7 +880,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Проверите статус лиценце…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Уклоните неважеће картице"
   },
@@ -1194,7 +1197,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Prilagođena veličina ikone"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Велике иконе на траци са алаткама"
   },
@@ -1206,7 +1209,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Gornja ivica"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Недавне фасцикле"
   },
@@ -1380,7 +1383,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Pretraži poruke"
-  },  
+  },
   "qfGetMail": {
     "message": "Прими поруке"
   },
@@ -1404,10 +1407,10 @@
   },
   "qfMarkAllReadNews": {
     "message": "Означи све вести као прочитане"
-  },   
+  },
   "qfMarkAllReadRecursive": {
     "message": "Означи фасциклу + потфасцикле као прочитане"
-  },    
+  },
   "qfMarkAllRead.next": {
     "message": "Означите фолдер као Прочитано и скочите на следећи непрочитани фолдер"
   },
@@ -1646,7 +1649,7 @@
   },
   "special-offer-expiry": {
     "message": "29. априла"
-  },  
+  },
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
     "placeholders": {

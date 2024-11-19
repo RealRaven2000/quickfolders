@@ -151,12 +151,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Ähnliche E-Mails basierend auf der ausgewählten E-Mail und benutzerdefinierten Suchmustern finden"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Suchmuster konfigurieren…"
+  },
   "findRelated.prompt.title": {
     "message": "Verwandte E-Mails finden: Mustersuche"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Bitte geben Sie ein Suchmuster ein!"
+    "message": "Um diese Funktion zu nutzen, richten Sie bitte mindestens ein Suchmuster ein."
   },
   "freeLicense": {
     "message": "Falls Sie in letzter Zeit dem QuickFolders Projekt gespendet oder mit Arbeit beigetragen haben, z.B. durch Übersetzung oder Softwarepatches, können Sie für eine Gratislizenz qualifiziert sein. Kontaktieren Sie mich einfach vom 'Support' Reiter im QuickFolders Optionen Dialog."
@@ -213,7 +216,7 @@
   },
   "keyshortcuts.news": {
     "message": "Derzeit verwendet Thunderbird diese als integrierte Tastenkombinationen, aber Sie können sie mithilfe des Add-ons tbkeys lite freigeben. Klicken Sie auf die (?)-Schaltfläche für weitere Informationen:"
-  },  
+  },
   "lastName.label": {
     "message": "Nachname:"
   },
@@ -292,10 +295,10 @@
   },
   "pricing.section.hint": {
     "message": "Hinweis: Der Preis variiert je nach Lizenzmodell, Land, Mehrwertsteuersatz, aktuellen Rabatten oder bereits gekauften Lizenzen."
-  },  
+  },
   "pricing.title": {
     "message": "Preise"
-  },  
+  },
   "purchase-a-license": {
     "message": "Kaufen Sie eine Lizenz."
   },
@@ -315,7 +318,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Datensicherung / Wiederherstellen"
   },
@@ -986,7 +989,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Lizenzstatus prüfen…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Ungültige Tabs entfernen"
   },
@@ -1338,7 +1341,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Oberer Abstand"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Kürzlich benutzte Verzeichnisse"
   },
@@ -1387,10 +1390,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Aktuelles Thema - auf einen QuickFolders Tab ziehen um den Themenbaum zu verschieben"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Aktualisierung / Updates"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
   "qf.youtube.description": {
@@ -1805,7 +1808,7 @@
   },
   "special-offer-expiry": {
     "message": "29. April"
-  },  
+  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {

@@ -161,12 +161,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Trova e-mail simili basati sull'e-mail selezionata e sui modelli di ricerca definiti dall'utente"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Configura modelli di ricerca…"
+  },
   "findRelated.prompt.title": {
     "message": "Trova e-mail correlate: Ricerca per modello"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Inserisci un modello di ricerca!"
+    "message": "Per utilizzare questa funzione, basta configurare almeno un modello di ricerca."
   },
   "freeLicense": {
     "message": "Se si è effettuata recentemente una donazione a favore del progetto QuickFolders o se si è dato un contributo al suo sviluppo (per es. traducendolo o creando delle patch), si è idonei a ricevere una chiave di registrazione gratuita. Contattatemi tramite la scheda \"Supporto\" presente nelle \"Opzioni di QuickFolders\"."
@@ -223,7 +226,7 @@
   },
   "keyshortcuts.news": {
     "message": "Attualmente Thunderbird utilizza questi come scorciatoie integrate, ma puoi liberarli utilizzando il componente aggiuntivo tbkeys lite. Fai clic sul pulsante (?) per ulteriori informazioni:"
-  },  
+  },
   "lastName.label": {
     "message": "Cognome:"
   },
@@ -234,13 +237,13 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Grazie per aver recentemente prolungato la tua licenza o per la tua donazione. Poiché hai contribuito a rendere questa estensione a prova di futuro, puoi semplicemente chiudere questa finestra."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Si consiglia di consultare {linkStart}questo elenco{linkEnd} per confrontare le caratteristiche delle diverse licenze (in inglese)."
   },
-  "licenseTerms.hide" : {
+  "licenseTerms.hide": {
     "message": "🡇 Va alla selezione delle Licenze 🡇"
   },
-  "licenseTerms.show" : {
+  "licenseTerms.show": {
     "message": "Mostra le condizioni della licenza"
   },
   "licenseTypes": {
@@ -305,7 +308,7 @@
   },
   "pricing.section.hint": {
     "message": "Nota: il prezzo varia a seconda del tipo di licenza, del paese, dell'aliquota IVA, degli sconti in corso o di licenze già acquistate."
-  },  
+  },
   "pricing.title": {
     "message": "Prezzi"
   },
@@ -328,7 +331,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Backup / Ripristino"
   },
@@ -1011,7 +1014,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Controlla lo stato della licenza…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Rimuovi schede non valide"
   },
@@ -1379,7 +1382,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Dimensione personalizzata icone"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Icone grandi nella barra degli strumenti"
   },
@@ -1391,7 +1394,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Spazio dal margine superiore"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Cartelle recenti"
   },
@@ -1440,10 +1443,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Discussione corrente - trascinarla su una scheda QuickFolders per spostarla"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Aggiornamenti"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },
   "qf.youtube.description": {
@@ -1583,7 +1586,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Cerca messaggi"
-  },  
+  },
   "qfGetMail": {
     "message": "Scarica messaggi"
   },
@@ -1607,7 +1610,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Segna tutte le notizie come lette"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Segna la cartella e le sottocartelle come già lette"
   },
@@ -1865,7 +1868,7 @@
   },
   "special-offer-expiry": {
     "message": "29 aprile"
-  },  
+  },
   "special-offer-head": {
     "message": "Aiutaci a mantenere $addon$ compatibile",
     "placeholders": {

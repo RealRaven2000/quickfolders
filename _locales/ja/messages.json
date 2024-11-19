@@ -138,12 +138,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "選択したメールとユーザー定義の検索パターンに基づいて類似メールを検索"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "検索パターンを設定…"
+  },
   "findRelated.prompt.title": {
     "message": "関連メールを探す: パターン検索"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "検索パターンを入力してください!"
+    "message": "この機能を使用するには、少なくとも1つの検索パターンを設定する必要があります。"
   },
   "freeLicense": {
     "message": "QuickFolders プロジェクトに最近ご寄付いただいた方や開発に貢献 (翻訳やパッチ提供) していただいている方は、無料ライセンスキーの取得資格があります。QuickFolders オプションのサポートタブからお問い合わせください。"
@@ -200,7 +203,7 @@
   },
   "keyshortcuts.news": {
     "message": "現在、Thunderbird はこれらを組み込みショートカットとして使用していますが、アドオン tbkeys lite を使用してそれらを解放することができます。詳細については (?) ボタンをクリックしてください："
-  },  
+  },
   "lastName.label": {
     "message": "姓:"
   },
@@ -282,7 +285,7 @@
   },
   "pricing.section.hint": {
     "message": "注: 価格は、ライセンス モデル、国、VAT 率、現在の割引、または購入済みのライセンスによって異なります。"
-  },  
+  },
   "pricing.title": {
     "message": "価格"
   },
@@ -305,7 +308,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "復元する"
   },
@@ -847,7 +850,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "メニューフォントサイズ（0 はデフォルト）："
-  },  
+  },
   "qf.label.menus": {
     "message": "メニュー設定"
   },
@@ -949,7 +952,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "ライセンスのステータスを確認…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "無効なタブを削除する"
   },
@@ -1280,7 +1283,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "上の余白"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "最近開いたフォルダ"
   },
@@ -1329,10 +1332,10 @@
   "qf.tooltip.threadIcon": {
     "message": "現在のスレッド - スレッドを QuickFolders タブへドラッグして移動できます"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "アップデート"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "バージョン履歴のあるタブを開かない"
   },
   "qf.youtube.description": {
@@ -1448,7 +1451,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "メッセージを検索"
-  },  
+  },
   "qfInsertLineBreak": {
     "message": "改行を挿入"
   },
@@ -1466,7 +1469,7 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "フォルダー + サブフォルダーに既読のマークを付ける"
-  },     
+  },
   "qfMarkAllRead.next": {
     "message": "フォルダを既読としてマークし、次の未読フォルダにジャンプ"
   },
@@ -1706,7 +1709,7 @@
   "special-offer-expiry": {
     "message": "4月29日"
   },
-    
+
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
     "placeholders": {
@@ -1812,7 +1815,7 @@
   },
   "whats-new-list": {
     "message": "{L1} 現在表示されているメールから抽出された検索用語を使用して関連メールを検索する新機能。 [issue 488]{L2}{L1} ダークテーマのサポートが改善されました [issue 489]{L2}{L1} Thunderbird 130との互換性 {L2}{L1} 修正: ALT+左、ALT+右などのキーボードショートカットがTb 128で動作しなくなりました。 {L2}{L1} 修正: 制限機能の通知ポップアップで例外が発生しました。 {L2}{L1} 既知の問題: 現在、QuickFoldersライセンスの検証が、Owlを使用してアクセスされるExchangeアカウントにライセンスが関連付けられている場合に失敗します。これは、Thunderbirdが間もなく修正するWebextensions APIのバグが原因です。この問題が発生した場合は、QuickFolders設定のサポートページから直接ご連絡ください。{L2}"
-  }, 
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ へようこそ",

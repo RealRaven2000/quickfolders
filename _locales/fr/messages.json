@@ -1,7 +1,7 @@
 {
-    "_l10nstatus": {
-  "message": "SPLASH+UI"
-},
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "account.label": {
     "message": "Choix du compte :"
   },
@@ -90,9 +90,9 @@
   },
   "chkSetMailsUnread.tooltip": {
     "message": "Si vous déplacez le message dans ce dossier, il est défini sur non lu."
-  }, 
-    "commands.toggleFolderTree": {
-      "message": "Afficher ou masquer l‘arborescence des dossiers"
+  },
+  "commands.toggleFolderTree": {
+    "message": "Afficher ou masquer l‘arborescence des dossiers"
   },
   "cost-of-independence": {
     "message": "Le développement de logiciels coûte du temps et de l'argent - contrairement à de nombreuses applications de plate-forme, les modules complémentaires ne sont pas écrits par de grandes entreprises et ne sont en aucun cas sponsorisés par Mozilla."
@@ -161,12 +161,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Trouvez des e-mails similaires en fonction de l'e-mail sélectionné et des modèles de recherche définis par l'utilisateur"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Configurer les modèles de recherche…"
+  },
   "findRelated.prompt.title": {
     "message": "Trouver les e-mails similaires : Recherche de modèle"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Veuillez entrer un modèle de recherche!"
+    "message": "Pour utiliser cette fonctionnalité, il vous suffit de configurer au moins un modèle de recherche."
   },
   "freeLicense": {
     "message": "Si vous avez fait un don récemment au projet QuickFolders ou y avez contribué en le traduisant ou en écrivant des patchs, vous pourriez être éligible à une clé de licence gratuite. Contactez-moi par l'onglet d'aide dans les options de QuickFolders."
@@ -223,8 +226,8 @@
   },
   "keyshortcuts.news": {
     "message": "Actuellement, Thunderbird utilise ces raccourcis comme raccourcis intégrés, mais vous pouvez les libérer en utilisant le module complémentaire tbkeys lite. Cliquez sur le bouton (?) pour plus d'informations :"
-  },  
-    "lastName.label": {
+  },
+  "lastName.label": {
     "message": "Nom :"
   },
   "lblCustomPalette": {
@@ -240,10 +243,10 @@
   "licenseTerms.hide": {
     "message": "🡇 Aller a la sélection de licences 🡇"
   },
-"licenseTerms.show" : {
-  "message": "Afficher les conditions de la licence"
+  "licenseTerms.show": {
+    "message": "Afficher les conditions de la licence"
   },
-    "licenseTypes": {
+  "licenseTypes": {
     "message": "QuickFolders propose deux licences, Standard et Pro ; cela permet de suivre les changements de Thunderbird et de financer les innovations et les réparations du module. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
   },
   "licenseWindow.title": {
@@ -305,7 +308,7 @@
   },
   "pricing.section.hint": {
     "message": "Remarque : Le prix varie en fonction du modèle de licence, du pays, du taux de TVA, des remises en cours ou des licences déjà achetées."
-  },  
+  },
   "pricing.title": {
     "message": "Tarifs"
   },
@@ -328,12 +331,12 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Sauvegarde : Restauration"
   },
   "qf.btn.applyPosition": {
-    "message": "Appliquer la valeur de la position !" 
+    "message": "Appliquer la valeur de la position !"
   },
   "qf.button.add": {
     "message": "Ajouter !"
@@ -367,7 +370,7 @@
   },
   "qf.button.reorderButtonBottom.accessKey": {
     "message": "b"
-   },
+  },
   "qf.button.reorderButtonBottom.toolTip": {
     "message": "Réorganiser le filtre pour qu'il s'exécute après tous les autres."
   },
@@ -443,7 +446,7 @@
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Encadrer également le nom (de préférence avec des arrière-plans sombres / colorés)"
   },
-   "qf.checkbox.menus.dragToNewFolder": {
+  "qf.checkbox.menus.dragToNewFolder": {
     "message": "Glisser vers un nouveau sous-dossier"
   },
   "qf.checkbox.menus.emptyJunk": {
@@ -600,7 +603,7 @@
     "message": "Ce menu peut-être également affiché via un clic droit sur la barre d'outils"
   },
   "qf.checkbox.transparent": {
-      "message": "transparent"
+    "message": "transparent"
   },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt-flèche gauche / Alt-flèche droite pour onglet précédent / suivant"
@@ -903,7 +906,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Taille de la police du menu (0 par défaut) :"
-  },  
+  },
   "qf.label.menus": {
     "message": "Configuration de menu"
   },
@@ -926,7 +929,7 @@
     "message": "Ouvrir dans un nouvel onglet"
   },
   "qf.label.menus.options": {
-      "message": "Options"
+    "message": "Options"
   },
   "qf.label.menus.quickFolder": {
     "message": "Commandes QuickFolders"
@@ -1014,7 +1017,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Vérifier l'état de la licence…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Supprimer les onglets invalides"
   },
@@ -1214,7 +1217,7 @@
   },
   "qf.pastefolders": {
     "message": "Coller les onglets"
-    },
+  },
   "qf.pastefolders.tooltip": {
     "message": "Supprimer tous les QuickFolders et prendre en compte la nouvelle configuration à partir du presse-papiers"
   },
@@ -1339,7 +1342,7 @@
   },
   "qf.tab.support": {
     "message": "Support"
-    },
+  },
   "qf.textbox.searchBox.emptyText": {
     "message": "Rechercher des filtres par nom…"
   },
@@ -1381,7 +1384,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Taille personnalisée de l'icône"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Grandes icônes de la barre d'outils"
   },
@@ -1393,7 +1396,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Marge supérieure"
-  },    
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Dossiers récents"
   },
@@ -1442,10 +1445,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Discussion courante - la déposer dans un onglet QuickFolders pour la déplacer"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Mises à jour"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
   },
   "qf.youtube.description": {
@@ -1576,7 +1579,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Rechercher des messages"
-  },  
+  },
   "qfGetMail": {
     "message": "Relever les messages"
   },
@@ -1599,7 +1602,7 @@
     "message": "Marquer toutes les nouvelles comme lues"
   },
   "qfMarkAllReadRecursive": {
-    "message": "Marquer le dossier + sous-dossiers comme lus"  
+    "message": "Marquer le dossier + sous-dossiers comme lus"
   },
   "qfMarkAllRead.next": {
     "message": "Marquer le dossier comme lu et passer au prochain dossier non lu"
@@ -1625,8 +1628,8 @@
   "qfNewFolder": {
     "message": "Nouveau sous-dossier…"
   },
-    "qfNewFolderAccess": {
-      "message": "N"
+  "qfNewFolderAccess": {
+    "message": "N"
   },
   "qfNewName": {
     "message": "Saisir un nouveau nom pour l'onglet"
@@ -1855,7 +1858,7 @@
   },
   "special-offer-expiry": {
     "message": "29 avril"
-  },   
+  },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1961,7 +1964,7 @@
   },
   "whats-new-list": {
     "message": "{L1} Nouvelle fonctionnalité pour trouver des e-mails connexes via des termes de recherche extraits de l'e-mail actuellement affiché. [issue 488]{L2}{L1} Amélioration du support du thème sombre [issue 489]{L2}{L1} Compatibilité avec Thunderbird 130 {L2}{L1} Correction : Les raccourcis clavier (tels que ALT+Gauche, ALT+Droite) ont cessé de fonctionner dans Tb 128. {L2}{L1} Correction : La fenêtre contextuelle de notification pour les fonctionnalités restreintes provoquait une exception. {L2}{L1} Problème connu : Actuellement, la vérification des licences QuickFolders échoue lorsque la licence est liée à un compte Exchange auquel on accède via Owl. Ceci est dû à un bug dans l'API Webextensions, qui sera bientôt corrigé par Thunderbird. Si vous rencontrez des problèmes avec cela, veuillez me contacter directement depuis la page de support dans les paramètres de QuickFolders.{L2}"
-  },  
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenue sur $addonName$",

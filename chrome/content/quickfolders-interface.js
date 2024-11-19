@@ -413,7 +413,7 @@ QuickFolders.Interface = {
 		if (button && (button.tagName == "menuitem" || button.tagName == "menupopup")) {
 			if (prefs.isDebugOption("popupmenus")) { debugger; }
 
-			let menuitem = button;
+			const menuitem = button;
 			if (menuitem.folder) {
 				if (evt) evt.preventDefault();
 				// addSubFoldersPopupFromList is ultimately responsible for creating this menuitems
@@ -1262,7 +1262,7 @@ QuickFolders.Interface = {
         for (let i = 0; i < lCatCount; i++) {
           let category = bookmarkCategories[i];
           if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
-            let menuItem = this.createMenuItem(category, category, doc, "menuitem-iconic");
+            const menuItem = this.createMenuItem(category, category, doc, "menuitem-iconic");
             // add checkbox for multiple category selection
             if (isMultiCategories) {
 							// multi selection
@@ -1629,7 +1629,7 @@ QuickFolders.Interface = {
   } ,
 
 	createMenuItem: function(value, label, doc, className) {
-		let menuItem = this.createIconicElement("menuitem", className || "*", doc);
+		const menuItem = this.createIconicElement("menuitem", className || "*", doc);
 		menuItem.setAttribute("label", label);
 		menuItem.setAttribute("value", value);
     if (typeof className == "string") {
@@ -3691,8 +3691,8 @@ QuickFolders.Interface = {
 			    || prefs.CurrentThemeId == Themes.ApplePills.Id
 					|| prefs.CurrentThemeId == Themes.Flat.Id) {
 				for (let jCol=0; jCol<=20;jCol++) {
-					let menuitem = this.createIconicElement("menuitem", "color menuitem-iconic"),
-					    id = "qfColor"+jCol;
+					const menuitem = this.createIconicElement("menuitem", "color menuitem-iconic"),
+					  id = "qfColor"+jCol;
 					menuitem.setAttribute("tag", id);
 					if (jCol) {
 						menuitem.setAttribute("label", colorText + " "+ jCol);
@@ -3706,9 +3706,8 @@ QuickFolders.Interface = {
             this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
           menuColorPopup.appendChild(menuitem);
 				}
-			}
-			else {
-				let menuitem = this.createIconicElement("menuitem","*");
+			} else {
+				const menuitem = this.createIconicElement("menuitem","*");
 				menuitem.setAttribute("label",this.getUIstring("qfMenuTabColorDisabledInTheme"));
 				// open "bling my tabs"
 				menuitem.addEventListener("command", function(event) { QI.viewOptions(2); }, false);
@@ -3735,7 +3734,7 @@ QuickFolders.Interface = {
 					QI = QuickFolders.Interface,
 					doc = button.ownerDocument;
 		function createMailCmdMenuItem(id, label, tag)  {
-			let menuItem = QI.createIconicElement("menuitem", null, doc);
+			const menuItem = QI.createIconicElement("menuitem", null, doc);
 			menuItem.setAttribute("id",id);
 			if (label) { menuItem.setAttribute("label", label); }
 			if (tag) { menuItem.setAttribute("tag", tag); }
@@ -4314,8 +4313,10 @@ QuickFolders.Interface = {
   // Implementation of standard License
   createMenuItem_disabled: function() {
     const util = QuickFolders.Util,
-          menuitem = QuickFolders.Interface.createMenuItem("", util.getBundleString("license_restriced.unpaid"));
-    let txt =
+      menuitem = QuickFolders.Interface.createMenuItem("", 
+				util.getBundleString("license_restriced.unpaid")
+			);
+    const txt =
       util.hasValidLicense() ?
         util.getBundleString("license_restriced.standard.maxtabs",[QuickFolders.Model.MAX_STANDARD_TABS]) :
         util.getBundleString("license_restriced.unpaid.maxtabs",[QuickFolders.Model.MAX_UNPAID_TABS])
@@ -4578,18 +4579,16 @@ QuickFolders.Interface = {
 	} ,
 
 	createMenuItem_DeleteJunk: function(doc) {
-		const QI = QuickFolders.Interface,
-		      id = "deleteJunk";
-		let menuitem = this.createIconicElement("menuitem", null, doc);
+		const id = "deleteJunk",
+		  menuitem = this.createIconicElement("menuitem", null, doc);
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute("label",this.getUIstring("qfDeleteJunk"));
 		return menuitem;
 	} ,
 
 	createMenuItem_EmptyJunk: function(doc) {
-		const QI = QuickFolders.Interface,
-		      id = "QF_folderPaneContext-emptyJunk";
-	  let menuitem = this.createIconicElement("menuitem", null, doc);
+		const id = "QF_folderPaneContext-emptyJunk",
+		  menuitem = this.createIconicElement("menuitem", null, doc);
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute("label", this.getUIstring("qfEmptyJunk"));
 		menuitem.setAttribute("accesskey", this.getUIstring("qfEmptyJunkAccess"));
@@ -4602,7 +4601,7 @@ QuickFolders.Interface = {
 		try {
 			// find out the server name
 			// let's clone it ?
-			let getMailMenuItem = this.createIconicElement("menuitem", "*", doc); // no className
+			let getMailMenuItem = this.createIconicElement("menuitem", null, doc); // no className
 			server = folder.server;
 			getMailMenuItem.id = id;
 			getMailMenuItem.folder=folder;
@@ -4619,9 +4618,8 @@ QuickFolders.Interface = {
 	} ,
 
 	createMenuItem_EmptyTrash: function(doc) {
-		const QI = QuickFolders.Interface,
-		      id = "QF_folderPaneContext-emptyTrash";
-		let menuitem = this.createIconicElement("menuitem", null, doc);
+		const id = "QF_folderPaneContext-emptyTrash",
+		  menuitem = this.createIconicElement("menuitem", null, doc);
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute("label",this.getUIstring("qfEmptyTrash"));
 		menuitem.setAttribute("accesskey",this.getUIstring("qfEmptyTrashAccess"));
@@ -4629,8 +4627,10 @@ QuickFolders.Interface = {
 	} ,
 
 	createMenuItem_MarkAllRead: function(disabled, doc, recursive = false) {
-		const id = recursive ? "QF_folderPaneContext-markMailFolderAllReadRecursive" : "QF_folderPaneContext-markMailFolderAllRead";
-    let menuitem = this.createIconicElement("menuitem", null, doc);
+		const id = recursive ? 
+				"QF_folderPaneContext-markMailFolderAllReadRecursive" : 
+				"QF_folderPaneContext-markMailFolderAllRead",
+      menuitem = this.createIconicElement("menuitem", null, doc);
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute("label",
       recursive ?
@@ -4654,6 +4654,36 @@ QuickFolders.Interface = {
 		return menuitem;
 	} ,
 
+	createMenuItem_configFindRelated: function(doc) {
+		const id = "findRelated-configure",
+		  menuitem = this.createIconicElement("menuitem", null, doc);
+		menuitem.setAttribute("id", id);
+		menuitem.setAttribute("label",this.getUIstring("findRelated.menu.configure"));
+		// this will go to the settings window - find Related tab
+		menuitem.addEventListener("click",(event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			QuickFolders.Util.notifyTools.notifyBackground({
+				func: "openPrefs",
+				selectedTab: "findRelated"
+			}); 			
+		});
+		return menuitem;
+	} ,	
+
+	createMenuItem_findRelated: function(search, doc) {
+		const menuitem = this.createIconicElement("menuitem", "findRelated_item menuitem-iconic", doc);
+		menuitem.setAttribute("idx", search.idx); // just a piggy back param, we might lose that one later.
+		menuitem.setAttribute("label", search.title);
+		menuitem.setAttribute("pattern", search.pattern);
+		menuitem.setAttribute("group", search.group);
+		menuitem.setAttribute("searchSelected", search.searchSelected);
+		menuitem.setAttribute("searchCriteria", search.searchCriteria);
+		// now add an event handler!
+
+		return menuitem;
+	} ,
+
 	// create menu items / elements and force inject XUL to deal with menu problems.
 	// @cl: [class] use wildcard * for omitting classname (the exception)
 	createIconicElement: function(tagName, cl, doc) {
@@ -4662,9 +4692,10 @@ QuickFolders.Interface = {
 		}
 		let el = doc.createXULElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+		if (!cl) {
+			cl = "mailCmd menuitem-iconic";
+		}
 		if (cl != "*") {
-			if (!cl)
-				cl = "mailCmd menuitem-iconic"; // default
 			el.className = cl;
 		}
 		return el;
@@ -4680,8 +4711,8 @@ QuickFolders.Interface = {
 
 	addDragToNewFolderItem: function(popupMenu, folder) {
     const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences,
-					Ci = Components.interfaces;
+			prefs = QuickFolders.Preferences,
+			Ci = Components.interfaces;
 		try {
       if (typeof folder.server === "undefined") return;
 
@@ -4900,7 +4931,7 @@ QuickFolders.Interface = {
               this.setEventAttribute(menuitem, eventType,`QuickFolders.quickMove.execute("${subfolder.URI}","${parentString}");event.preventDefault();`); // [issue 242] allow moving with recent folder [=] shorcut
             }
             else {
-              this.setEventAttribute(menuitem, eventType,`QuickFolders.Interface.onSelectSubFolder('${subfolder.URI}',event)`);
+              this.setEventAttribute(menuitem, eventType,`QuickFolders.Interface.onSelectSubFolder("${subfolder.URI}",event)`);
             }
           }
 					if (isRecentFolderList) {
@@ -5006,7 +5037,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
-	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag, isRecentFolderList = false) {
+	addSubFoldersPopup: function (popupMenu, folder, isDrag, isRecentFolderList = false) {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopup(" + folder.prettyName + ", drag=" + isDrag + ")" );
@@ -5698,8 +5729,8 @@ QuickFolders.Interface = {
 			}
 
 			if (!menupopup.childElementCount) {
-				let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
-            noMatchWrn = util.getBundleString("qfNoFolderMatch");
+				const menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
+          noMatchWrn = util.getBundleString("qfNoFolderMatch");
 				menuitem.setAttribute("label", noMatchWrn); // just one dummy to show we were searching
 				menuitem.setAttribute("tag", "dummy");
 				menupopup.appendChild(menuitem);
@@ -5981,11 +6012,11 @@ QuickFolders.Interface = {
 	} ,
 
 	viewHelp: function viewHelp() {
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"helpOnly" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", mode:"helpOnly" }); 
 	} ,
 
 	viewSupport: function viewSupport() {
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"supportOnly" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", mode:"supportOnly" }); 
 	} ,
 
   viewLicense: function () {
@@ -5993,7 +6024,11 @@ QuickFolders.Interface = {
       QuickFolders.Util.licenseInfo.isLicenseViewed = true; // session variable to mark license stuff as "seen".
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel"}); 
     }		
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"licenseKey" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({
+      func: "openPrefs",
+      selectedTab: "license",
+      mode: "licenseKey",
+    }); 
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {
@@ -7910,7 +7945,7 @@ QuickFolders.Interface = {
     }
   },
 
-	findRelated: function(event) {
+	findRelated_Click: async function(event) {
 		// filter based on current mail
 		const regexOption = {
 			pattern : "",
@@ -7922,30 +7957,87 @@ QuickFolders.Interface = {
 		// regexOption.behavior = {}; regexOption.isSelectPrevious = true
 		
 		try {
-			if (event.button==2) { // right-click
-				QuickFolders.Interface.showAboutConfig(null, "extensions.quickfolders.findRelated", true);
-				return;
-			}
+			if (event.button==2) {
+        // right-click
+        // future: open menu
+        const CONFIG_POPUP_ID = "findRelated_popup",
+          button = event.target,
+          doc = event.target.ownerDocument,
+          oldMenu = button.querySelector(`#${CONFIG_POPUP_ID}`);
+        if (oldMenu) {
+          oldMenu.parentElement.removeChild(oldMenu);
+        }
 
-			regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
+				let findRelatedBlob = await QuickFolders.Util.notifyTools.notifyBackground({
+          func: "getFindRelatedList"
+        });
+				let findRelatedData = JSON.parse(findRelatedBlob || {items:[]});
+				console.log(findRelatedBlob, findRelatedData);
+
+        const menuPopup = doc.createXULElement("menupopup");
+          
+        menuPopup.setAttribute("id", CONFIG_POPUP_ID);
+        menuPopup.setAttribute("position", "after_start"); 
+				// Loop through stored entries:
+				const findRelItems = findRelatedData.items;
+				if (findRelItems.length) {
+          for (let a = 0; a < findRelItems.length; a++) {
+						let it = findRelItems[a];
+						it.idx = a; // piggy back index
+            const menuitem = this.createMenuItem_findRelated(it, doc);
+						menuPopup.appendChild(menuitem);
+          }
+        }
+				if (findRelItems.length) {
+          menuPopup.appendChild(this.createIconicElement("menuseparator", "*"));
+				}
+
+				const config_menuitem = this.createMenuItem_configFindRelated(doc);
+        menuPopup.appendChild(config_menuitem);
+        button.appendChild(menuPopup);
+        menuPopup.openPopup(button, "after_start", 0, -1, true, false);
+				return;
+      }
+
+			if (
+        event.target.tagName == "menuitem" &&
+        event.target.classList.contains("findRelated_item")
+      ) {
+        // store the new entry as "preset"
+				const findRelItem = event.target;
+				console.log("new find Related preset / target:", { findRelItem });
+				debugger;
+				QuickFolders.Preferences.setStringPref(
+          "findRelated.pattern",
+          findRelItem.getAttribute("pattern")
+        );
+				QuickFolders.Preferences.setStringPref(
+          "findRelated.searchSelected",
+          findRelItem.getAttribute("searchSelected")
+        );
+				QuickFolders.Preferences.setStringPref(
+          "findRelated.searchCriteria",
+          findRelItem.getAttribute("searchCriteria")
+        );
+				QuickFolders.Preferences.setIntPref(
+          "findRelated.group",
+          parseInt(findRelItem.getAttribute("group"))
+        );
+      }
+      regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
 			if (!regexOption.pattern) {
 				// .prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
-				
-				const input = { value: "" }; // inOut
-				const check = { value: false }; // not used
-				const result = Services.prompt.prompt(
-					null, 
-					QuickFolders.Util.getBundleString("findRelated.prompt.title"),
-					QuickFolders.Util.getBundleString("findRelated.prompt.enterPattern"),
-					input, 
-					null, 
-					check
-				);
+				const result = Services.prompt.confirm(
+          null,
+          QuickFolders.Util.getBundleString("findRelated.prompt.title"),
+          QuickFolders.Util.getBundleString("findRelated.prompt.enterPattern")
+        );
 				if (!result) return; // Cancel
-				const searchPattern = input.value;
-				if (!searchPattern) return;
-				QuickFolders.Preferences.setStringPref("findRelated.pattern", searchPattern);
-				regexOption.pattern = searchPattern;
+				QuickFolders.Util.notifyTools.notifyBackground({
+					func: "openPrefs",
+					selectedTab: "findRelated",
+				}); 		
+				return;
 			}
 			regexOption.searchSelected = 
 				JSON.parse(QuickFolders.Preferences.getStringPref("findRelated.searchSelected"));

@@ -150,12 +150,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Znajdź podobne maile na podstawie wybranego maila i zdefiniowanych przez użytkownika wzorców wyszukiwania"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Skonfiguruj wzorce wyszukiwania…"
+  },
   "findRelated.prompt.title": {
     "message": "Znajdź powiązane maile: Wyszukiwanie wzorca"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Wprowadź wzorzec wyszukiwania!"
+    "message": "Aby skorzystać z tej funkcji, wystarczy ustawić co najmniej jeden wzorzec wyszukiwania."
   },
   "freeLicense": {
     "message": "Jeśli niedawno przekazałeś/przekazałaś dotację na rzecz QuickFolders lub brałeś/brałaś udział przy jego tworzeniu, np. poprzez tłumaczenie, czy tworzenie kodu, możesz uzyskać za darmo klucz licencyjny. Skontaktuj się z autorem dodatku, używając przycisku znajdującego się na karcie „Pomoc techniczna” w opcjach QuickFolders."
@@ -209,7 +212,7 @@
   },
   "keyshortcuts.news": {
     "message": "Obecnie Thunderbird używa ich jako wbudowanych skrótów klawiszowych, ale możesz je zwolnić, korzystając z dodatku tbkeys lite. Kliknij przycisk (?) aby uzyskać więcej informacji:"
-  },  
+  },
   "lastName.label": {
     "message": "Nazwisko:"
   },
@@ -291,7 +294,7 @@
   },
   "pricing.section.hint": {
     "message": "Uwaga: Cena różni się w zależności od modelu licencji, kraju, stawki VAT, aktualnych rabatów lub już zakupionych licencji."
-  },  
+  },
   "pricing.title": {
     "message": "cennik"
   },
@@ -314,7 +317,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Przywracania kopii zapasowej"
   },
@@ -880,7 +883,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Rozmiar czcionki menu (0 dla domyślnego):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Elementy menu – wyświetlanie"
   },
@@ -988,7 +991,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Sprawdź stan licencji…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Usuń nieprawidłowe karty"
   },
@@ -1343,7 +1346,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Górny margines"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Ostatnio otwierane"
   },
@@ -1392,10 +1395,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Aktualny wątek - przeciągnij do folderu QuickFolders, aby przenieść konwersację"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Aktualizacje"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Nie otwieraj karty z historią wersji"
   },
   "qf.youtube.description": {
@@ -1529,7 +1532,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Szukaj wiadomości"
-  },  
+  },
   "qfGetMail": {
     "message": "Pobierz wiadomości"
   },
@@ -1556,7 +1559,7 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Zaznacz folder + podfoldery jako przeczytane"
-  }, 
+  },
   "qfMarkAllRead.next": {
     "message": "Oznacz folder jako przeczytany i przejdź do następnego nieprzeczytanego folderu"
   },
@@ -1810,7 +1813,7 @@
   },
   "special-offer-expiry": {
     "message": "29 kwietnia"
-  },  
+  },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {

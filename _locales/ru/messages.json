@@ -150,12 +150,15 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Найдите похожие письма на основе выбранного письма и пользовательских шаблонов поиска"
-  },  
+  },
+  "findRelated.menu.configure": {
+    "message": "Настроить шаблоны поиска…"
+  },
   "findRelated.prompt.title": {
     "message": "Найти связанные письма: Поиск по шаблону"
   },
   "findRelated.prompt.enterPattern": {
-    "message": "Введите шаблон поиска!"
+    "message": "Чтобы использовать эту функцию, достаточно настроить хотя бы один шаблон поиска."
   },
   "freeLicense": {
     "message": "Если вы недавно поддержали проект или помогли переводом или исправлением, возможно вам положен бесплатный лицензионный ключ.  Свяжитесь со мной, контактные данные можно найти в настройках."
@@ -212,7 +215,7 @@
   },
   "keyshortcuts.news": {
     "message": "В настоящее время Thunderbird использует их в качестве встроенных быстрых клавиш, но вы можете освободить их, используя дополнение tbkeys lite. Нажмите на (?) кнопку для получения дополнительной информации:"
-  },  
+  },
   "lastName.label": {
     "message": "Фамилия:"
   },
@@ -294,7 +297,7 @@
   },
   "pricing.section.hint": {
     "message": "Примечание. Цена зависит от модели лицензии, страны, ставки НДС, действующих скидок или уже приобретенных лицензий."
-  },  
+  },
   "pricing.title": {
     "message": "Цены"
   },
@@ -317,7 +320,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Восстановления резервной копии"
   },
@@ -886,7 +889,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Размер шрифта меню (0 для значения по умолчанию):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Конфигурация меню"
   },
@@ -994,7 +997,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Проверить статус лицензии…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Удалить недействительные вкладки"
   },
@@ -1358,7 +1361,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Пользовательский размер значка"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Большие значки панели инструментов"
   },
@@ -1370,7 +1373,7 @@
   },
   "qf.toolbarTopPadding": {
     "message": "Верхний отступ"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Последние папки"
   },
@@ -1419,10 +1422,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Текущее обсуждение - перетащите на закладку QuickFolders для перемещения."
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Обновления"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Не открывать вкладку с историей версий"
   },
   "qf.youtube.description": {
@@ -1562,7 +1565,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Поиск сообщений"
-  },  
+  },
   "qfGetMail": {
     "message": "Получить сообщения"
   },
@@ -1586,7 +1589,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Отметить все новости как прочитанные"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Отметить папку и подпапки как прочитанные"
   },
@@ -1846,7 +1849,7 @@
   },
   "special-offer-expiry": {
     "message": "29 апреля"
-  },    
+  },
   "special-offer-head": {
     "message": "Помогите сохранить совместимость с $addon$",
     "placeholders": {

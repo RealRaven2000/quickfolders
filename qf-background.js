@@ -4,6 +4,7 @@ import {Licenser} from "./scripts/Licenser.mjs.js";
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const TOGGLEICON_ID = "toggleQuickFoldersIcon";
 const REMOVEICON_ID = "removeQuickFoldersIcon";
+const LEGACY_SETTINGS_ROOT = "extensions.quickfolders.";
 
 var currentLicense;
 var startupFinished = false;
@@ -20,6 +21,14 @@ function logReceptionError(x) {
   }  
 }
 
+function legacyPrefPath(setting) {
+  return LEGACY_SETTINGS_ROOT + setting;
+}
+async function isDebugOn() {
+  return (await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"))) || false;
+}
+
+
 
   /* startupFinished: There is a general race condition between onInstall and our main() startup:
    * - onInstall needs to be registered upfront (otherwise we might miss it)
@@ -34,7 +43,7 @@ messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfolde
 
 messenger.runtime.onInstalled.addListener(async (data) => {
   let { reason, temporary } = data,
-      isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug");
+      isDebug = isDebugOn();
   
   // Wait until the main startup routine has finished!
   await new Promise((resolve) => {
@@ -73,12 +82,12 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       // set a flag which will be cleared by clicking the [QuickFolders] button once
       setTimeout(
         async function() {
-          let origVer = await messenger.LegacyPrefs.getPref("extensions.quickfolders.version","0");
+          let origVer = await messenger.LegacyPrefs.getPref(legacyPrefPath("version"),"0");
           const manifest = await messenger.runtime.getManifest();
           // get pure version number / remove pre123 indicator
           let installedVersion = manifest.version.replace(/pre.*/,""); 
           if (installedVersion > origVer) {
-            messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
+            messenger.LegacyPrefs.setPref(legacyPrefPath("hasNews"), true);
           }
           messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
           // replacement for showing history!!
@@ -116,7 +125,9 @@ function showInstalled() {
 
 async function filterMailsRegex(searchOptions, tabId = null) {
   const DEFAULT_BEHAVIOR = {
-    isSelectPrevious: await messenger.LegacyPrefs.getPref("extensions.quickfolders.findRelated.behavior.selectPrevious")
+    isSelectPrevious: await messenger.LegacyPrefs.getPref(
+      legacyPrefPath("findRelated.behavior.selectPrevious")
+    )
   }
   
   const group = searchOptions.group;   // 0 for full match
@@ -186,7 +197,7 @@ async function filterMailsRegex(searchOptions, tabId = null) {
     // when user clicks "next unread message"
     // we MUST reset this whenever use changes to a different folder!!!
     // folder listener?
-    messenger.LegacyPrefs.setPref("extensions.quickfolders.findRelated.lastSearchVal", searchVal);
+    messenger.LegacyPrefs.setPref(legacyPrefPath("findRelated.lastSearchVal"), searchVal);
   }
   
 
@@ -223,7 +234,7 @@ async function filterMailsRegex(searchOptions, tabId = null) {
 // future function for icon support  [issue 399]
 async function addFolderPaneMenu() {
   // replaces code from QuickFolders.Interface.folderPanePopup()
-  let isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.tbmenus"),
+  let isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.tbmenus")),
       txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
       txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon");
   if (isDebug) {
@@ -344,13 +355,48 @@ async function addFolderPaneMenu() {
 
 }
 
+async function getFindRelatedStruct() {
+    const jsonList = await messenger.LegacyPrefs.getPref(
+      legacyPrefPath("findRelated.list")
+    );
+    let findRelatedList;
+    try {
+      findRelatedList = JSON.parse(jsonList || "{}");
+    } catch (ex) {
+      console.log("Exception during getFindRelatedStruct(): ", { jsonList }, ex);
+      findRelatedList = {};
+    }
+    if (!findRelatedList?.items) {
+      // use for the first time
+      findRelatedList = findRelatedList || {};
+      findRelatedList.items = [];
+      // import current / first item
+      findRelatedList.items.push({
+        title: "last search",
+        pattern: await messenger.LegacyPrefs.getPref(legacyPrefPath("findRelated.pattern")),
+        group: await messenger.LegacyPrefs.getPref(legacyPrefPath("findRelated.group")) || 0,
+        searchSelected: await messenger.LegacyPrefs.getPref(
+          legacyPrefPath("findRelated.searchSelected")
+        ), // containing an array of options
+        searchCriteria: await messenger.LegacyPrefs.getPref(
+          legacyPrefPath("findRelated.searchCriteria")
+        ), // containing an array of options
+      });
+      if (isDebugOn()) { 
+        console.log("getFindRelatedStruct retrieved:", { findRelatedList });
+      }
+    }
+    return findRelatedList;   
+}
+
 async function main() {
-    
-  const legacy_root = "extensions.quickfolders.";
-  let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey", ""),
-      forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity") || false,
-      isDebug = await messenger.LegacyPrefs.getPref(legacy_root + "debug")  || false,
-      isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser")  || false;
+  const key = await messenger.LegacyPrefs.getPref(legacyPrefPath("LicenseKey"), ""),
+    forceSecondaryIdentity =
+      (await messenger.LegacyPrefs.getPref(legacyPrefPath("licenser.forceSecondaryIdentity"))) ||
+      false,
+    isDebug = isDebugOn(),
+    isDebugLicenser =
+      (await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.premium.licenser"))) || false;
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
@@ -391,7 +437,7 @@ async function main() {
       case "slideAlert":
         util.slideAlert(...data.args);
         break;
-      
+
       case "splashScreen":
         let splashMessage = data.msg || "";
         showSplash(splashMessage);
@@ -400,112 +446,119 @@ async function main() {
       case "splashInstalled":
         showInstalled();
         break;
-        
-      case "getLicenseInfo": 
+
+      case "getLicenseInfo":
         return currentLicense.info;
-      
-      case "getPlatformInfo": 
+
+      case "getFindRelatedList": {
+        let relatedArr = await getFindRelatedStruct();
+        return JSON.stringify(relatedArr);
+      }
+
+      case "getPlatformInfo":
         return messenger.runtime.getPlatformInfo();
 
-      case "getBrowserInfo": 
+      case "getBrowserInfo":
         return messenger.runtime.getBrowserInfo();
 
-      case "getAddonInfo": 
+      case "getAddonInfo":
         return messenger.management.getSelf();
-        
+
       case "updateQuickFoldersLabel":
         // Broadcast main windows to run updateQuickFoldersLabel
-        messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
+        messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
         break;
 
       case "updateUserStyles":
         // Broadcast main windows to update their styles (and maybe single message windows???)
-        messenger.NotifyTools.notifyExperiment({event: "updateUserStyles"});
+        messenger.NotifyTools.notifyExperiment({ event: "updateUserStyles" });
         break;
-        
+
       case "updateFoldersUI": // replace observer
-        messenger.NotifyTools.notifyExperiment({event: "updateFoldersUI"});
+        messenger.NotifyTools.notifyExperiment({ event: "updateFoldersUI" });
         break;
-        
-      case "updateAllTabs": 
+
+      case "updateAllTabs":
         // only update tabs, without styles - reads the tabs from the store to support:
         //   adding / renaming / deleting / re-categorizing / re-ordering
         //   across all Windows instances.
-        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+        messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
         break;
-        
+
       case "updateNavigationBar":
-        await messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
+        await messenger.NotifyTools.notifyExperiment({ event: "updateNavigationBar" });
         break;
 
       case "toggleNavigationBars": // toggles _all_ navigation bars (from options window)
-        messenger.NotifyTools.notifyExperiment({event: "toggleNavigationBars"});
+        messenger.NotifyTools.notifyExperiment({ event: "toggleNavigationBars" });
         break;
-        
+
       case "updateCategoryBox":
-        messenger.NotifyTools.notifyExperiment({event: "updateCategoryBox"});
+        messenger.NotifyTools.notifyExperiment({ event: "updateCategoryBox" });
         break;
-        
+
       case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
-        let isMinimal = (data.minimal) || false;
-        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", detail:{ minimal: isMinimal}});
+        let isMinimal = data.minimal || false;
+        messenger.NotifyTools.notifyExperiment({
+          event: "updateMainWindow",
+          detail: { minimal: isMinimal },
+        });
         break;
-        
+
       case "showAboutConfig":
         // to do: create an API for this one
         messenger.NotifyTools.notifyExperiment({
-          event: "showAboutConfig", 
+          event: "showAboutConfig",
           element: null,
           filter: data.filter,
           readOnly: data.readOnly,
-          updateUI: data.updateUI || false
+          updateUI: data.updateUI || false,
         });
         break;
-        
+
       case "showLicenseDialog":
         messenger.NotifyTools.notifyExperiment({
-          event: "showLicenseDialog", 
-          referrer: data.referrer
+          event: "showLicenseDialog",
+          referrer: data.referrer,
         });
         break;
-        
+
       case "legacyAdvancedSearch":
-        messenger.NotifyTools.notifyExperiment({event: "legacyAdvancedSearch"});
+        messenger.NotifyTools.notifyExperiment({ event: "legacyAdvancedSearch" });
         break;
-        
+
       case "currentDeckUpdate":
-        messenger.NotifyTools.notifyExperiment({event: "currentDeckUpdate"});
+        messenger.NotifyTools.notifyExperiment({ event: "currentDeckUpdate" });
         break;
-        
+
       case "initKeyListeners":
-        messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
+        messenger.NotifyTools.notifyExperiment({ event: "initKeyListeners" });
         break;
-        
+
       case "openPrefs":
         let params = new URLSearchParams();
-        if (data.selectedTab || data.selectedTab==0) {
+        if (data.selectedTab) {
           params.append("selectedTab", data.selectedTab);
         }
         if (data.mode) {
           params.append("mode", data.mode);
         }
-        
+
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         // to get the tab - we need the activetab permission
-        // query for url 
+        // query for url
         let url = browser.runtime.getURL("/html/options.html") + "*";
 
-        let oldTabs = await browser.tabs.query({url}); // destructure first 
+        let oldTabs = await browser.tabs.query({ url }); // destructure first
         if (oldTabs.length) {
           // get current windowId
           let currentWin = await browser.windows.getCurrent();
-          let found = oldTabs.find( w => w.windowId == currentWin.id);
+          let found = oldTabs.find((w) => w.windowId == currentWin.id);
           if (!found) {
             [found] = oldTabs; // destructure first element
-            await browser.windows.update(found.windowId, {focused:true, drawAttention: true});
-
+            await browser.windows.update(found.windowId, { focused: true, drawAttention: true });
           } else {
-            await browser.tabs.update(found.id, {active:true});
+            await browser.tabs.update(found.id, { active: true });
           }
 
           // activate the license tab!
@@ -514,27 +567,25 @@ async function main() {
               activatePrefsPage: data.mode,
             });
           }
-          
-
         } else {
-          let optionsWin = await messenger.windows.create(
-            { height: 720, 
-              width: 840, 
-              type: "panel", 
-              url: `/html/options.html?${params.toString()}`,
-              allowScriptsToClose : true
-            }
-          );
+          let optionsWin = await messenger.windows.create({
+            height: 720,
+            width: 840,
+            type: "panel",
+            url: `/html/options.html?${params.toString()}`,
+            allowScriptsToClose: true,
+          });
         }
-           
-        // optionWin.sizeToContent() 
+
+        // optionWin.sizeToContent()
         break;
 
       case "openAdvancedProps":
         {
           let params = new URLSearchParams();
-          const x = parseInt(data.x,10), y = parseInt(data.y,10);
-          params.append("folderURI", data.folderURI ); // to do: pass folder or url in event
+          const x = parseInt(data.x, 10),
+            y = parseInt(data.y, 10);
+          params.append("folderURI", data.folderURI); // to do: pass folder or url in event
           params.append("x", x);
           params.append("y", y);
           let window = await messenger.windows.create({
@@ -542,78 +593,87 @@ async function main() {
             top: y,
             type: "popup",
             allowScriptsToClose: true,
-            url:  `/html/quickfolders-tab-props.html?${params.toString()}`,
+            url: `/html/quickfolders-tab-props.html?${params.toString()}`,
           });
           // focused: true,
-
         }
         break;
 
       case "updateLicense":
-        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
-            isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
-            
+        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
+            legacyPrefPath("licenser.forceSecondaryIdentity")
+          ),
+          isDebugLicenser = await messenger.LegacyPrefs.getPref(
+             legacyPrefPath("debug.premium.licenser")
+          );
+
         // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
         let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
         await newLicense.validate();
         // Check new license and accept if ok.
         // You may return values here, which will be send back to the caller.
         // return false;
-        
+
         // Update background license.
-        await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey);
+        await messenger.LegacyPrefs.setPref(legacyPrefPath("LicenseKey"), newLicense.info.licenseKey);
         currentLicense = newLicense;
-        
+
         // 1. Broadcast into Experiment
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-        
+        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+
         // 2. notify options.html (new, using message API)
         let message = {
           msg: "updatedLicense",
-          licenseInfo: currentLicense.info
-        }
+          licenseInfo: currentLicense.info,
+        };
         messenger.runtime.sendMessage(message);
-        
-        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+
+        messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
         // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
-        messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
-          { command: "updateQuickFoldersLicense", 
-            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType } }).catch(logReceptionError);
+        messenger.runtime
+          .sendMessage(QUICKFILTERS_APPNAME, {
+            command: "updateQuickFoldersLicense",
+            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType },
+          })
+          .catch(logReceptionError);
         // }
         return true;
-        
+
       case "updateLicenseTimer":
         await currentLicense.updateLicenseDates();
 
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});          
+        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+        messenger.NotifyTools.notifyExperiment({ event: "updateMainWindow", minimal: false });
         break;
 
-      case "createSubfolder":  // [issue 234]
+      case "createSubfolder": // [issue 234]
         // if folderName is not given - create a popup window
-        
+
         return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
-        
+
       case "copyFolderEntries":
-        messenger.NotifyTools.notifyExperiment({event: "copyFolderEntriesToClipboard"});
+        messenger.NotifyTools.notifyExperiment({ event: "copyFolderEntriesToClipboard" });
         break;
       case "pasteFolderEntries":
-        messenger.NotifyTools.notifyExperiment({event: "pasteFolderEntriesFromClipboard"});
+        messenger.NotifyTools.notifyExperiment({ event: "pasteFolderEntriesFromClipboard" });
         break;
-        
+
       case "updateQuickFilters":
         {
           let licenseStatus = currentLicense.info.status,
-          licenseType = currentLicense.info.keyType;
+            licenseType = currentLicense.info.keyType;
           // require management permission to check if qF is installed
           // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
-          messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
-            { command: "injectButtonsQFNavigationBar", 
-              license: { status: licenseStatus, keyType: licenseType } }).catch(logReceptionError);
+          messenger.runtime
+            .sendMessage(QUICKFILTERS_APPNAME, {
+              command: "injectButtonsQFNavigationBar",
+              license: { status: licenseStatus, keyType: licenseType },
+            })
+            .catch(logReceptionError);
           // }
         }
         break;
-                
+
       case "searchMessages": // test
         messenger.messages.list(data.folder);
         break;
@@ -623,15 +683,18 @@ async function main() {
         break;
 
       case "storeCategories": // store category in session
-        await messenger.sessions.setTabValue(data.tabId, "QuickFolders_Categories", data.categories);
+        await messenger.sessions.setTabValue(
+          data.tabId,
+          "QuickFolders_Categories",
+          data.categories
+        );
         break;
 
-      case "readCategories": // read category from tabsession
-      {
+      case "readCategories": { // read category from tabsession
         let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
         return cats;
       }
-        
+
       case "storeToolbarStatus": // store toolbar visibilities in tabsession
         await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
         break;
@@ -641,42 +704,34 @@ async function main() {
         await filterMailsRegex(regexOption, data.tabId);
         break;
 
-      case "readToolbarStatus": // store toolbar visibilities in tabsession
-      {
+      case "readToolbarStatus": { // store toolbar visibilities in tabsession
         let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
-        return status
+        return status;
       }
 
       case "addFolderPaneMenu":
         addFolderPaneMenu();
         break;
 
-
       case "openLinkInTab":
         // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
         {
           let baseURI = data.baseURI || data.URL;
-          let found = await browser.tabs.query( { url:baseURI } );
+          let found = await browser.tabs.query({ url: baseURI });
           if (found.length) {
             let tab = found[0]; // first result
-            await browser.tabs.update(
-              tab.id, 
-              {active:true, url: data.URL}
-            );
+            await browser.tabs.update(tab.id, { active: true, url: data.URL });
             return;
           }
-          browser.tabs.create(
-            { active:true, url: data.URL }
-          );        
+          browser.tabs.create({ active: true, url: data.URL });
         }
-        break;             
-
+        break;
     }
   }
   
   // background listener
   messenger.NotifyTools.onNotifyBackground.addListener((data) => {
-    messenger.LegacyPrefs.getPref(legacy_root + "debug.notifications").then(
+    messenger.LegacyPrefs.getPref(legacyPrefPath("debug.notifications")).then(
       isLog => {
         if (isLog && data.func) {
           console.log ("=========================\n" +
@@ -693,6 +748,11 @@ async function main() {
   messenger.runtime.onMessage.addListener((data, sender) => {
     if (msg_commands.includes(data.command)) {
       return notificationHandler(data, sender); // the result of this is a Promise
+    }
+    switch (data.command) {
+      case "shortcut":
+        console.log("QuickFolders: Received shortcut:", { data , sender });
+        break;
     }
   });
   
