@@ -421,7 +421,15 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     eventNode.addEventListener(eventType, async(event) =>  {
       event.preventDefault();
       event.stopPropagation();
-      await dispatchAboutConfig(filterConfig, true, true);
+      // 
+      switch(filterConfig) {
+        case "quickfolders.findRelated":
+          const btn = document.querySelector("#QuickFolders-Options-Tabbox button[tabId='findRelated']");
+          btn.click();
+          break;
+        default:
+          await dispatchAboutConfig(filterConfig, true, true);
+      }
       if (null!=retVal) return retVal;
     });
   }
