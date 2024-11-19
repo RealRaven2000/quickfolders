@@ -67,7 +67,7 @@ var ChangeOrder = {
 		buttonUp.className = "order-button-up col Btn";
 		buttonUp.setAttribute("label", this.upString);
     buttonUp.linkedFolder = folder;
-		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand",`ChangeOrder.onButtonClick(event.target, 'up',"${folder.URI}");`);
 
 
 		let buttonDown = document.createXULElement("button");
@@ -75,7 +75,7 @@ var ChangeOrder = {
 		buttonDown.setAttribute("label", this.downString);
     
 		buttonDown.linkedFolder = folder;
-		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand",`ChangeOrder.onButtonClick(event.target, 'down',"${folder.URI}");`);
      
     grid.appendChild(folderLabel);
     grid.appendChild(buttonUp);
