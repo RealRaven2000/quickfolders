@@ -984,13 +984,19 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label
 
 #QuickFolders-currentFolderMailFolderCommands {
 	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
-    -moz-context-properties: fill, fill-opacity, stroke !important;
-    stroke: var(--new-highlight) !important;
+  -moz-context-properties: fill, fill-opacity, stroke !important;
+  stroke: var(--new-highlight) !important;
 }
 
 #QF_folderPaneContext-downloadAll {
-    list-style-image: url('chrome://messenger/skin/icons/getmsg.svg');
+  list-style-image: url('chrome://messenger/skin/icons/getmsg.svg');
 }
+
+#QF_folderPaneContext-getMessages {
+  list-style-image: var(--folder-pane-icon-download);
+  /* url('chrome://messenger/skin/icons/new/compact/cloud-download.svg'); */
+}
+
 
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new ,
 menuitem#QF_folderPaneContext-new.dragover,
