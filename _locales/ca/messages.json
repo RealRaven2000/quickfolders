@@ -280,7 +280,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} He continuat millorant la compatibilitat amb la versió més recent de Thunderbird, ESR128. L'última edició de $addonName$ ara pot funcionar fins a la v130. Si us plau, visiteu el registre complet de canvis en l'enllaç següent per veure els possibles problemes relacionats i com s'han solucionat. {P2}",
+    "message": "{P1} He continuat millorant la compatibilitat amb la versió més recent de Thunderbird, ESR128. L'última edició de $addonName$ ara pot funcionar fins a la v133. Si us plau, visiteu el registre complet de canvis en l'enllaç següent per veure els possibles problemes relacionats i com s'han solucionat. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1760,7 +1760,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "29 d'abril"
+    "message": "29 de novembre"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1866,7 +1866,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funció per trobar correus electrònics relacionats a través de termes de cerca extrets del correu electrònic actualment mostrant. [issue 488]{L2}{L1} Millora del suport per al tema fosc [issue 489]{L2}{L1} Compatibilitat amb Thunderbird 130 {L2}{L1} Corregit: Les dreceres de teclat (com ALT+Esquerra, ALT+Dreta) van deixar de funcionar en Tb 128. {L2}{L1} Corregit: La notificació emergent per a funcions restringides causava una excepció. {L2}{L1} Problema conegut: Actualment, la verificació de les llicències de QuickFolders falla quan la llicència està vinculada a un compte d'Exchange quan s'accedeix a través d'Owl. Això es deu a un error en l'API de Webextensions que serà corregit aviat per Thunderbird. Si teniu problemes amb això, si us plau, contacteu-me directament des de la pàgina de suport en la configuració de QuickFolders.{L2}"
+    "message": "{L1} Finalitzat: funció Pro per trobar correus electrònics relacionats a través de termes de cerca extrets del correu electrònic actualment mostrat: ara podeu seleccionar diferents cerques en un menú desplegable. [issue 488]{L2}{L1} Solucionat: moure correus electrònics a pestanyes amb Ctrl+Número. {L2} {L1} Solucionat: els dreceres de teclat entraven en conflicte amb la introducció de text en altres complements com ara QNote++. [issue 497]{L2}{L1} Solucionat: els noms de carpetes amb cometes simples causaven errors de navegació. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -174,7 +174,7 @@
   },
   "keyshortcuts.news": {
     "message": "Jelenleg a Thunderbird beépített gyorsbillentyűként használja ezeket, de felszabadíthatja őket a tbkeys lite bővítménnyel. További információkért kattintson a (?) gombra:"
-  },  
+  },
   "lastName.label": {
     "message": "Vezetéknév:"
   },
@@ -228,7 +228,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} Folytattam a kompatibilitás javítását a Thunderbird legújabb, ESR128 verziójával. A $addonName$ legújabb kiadása mostantól a v130 verzióig futtatható. Kérjük, látogasson el az alábbi hivatkozásra a teljes változási napló megtekintéséhez, ahol láthatja a kapcsolódó problémákat és azok megoldásait. {P2}",
+    "message": "{P1} Folytattam a kompatibilitás javítását a Thunderbird legújabb, ESR128 verziójával. A $addonName$ legújabb kiadása mostantól a v133 verzióig futtatható. Kérjük, látogasson el az alábbi hivatkozásra a teljes változási napló megtekintéséhez, ahol láthatja a kapcsolódó problémákat és azok megoldásait. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -253,7 +253,7 @@
   },
   "pricing.section.hint": {
     "message": "Megjegyzés: Az ár a licencmodelltől, az országtól, az áfakulcstól, az aktuális engedményektől vagy a már megvásárolt licencektől függően változik."
-  },  
+  },
   "pricing.title": {
     "message": "Árazás"
   },
@@ -273,7 +273,7 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Biztonsági mentés visszaállítása"
   },
@@ -794,7 +794,7 @@
   },
   "qf.label.menuFontSizeNumeric": {
     "message": "Menü betűméret (0 az alapértelmezett):"
-  },  
+  },
   "qf.label.menus": {
     "message": "Menü konfiguráció"
   },
@@ -890,7 +890,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Ellenőrizze a licenc állapotát…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Távolítsa el az érvénytelen lapokat"
   },
@@ -1191,7 +1191,7 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Egyéni ikonméret"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Nagy eszköztár ikonok"
   },
@@ -1362,7 +1362,7 @@
   },
   "qfFolderSearchMessages": {
     "message": "Üzenetek keresése"
-  },  
+  },
   "qfGetMail": {
     "message": "Üzenetek letöltése"
   },
@@ -1567,8 +1567,8 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "április 29."
-  },   
+    "message": "November 29."
+  },
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
     "placeholders": {
@@ -1667,7 +1667,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Új funkció a kapcsolódó e-mailek keresésére a jelenleg megjelenített e-mailből kinyert keresési kifejezésekkel. [issue 488]{L2}{L1} Javított sötét téma támogatás [issue 489]{L2}{L1} Kompatibilitás a Thunderbird 130-cal {L2}{L1} Javítva: A billentyűparancsok (mint például ALT+Bal, ALT+Jobb) nem működtek a Tb 128-ban. {L2}{L1} Javítva: Az értesítési előugró ablak a korlátozott funkciókhoz kivételt okozott. {L2}{L1} Ismert probléma: Jelenleg a QuickFolders licencek érvényesítése meghiúsul, ha a licenc egy Exchange fiókhoz van kötve, amelyet Owl-on keresztül érnek el. Ez egy Webextensions API hibának köszönhető, amelyet a Thunderbird hamarosan javítani fog. Ha problémája van ezzel, kérem, lépjen kapcsolatba velem közvetlenül a QuickFolders beállításainak támogatási oldaláról.{L2}"
+    "message": "{L1} Elkészült: Pro funkció kapcsolódó e-mailek keresésére, amely az aktuálisan megjelenített e-mailből kinyert keresési kifejezéseket használja – most már különböző keresések közül választhat egy legördülő menüben. [issue 488]{L2}{L1} Javítva: E-mailek áthelyezése fülekre Ctrl+Szám kombinációval. {L2} {L1} Javítva: Billentyűparancsok ütköztek más kiegészítők, például a QNote++ szövegbevitelével. [issue 497]{L2}{L1} Javítva: Az egyszerű idézőjelet tartalmazó mappanevek navigációs hibát okoztak. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

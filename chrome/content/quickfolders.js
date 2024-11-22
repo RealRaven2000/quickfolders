@@ -461,11 +461,9 @@ END LICENSE BLOCK */
     ## improved tooltips in settings window
 
   6.8 QuickFolders Pro - WIP
-    ## [issue 494] Settings tab for find related functions
+    ## [issue 488] Find Related Mails: extend UI to add a selection of multiple searches 
     ## [issue 493] Move mail to folder using CTRL+Number not working
     ## [issue 497] quickMove / quickJump steals focus while typing shortcut combos in QNote.
-    ## [issue 504] Clicking a QuickFolders tab from a search result (show as list) should open a new tab.
-    ## [issue 488] Find Related Mails: extend UI to add a selection of multiple searches 
     ## hide current folder bar in search results tab
     ## [issue 506] Folder names containing single quotes break navigation
     ## added icon to get messages menuitems 
@@ -475,6 +473,8 @@ END LICENSE BLOCK */
 	TO DO next
 	==========
     ## WIP: command handler for tbkeys-lite! see "shortcut" in qf-background.js
+    ## [issue 504] Clicking a QuickFolders tab from a search result (show as list) should open a new tab.
+    ## [issue 494] Global Settings tab for find related functions (go next = to delete quick search)
     ## [issue 423] Color Tabs with unread messages
     ## [issue ]
     ## [issue ]

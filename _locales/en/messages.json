@@ -283,7 +283,7 @@
     "message": "Latest News"
   },
   "newsSection": {
-    "message": "{P1} I have continued improving compatibility with the newest version of Thunderbird, ESR128. The latest edition of $addonName$ can now run up to v130. Please visit the full change log in the link below to see possible related issues and how they have been addressed. {P2}",
+    "message": "{P1} I have continued improving compatibility with the newest version of Thunderbird, ESR128. The latest edition of $addonName$ can now run up to v133. Please visit the full change log in the link below to see possible related issues and how they have been addressed. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1873,7 +1873,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "April 29th"
+    "message": "November 29th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1979,7 +1979,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} New feature to find related emails one through search terms extracted from the currently displayed email. [issue 488]{L2}{L1} Improved dark theme support [issue 489]{L2}{L1} Compatibility with Thunderbrid 130 {L2} {L1} Fixed: Keyboard shortcuts (such as ALT+Left ALT+Right) stopped working in Tb 128. {L2} {L1} Fixed: notification popup for restricted features caused an exception. {L2} {L1} Known Issue: Currently the verification of QuickFolders licenses fails when the license is bound to an exchange account when it is accessed using Owl. This is due to a bug in the Webextensions API which will be fixed by Thunderbird soon. If you have problems with this, please contact me directtly from the support page in QuickFolders settings.{L2}"
+    "message": "{L1} Completed Pro feature to find related emails one through search terms extracted from the currently displayed email - you can now select from different searches in a drop down menu. [issue 488]{L2}{L1} Fixed: moving mail to tabs through Ctrl+Number.{L2} {L1} Fixed: Keyboard shortcuts conflicted with typing text in other Add-ons such as QNote++. [issue 497]{L2} {L1} Fixed: Folder names containing single quotes broke navigation.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

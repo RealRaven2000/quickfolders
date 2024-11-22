@@ -260,7 +260,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Nadaljeval sem z izboljševanjem združljivosti z najnovejšo različico Thunderbird, ESR128. Zadnja izdaja $addonName$ lahko zdaj deluje do v130. Obiščite celoten seznam sprememb na spodnji povezavi, če želite izvedeti več o morebitnih povezanih težavah in kako so bile odpravljene. {P2}",
+    "message": "{P1} Nadaljeval sem z izboljševanjem združljivosti z najnovejšo različico Thunderbird, ESR128. Zadnja izdaja $addonName$ lahko zdaj deluje do v133. Obiščite celoten seznam sprememb na spodnji povezavi, če želite izvedeti več o morebitnih povezanih težavah in kako so bile odpravljene. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1767,7 +1767,7 @@
     "message": "Ko nadgradite s standardnega, prejmete eno celoletno licenčno obdobje od datuma nakupa, ne glede na datum poteka vaše prejšnje licence."
   },
   "special-offer-expiry": {
-    "message": "29. april"
+    "message": "29. november"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1873,7 +1873,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega e-poštnega sporočila. [issue 488]{L2}{L1} Izboljšana podpora za temno temo [issue 489]{L2}{L1} Združljivost s Thunderbird 130 {L2}{L1} Popravljeno: Bližnjice na tipkovnici (kot sta ALT+Levo, ALT+Desno) so prenehale delovati v Tb 128. {L2}{L1} Popravljeno: Obvestilo za omejene funkcije je povzročilo izjemo. {L2}{L1} Znana težava: Trenutno preverjanje licenc QuickFolders ne uspe, ko je licenca vezana na račun Exchange, do katerega dostopate prek Owl. To je posledica napake v API-ju Webextensions, ki jo bo Thunderbird kmalu odpravil. Če imate težave s tem, me prosimo kontaktirajte neposredno prek strani za podporo v nastavitvah QuickFolders.{L2}"
+    "message": "{L1} Dokončano: Pro-funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega sporočila – zdaj lahko izbirate med različnimi iskanji v spustnem meniju. [issue 488]{L2}{L1} Popravljeno: premikanje e-pošt v zavihke z uporabo Ctrl+Številka. {L2} {L1} Popravljeno: Bližnjice na tipkovnici so povzročale težave pri vnosu besedila v drugih dodatkih, kot je QNote++. [issue 497]{L2}{L1} Popravljeno: Imena map, ki vsebujejo enojne narekovaje, so povzročala napake pri navigaciji. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

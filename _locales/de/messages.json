@@ -273,7 +273,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Ich habe die Kompatibilität mit der neuesten Version von Thunderbird, ESR128, weiter verbessert. Die neueste Version von $addonName$ kann jetzt bis v130 ausgeführt werden. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link, um mögliche verwandte Probleme und deren Behebung zu sehen. {P2}",
+    "message": "{P1} Ich habe die Kompatibilität mit der neuesten Version von Thunderbird, ESR128, weiter verbessert. Die neueste Version von $addonName$ kann jetzt bis v133 ausgeführt werden. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link, um mögliche verwandte Probleme und deren Behebung zu sehen. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1807,7 +1807,7 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "29. April"
+    "message": "29. November"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1909,7 +1909,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Neue Funktion zum Finden verwandter E-Mails über Suchbegriffe, die aus der aktuell angezeigten E-Mail extrahiert wurden. [issue 488]{L2}{L1} Verbesserte Unterstützung von dunklen Themes [issue 489]{L2}{L1} Kompatibilität mit Thunderbird 130 {L2}{L1} Behoben: Tastenkombinationen (wie ALT+Links, ALT+Rechts) funktionierten in Tb 128 nicht mehr. {L2}{L1} Behoben: Das Benachrichtigungs-Popup für eingeschränkte Funktionen verursachte eine Ausnahme. {L2}{L1} Bekanntes Problem: Derzeit schlägt die Überprüfung der QuickFolders-Lizenzen fehl, wenn die Lizenz an ein Exchange-Konto gebunden ist, das über Owl abgerufen wird. Dies liegt an einem Fehler in der Webextensions-API, der bald von Thunderbird behoben wird. Wenn Sie Probleme damit haben, kontaktieren Sie mich bitte direkt über die Support-Seite in den QuickFolders-Einstellungen.{L2}"
+    "message": "{L1} Fertiggestellt: Pro-Funktion zum Finden verwandter E-Mails anhand von Suchbegriffen, die aus der aktuell angezeigten E-Mail extrahiert wurden – Sie können jetzt aus verschiedenen Suchen in einem Dropdown-Menü auswählen. [issue 488]{L2}{L1} Behoben: Verschieben von E-Mails zu Tabs durch Strg+Zahl. {L2} {L1} Behoben: Tastenkombinationen kollidierten mit der Texteingabe in anderen Add-ons wie z.B. QNote++. [issue 497]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen führten zu Fehlfunktion der Navigation. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

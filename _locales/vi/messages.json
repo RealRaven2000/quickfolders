@@ -140,7 +140,7 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1} Tôi đã tiếp tục cải thiện khả năng tương thích với phiên bản mới nhất của Thunderbird, ESR128. Phiên bản mới nhất của $addonName$ hiện có thể chạy đến v130. Vui lòng truy cập nhật ký thay đổi đầy đủ trong liên kết bên dưới để xem các vấn đề liên quan có thể và cách chúng đã được giải quyết. {P2}",
+    "message": "{P1} Tôi đã tiếp tục cải thiện khả năng tương thích với phiên bản mới nhất của Thunderbird, ESR128. Phiên bản mới nhất của $addonName$ hiện có thể chạy đến v133. Vui lòng truy cập nhật ký thay đổi đầy đủ trong liên kết bên dưới để xem các vấn đề liên quan có thể và cách chúng đã được giải quyết. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -179,10 +179,10 @@
         "content": "$1"
       }
     }
-  },  
+  },
   "qf.backupAndRestore": {
     "message": "Sao lưu / Khôi phục"
-  },  
+  },
   "qf.button.add": {
     "message": "Thêm!"
   },
@@ -302,7 +302,7 @@
   },
   "qf.checkbox.showIconButtons": {
     "message": "Tùy chỉnh biểu tượng"
-  },  
+  },
   "qf.checkbox.showMessageNavigation": {
     "message": "Nút Điều Hướng Tin Nhắn"
   },
@@ -697,7 +697,7 @@
   },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Kiểm tra trạng thái giấy phép…"
-  },  
+  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Xóa các tab không hợp lệ"
   },
@@ -950,13 +950,13 @@
   },
   "qf.toolbarIcon.customSize": {
     "message": "Kích thước biểu tượng tùy chỉnh"
-  },  
+  },
   "qf.toolbarIconSize": {
     "message": "Các biểu tượng trên Thanh công cụ lớn"
   },
   "qf.toolbarTopPadding": {
     "message": "Lề trên"
-  },  
+  },
   "qf.tooltip.RecentFolders": {
     "message": "Các thư mục gần đây nhất"
   },
@@ -1005,10 +1005,10 @@
   "qf.tooltip.threadIcon": {
     "message": "Đề tài hiện tại - kéo vào thẻ QuickFolder để di chuyển Hội Thoại"
   },
-  "qf.update.title" : {
+  "qf.update.title": {
     "message": "Cập nhật"
   },
-  "qf.update.hideVersionHistory" : {
+  "qf.update.hideVersionHistory": {
     "message": "Không mở tab có lịch sử phiên bản"
   },
   "qf.youtube.description": {
@@ -1133,7 +1133,7 @@
   },
   "qfMarkAllReadNews": {
     "message": "Đánh dấu tất cả các tin tức là đã đọc"
-  },  
+  },
   "qfMarkAllReadRecursive": {
     "message": "Đánh dấu thư mục + thư mục con đã đọc"
   },
@@ -1317,8 +1317,8 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "29 tháng 4"
-  },  
+    "message": "29 tháng 11"
+  },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -1414,7 +1414,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Tính năng mới để tìm email liên quan qua các thuật ngữ tìm kiếm được trích xuất từ email hiện đang hiển thị. [issue 488]{L2}{L1} Cải thiện hỗ trợ chủ đề tối [issue 489]{L2}{L1} Tương thích với Thunderbird 130 {L2}{L1} Đã sửa: Phím tắt (như ALT+Trái, ALT+Phải) không còn hoạt động trong Tb 128. {L2}{L1} Đã sửa: Cửa sổ thông báo bật lên cho các tính năng bị hạn chế gây ra ngoại lệ. {L2}{L1} Vấn đề đã biết: Hiện tại việc xác minh giấy phép QuickFolders thất bại khi giấy phép được liên kết với tài khoản Exchange khi truy cập qua Owl. Điều này là do lỗi trong API Webextensions sẽ được Thunderbird sửa sớm. Nếu bạn gặp vấn đề với điều này, vui lòng liên hệ trực tiếp với tôi từ trang hỗ trợ trong cài đặt QuickFolders.{L2}"
+    "message": "{L1} Hoàn thiện: Tính năng Pro để tìm email liên quan bằng cách sử dụng các từ khóa tìm kiếm được trích xuất từ email hiện đang hiển thị – bạn có thể chọn các tìm kiếm khác nhau từ menu thả xuống. [issue 488]{L2}{L1} Đã sửa: Di chuyển email vào các thẻ bằng Ctrl+Số. {L2} {L1} Đã sửa: Phím tắt xung đột với việc nhập văn bản trong các tiện ích bổ sung khác như QNote++. [issue 497]{L2}{L1} Đã sửa: Tên thư mục chứa dấu nháy đơn gây lỗi điều hướng. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

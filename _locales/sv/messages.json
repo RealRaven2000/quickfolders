@@ -272,7 +272,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Jag har fortsatt att förbättra kompatibiliteten med den senaste versionen av Thunderbird, ESR128. Den senaste utgåvan av $addonName$ kan nu köras upp till v130. Besök den fullständiga ändringsloggen i länken nedan för att se möjliga relaterade problem och hur de har hanterats. {P2}",
+    "message": "{P1} Jag har fortsatt att förbättra kompatibiliteten med den senaste versionen av Thunderbird, ESR128. Den senaste utgåvan av $addonName$ kan nu köras upp till v133. Besök den fullständiga ändringsloggen i länken nedan för att se möjliga relaterade problem och hur de har hanterats. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1830,7 +1830,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "29 april"
+    "message": "29 november"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1936,7 +1936,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny funktion för att hitta relaterade e-postmeddelanden genom sökord som hämtats från det för närvarande visade e-postmeddelandet. [issue 488]{L2}{L1} Förbättrat stöd för mörkt tema [issue 489]{L2}{L1} Kompatibilitet med Thunderbird 130 {L2}{L1} Fixat: Tangentbordsgenvägar (som ALT+Vänster, ALT+Höger) slutade fungera i Tb 128. {L2}{L1} Fixat: Popup-meddelandet för begränsade funktioner orsakade ett undantag. {L2}{L1} Känd fråga: För närvarande misslyckas verifieringen av QuickFolders-licenser när licensen är bunden till ett Exchange-konto som nås med Owl. Detta beror på ett fel i Webextensions API som snart kommer att åtgärdas av Thunderbird. Om du har problem med detta, kontakta mig direkt från supportsidan i QuickFolders inställningar.{L2}"
+    "message": "{L1} Slutfört: Pro-funktion för att hitta relaterade e-postmeddelanden med hjälp av sökord som hämtats från det aktuellt visade e-postmeddelandet – du kan nu välja mellan olika sökningar i en rullgardinsmeny. [issue 488]{L2}{L1} Fixat: Flytta e-post till flikar med Ctrl+Nummer. {L2} {L1} Fixat: Kortkommandon krockade med textinmatning i andra tillägg som QNote++. [issue 497]{L2}{L1} Fixat: Mappnamn som innehåller enkla citattecken bröt navigeringen. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

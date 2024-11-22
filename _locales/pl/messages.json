@@ -269,7 +269,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Kontynuowałem poprawę zgodności z najnowszą wersją Thunderbird, ESR128. Najnowsza wersja $addonName$ może teraz działać do wersji v130. Proszę odwiedzić pełny dziennik zmian w poniższym linku, aby zobaczyć możliwe powiązane problemy i ich rozwiązania. {P2}",
+    "message": "{P1} Kontynuowałem poprawę zgodności z najnowszą wersją Thunderbird, ESR128. Najnowsza wersja $addonName$ może teraz działać do wersji v133. Proszę odwiedzić pełny dziennik zmian w poniższym linku, aby zobaczyć możliwe powiązane problemy i ich rozwiązania. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
   },
   "special-offer-expiry": {
-    "message": "29 kwietnia"
+    "message": "29 listopada"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1918,7 +1918,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Nowa funkcja wyszukiwania powiązanych e-maili na podstawie terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanego e-maila. [issue 488]{L2}{L1} Ulepszona obsługa ciemnego motywu [issue 489]{L2}{L1} Zgodność z Thunderbird 130 {L2}{L1} Naprawiono: Skróty klawiaturowe (takie jak ALT+Lewo, ALT+Prawo) przestały działać w Tb 128. {L2}{L1} Naprawiono: Powiadomienie o ograniczonych funkcjach powodowało wyjątek. {L2}{L1} Znany problem: Obecnie weryfikacja licencji QuickFolders nie powodzi się, gdy licencja jest powiązana z kontem Exchange, do którego dostęp uzyskuje się za pomocą Owl. Wynika to z błędu w API Webextensions, który wkrótce zostanie naprawiony przez Thunderbird. Jeśli masz z tym problemy, skontaktuj się ze mną bezpośrednio ze strony wsparcia w ustawieniach QuickFolders.{L2}"
+    "message": "{L1} Ukończono: Funkcja Pro do znajdowania powiązanych wiadomości e-mail za pomocą terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanej wiadomości e-mail – teraz można wybierać różne wyszukiwania z menu rozwijanego. [issue 488]{L2}{L1} Naprawiono: przenoszenie wiadomości e-mail do kart za pomocą Ctrl+Numer. {L2} {L1} Naprawiono: Skróty klawiszowe kolidowały z wprowadzaniem tekstu w innych dodatkach, takich jak QNote++. [issue 497]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy powodowały błędy nawigacji. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

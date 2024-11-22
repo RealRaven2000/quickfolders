@@ -10,5 +10,4 @@
 
 *   Fixed: Move mail to folder using CTRL+Number not working. [\[issue 493\]](https://github.com/RealRaven2000/QuickFolders/issues/493)
 *   Fixed: Keyboard Shortcut conflict with the 'QNote' extension - quickMove / quickJump triggered unintendedly. [\[issue 497\]](https://github.com/RealRaven2000/QuickFolders/issues/497)
-*   Fixed: Clicking a QuickFolders tab from a search result (show as list) should open a new tab. [\[issue 504\]](https://github.com/RealRaven2000/QuickFolders/issues/504)
 *   Fixed: Folder names containing single quotes break navigation.[\[issue 506\]](https://github.com/RealRaven2000/QuickFolders/issues/506)

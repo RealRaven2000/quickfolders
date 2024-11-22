@@ -72,7 +72,7 @@
   },
   "enterLicenseKey.tooltip": {
     "message": "Zadejte kód licenčního klíče, který vám byl zaslán prostřednictvím e-mailu."
-  },  
+  },
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
   },
@@ -81,7 +81,7 @@
   },
   "getQuickFolders": {
     "message": "Licence QuickFolders"
-  },  
+  },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Úspěšně nainstalován $addonName$",
@@ -107,10 +107,10 @@
   },
   "keyshortcuts.news": {
     "message": "V současné době Thunderbird používá tyto klávesové zkratky jako vestavěné, ale můžete je uvolnit pomocí doplňku tbkeys lite. Klikněte na tlačítko (?) pro více informací:"
-  },  
+  },
   "lastName.label": {
     "message": "Příjmení:"
-  },  
+  },
   "label-remind-me": {
     "message": "Připomenout znovu za $countDays$ dní.",
     "placeholders": {
@@ -170,7 +170,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Pokračoval jsem ve zlepšování kompatibility s nejnovější verzí Thunderbird, ESR128. Nejnovější verze $addonName$ nyní může běžet až do verze v130. Navštivte prosím celý seznam změn v níže uvedeném odkazu a zjistěte, jaké problémy byly vyřešeny. {P2}",
+    "message": "{P1} Pokračoval jsem ve zlepšování kompatibility s nejnovější verzí Thunderbird, ESR128. Nejnovější verze $addonName$ nyní může běžet až do verze v133. Navštivte prosím celý seznam změn v níže uvedeném odkazu a zjistěte, jaké problémy byly vyřešeny. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -198,7 +198,7 @@
   },
   "pricing.title": {
     "message": "Ceny"
-  },  
+  },
   "purchase-a-license": {
     "message": "Kupte si licenci."
   },
@@ -210,7 +210,7 @@
   },
   "qf.label.licenseValid": {
     "message": "Vaše licence je platná do:"
-  },  
+  },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Zkontrolujte stav licence…"
   },
@@ -295,8 +295,8 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "29. dubna"
-  },  
+    "message": "29. listopadu"
+  },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -335,7 +335,7 @@
   },
   "testDrive": {
     "message": "Standardní licence vám poskytuje některé funkce, které byly dříve označeny jako prémiové, a odstraňuje omezení nefinancované verze. Financuje údržbu s další verzí Thunderbirdu a převod na moderní architekturu rozšíření pošty založenou na API."
-  },  
+  },
   "thanks-for-installing-intro": {
     "message": "Děkujeme, že jste nainstalovali $addonName$.",
     "placeholders": {
@@ -372,7 +372,7 @@
   },
   "updatesExpiry": {
     "message": "QuickFolders Pro bude automaticky aktualizován jako obvykle pomocí addons.thunderbird.net. Po uplynutí roku můžete obnovit licenci nebo zachovat používání prémiových funkcí za stejných podmínek jako uživatelé, kteří jsou zdarma. Funkce „Premium Exclusive“ budou vyžadovat platný registrační klíč."
-  },  
+  },
   "whats-new-btn": {
     "message": "Co je nového?"
   },
@@ -383,7 +383,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Nová funkce pro nalezení souvisejících e-mailů pomocí vyhledávacích termínů extrahovaných z aktuálně zobrazeného e-mailu. [issue 488]{L2}{L1} Vylepšená podpora tmavého motivu [issue 489]{L2}{L1} Kompatibilita s Thunderbridem 130 {L2}{L1} Opraveno: Klávesové zkratky (např. ALT+Vlevo, ALT+Vpravo) přestaly fungovat v Tb 128. {L2}{L1} Opraveno: Vyskakovací oznámení pro omezené funkce způsobovalo výjimku. {L2}{L1} Známý problém: Ověření licencí QuickFolders v současné době selhává, když je licence vázána na účet Exchange, ke kterému je přistupováno pomocí Owl. To je způsobeno chybou v API Webextensions, kterou Thunderbird brzy opraví. Pokud máte s tímto problém, kontaktujte mě prosím přímo ze stránky podpory v nastavení QuickFolders.{L2}"
+    "message": "{L1} Dokončeno: Pro funkce pro hledání souvisejících e-mailů pomocí hledaných výrazů extrahovaných z aktuálně zobrazeného e-mailu – nyní můžete vybírat z různých hledání v rozbalovací nabídce. [issue 488]{L2}{L1} Opraveno: Přesun e-mailů na záložky pomocí Ctrl+Číslo. {L2} {L1} Opraveno: Klávesové zkratky kolidovaly se zadáváním textu v jiných doplňcích, jako je QNote++. [issue 497]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky narušovaly navigaci. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
@@ -409,5 +409,5 @@
   },
   "yearlyLicense.usageTerm1": {
     "message": "Jakékoliv další e-mailové adresy nejsou problém - nevyžadují samostatnou licenci. V případě dotazů mě můžete kontaktovat na záložce Podpora."
-  }  
+  }
 }

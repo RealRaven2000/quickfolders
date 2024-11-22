@@ -272,7 +272,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} Ik ben doorgegaan met het verbeteren van de compatibiliteit met de nieuwste versie van Thunderbird, ESR128. De nieuwste editie van $addonName$ kan nu worden uitgevoerd tot v130. Bezoek de volledige changelog via de onderstaande link om mogelijke gerelateerde problemen en hun oplossingen te bekijken. {P2}",
+    "message": "{P1} Ik ben doorgegaan met het verbeteren van de compatibiliteit met de nieuwste versie van Thunderbird, ESR128. De nieuwste editie van $addonName$ kan nu worden uitgevoerd tot v133. Bezoek de volledige changelog via de onderstaande link om mogelijke gerelateerde problemen en hun oplossingen te bekijken. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1818,7 +1818,7 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "29 april"
+    "message": "29 november"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1924,7 +1924,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Nieuwe functie om gerelateerde e-mails te vinden via zoektermen die zijn geëxtraheerd uit de momenteel weergegeven e-mail. [issue 488]{L2}{L1} Verbeterde ondersteuning voor het donkere thema [issue 489]{L2}{L1} Compatibiliteit met Thunderbird 130 {L2}{L1} Opgelost: Sneltoetsen (zoals ALT+Links, ALT+Rechts) werkten niet meer in Tb 128. {L2}{L1} Opgelost: Meldingspop-up voor beperkte functies veroorzaakte een uitzondering. {L2}{L1} Bekend probleem: Momenteel mislukt de verificatie van QuickFolders-licenties wanneer de licentie is gekoppeld aan een Exchange-account dat wordt benaderd met Owl. Dit komt door een bug in de Webextensions API die binnenkort door Thunderbird wordt opgelost. Als je problemen hiermee ondervindt, neem dan rechtstreeks contact met mij op via de ondersteuningspagina in de QuickFolders-instellingen.{L2}"
+    "message": "{L1} Voltooid: Pro-functie om gerelateerde e-mails te vinden met behulp van zoektermen die zijn gehaald uit de momenteel weergegeven e-mail: u kunt nu kiezen uit verschillende zoekopdrachten in een dropdownmenu. [issue 488]{L2}{L1} Opgelost: e-mails verplaatsen naar tabbladen met Ctrl+Nummer. {L2} {L1} Opgelost: sneltoetsen kwamen in conflict met het invoeren van tekst in andere add-ons, zoals QNote++. [issue 497]{L2}{L1} Opgelost: mapnamen met enkele aanhalingstekens veroorzaakten navigatiefouten. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

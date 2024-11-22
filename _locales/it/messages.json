@@ -283,7 +283,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1} Ho continuato a migliorare la compatibilità con la versione più recente di Thunderbird, ESR128. L'ultima edizione di $addonName$ può ora funzionare fino alla versione v130. Visita il registro completo delle modifiche nel link sottostante per vedere eventuali problemi correlati e come sono stati risolti. {P2}",
+    "message": "{P1} Ho continuato a migliorare la compatibilità con la versione più recente di Thunderbird, ESR128. L'ultima edizione di $addonName$ può ora funzionare fino alla versione v133. Visita il registro completo delle modifiche nel link sottostante per vedere eventuali problemi correlati e come sono stati risolti. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1867,7 +1867,7 @@
     "message": "Quando si esegue l'aggiornamento dalla licenza Standard, si ottiene un anno intero di licenza a partire dalla data di acquisto, indipendentemente dalla data di scadenza della licenza precedente."
   },
   "special-offer-expiry": {
-    "message": "29 aprile"
+    "message": "29 novembre"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere $addon$ compatibile",
@@ -1973,7 +1973,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{L1} Nuova funzione per trovare e-mail correlate attraverso termini di ricerca estratti dall'e-mail attualmente visualizzata. [issue 488]{L2}{L1} Migliorato il supporto per il tema scuro [issue 489]{L2}{L1} Compatibilità con Thunderbird 130 {L2}{L1} Risolto: Le scorciatoie da tastiera (come ALT+Sinistra, ALT+Destra) hanno smesso di funzionare in Tb 128. {L2}{L1} Risolto: La finestra di notifica per le funzionalità limitate causava un'eccezione. {L2}{L1} Problema noto: Attualmente, la verifica delle licenze di QuickFolders fallisce quando la licenza è legata a un account Exchange a cui si accede tramite Owl. Questo è dovuto a un bug nell'API Webextensions che verrà presto corretto da Thunderbird. Se hai problemi con questo, contattami direttamente dalla pagina di supporto nelle impostazioni di QuickFolders.{L2}"
+    "message": "{L1} Completato: funzione Pro per trovare e-mail correlate utilizzando termini di ricerca estratti dall'e-mail attualmente visualizzata: ora è possibile selezionare diverse ricerche in un menu a tendina. [issue 488]{L2}{L1} Risolto: spostamento delle e-mail nelle schede con Ctrl+Numero. {L2} {L1} Risolto: scorciatoie da tastiera in conflitto con l'inserimento di testo in altri componenti aggiuntivi come QNote++. [issue 497]{L2}{L1} Risolto: i nomi delle cartelle contenenti apici causavano errori di navigazione. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

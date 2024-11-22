@@ -272,7 +272,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 我繼續改進了與最新版本的 Thunderbird ESR128 的兼容性。$addonName$ 的最新版本現在可以運行到 v130。請訪問下面的鏈接查看完整的更改日誌，了解可能的相關問題及其處理方式。{P2}",
+    "message": "{P1} 我繼續改進了與最新版本的 Thunderbird ESR128 的兼容性。$addonName$ 的最新版本現在可以運行到 v133。請訪問下面的鏈接查看完整的更改日誌，了解可能的相關問題及其處理方式。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1768,7 +1768,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "4月29日"
+    "message": "11月29日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1874,7 +1874,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 新功能，透過從當前顯示的電子郵件中提取的搜索詞找到相關電子郵件。 [issue 488]{L2}{L1} 改進了對暗黑主題的支持 [issue 489]{L2}{L1} 兼容 Thunderbird 130 {L2}{L1} 修復：鍵盤快捷鍵（如 ALT+左、ALT+右）在 Tb 128 中停止工作。 {L2}{L1} 修復：受限功能的通知彈出窗口引發了異常。 {L2}{L1} 已知問題：目前，當許可綁定到通過 Owl 訪問的 Exchange 帳戶時，QuickFolders 許可證驗證失敗。這是由於 Webextensions API 中的錯誤，Thunderbird 將很快修復。如果您遇到此問題，請直接從 QuickFolders 設置中的支持頁面與我聯繫。{L2}"
+    "message": "{L1} 完成：利用從當前顯示的電子郵件中提取的搜尋詞語來查找相關電子郵件的專業功能 – 現在可以從下拉選單中選擇不同的搜尋。[issue 488]{L2}{L1} 修復：通過 Ctrl+數字 將電子郵件移動到標籤頁。{L2} {L1} 修復：快捷鍵與其他附加元件（例如 QNote++）中的文字輸入衝突。[issue 497]{L2}{L1} 修復：包含單引號的資料夾名稱導致導航錯誤。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

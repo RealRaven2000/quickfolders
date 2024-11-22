@@ -128,7 +128,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Olen jatkanut yhteensopivuuden parantamista Thunderbirdin uusimman version, ESR128, kanssa. Uusin versio $addonName$ voi nyt toimia jopa v130 asti. Käy alla olevasta linkistä nähdäksesi mahdolliset liittyvät ongelmat ja miten ne on ratkaistu. {P2}",
+    "message": "{P1} Olen jatkanut yhteensopivuuden parantamista Thunderbirdin uusimman version, ESR128, kanssa. Uusin versio $addonName$ voi nyt toimia jopa v133 asti. Käy alla olevasta linkistä nähdäksesi mahdolliset liittyvät ongelmat ja miten ne on ratkaistu. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -153,7 +153,7 @@
   },
   "pricing.section.hint": {
     "message": "Huomautus: Hinta vaihtelee lisenssimallin, maan, ALV-prosentin, nykyisten alennusten tai jo ostettujen lisenssien mukaan."
-  },  
+  },
   "pricing.title": {
     "message": "Hinnoittelu"
   },
@@ -224,8 +224,8 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "29. huhtikuuta"
-  },   
+    "message": "29. marraskuuta"
+  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -312,7 +312,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Uusi ominaisuus, jolla voit löytää liittyviä sähköposteja nykyisestä viestistä haetuilla hakutermeillä. [issue 488]{L2}{L1} Parannettu tumman teeman tuki [issue 489]{L2}{L1} Yhteensopivuus Thunderbird 130:n kanssa {L2}{L1} Korjattu: Pikanäppäimet (kuten ALT+Vasen, ALT+Oikea) lakkasivat toimimasta Tb 128:ssa. {L2}{L1} Korjattu: Rajoitettujen ominaisuuksien ilmoitusponnahdusikkuna aiheutti poikkeuksen. {L2}{L1} Tunnettu ongelma: Tällä hetkellä QuickFolders-lisenssien vahvistus epäonnistuu, kun lisenssi on sidottu Exchange-tiliin, johon päästään käyttämällä Owl:ia. Tämä johtuu Webextensions API:ssa olevasta virheestä, joka korjataan pian Thunderbirdissä. Jos sinulla on ongelmia tämän kanssa, ota yhteyttä suoraan QuickFolders-asetusten tukisivulta.{L2}"
+    "message": "{L1} Valmis: Pro-ominaisuus liittyvien sähköpostien löytämiseen käyttämällä haettuja termejä, jotka on poimittu näkyvästä sähköpostista – voit nyt valita eri hauista avattavassa valikossa. [issue 488]{L2}{L1} Korjattu: Sähköpostien siirtäminen välilehtiin Ctrl+Numero. {L2} {L1} Korjattu: Pikanäppäimet ristiriidassa tekstin syöttämisen kanssa muissa lisäosissa, kuten QNote++. [issue 497]{L2}{L1} Korjattu: Kansioiden nimet, joissa on yksinkertaisia lainausmerkkejä, haittasivat navigointia. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
