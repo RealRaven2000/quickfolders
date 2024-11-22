@@ -749,6 +749,7 @@ async function main() {
     if (msg_commands.includes(data.command)) {
       return notificationHandler(data, sender); // the result of this is a Promise
     }
+    // Future Work: command handler for tbkeys-lite!
     switch (data.command) {
       case "shortcut":
         console.log("QuickFolders: Received shortcut:", { data , sender });

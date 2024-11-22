@@ -467,11 +467,14 @@ END LICENSE BLOCK */
     ## [issue 504] Clicking a QuickFolders tab from a search result (show as list) should open a new tab.
     ## [issue 488] Find Related Mails: extend UI to add a selection of multiple searches 
     ## hide current folder bar in search results tab
-    
+    ## [issue 506] Folder names containing single quotes break navigation
+    ## added icon to get messages menuitems 
+    ## Support compatibility with Thunderbird 133
 
 
 	TO DO next
 	==========
+    ## WIP: command handler for tbkeys-lite! see "shortcut" in qf-background.js
     ## [issue 423] Color Tabs with unread messages
     ## [issue ]
     ## [issue ]
@@ -2590,28 +2593,32 @@ QuickFolders.FolderListener = {
 			let prop = property ? property.toString() : '',
           log = util.logDebugOptional.bind(util),
           isTouch = false;
+      const isMailTab = ["mail:3pane", "mail3PaneTab", "mailMessageTab"].includes(
+        QuickFolders.Interface.CurrentTabMode
+      );
 			log("listeners.folder", "onFolderIntPropertyChanged - property = " + prop);
 			if (prop === "TotalUnreadMessages" ||
 				(QuickFolders.Preferences.isShowTotalCount && prop === "TotalMessages")) {
 					QuickFolders.Interface.setFolderUpdateTimer(item);
-					let cF = QuickFolders.Interface.CurrentFolderTab;
-					if (cF && cF.folder && cF.folder==item) { // quick update of CurrentFolder tab:
-					  QuickFolders.Interface.initCurrentFolderTab(cF, item);
-					}
-          if (newValue > oldValue)
-            isTouch = true;
+          if (isMailTab) {
+            let cF = QuickFolders.Interface.CurrentFolderTab;
+            if (cF && cF.folder && cF.folder==item) { // quick update of CurrentFolder tab:
+              QuickFolders.Interface.initCurrentFolderTab(cF, item);
+            }
+          }
+          if (newValue > oldValue) { isTouch = true; }
 			}
       if (prop === "TotalMessages" && (newValue > oldValue)) {
         isTouch = true;
       }
+      
       // [issue 80] add folder to recent list if item was added (via d+d)
       if (isTouch) {
         util.touch(item);
       }
 
 			if (QuickFolders.compactReportFolderCompacted && prop === "FolderSize") {
-				try
-				{
+				try {
 					QuickFolders.compactReportFolderCompacted = false;
 					let size1 = QuickFolders.compactLastFolderSize,
 					    size2 = item.sizeOnDisk,
