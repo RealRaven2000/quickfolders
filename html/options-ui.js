@@ -1084,7 +1084,7 @@ QuickFolders.Options = {
       return;
     }
     let selOption = evt.target.selectedOptions[0]; // first in selection!
-    console.log("selectFindRelated_listItem", evt, selOption);
+    QuickFolders.Util.logDebug("selectFindRelated_listItem", evt, selOption);
     if (isNaN(selOption.value)) {
       return;
     }
@@ -1127,15 +1127,13 @@ QuickFolders.Options = {
         searchSelected: await prefs.getStringPref("findRelated.searchSelected"), // containing an array of options
         searchCriteria: await prefs.getStringPref("findRelated.searchCriteria"), // containing an array of options
       });
-      console.log("loadFindRelated retrieved:", { findRelatedList });
+      QuickFolders.Util.logDebug("loadFindRelated retrieved:", { findRelatedList });
     }
     return findRelatedList;
   },
   storeFindRelated: async function (findRel) {
     const prefs = QuickFolders.Preferences;
     // load the different items
-
-    QuickFolders.Util.logMissing("QuickFolders.Options.storeFindRelated()");
     const jsonList = JSON.stringify(findRel);
     await prefs.setStringPref("findRelated.list", jsonList);
   },
@@ -1144,7 +1142,6 @@ QuickFolders.Options = {
     function buildSelectionString(optionElements) {
       const fields = [];
       for (let f of optionElements) {
-        console.log(f);
         if (f.checked) {
           fields.push(f.getAttribute("term"));
         }
@@ -1175,19 +1172,20 @@ QuickFolders.Options = {
 
     const search = await QuickFolders.Options.readFindRelatedFromUI();
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
-    console.log("add to findRelated item:", {
+    
+    QuickFolders.Util.logDebug("add to findRelated item:", {
       el: search,
     });
     findRelatedList.items.push(search);
     const option = new Option(search.title, findRelatedList.length); 
     listElement.options.add(option);
 
-    console.log("new findRelated item:", { search });
+    QuickFolders.Util.logDebug("new findRelated item:", { search });
     this.storeFindRelated(findRelatedList);
   },
 
   updateFindRelated: async function () {
-    console.log("update");
+    QuickFolders.Util.logDebug("update");
     const listElement = document.getElementById("findRelatedList");
     // update element:
     const idx = listElement.selectedIndex;
@@ -1195,7 +1193,7 @@ QuickFolders.Options = {
     const search = await QuickFolders.Options.readFindRelatedFromUI();
 
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
-    console.log("update findRelated item:", { el: findRelatedList.items[idx] });
+    QuickFolders.Util.logDebug("update findRelated item:", { el: findRelatedList.items[idx] });
 
     let selectedOption = listElement.options.item(idx);
     selectedOption.label = search.title; // only update title, update backend for the rest
@@ -1217,26 +1215,40 @@ QuickFolders.Options = {
         }
       }
     }
-    console.log("updated item:", { element: theElement, index: idx, findRelatedList });
+    QuickFolders.Util.logDebug("updated item:", {
+      element: theElement,
+      index: idx,
+      findRelatedList,
+    });
+    // if current one changed -  force reselecting the menuitem
+    if (idx == (await QuickFolders.Preferences.getIntPref("findRelated.lastIdx"))) {
+      QuickFolders.Preferences.setIntPref("findRelated.lastIdx",-1);
+    }
     this.storeFindRelated(findRelatedList);
   },
 
   removeFindRelated: async function () {
-    console.log("remove");
+    QuickFolders.Util.logDebug("remove findRelated");
     const findRelatedList = await QuickFolders.Options.loadFindRelated();
     const listElement = document.getElementById("findRelatedList");
     const idx = listElement.selectedIndex;
     if (idx < 0) return;
-    console.log("delete findRelated item:", { listElement });
+    QuickFolders.Util.logDebug("delete findRelated item:", { listElement });
     const deleted = findRelatedList.items.splice(idx, 1); // returns array of deleted
     listElement.remove(idx);
-    console.log("removed item:", { ...deleted });
+    QuickFolders.Util.logDebug("removed item:", { ...deleted });
+    if (idx == (await QuickFolders.Preferences.getIntPref("findRelated.lastIdx"))) {
+      QuickFolders.Preferences.setIntPref("findRelated.lastIdx", -1);
+    }
     this.storeFindRelated(findRelatedList);
   },
 
   populateFindRelated: async function (listElement) {
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
-    console.log(`populateFindRelated - ${findRelatedList.items.length} items`, listElement);
+    QuickFolders.Util.logDebug(
+      `populateFindRelated - ${findRelatedList.items.length} items`,
+      listElement
+    );
     // HTMLOptionsCollection
     for (let i = 0; i < findRelatedList.items.length; i++) {
       const item = findRelatedList.items[i];

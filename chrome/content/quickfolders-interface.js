@@ -4672,7 +4672,7 @@ QuickFolders.Interface = {
 	} ,	
 
 	createMenuItem_findRelated: function(search, doc) {
-		const menuitem = this.createIconicElement("menuitem", "findRelated_item menuitem-iconic", doc);
+		const menuitem = this.createIconicElement("menuitem", "findRelated_item", doc);
 		menuitem.setAttribute("idx", search.idx); // just a piggy back param, we might lose that one later.
 		menuitem.setAttribute("label", search.title);
 		menuitem.setAttribute("pattern", search.pattern);
@@ -7978,17 +7978,21 @@ QuickFolders.Interface = {
           
         menuPopup.setAttribute("id", CONFIG_POPUP_ID);
         menuPopup.setAttribute("position", "after_start"); 
+				menuPopup.setAttribute("needsgutter", "");
 				// Loop through stored entries:
 				const findRelItems = findRelatedData.items;
 				if (findRelItems.length) {
+					const lastIndex =  QuickFolders.Preferences.getIntPref("findRelated.lastIdx");
           for (let a = 0; a < findRelItems.length; a++) {
 						let it = findRelItems[a];
 						it.idx = a; // piggy back index
             const menuitem = this.createMenuItem_findRelated(it, doc);
+						menuitem.setAttribute("type", "checkbox");
+						if (lastIndex == a) {
+							menuitem.setAttribute("checked",true);
+            }
 						menuPopup.appendChild(menuitem);
           }
-        }
-				if (findRelItems.length) {
           menuPopup.appendChild(this.createIconicElement("menuseparator", "*"));
 				}
 
@@ -8005,8 +8009,14 @@ QuickFolders.Interface = {
       ) {
         // store the new entry as "preset"
 				const findRelItem = event.target;
-				console.log("new find Related preset / target:", { findRelItem });
-				debugger;
+				QuickFolders.Util.logDebug("new find Related preset / target:", { findRelItem });
+				const currentIndex = parseInt(findRelItem.getAttribute("idx"),10);
+				const choices = event.target.parentElement.querySelectorAll("[idx]");
+				for (let m of choices) {
+          m.checked = parseInt(m.getAttribute("idx"), 10) == currentIndex;
+        }
+				QuickFolders.Preferences.setIntPref("findRelated.lastIdx", currentIndex);
+
 				QuickFolders.Preferences.setStringPref(
           "findRelated.pattern",
           findRelItem.getAttribute("pattern")

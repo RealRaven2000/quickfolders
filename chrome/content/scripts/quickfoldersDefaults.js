@@ -78,7 +78,7 @@ pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"sender
 pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false);
 pref("extensions.quickfolders.findRelated.lastSearchVal","");
 pref("extensions.quickfolders.findRelated.behavior.goNextResetsSearch", false);
-
+pref("extensions.quickfolders.findRelated.lastIdx",-1); // last selected
 
 
 // Current Folder Toolbar
