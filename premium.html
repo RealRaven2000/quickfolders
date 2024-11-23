@@ -433,7 +433,10 @@
 <a name="findRelated"> </a>
 					<h4>Find related Emails</h4>
 					<p>
-						Find related mails through pattern matching the currently selected mail. <a href="https://github.com/RealRaven2000/QuickFolders/issues/488">[issue 488]</a>
+						Find related mails through pattern matching the currently selected mail.
+						The current folder bar in the center of screen adds this new button 
+						which activates the search by clicking it:
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/488">[issue 488]</a>
 					</p>
 					<p>
 						<img src="images/findRelated-button.png" alt="find related emails - button" class="screenshot"  width="299" height="122" />
@@ -464,19 +467,45 @@
 						initialize "Filter by" - selection of fields<br>
 					</p>
 					<p>
-						It is currently configured via right-click:      
+						In QuickFolders v6.8 and later, you can configure it via the right-click menu, 
+						which allows editing and adding your own search templates. Selecting 
+						a search item will execute the search and make it the default search 
+						for the next time the button is pushed.
 					</p>
 					
 					<p>
-						<img src="images/findRelated-settings.png" alt="Find related emails - Settings"
-								class="screenshot" width="664" height="162">
+						<img src="images/findRelated-popup.png" alt="Find related emails - context menu"
+								class="screenshot">
 					</p>
 					
-					<p><span class="number"
-						style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">1</span>  
-						Search mask and regex group number (0 for entire match)<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">2</span>  Where is text extracted in the highlighted email<br> </p> <p><span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;">3</span>
-						How should the search be carried out.
+					<p>
+						<img src="images/findRelated-settings1.png" alt="Find related emails - Settings"
+								class="screenshot">
 					</p>
+					<ul>
+						<li>
+							Entries: these are presets for the search and will be added to the find Related menu.
+						</li>
+						<li>
+							Title: the menu label for the new search item
+						</li>
+						<li>
+							Search Pattern: this is a regular expression with JavaScript (ECMAscript) flavor.
+							you can build and test these 
+							<a target="_blank" href="https://regex101.com/?flavor=javascript&regex=test&flags=gi">at regex101.com</a>
+						</li>
+						<li>
+							Retrieve search string from: the currently displayed email is used To
+							extract a search phrase, using the search pattern. Select the fields 
+							in the current mail that shall be searched for the pattern.
+						</li>
+						<li>
+							What to search: this configures the "quick search" panel
+							with the text retrieved via the match and determines
+							which of the fields should be searched.
+							I will add more options to this in the future.
+						</li>
+					</ul>
 
 				</td>
 			</tr>
