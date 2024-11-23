@@ -133,6 +133,15 @@
   "firstName.label": {
     "message": "名:"
   },
+  "findRelated.btnAdd": {
+    "message": "追加"
+  },
+  "findRelated.btnDelete": {
+    "message": "削除"
+  },
+  "findRelated.btnUpdate": {
+    "message": "更新"
+  },
   "findRelated.btn.label": {
     "message": "関連メールを探す"
   },
@@ -147,6 +156,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "この機能を使用するには、少なくとも1つの検索パターンを設定する必要があります。"
+  },
+  "findRelated.options.title": {
+    "message": "オプション"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "「次へ」ボタンで検索をリセット"
+  },
+  "findRelated.searchGroup": {
+    "message": "検索グループ（完全一致は0）："
+  },
+  "findRelated.searchPattern": {
+    "message": "検索パターン："
+  },
+  "findRelated.term.menutitle": {
+    "message": "タイトル："
+  },
+  "findRelated.term.subject": {
+    "message": "件名"
+  },
+  "findRelated.term.sender": {
+    "message": "送信者"
+  },
+  "findRelated.term.recipients": {
+    "message": "受信者"
+  },
+  "findRelated.term.body": {
+    "message": "本文"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "検索文字列を取得する場所："
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "関連メールで検索する内容："
   },
   "freeLicense": {
     "message": "QuickFolders プロジェクトに最近ご寄付いただいた方や開発に貢献 (翻訳やパッチ提供) していただいている方は、無料ライセンスキーの取得資格があります。QuickFolders オプションのサポートタブからお問い合わせください。"
@@ -260,7 +302,7 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} Thunderbirdの最新バージョンESR128との互換性をさらに向上させました。$addonName$ の最新バージョンは、v133まで実行できるようになりました。関連する問題とその対処方法については、以下のリンクから完全な変更ログをご覧ください。{P2}",
+    "message": "{P1} L'ultima edizione di $addonName$ è ora compatibile con Thunderbird fino alla versione 133. La versione Pro offre uno {A-findRelated}strumento di ricerca migliorato{A} per trovare email correlate a quella attualmente visualizzata. Visita il registro completo delle modifiche nel link sottostante per una documentazione dettagliata. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,7 +311,7 @@
     }
   },
   "newsSection.license": {
-    "message": "この作業は独占的に資金提供されています。 ライセンスの販売により、将来的に QuickFolders を使用することに関心がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
+    "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
   },
   "ongoing-work": {
     "message": "$addonName$を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。",
@@ -1221,6 +1263,9 @@
   "qf.tab.advanced": {
     "message": "詳細"
   },
+  "qf.tab.findRelated": {
+    "message": "関連するメールを検索"
+  },
   "qf.tab.general": {
     "message": "一般"
   },
@@ -1665,11 +1710,10 @@
     "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "ライセンスを選択機能をアップグレードし、{linkStartPro}QuickFolders Pro{linkEnd}ライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。 または、新しい{linkStart}標準ライセンス{linkEnd}で標準機能を選択します。",
+    "message": "機能をアップグレードして、{boldStart}$reduction${boldEnd} を節約し、{linkStartPro}QuickFolders Proライセンス{linkEnd}を{boldStart}$expirydate${boldEnd}まで購入してください。 または、新しい{linkStart}スタンダードライセンス{linkEnd}で標準機能を選択できます。",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

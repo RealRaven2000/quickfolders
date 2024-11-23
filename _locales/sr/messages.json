@@ -115,6 +115,15 @@
   "firstName.label": {
     "message": "Име:"
   },
+  "findRelated.btnAdd": {
+    "message": "Додај"
+  },
+  "findRelated.btnDelete": {
+    "message": "Обриши"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Ажурирај"
+  },
   "findRelated.btn.label": {
     "message": "Пронађи повезане имејлове"
   },
@@ -129,6 +138,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Да бисте користили ову функцију, довољно је подесити бар један образац претраге."
+  },
+  "findRelated.options.title": {
+    "message": "Опције"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Дугме „Следеће“ ресетује претрагу"
+  },
+  "findRelated.searchGroup": {
+    "message": "Група за претрагу (0 за потпуно поклапање):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Шаблон претраге:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Наслов:"
+  },
+  "findRelated.term.subject": {
+    "message": "Наслов"
+  },
+  "findRelated.term.sender": {
+    "message": "Пошиљалац"
+  },
+  "findRelated.term.recipients": {
+    "message": "Примаоци"
+  },
+  "findRelated.term.body": {
+    "message": "Тело"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Преузми стринг за претрагу из:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Шта тражити у повезаним мејловима:"
   },
   "freeLicense": {
     "message": "Ако сте недавно донирали за QuickFolders или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка QuickFolders."
@@ -230,7 +272,7 @@
     "message": "Најновије вести"
   },
   "newsSection": {
-    "message": "{P1} Наставио сам са побољшањем компатибилности са најновијом верзијом Thunderbird-а, ESR128. Најновије издање $addonName$ сада може да ради до v133. Молимо вас да посетите комплетан дневник промена на доњем линку да видите могуће повезане проблеме и како су они решени. {P2}",
+    "message": "{P1} Најновије издање $addonName$ сада ради са Thunderbird-ом до верзије 133. Про верзија укључује {A-findRelated}унапређен алат за претрагу{A} за проналажење е-порука повезаних са тренутно приказаном. Погледајте потпун дневник промена на линку испод за детаљну документацију. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -239,7 +281,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Овај рад је искључиво финансиран продајом лиценци, размислите о куповини лиценце или обнови претходне ако сте заинтересовани за коришћење КуицкФолдерс у будућности."
+    "message": "Pošto se sav rad na QuickFolders-u i besplatan support finansiraju isključivo kroz prodaju licenci, razmislite o kupovini licence ili obnavljanju trenutne."
   },
   "ongoing-work": {
     "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
@@ -1141,6 +1183,9 @@
   "qf.tab.advanced": {
     "message": "Напредно"
   },
+  "qf.tab.findRelated": {
+    "message": "Пронађи повезане поруке"
+  },
   "qf.tab.general": {
     "message": "Основно"
   },
@@ -1606,11 +1651,10 @@
     "message": "Обновите лиценцу."
   },
   "special-offer-content": {
-    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}QuickFolders Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
+    "message": "Надоградите своје функције и уштедите {boldStart}$reduction${boldEnd} куповином {linkStartPro}QuickFolders Pro лиценце{linkEnd} до {boldStart}$expirydate${boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

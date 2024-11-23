@@ -133,6 +133,15 @@
   "firstName.label": {
     "message": "Ime:"
   },
+  "findRelated.btnAdd": {
+    "message": "Добавить"
+  },
+  "findRelated.btnDelete": {
+    "message": "Удалить"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Обновить"
+  },
   "findRelated.btn.label": {
     "message": "Najdi povezane e-pošte"
   },
@@ -147,6 +156,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Za uporabo te funkcije je dovolj, da nastavite vsaj en iskalni vzorec."
+  },
+  "findRelated.options.title": {
+    "message": "Параметры"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Кнопка «Далее» сбрасывает поиск"
+  },
+  "findRelated.searchGroup": {
+    "message": "Группа поиска (0 для полного совпадения):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Шаблон поиска:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Заголовок:"
+  },
+  "findRelated.term.subject": {
+    "message": "Тема"
+  },
+  "findRelated.term.sender": {
+    "message": "Отправитель"
+  },
+  "findRelated.term.recipients": {
+    "message": "Получатели"
+  },
+  "findRelated.term.body": {
+    "message": "Текст"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Извлечь строку поиска из:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Что искать в связанных письмах:"
   },
   "freeLicense": {
     "message": "V primeru, da ste nedavno prispevali k projektu QuickFolders ali ste sodelovali pri razvoju, kot je prevajanje ali pisanje popravkov, ste morda upravičeni do brezplačnega ključa za dovoljenje. Navežite stik z mano iz zavihka za podporo v možnostih QuickFolders."
@@ -260,7 +302,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Nadaljeval sem z izboljševanjem združljivosti z najnovejšo različico Thunderbird, ESR128. Zadnja izdaja $addonName$ lahko zdaj deluje do v133. Obiščite celoten seznam sprememb na spodnji povezavi, če želite izvedeti več o morebitnih povezanih težavah in kako so bile odpravljene. {P2}",
+    "message": "{P1} Najnovejša različica $addonName$ zdaj deluje v Thunderbird do različice 133. Pro različica vključuje {A-findRelated}izboljšano orodje za iskanje{A}, ki omogoča iskanje sporočil, povezanih z izbranim. Za podrobno dokumentacijo obiščite celoten dnevnik sprememb prek spodnje povezave. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,7 +311,7 @@
     }
   },
   "newsSection.license": {
-    "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
+    "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -1251,6 +1293,9 @@
   "qf.tab.advanced": {
     "message": "Napredno"
   },
+  "qf.tab.findRelated": {
+    "message": "Poišči povezana sporočila"
+  },
   "qf.tab.general": {
     "message": "Splošno"
   },
@@ -1725,11 +1770,10 @@
     "message": "Obnovite licenco."
   },
   "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence QuickFolders Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart}$reduction${boldEnd}, ko kupite {linkStartPro}licenco QuickFolders Pro{linkEnd} do {boldStart}$expirydate${boldEnd}. Ali izberite standardne funkcije z novo {linkStart}Standardno licenco{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

@@ -145,6 +145,16 @@
   "firstName.label": {
     "message": "Förnamn:"
   },
+
+  "findRelated.btnUpdate": {
+    "message": "Uppdatera"
+  },
+  "findRelated.btnAdd": {
+    "message": "Lägg till"
+  },
+  "findRelated.btnDelete": {
+    "message": "Ta bort"
+  },
   "findRelated.btn.label": {
     "message": "Hitta relaterade e-postmeddelanden"
   },
@@ -159,6 +169,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "För att använda den här funktionen behöver du bara ställa in minst ett sökmönster."
+  },
+  "findRelated.options.title": {
+    "message": "Alternativ"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Knappen 'Nästa' återställer sökningen"
+  },
+  "findRelated.searchGroup": {
+    "message": "Sökgrupp (0 för exakt matchning):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Sökmönster:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Titel:"
+  },
+  "findRelated.term.subject": {
+    "message": "Ämne"
+  },
+  "findRelated.term.sender": {
+    "message": "Avsändare"
+  },
+  "findRelated.term.recipients": {
+    "message": "Mottagare"
+  },
+  "findRelated.term.body": {
+    "message": "Brödtext"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Hämta söksträng från:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Vad ska sökas i relaterade e-postmeddelanden:"
   },
   "freeLicense": {
     "message": "Om du tidigare har donerat till QuickFolders-projektet eller har bidragit med arbetsinsatser inom projektet, t.ex. genom att översätta eller skriva korrigeringskod, så kan du vara berättigad till en gratis licensnyckel. Kontakta oss via supportfliken i QuickFolders inställningar."
@@ -272,7 +315,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Jag har fortsatt att förbättra kompatibiliteten med den senaste versionen av Thunderbird, ESR128. Den senaste utgåvan av $addonName$ kan nu köras upp till v133. Besök den fullständiga ändringsloggen i länken nedan för att se möjliga relaterade problem och hur de har hanterats. {P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ kan nu användas med Thunderbird upp till version 133. Pro-versionen innehåller ett {A-findRelated}förbättrat sökverktyg{A} för att hitta e-postmeddelanden relaterade till det som visas. Besök hela ändringsloggen via länken nedan för detaljerad dokumentation. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -281,7 +324,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
+    "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
   },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
@@ -1299,6 +1342,9 @@
   "qf.tab.advanced": {
     "message": "Avancerat"
   },
+  "qf.tab.findRelated": {
+    "message": "Hitta relaterade mejl"
+  },
   "qf.tab.general": {
     "message": "Allmänt"
   },
@@ -1788,11 +1834,10 @@
     "message": "Förnya din licens."
   },
   "special-offer-content": {
-    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en {linkStartPro}QuickFolders Pro -licens{linkEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
+    "message": "Uppgradera dina funktioner och spara {boldStart}$reduction${boldEnd} när du köper en {linkStartPro}QuickFolders Pro-licens{linkEnd} fram till {boldStart}$expirydate${boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}Standardlicensen{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

@@ -75,9 +75,9 @@ pref("extensions.quickfolders.findRelated.pattern","");
 pref("extensions.quickfolders.findRelated.group",0);
 pref("extensions.quickfolders.findRelated.searchSelected","[\"subject\"]");
 pref("extensions.quickfolders.findRelated.searchCriteria","[\"subject\",\"sender\",\"recipients\"]");
-pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false);
 pref("extensions.quickfolders.findRelated.lastSearchVal","");
 pref("extensions.quickfolders.findRelated.behavior.goNextResetsSearch", false);
+pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false); // test
 pref("extensions.quickfolders.findRelated.lastIdx",-1); // last selected
 
 
@@ -88,7 +88,7 @@ pref("extensions.quickfolders.showCurrentFolderToolbar.singleMailTab", true);
 pref("extensions.quickfolders.currentFolderBar.showClose", false);
 pref("extensions.quickfolders.currentFolderBar.showRecentButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFilterButton", true);
-pref("extensions.quickfolders.currentFolderBar.showFindRelated", false);
+pref("extensions.quickfolders.currentFolderBar.showFindRelated", true);
 pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton", false);
 pref("extensions.quickfolders.currentFolderBar.showIconButtons", true);
 pref("extensions.quickfolders.currentFolderBar.showRepairFolderButton", false);

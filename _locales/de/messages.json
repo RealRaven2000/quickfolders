@@ -146,6 +146,15 @@
   "firstName.label": {
     "message": "Vorname:"
   },
+  "findRelated.btnAdd": {
+    "message": "Hinzufügen"
+  },
+  "findRelated.btnDelete": {
+    "message": "Löschen"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Aktualisieren"
+  },
   "findRelated.btn.label": {
     "message": "Verwandte E-Mails finden"
   },
@@ -160,6 +169,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Um diese Funktion zu nutzen, richten Sie bitte mindestens ein Suchmuster ein."
+  },
+  "findRelated.options.title": {
+    "message": "Optionen"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "'Nächster' Button setzt die Suche zurück"
+  },
+  "findRelated.searchGroup": {
+    "message": "Suchgruppe (0 für vollständige Übereinstimmung):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Suchmuster:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Titel:"
+  },
+  "findRelated.term.subject": {
+    "message": "Betreff"
+  },
+  "findRelated.term.sender": {
+    "message": "Absender"
+  },
+  "findRelated.term.recipients": {
+    "message": "Empfänger"
+  },
+  "findRelated.term.body": {
+    "message": "Text"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Suchzeichenfolge abrufen von:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Was in verwandten Mails durchsucht werden soll:"
   },
   "freeLicense": {
     "message": "Falls Sie in letzter Zeit dem QuickFolders Projekt gespendet oder mit Arbeit beigetragen haben, z.B. durch Übersetzung oder Softwarepatches, können Sie für eine Gratislizenz qualifiziert sein. Kontaktieren Sie mich einfach vom 'Support' Reiter im QuickFolders Optionen Dialog."
@@ -273,13 +315,16 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Ich habe die Kompatibilität mit der neuesten Version von Thunderbird, ESR128, weiter verbessert. Die neueste Version von $addonName$ kann jetzt bis v133 ausgeführt werden. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link, um mögliche verwandte Probleme und deren Behebung zu sehen. {P2}",
+    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird bis Version 133 kompatibel. Die Pro-Version enthält ein {A-findRelated}verbessertes Suchwerkzeug{A}, um E-Mails zu finden, die mit der aktuell angezeigten zusammenhängen. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link für detaillierte Dokumentation. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "newsSection.license": {
+    "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
   },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
@@ -1285,6 +1330,9 @@
   "qf.tab.advanced": {
     "message": "Erweitert"
   },
+  "qf.tab.findRelated": {
+    "message": "Verwandte E-Mails finden"
+  },
   "qf.tab.general": {
     "message": "Allgemein"
   },
@@ -1765,11 +1813,10 @@
     "message": "Erneuern Sie Ihre Lizenz."
   },
   "special-offer-content": {
-    "message": "Upgraden Sie Ihre Funktionen und sparen Sie {boldStart}$reduction${boldEnd}, indem Sie eine {linkStartPro}QuickFolders Pro-Lizenz{linkEnd} kaufen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar. Oder wählen Sie die Standardfunktionen mit der neuen {linkStart}Standardlizenz{linkEnd}.",
+    "message": "Upgraden Sie Ihre Funktionen und sparen Sie {boldStart}$reduction${boldEnd}, wenn Sie eine {linkStartPro}QuickFolders Pro-Lizenz{linkEnd} bis zum {boldStart}$expirydate${boldEnd} kaufen. Oder wählen Sie die Standardfunktionen mit der neuen {linkStart}Standard-Lizenz{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",
@@ -1777,6 +1824,7 @@
       }
     }
   },
+
   "special-offer-renew": {
     "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} erhältlich.",
     "placeholders": {

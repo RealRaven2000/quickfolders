@@ -149,6 +149,15 @@
   "firstName.label": {
     "message": "Nom:"
   },
+  "findRelated.btnAdd": {
+    "message": "Afegir"
+  },
+  "findRelated.btnDelete": {
+    "message": "Eliminar"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Actualitzar"
+  },
   "findRelated.btn.label": {
     "message": "Cercar correus relacionats"
   },
@@ -163,6 +172,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Per utilitzar aquesta funció, només cal que configureu almenys un patró de cerca."
+  },
+  "findRelated.options.title": {
+    "message": "Opcions"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "El botó 'Anar següent' restableix la cerca"
+  },
+  "findRelated.searchGroup": {
+    "message": "Grup de cerca (0 per coincidència completa):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Patró de cerca:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Títol:"
+  },
+  "findRelated.term.subject": {
+    "message": "Assumpte"
+  },
+  "findRelated.term.sender": {
+    "message": "Remitent"
+  },
+  "findRelated.term.recipients": {
+    "message": "Destinatari(s)"
+  },
+  "findRelated.term.body": {
+    "message": "Cos"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Obtenir cadena de cerca de:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Què cercar a les correus relacionats:"
   },
   "freeLicense": {
     "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
@@ -280,7 +322,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} He continuat millorant la compatibilitat amb la versió més recent de Thunderbird, ESR128. L'última edició de $addonName$ ara pot funcionar fins a la v133. Si us plau, visiteu el registre complet de canvis en l'enllaç següent per veure els possibles problemes relacionats i com s'han solucionat. {P2}",
+    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird fins a la versió 133. La versió Pro inclou una {A-findRelated}eina de cerca millorada{A} per trobar correus relacionats amb el que es mostra actualment. Visiteu el registre complet de canvis al següent enllaç per a documentació detallada. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -289,7 +331,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Com que aquest treball es finança exclusivament amb la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessats a utilitzar QuickFolders en el futur."
+    "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
   },
   "ongoing-work": {
     "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió del 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
@@ -1268,6 +1310,12 @@
   "qf.tab.advanced": {
     "message": "Avançat"
   },
+  "qf.tab.findRelated": {
+    "message": "Trobar correus relacionats"
+  },
+  "qf.tab.general": {
+    "message": "General"
+  },
   "qf.tab.gopro": {
     "message": "Llicències"
   },
@@ -1718,11 +1766,10 @@
     "message": "Renoveu la llicència."
   },
   "special-offer-content": {
-    "message": "Actualitzeu les funcions i estalvieu {boldStart}$reduction${boldEnd} comprant una llicència QuickFolders Pro. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}. O bé escolliu les funcions estàndard amb la nova {linkStart}Llicència estàndard{linkEnd}.",
+    "message": "Millora les teves funcions i estalvia {boldStart}$reduction${boldEnd} en comprar una llicència {linkStartPro}QuickFolders Pro{linkEnd} fins al {boldStart}$expirydate${boldEnd}. O tria les funcions estàndard amb la nova {linkStart}Llicència Estàndard{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

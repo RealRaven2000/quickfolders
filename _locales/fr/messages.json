@@ -156,6 +156,15 @@
   "firstName.label": {
     "message": "Prénom :"
   },
+  "findRelated.btnAdd": {
+    "message": "Ajouter"
+  },
+  "findRelated.btnDelete": {
+    "message": "Supprimer"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Mettre à jour"
+  },
   "findRelated.btn.label": {
     "message": "Trouver les e-mails similaires"
   },
@@ -170,6 +179,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Pour utiliser cette fonctionnalité, il vous suffit de configurer au moins un modèle de recherche."
+  },
+  "findRelated.options.title": {
+    "message": "Options"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Le bouton 'Suivant' réinitialise la recherche"
+  },
+  "findRelated.searchGroup": {
+    "message": "Groupe de recherche (0 pour correspondance exacte) :"
+  },
+  "findRelated.searchPattern": {
+    "message": "Modèle de recherche :"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Titre :"
+  },
+  "findRelated.term.subject": {
+    "message": "Objet"
+  },
+  "findRelated.term.sender": {
+    "message": "Expéditeur"
+  },
+  "findRelated.term.recipients": {
+    "message": "Destinataires"
+  },
+  "findRelated.term.body": {
+    "message": "Corps"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Obtenir la chaîne de recherche depuis :"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Ce que vous recherchez dans les e-mails associés :"
   },
   "freeLicense": {
     "message": "Si vous avez fait un don récemment au projet QuickFolders ou y avez contribué en le traduisant ou en écrivant des patchs, vous pourriez être éligible à une clé de licence gratuite. Contactez-moi par l'onglet d'aide dans les options de QuickFolders."
@@ -283,7 +325,7 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} J'ai continué à améliorer la compatibilité avec la dernière version de Thunderbird, ESR128. La dernière édition de $addonName$ peut désormais fonctionner jusqu'à la version v133. Veuillez consulter le journal des modifications complet via le lien ci-dessous pour voir les problèmes possibles et comment ils ont été résolus. {P2}",
+    "message": "{P1} La dernière version de $addonName$ est maintenant compatible avec Thunderbird jusqu'à la version 133. La version Pro dispose d'un {A-findRelated}outil de recherche amélioré{A} pour trouver les e-mails liés à celui actuellement affiché. Veuillez consulter le journal des modifications complet dans le lien ci-dessous pour une documentation détaillée. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -292,7 +334,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler la précédente si vous souhaitez utiliser QuickFolders à l'avenir"
+    "message": "Étant donné que tout le travail sur QuickFolders et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
   },
   "ongoing-work": {
     "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
@@ -1328,6 +1370,9 @@
   "qf.tab.advanced": {
     "message": "Avancées"
   },
+  "qf.tab.findRelated": {
+    "message": "Trouver des e-mails similaires"
+  },
   "qf.tab.general": {
     "message": "Générales"
   },
@@ -1815,11 +1860,10 @@
     "message": "Renouvelez votre licence."
   },
   "special-offer-content": {
-    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une {linkStartPro}licence QuickFolders Pro{linkEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
+    "message": "Améliorez vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une licence {linkStartPro}QuickFolders Pro{linkEnd} avant le {boldStart}$expirydate${boldEnd}. Ou choisissez les fonctionnalités standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

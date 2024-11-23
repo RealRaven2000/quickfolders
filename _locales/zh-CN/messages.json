@@ -149,6 +149,15 @@
   "firstName.label": {
     "message": "名字"
   },
+  "findRelated.btnAdd": {
+    "message": "添加"
+  },
+  "findRelated.btnDelete": {
+    "message": "删除"
+  },
+  "findRelated.btnUpdate": {
+    "message": "更新"
+  },
   "findRelated.btn.label": {
     "message": "查找相关邮件"
   },
@@ -163,6 +172,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "要使用此功能，您只需设置至少一个搜索模式。"
+  },
+  "findRelated.options.title": {
+    "message": "选项"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "“下一个”按钮重置搜索"
+  },
+  "findRelated.searchGroup": {
+    "message": "搜索组（0表示完全匹配）："
+  },
+  "findRelated.searchPattern": {
+    "message": "搜索模式："
+  },
+  "findRelated.term.menutitle": {
+    "message": "标题："
+  },
+  "findRelated.term.subject": {
+    "message": "主题"
+  },
+  "findRelated.term.sender": {
+    "message": "发件人"
+  },
+  "findRelated.term.recipients": {
+    "message": "收件人"
+  },
+  "findRelated.term.body": {
+    "message": "正文"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "从以下字段中获取搜索字符串："
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "在相关邮件中搜索内容："
   },
   "freeLicense": {
     "message": "如果您最近捐助了 QuickFolders 项目或者帮助其完成工作，例如翻译项目或者撰写补丁，您可能有资格获得一个免费的授权密钥。请使用 QuickFolders 选项中的支持选项卡与我联系。"
@@ -276,7 +318,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 我继续改进了与最新版本的 Thunderbird ESR128 的兼容性。$addonName$ 的最新版本现在可以运行到 v133。请访问下面的链接查看完整的更改日志，了解可能的相关问题及其处理方式。{P2}",
+    "message": "{P1} $addonName$ 的最新版本现已支持 Thunderbird 133 版。Pro 版本提供了一个 {A-findRelated}改进的搜索工具{A}，用于查找与当前查看的邮件相关的邮件。请访问以下链接查看完整的更新日志和详细文档。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -285,7 +327,7 @@
     }
   },
   "newsSection.license": {
-    "message": "这项工作是独家资助的 通过出售许可证，如果您有兴趣在未来使用 QuickFolders，请考虑购买许可证或更新之前的许可证。"
+    "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
   },
   "ongoing-work": {
     "message": "将 $addonName$ 转换为新编程模型的更改花费了数周时间，而且成本很高。 下一个2022版本将有更多更改。 有了这样复杂的附加组件，昂贵的工作就变得不可避免。 请帮助我们。",
@@ -1261,6 +1303,9 @@
   "qf.tab.advanced": {
     "message": "先进的"
   },
+  "qf.tab.findRelated": {
+    "message": "查找相关邮件"
+  },
   "qf.tab.general": {
     "message": "常规"
   },
@@ -1711,11 +1756,10 @@
     "message": "续订您的许可证。"
   },
   "special-offer-content": {
-    "message": "通过购买 {linkStartPro}QuickFolders Pro{linkEnd} 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
+    "message": "升级功能并节省 {boldStart}$reduction${boldEnd}，购买 {linkStartPro}QuickFolders Pro 许可证{linkEnd}，有效期至 {boldStart}$expirydate${boldEnd}。或选择新 {linkStart}标准许可证{linkEnd}，使用标准功能。",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

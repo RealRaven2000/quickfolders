@@ -145,6 +145,15 @@
   "firstName.label": {
     "message": "名："
   },
+  "findRelated.btnAdd": {
+    "message": "新增"
+  },
+  "findRelated.btnDelete": {
+    "message": "刪除"
+  },
+  "findRelated.btnUpdate": {
+    "message": "更新"
+  },
   "findRelated.btn.label": {
     "message": "查找相關郵件"
   },
@@ -159,6 +168,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "要使用此功能，您只需設定至少一個搜尋模式。"
+  },
+  "findRelated.options.title": {
+    "message": "選項"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "「下一步」按鈕會重置搜尋"
+  },
+  "findRelated.searchGroup": {
+    "message": "搜尋群組（完全符合為0）："
+  },
+  "findRelated.searchPattern": {
+    "message": "搜尋模式："
+  },
+  "findRelated.term.menutitle": {
+    "message": "標題："
+  },
+  "findRelated.term.subject": {
+    "message": "主旨"
+  },
+  "findRelated.term.sender": {
+    "message": "寄件者"
+  },
+  "findRelated.term.recipients": {
+    "message": "收件者"
+  },
+  "findRelated.term.body": {
+    "message": "內容"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "從以下項目取得搜尋字串："
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "在related 邮件中搜尋什麼："
   },
   "freeLicense": {
     "message": "如果您最近贊助QuickFolders計畫或分擔一些工作，像是翻譯或撰寫修補程式，您將可以獲得一個免費的購買證明金鑰。請從QuickFolders選項中的支援分頁跟我聯絡。"
@@ -272,7 +314,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 我繼續改進了與最新版本的 Thunderbird ESR128 的兼容性。$addonName$ 的最新版本現在可以運行到 v133。請訪問下面的鏈接查看完整的更改日誌，了解可能的相關問題及其處理方式。{P2}",
+    "message": "{P1} $addonName$ 的最新版本現已支援 Thunderbird 133 版。Pro 版本提供了一個 {A-findRelated}改進的搜尋工具{A}，可用於查找與當前檢視的郵件相關的郵件。請參考以下連結以檢視完整的變更記錄及詳細文件。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -281,7 +323,7 @@
     }
   },
   "newsSection.license": {
-    "message": "這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證。"
+    "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
   },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
@@ -1269,6 +1311,9 @@
   "qf.tab.advanced": {
     "message": "進階"
   },
+  "qf.tab.findRelated": {
+    "message": "查找相關郵件"
+  },
   "qf.tab.general": {
     "message": "一般"
   },
@@ -1726,11 +1771,10 @@
     "message": "續訂您的許可證。"
   },
   "special-offer-content": {
-    "message": "通過購買 {linkStartPro}QuickFolders Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
+    "message": "升級您的功能並節省 {boldStart}$reduction${boldEnd}，購買 {linkStartPro}QuickFolders Pro 授權{linkEnd}，有效期限至 {boldStart}$expirydate${boldEnd}。或選擇新的 {linkStart}標準授權{linkEnd}，使用標準功能。",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

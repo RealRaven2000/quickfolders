@@ -170,7 +170,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Pokračoval jsem ve zlepšování kompatibility s nejnovější verzí Thunderbird, ESR128. Nejnovější verze $addonName$ nyní může běžet až do verze v133. Navštivte prosím celý seznam změn v níže uvedeném odkazu a zjistěte, jaké problémy byly vyřešeny. {P2}",
+    "message": "{P1} Nejnovější verze $addonName$ nyní funguje až do Thunderbird verze 133. Verze Pro obsahuje {A-findRelated}vylepšený nástroj pro hledání{A} e-mailů souvisejících s aktuálně zobrazeným. Navštivte odkaz na celý seznam změn níže a získejte podrobnou dokumentaci. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -253,11 +253,10 @@
     "message": "Obnovte si licenci."
   },
   "special-offer-content": {
-    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence QuickFolders Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+    "message": "Vylepšete si funkce a ušetřete {boldStart}$reduction${boldEnd} při koupi {linkStartPro}QuickFolders Pro licence{linkEnd} do {boldStart}$expirydate${boldEnd}. Nebo si vyberte standardní funkce s novou {linkStart}Standardní licencí{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

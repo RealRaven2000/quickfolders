@@ -41,19 +41,21 @@ function formatAll(id, arg=null) {
   let localizedMsg = 
     arg ? messenger.i18n.getMessage(id, arg)  : messenger.i18n.getMessage(id);
   return localizedMsg
-    .replace(/\{boldStart\}/g,"<b>")
-    .replace(/\{boldEnd\}/g,"</b>")
-    .replace(/\{hr\}/g,"<hr>")
-    .replace(/\{italicStart\}/g,"<i>")
-    .replace(/\{italicEnd\}/g,"</i>")
-    .replace(/\{L1\}/g,"<li>")
-    .replace(/\{L2\}/g,"</li>")
-    .replace(/\{P1\}/g,"<p>")
-    .replace(/\{P2\}/g,"</p>")
-    .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>")
-    .replace(/\[(.)\]/g,"<code class='keystroke'>$1</code>")     // single keys
-    .replace(/\[(F\d*)\]/g,"<code class='keystroke'>$1</code>") // F10
-    .replace(/\[(CTRL|ALT)\]/g,"<code class='keystroke'>$1</code>");  // single keys
+    .replace(/\{boldStart\}/g, "<b>")
+    .replace(/\{boldEnd\}/g, "</b>")
+    .replace(/\{hr\}/g, "<hr>")
+    .replace(/\{italicStart\}/g, "<i>")
+    .replace(/\{italicEnd\}/g, "</i>")
+    .replace(/\{L1\}/g, "<li>")
+    .replace(/\{L2\}/g, "</li>")
+    .replace(/\{P1\}/g, "<p>")
+    .replace(/\{P2\}/g, "</p>")
+    .replace(/\{A-findRelated\}/g, "<a href='https://quickfolders.org/premium.html#findRelated'>")
+    .replace(/\{A\}/g, "</a>")
+    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1>[issue $1]</a>")
+    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
+    .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>") // F10
+    .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>");  // single keys
 };
 
 addEventListener("load", async (event) => {

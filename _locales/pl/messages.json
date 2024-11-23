@@ -145,6 +145,15 @@
   "firstName.label": {
     "message": "Imię:"
   },
+  "findRelated.btnAdd": {
+    "message": "Dodaj"
+  },
+  "findRelated.btnDelete": {
+    "message": "Usuń"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Aktualizuj"
+  },
   "findRelated.btn.label": {
     "message": "Znajdź powiązane maile"
   },
@@ -159,6 +168,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Aby skorzystać z tej funkcji, wystarczy ustawić co najmniej jeden wzorzec wyszukiwania."
+  },
+  "findRelated.options.title": {
+    "message": "Opcje"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Przycisk „Dalej” resetuje wyszukiwanie"
+  },
+  "findRelated.searchGroup": {
+    "message": "Grupa wyszukiwania (0 dla pełnego dopasowania):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Wzorzec wyszukiwania:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Tytuł:"
+  },
+  "findRelated.term.subject": {
+    "message": "Temat"
+  },
+  "findRelated.term.sender": {
+    "message": "Nadawca"
+  },
+  "findRelated.term.recipients": {
+    "message": "Odbiorcy"
+  },
+  "findRelated.term.body": {
+    "message": "Treść"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Pobierz ciąg wyszukiwania z:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Co wyszukiwać w powiązanych wiadomościach:"
   },
   "freeLicense": {
     "message": "Jeśli niedawno przekazałeś/przekazałaś dotację na rzecz QuickFolders lub brałeś/brałaś udział przy jego tworzeniu, np. poprzez tłumaczenie, czy tworzenie kodu, możesz uzyskać za darmo klucz licencyjny. Skontaktuj się z autorem dodatku, używając przycisku znajdującego się na karcie „Pomoc techniczna” w opcjach QuickFolders."
@@ -269,7 +311,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Kontynuowałem poprawę zgodności z najnowszą wersją Thunderbird, ESR128. Najnowsza wersja $addonName$ może teraz działać do wersji v133. Proszę odwiedzić pełny dziennik zmian w poniższym linku, aby zobaczyć możliwe powiązane problemy i ich rozwiązania. {P2}",
+    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 133. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -278,7 +320,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
+    "message": "Ponieważ cała praca nad QuickFolders i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
   },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
@@ -1293,6 +1335,9 @@
   "qf.tab.advanced": {
     "message": "Zaawansowane"
   },
+  "qf.tab.findRelated": {
+    "message": "Znajdź powiązane e-maile"
+  },
   "qf.tab.general": {
     "message": "Ogólne"
   },
@@ -1770,11 +1815,10 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję QuickFolders Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
+    "message": "Zaktualizuj swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując licencję {linkStartPro}QuickFolders Pro{linkEnd} do {boldStart}$expirydate${boldEnd}. Lub wybierz funkcje standardowe z nową {linkStart}Licencją Standardową{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

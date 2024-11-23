@@ -131,6 +131,63 @@
   "firstName.label": {
     "message": "Keresztnév:"
   },
+  "findRelated.btnAdd": {
+    "message": "Hozzáadás"
+  },
+  "findRelated.btnDelete": {
+    "message": "Törlés"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Frissítés"
+  },
+  "findRelated.btn.label": {
+    "message": "Kapcsolódó e-mailek keresése"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Kapcsolódó e-mailek keresése a kijelölt e-mail és a felhasználó által meghatározott keresési minták alapján"
+  },
+  "findRelated.menu.configure": {
+    "message": "Keresési minták beállítása…"
+  },
+  "findRelated.prompt.title": {
+    "message": "Kapcsolódó e-mailek keresése: Minta keresés"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "A funkció használatához legalább egy keresési mintát kell beállítani."
+  },
+  "findRelated.options.title": {
+    "message": "Beállítások"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "'Tovább' gomb visszaállítja a keresést"
+  },
+  "findRelated.searchGroup": {
+    "message": "Keresési csoport (0 a teljes egyezéshez):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Keresési minta:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Cím:"
+  },
+  "findRelated.term.subject": {
+    "message": "Téma"
+  },
+  "findRelated.term.sender": {
+    "message": "Feladó"
+  },
+  "findRelated.term.recipients": {
+    "message": "Címzettek"
+  },
+  "findRelated.term.body": {
+    "message": "Törzs"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Keresési karakterlánc lekérése innen:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Mit keresünk a kapcsolódó e-mailekben:"
+  },
   "fromAddress.tooltip": {
     "message": "Alapértelmezett identitás az e-mailek írása során"
   },
@@ -228,7 +285,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} Folytattam a kompatibilitás javítását a Thunderbird legújabb, ESR128 verziójával. A $addonName$ legújabb kiadása mostantól a v133 verzióig futtatható. Kérjük, látogasson el az alábbi hivatkozásra a teljes változási napló megtekintéséhez, ahol láthatja a kapcsolódó problémákat és azok megoldásait. {P2}",
+    "message": "{P1} A $addonName$ legújabb verziója már kompatibilis a Thunderbird 133-as verziójáig. A Pro verzió tartalmaz egy {A-findRelated}fejlesztett keresőeszközt{A}, amely segít megtalálni az aktuálisan megtekintett e-maillel kapcsolatos leveleket. A részletes dokumentációért látogasson el az alábbi linkre a teljes változáslistához. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -237,7 +294,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
+    "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
   },
   "ongoing-work": {
     "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",
@@ -1144,6 +1201,9 @@
   "qf.tab.advanced": {
     "message": "Haladó"
   },
+  "qf.tab.findRelated": {
+    "message": "Kapcsolódó e-mailek keresése"
+  },
   "qf.tab.general": {
     "message": "Általános"
   },
@@ -1525,11 +1585,10 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a {linkStartPro}QuickFolders Pro licenc megvásárlásával{linkEnd}! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
+    "message": "Bővítse funkcióit, és takarítson meg {boldStart}$reduction${boldEnd} egy {linkStartPro}QuickFolders Pro licenc megvásárlásával{linkEnd} {boldStart}$expirydate${boldEnd} előtt. Vagy válassza az új {linkStart}Standard Licencet{linkEnd} a standard funkciókkal.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

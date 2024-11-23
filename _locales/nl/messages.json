@@ -145,6 +145,15 @@
   "firstName.label": {
     "message": "Voornaam:"
   },
+  "findRelated.btnAdd": {
+    "message": "Toevoegen"
+  },
+  "findRelated.btnDelete": {
+    "message": "Verwijderen"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Bijwerken"
+  },
   "findRelated.btn.label": {
     "message": "Zoek gerelateerde e-mails"
   },
@@ -159,6 +168,39 @@
   },
   "findRelated.prompt.enterPattern": {
     "message": "Om deze functie te gebruiken, hoef je slechts één zoekpatroon in te stellen."
+  },
+  "findRelated.options.title": {
+    "message": "Opties"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Knop 'Volgende' reset de zoekopdracht"
+  },
+  "findRelated.searchGroup": {
+    "message": "Zoekgroep (0 voor volledige overeenkomst):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Zoekpatroon:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Titel:"
+  },
+  "findRelated.term.subject": {
+    "message": "Onderwerp"
+  },
+  "findRelated.term.sender": {
+    "message": "Afzender"
+  },
+  "findRelated.term.recipients": {
+    "message": "Ontvangers"
+  },
+  "findRelated.term.body": {
+    "message": "Tekst"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Haal zoektekst op van:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Waarnaar te zoeken in gerelateerde e-mails:"
   },
   "freeLicense": {
     "message": "Als u onlangs aan het QuickFolders-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met mij op via het tabblad Ondersteuning in de QuickFolders-opties."
@@ -272,7 +314,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} Ik ben doorgegaan met het verbeteren van de compatibiliteit met de nieuwste versie van Thunderbird, ESR128. De nieuwste editie van $addonName$ kan nu worden uitgevoerd tot v133. Bezoek de volledige changelog via de onderstaande link om mogelijke gerelateerde problemen en hun oplossingen te bekijken. {P2}",
+    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 133. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -281,7 +323,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst"
+    "message": "Aangezien al het werk aan QuickFolders en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
   },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
@@ -1284,6 +1326,9 @@
   "qf.tab.advanced": {
     "message": "Geavanceerd"
   },
+  "qf.tab.findRelated": {
+    "message": "Gerelateerde e-mails zoeken"
+  },
   "qf.tab.general": {
     "message": "Algemeen"
   },
@@ -1776,11 +1821,10 @@
     "message": "Verleng uw licentie."
   },
   "special-offer-content": {
-    "message": "Upgrade uw functies en bespaar {boldStart}$reduction${boldEnd} door een {linkStartPro}QuickFolders Pro-licentie{linkEnd} te kopen! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}. Of kies voor de standaardfuncties met de nieuwe {linkStart}Standaardlicentie{linkEnd}.",
+    "message": "Upgrade je functies en bespaar {boldStart}$reduction${boldEnd} bij het kopen van een {linkStartPro}QuickFolders Pro-licentie{linkEnd} tot {boldStart}$expirydate${boldEnd}. Of kies de standaardfuncties met de nieuwe {linkStart}Standaardlicentie{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",

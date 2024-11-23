@@ -700,40 +700,46 @@
             </select>
           </div>
           <div class="vbox">
-            <button id="updateFindRelated">Update</button>
-            <button id="addFindRelated">Add</button>
-            <button id="deleteFindRelated">Delete</button>
+            <button id="updateFindRelated">__MSG_findRelated.btnUpdate__</button>
+            <button id="addFindRelated">__MSG_findRelated.btnAdd__</button>
+            <button id="deleteFindRelated">__MSG_findRelated.btnDelete__</button>
           </div>
           <div class="vbox" style="flex-grow:2;">
             <label>
-              Title: <input type="text" id="findRelatedTitle"></label>
+              __MSG_findRelated.term.menutitle__ <input type="text" id="findRelatedTitle"></label>
             </label>
             <label>
-              Search Pattern: <input type="text" id="findRelatedPattern" style="flex-grow: 1;"></label>
+              __MSG_findRelated.searchPattern__ <input type="text" id="findRelatedPattern" style="flex-grow: 1;"></label>
             </label>
             <label>
-              Search Group (0 for complete match): <input type="number" id="findRelatedGroup"></label>
+              __MSG_findRelated.searchGroup__ <input type="number" id="findRelatedGroup"></label>
             </label>
             <div class="hbox">
               <vbox id="searchSelectedFields">
-                <label class="sectionlegend">Retrieve search string from:</label>
-                <label><input type="checkbox" class="manual" term="subject"></input> Subject</label>
-                <label><input type="checkbox" class="manual" term="sender"></input> Sender</label>
-                <label><input type="checkbox" class="manual" term="recipients"></input> Recipients</label>
-                <label><input type="checkbox" class="manual" term="body"></input> Body</label>
+                <label class="sectionlegend">__MSG_findRelated.terms.selectedFields__</label>
+                <label><input type="checkbox" class="manual" term="subject"></input> __MSG_findRelated.term.subject__</label>
+                <label><input type="checkbox" class="manual" term="sender"></input> __MSG_findRelated.term.sender__</label>
+                <label><input type="checkbox" class="manual" term="recipients"></input> __MSG_findRelated.term.recipients__</label>
+                <label><input type="checkbox" class="manual" term="body"></input> __MSG_findRelated.term.body__</label>
               </vbox>
               <vbox id="searchCriteriaFields">
-                <label class="sectionlegend">Search:</label>
-                <label><input type="checkbox" class="manual" term="subject"></input> Subject</label>
-                <label><input type="checkbox" class="manual" term="sender"></input> Sender</label>
-                <label><input type="checkbox" class="manual" term="recipients"></input> Recipients</label>
-                <label><input type="checkbox" class="manual" term="body"></input> Body</label>
+                <label class="sectionlegend">__MSG_findRelated.terms.searchCriteriaFields__</label>
+                <label><input type="checkbox" class="manual" term="subject"></input> __MSG_findRelated.term.subject__</label>
+                <label><input type="checkbox" class="manual" term="sender"></input> __MSG_findRelated.term.sender__</label>
+                <label><input type="checkbox" class="manual" term="recipients"></input> __MSG_findRelated.term.recipients__</label>
+                <label><input type="checkbox" class="manual" term="body"></input> __MSG_findRelated.term.body__</label>
               </vbox>
             </div>
           </div>
-
         </div>
-
+        <hr>
+        <legend>__MSG_findRelated.options.title__</legend>
+        <label>
+          <input type="checkbox" 
+            preference="qfpp-findRelated-goNext"
+            data-pref-name="extensions.quickfolders.findRelated.behavior.goNextResetsSearch"></input> 
+            __MSG_findRelated.options.goNextResetsSearch__
+          </label>
       </section>
 
 

@@ -128,7 +128,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Olen jatkanut yhteensopivuuden parantamista Thunderbirdin uusimman version, ESR128, kanssa. Uusin versio $addonName$ voi nyt toimia jopa v133 asti. Käy alla olevasta linkistä nähdäksesi mahdolliset liittyvät ongelmat ja miten ne on ratkaistu. {P2}",
+    "message": "{P1} Uusin $addonName$-versio toimii nyt Thunderbird-versioon 133 asti. Pro-versiossa on {A-findRelated}parannettu hakutyökalu{A}, jolla löydät sähköposteja, jotka liittyvät nykyiseen näkymään. Tutustu tarkkoihin tietoihin täydellisessä muutoslokiin alla olevassa linkissä. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -137,7 +137,7 @@
     }
   },
   "newsSection.license": {
-    "message": "Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa"
+    "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
   },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
@@ -182,11 +182,10 @@
     "message": "Uusi lisenssi."
   },
   "special-offer-content": {
-    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}QuickFolders Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+    "message": "Paranna ominaisuuksiasi ja säästä {boldStart}$reduction${boldEnd} ostaessasi {linkStartPro}QuickFolders Pro -lisenssin{linkEnd} ennen {boldStart}$expirydate${boldEnd}. Tai valitse uudet {linkStart}Standardi-lisenssin{linkEnd} ominaisuudet.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",
