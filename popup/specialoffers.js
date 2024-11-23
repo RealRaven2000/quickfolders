@@ -11,7 +11,7 @@ END LICENSE BLOCK */
 const REDUCTION_RENEW = "25%",
       REDUCTION_PRO = "40%",
       REDUCTION_UPGRADE = "33%",
-      SALES_DATE= "2024-11-29";
+      SALES_DATE= "2024-12-01";
 
 
 
