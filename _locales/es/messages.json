@@ -176,8 +176,8 @@
     "message": "Opciones"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "El botón 'Mover al siguiente correo' borrará la búsqueda actual y comenzará una nueva."
-  },
+   "message": "El botón 'Ir al siguiente correo' borra la búsqueda actual."
+  }  ,
   "findRelated.searchGroup": {
     "message": "Grupo de búsqueda (0 para coincidencia exacta):"
   },

@@ -140,7 +140,7 @@
     "message": "Tùy chọn"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Nút 'Chuyển đến email tiếp theo' sẽ xóa tìm kiếm hiện tại và bắt đầu một tìm kiếm mới."
+    "message": "Nút 'Chuyển đến email tiếp theo' sẽ xóa tìm kiếm hiện tại."
   },
   "findRelated.searchGroup": {
     "message": "Nhóm tìm kiếm (0 để khớp hoàn toàn):"

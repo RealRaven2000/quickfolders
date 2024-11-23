@@ -177,7 +177,7 @@
     "message": "Opcions"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "El botó 'Mou-se al següent correu' esborrarà la cerca actual i en començarà una de nova."
+    "message": "El botó 'Mou a l'email següent' esborra la cerca actual."
   },
   "findRelated.searchGroup": {
     "message": "Grup de cerca (0 per coincidència completa):"

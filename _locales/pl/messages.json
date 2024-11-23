@@ -173,7 +173,7 @@
     "message": "Opcje"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Przycisk 'Przejdź do następnej wiadomości' wyczyści bieżące wyszukiwanie i rozpocznie nowe."
+    "message": "Przycisk 'Przejdź do następnego e-maila' usuwa bieżące wyszukiwanie."
   },
   "findRelated.searchGroup": {
     "message": "Grupa wyszukiwania (0 dla pełnego dopasowania):"

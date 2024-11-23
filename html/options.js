@@ -859,7 +859,18 @@ function initButtons() {
     window.close(); 
   });  
 
-  
+  document.querySelector(".findRelatedSite").addEventListener("click", (event) => {
+    QuickFolders.Util.openLinkInTab("https://quickfolders.org/premium.html#findRelated");
+  });
+
+  document.querySelector(".editRegex").addEventListener("click", (event) => {
+    const editBox = document.getElementById("findRelatedPattern"),
+      expression = editBox.value,
+      encodedRegex = expression ? encodeURIComponent(expression) : "enter search pattern";
+
+    const targetUrl =  `https://regex101.com/?flavor=javascript&regex=${encodedRegex}`;
+    QuickFolders.Util.openLinkInTab(targetUrl);
+  });
 
 
 }

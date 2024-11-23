@@ -184,7 +184,7 @@
     "message": "Opzioni"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Il pulsante 'Vai alla mail successiva' cancellerà la ricerca corrente e ne avvierà una nuova."
+    "message": "Il pulsante 'Vai alla mail successiva' cancella la ricerca corrente."
   },
   "findRelated.searchGroup": {
     "message": "Gruppo di ricerca (0 per corrispondenza completa):"

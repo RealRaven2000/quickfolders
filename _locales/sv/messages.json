@@ -174,7 +174,7 @@
     "message": "Alternativ"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Knappen 'Flytta till nästa mail' rensar den aktuella sökningen och startar en ny."
+    "message": "Knappen 'Gå till nästa e-post' rensar den aktuella sökningen."
   },
   "findRelated.searchGroup": {
     "message": "Sökgrupp (0 för exakt matchning):"

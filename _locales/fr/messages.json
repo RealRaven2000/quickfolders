@@ -184,7 +184,7 @@
     "message": "Options"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Le bouton 'Passer au prochain mail' effacera la recherche actuelle et commencera une nouvelle."
+    "message": "Le bouton 'Passer au mail suivant' efface la recherche actuelle."
   },
   "findRelated.searchGroup": {
     "message": "Groupe de recherche (0 pour correspondance exacte) :"

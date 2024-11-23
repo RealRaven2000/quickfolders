@@ -691,7 +691,8 @@
       </section>
       
       <section id="QuickFolders-Options-findRelated" orient="vertical">
-        <div class="description">__MSG_findRelated.btn.tooltip__</div>
+        <div class="description hbox">__MSG_findRelated.btn.tooltip__ <button class="findRelatedSite" 
+          title="more info on our support site (English)"></button></div>
         <hr>
         <div class="hbox">
           <div class="vbox">
@@ -706,10 +707,12 @@
           </div>
           <div class="vbox" style="flex-grow:2;">
             <label>
-              __MSG_findRelated.term.menutitle__ <input type="text" id="findRelatedTitle"></label>
+              __MSG_findRelated.term.menutitle__ <input type="text" id="findRelatedTitle">
             </label>
             <label>
-              __MSG_findRelated.searchPattern__ <input type="text" id="findRelatedPattern" style="flex-grow: 1;"></label>
+              __MSG_findRelated.searchPattern__ <input type="text" id="findRelatedPattern" style="flex-grow: 1;">
+              <button class="editRegex" title="test your patterns on regex101.com"></button>
+            </label>
             </label>
             <label>
               __MSG_findRelated.searchGroup__ <input type="number" id="findRelatedGroup"></label>

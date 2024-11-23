@@ -433,7 +433,9 @@ input[type=color] {
 }
 
 button.helpLink,
-.hasConfigEvent button.configSettings {
+.hasConfigEvent button.configSettings,
+button.findRelatedSite,
+button.editRegex {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   background-color: transparent;
   border-color: transparent;
@@ -447,6 +449,14 @@ button.helpLink,
   width: 24px;
 }
 
+button.findRelatedSite {
+  margin-left: 1em;
+  list-style-image: url('ico/help.svg') !important;
+}
+
+button.editRegex {
+  list-style-image: url('ico/pencil.svg') !important;
+}
 
 .hasConfigEvent button.configSettings {
   list-style-image: url('ico/settings-simple.svg') !important;

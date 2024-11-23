@@ -462,7 +462,7 @@ END LICENSE BLOCK */
 
   6.8 QuickFolders Pro - WIP
     ## [issue 488] Find Related Mails: extended UI to add a selection of multiple searches 
-    ## [issue 494] Added feature to reset quick filter when clicking "Move to next mail"
+    ## [issue 494] Added an option to reset quick filter when clicking "Move to next mail"
     ## [issue 493] Move mail to folder using CTRL+Number not working
     ## [issue 497] quickMove / quickJump steals focus while typing shortcut combos in QNote.
     ## hide current folder bar in search results tab

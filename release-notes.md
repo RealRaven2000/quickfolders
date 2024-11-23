@@ -3,8 +3,10 @@
 *   Continued work on find related mail feature. See [this description](https://quickfolders.org/premium.html#findRelated). Retrieve related mails in a folder through pattern matching on the currently selected mail. \[issue #488\]
 
     This works via a search mask (regular expression) that can read parts of the email and then set a user defined quick search condition. I added a feature that resets the search when pressing the Goto Next (unread) Email on the Navigation bar (current folder bar)
+*   Added an option to reset quick filter when clicking "Move to next mail" [issue #494]
 *   Added icon to menuitem that gets messages.
 *   The API [issue with Owl accounts not working](https://bugzilla.mozilla.org/show_bug.cgi?id=1909005) for license validation has been resolved by Thunderbird 128.2
+  
 
 **Bug Fixes**
 
