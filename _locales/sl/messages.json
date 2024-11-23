@@ -161,7 +161,7 @@
     "message": "Параметры"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Кнопка «Далее» сбрасывает поиск"
+    "message": "Gumb «Premakni se na naslednji mail» bo izbrisal trenutno iskanje in začel novo."
   },
   "findRelated.searchGroup": {
     "message": "Группа поиска (0 для полного совпадения):"

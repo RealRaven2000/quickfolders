@@ -161,7 +161,7 @@
     "message": "オプション"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "「次へ」ボタンで検索をリセット"
+    "message": "'次のメールへ移動'ボタンは現在の検索をクリアし、新しい検索を開始します。"
   },
   "findRelated.searchGroup": {
     "message": "検索グループ（完全一致は0）："

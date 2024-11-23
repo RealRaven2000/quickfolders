@@ -174,7 +174,7 @@
     "message": "Optionen"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "'Nächster' Button setzt die Suche zurück"
+    "message": "Der 'Zum nächsten Mail' Button löscht die aktuelle Suche und startet eine neue."
   },
   "findRelated.searchGroup": {
     "message": "Suchgruppe (0 für vollständige Übereinstimmung):"

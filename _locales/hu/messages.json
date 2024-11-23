@@ -159,7 +159,7 @@
     "message": "Beállítások"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "'Tovább' gomb visszaállítja a keresést"
+    "message": "'Tovább a következő levélhez' gomb törli a jelenlegi keresést, és új keresést indít."
   },
   "findRelated.searchGroup": {
     "message": "Keresési csoport (0 a teljes egyezéshez):"

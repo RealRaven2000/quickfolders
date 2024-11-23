@@ -173,7 +173,7 @@
     "message": "Opties"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Knop 'Volgende' reset de zoekopdracht"
+    "message": "De knop 'Ga naar volgende mail' wist de huidige zoekopdracht en start een nieuwe."
   },
   "findRelated.searchGroup": {
     "message": "Zoekgroep (0 voor volledige overeenkomst):"

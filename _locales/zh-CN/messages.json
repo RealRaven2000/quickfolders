@@ -177,7 +177,7 @@
     "message": "选项"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "“下一个”按钮重置搜索"
+    "message": "'跳转到下一封邮件'按钮将清除当前搜索并启动新的搜索。"
   },
   "findRelated.searchGroup": {
     "message": "搜索组（0表示完全匹配）："

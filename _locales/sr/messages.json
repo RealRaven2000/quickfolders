@@ -143,7 +143,7 @@
     "message": "Опције"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Дугме „Следеће“ ресетује претрагу"
+    "message": "Дугме „Прелази на следећи мејл“ ће обрисати тренутну претрагу и покренути нову."
   },
   "findRelated.searchGroup": {
     "message": "Група за претрагу (0 за потпуно поклапање):"

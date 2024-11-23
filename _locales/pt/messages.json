@@ -170,7 +170,7 @@
     "message": "Opções"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Botão 'Avançar' reinicia a pesquisa"
+    "message": "O botão 'Mover para o próximo e-mail' apagará a pesquisa atual e iniciará uma nova."
   },
   "findRelated.searchGroup": {
     "message": "Grupo de pesquisa (0 para correspondência exata):"

@@ -184,7 +184,7 @@
     "message": "Options"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "'Go Next' button resets search"
+    "message": "'Move to Next mail' button clears the search."
   },
   "findRelated.searchGroup": {
     "message": "Search Group (0 for complete match):"

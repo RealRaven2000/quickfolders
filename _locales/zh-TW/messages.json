@@ -173,7 +173,7 @@
     "message": "選項"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "「下一步」按鈕會重置搜尋"
+    "message": "'跳到下一封郵件'按鈕將清除當前搜尋並啟動新的搜尋。"
   },
   "findRelated.searchGroup": {
     "message": "搜尋群組（完全符合為0）："

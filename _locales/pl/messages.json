@@ -173,7 +173,7 @@
     "message": "Opcje"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Przycisk „Dalej” resetuje wyszukiwanie"
+    "message": "Przycisk 'Przejdź do następnej wiadomości' wyczyści bieżące wyszukiwanie i rozpocznie nowe."
   },
   "findRelated.searchGroup": {
     "message": "Grupa wyszukiwania (0 dla pełnego dopasowania):"
