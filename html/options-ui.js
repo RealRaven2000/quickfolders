@@ -1178,10 +1178,13 @@ QuickFolders.Options = {
     });
     findRelatedList.items.push(search);
     const option = new Option(search.title, findRelatedList.length); 
+    option.value = listElement.options.length;
     listElement.options.add(option);
 
     QuickFolders.Util.logDebug("new findRelated item:", { search });
     this.storeFindRelated(findRelatedList);
+    // select new element
+    listElement.value = option.value;
   },
 
   updateFindRelated: async function () {
