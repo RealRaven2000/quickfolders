@@ -133,17 +133,30 @@ async function filterMailsRegex(searchOptions, tabId = null) {
   const group = searchOptions.group;   // 0 for full match
   const searchSelected = searchOptions.searchSelected;
   const searchCriteria =  searchOptions.searchCriteria;  // if fields is null, do not change this!
-  let pattern = searchOptions.pattern; // allow overwriting in debugger for test!
-  const isEmpty = (!pattern); // non empty search string, reset!
+  let searchValue = searchOptions.pattern, // allow overwriting in debugger for test!
+    searchFlags = "";
   const behavior = searchOptions.behavior || DEFAULT_BEHAVIOR;
 
-
-  const regex = new RegExp(pattern, "gm");
-  let results, searchVal = "";
-
-  if (isEmpty) {
-    // reset search!
+  if (searchValue.charAt(0) == "/") {
+    let endIdx = searchValue.lastIndexOf("/");
+    if (endIdx) { // must be>0! otherwise 2nd slash is missing!!
+      searchValue = searchOptions.pattern.substring(1, endIdx);
+      searchFlags = searchOptions.pattern.substring(endIdx + 1);
+    } else {
+      const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
+      if (isDebug){
+        console.log(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
+      } 
+      searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
+    }
+  } 
+  
+  if (!searchFlags) {
+    searchFlags = "gm";
   }
+
+  const regex = new RegExp(searchValue, searchFlags);
+  let results, searchVal = "";
 
   // context.extension.tabManager.getWrapper(tabInfo).id
   if (!tabId) {
