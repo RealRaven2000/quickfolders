@@ -804,7 +804,7 @@ async function validateLicenseInOptions(evt = false) {
   // util.logDebug("validateLicense - result = " + result);
 } 
 
-function initButtons() {
+async function initButtons() {
   // License Tab
   document.getElementById("btnValidateLicense").addEventListener("click", QuickFolders.Options.validateNewKey);
   document.getElementById("btnPasteLicense").addEventListener("click", QuickFolders.Options.pasteLicense);
@@ -863,12 +863,33 @@ function initButtons() {
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/premium.html#findRelated");
   });
 
-  document.querySelector(".editRegex").addEventListener("click", (event) => {
-    const editBox = document.getElementById("findRelatedPattern"),
-      expression = editBox.value,
-      encodedRegex = expression ? encodeURIComponent(expression) : "enter search pattern";
+  document.querySelector(".editRegex").addEventListener("click", async(event) => {
+    const editBox = document.getElementById("findRelatedPattern");
 
-    const targetUrl =  `https://regex101.com/?flavor=javascript&regex=${encodedRegex}`;
+    let searchValue = editBox.value, // allow overwriting in debugger for test!
+      searchFlags = "", 
+      flagsParam = "";
+
+    if (searchValue.charAt(0) == "/") {
+      let endIdx = searchValue.lastIndexOf("/");
+      if (endIdx) { // must be>0! otherwise 2nd slash is missing!!
+        searchValue = editBox.value.substring(1, endIdx);
+        searchFlags = editBox.value.substring(endIdx + 1);
+      } else {
+        const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
+        if (isDebug){
+          console.log(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
+        } 
+        searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
+      }
+    } 
+
+    encodedRegex = searchValue ? encodeURIComponent(searchValue) : "enter search pattern";
+    if (searchFlags) {
+      flagsParam = "&flags=" + encodeURIComponent(searchFlags);
+    }
+
+    const targetUrl = `https://regex101.com/?flavor=javascript&regex=${encodedRegex}${flagsParam}`;
     QuickFolders.Util.openLinkInTab(targetUrl);
   });
 
