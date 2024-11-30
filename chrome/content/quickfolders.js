@@ -460,7 +460,7 @@ END LICENSE BLOCK */
     ## Shortcuts (such as Shift+M and Shift+J) are unexpectedly triggered when typed in quick search
     ## improved tooltips in settings window
 
-  6.8 QuickFolders Pro - WIP
+  6.8 QuickFolders Pro - 25/11/2024
     ## [issue 488] Find Related Mails: extended UI to add a selection of multiple searches 
     ## [issue 494] Added an option to reset quick filter when clicking "Move to next mail"
     ## [issue 493] Move mail to folder using CTRL+Number not working
@@ -470,6 +470,11 @@ END LICENSE BLOCK */
     ## added icon to get messages menuitems 
     ## completed Vietnamese translations
     ## Support compatibility with Thunderbird 133
+
+  6.8.1 QuickFolders Pro - WIP
+    ## findRelated: improved transmitting regex options to regex101
+    ## [issue 509] Tb 129+ deal with removal of MozElements.NotificationBox.shown() #
+    ## Support compatibility with Thunderbird 134
 
 
 	TO DO next

@@ -345,7 +345,7 @@ QuickFolders.Util = {
       prefs.setIntPref("premium." + featureName + ".usage", usage);
     } catch(e) {;}
     
-    if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+    if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
     }
     let title = util.getBundleString(`qf.notification.${levelSelect}.title`),
@@ -388,27 +388,15 @@ QuickFolders.Util = {
     
       util.logDebugOptional("premium", "notifyBox.appendNotification()…");
       const imgSrc = "chrome://quickfolders/content/skin/ico/proFeature.png";
-      let newNotification;
-
-      if (notifyBox.shown) { // new notification format (Post Tb 99)
-        newNotification = 
-          await notifyBox.appendNotification( 
-            notificationKey, // "String identifier that can uniquely identify the type of the notification."
-            {
-              priority: notifyBox.PRIORITY_INFO_HIGH,
-              label: theText 
-            },
-            nbox_buttons // no buttons
-          );
-      }
-      else {
-        newNotification = 
-          await notifyBox.appendNotification( theText, 
-            notificationKey, 
-            imgSrc, 
-            notifyBox.PRIORITY_INFO_HIGH, 
-            nbox_buttons ); 
-      }
+      const newNotification = 
+        await notifyBox.appendNotification( 
+          notificationKey, // "String identifier that can uniquely identify the type of the notification."
+          {
+            priority: notifyBox.PRIORITY_INFO_HIGH,
+            label: theText 
+          },
+          nbox_buttons // no buttons
+        );
 
       let containerSelector; // 
       switch (newNotification?.messageImage?.tagName) {

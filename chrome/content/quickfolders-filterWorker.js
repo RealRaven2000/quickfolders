@@ -47,7 +47,7 @@ QuickFolders.FilterWorker = {
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
       QuickFolders.FilterWorker.FilterModeLegacy = true;
-      if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+      if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { 
         notifyBox = specialTabs.msgNotificationBar;
       }
       if (notifyBox) {
@@ -83,27 +83,15 @@ QuickFolders.FilterWorker = {
             }
           ];
 					
-				
-          if (notifyBox.shown) { // new notification format (Post Tb 99)
-            await notifyBox.appendNotification( 
-              notificationKey, // "String identifier that can uniquely identify the type of the notification."
-              {
-                priority: notifyBox.PRIORITY_INFO_LOW,
-                label: theText,
-                eventCallback: eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } 
-              },
-              nbox_buttons // no buttons
-            );
-          }
-          else {
-            await notifyBox.appendNotification(theText, 
-                notificationKey , 
-                "chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
-                notifyBox.PRIORITY_INFO_LOW, 
-                  nbox_buttons,
-                  eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
-            ); 
-          }
+					await notifyBox.appendNotification( 
+						notificationKey, // "String identifier that can uniquely identify the type of the notification."
+						{
+							priority: notifyBox.PRIORITY_INFO_LOW,
+							label: theText,
+							eventCallback: eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } 
+						},
+						nbox_buttons // no buttons
+					);
 				}
 			}
 		} else {
