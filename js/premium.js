@@ -1,5 +1,5 @@
 
-var sales_name = "BLACK FRIDAY SALE"; // .saleName
+var sales_name = "CYBER WEEK SALE"; // .saleName
 var sales_start_lbl = "November 25th"; // .saleStart
 var sales_end_lbl = "December 8th";  // .saleEnd
 var sales_end = new Date("2024-12-08");
