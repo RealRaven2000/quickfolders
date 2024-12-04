@@ -506,7 +506,38 @@
 							I will add more options to this in the future.
 						</li>
 					</ul>
+					<h4>Examples</h4>
+					<div class="findRelated_example">
+						<b>Find Sender:</b>
+						<code>[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+</code>	
+						<p>
+							Use this expression to find emails to or from the email address of the original sender
+							of the current email. it matches any email address in the sender. 
+							E.g. if the sender is "John Doe &;tljdoe@ac_me.com&gt;" it will extract
+							"jdoe@ac_me.com" and plug it into the quicksearch field for you.
+							The group parameter is 0 to use the complete return of the expression.
+						</p>
+						<p>
+							You can set it up like this:
+						</p>
+						<img src="images/findRelated-ex1.png" alt="Find sender's emails" class="screenshot">
+					</div>
+					<div class="findRelated_example">
+						<b>[Keyword] from Subject:</b>
+						<code>\[.*\]</code>	
+						<p>
+							Extract a keyword from subject that is within square brackets.
+							the match will include the square brackets, for example:
+							from the string "[tb-addons] black friday news" this will extract the 
+							result "[tb-addons]" and then put into the quicksearch.
+						</p>
+						<p>
+							You can set it up like this. (note that we are also searching the 
+							body of emails to catch more results. modify to your needs):
+						</p>
+						<img src="images/findRelated-ex2.png" alt="Find keyword" class="screenshot">
 
+					</div>
 				</td>
 			</tr>
 			 
