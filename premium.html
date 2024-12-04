@@ -522,6 +522,7 @@
 						</p>
 						<img src="images/findRelated-ex1.png" alt="Find sender's emails" class="screenshot">
 					</div>
+					
 					<div class="findRelated_example">
 						<b>[Keyword] from Subject:</b>
 						<code class="regex">\[.*\]</code>	
@@ -537,9 +538,10 @@
 						</p>
 						<img src="images/findRelated-ex2.png" alt="Find keyword" class="screenshot">
 					</div>
+
 					<div class="findRelated_example">
 						<b>Order number from Fastspring notification</b>
-						<code class="regex">\[.*\]</code>	
+						<code class="regex">Order: (QUI\d*-\d*-\d*) - (.*) -</code>	
 						<p>
 							Extracts an order number from a order notification email.
 							Use this to extract a customer name from subject lines like this one:
