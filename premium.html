@@ -95,7 +95,7 @@
     <meta content="text/css" http-equiv="Content-Style-Type" />
     <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
     <link rel="stylesheet" href="css/project_nav.css?v=3" type="text/css">
-    <link rel="stylesheet" href="css/project.css?v=30" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=31" type="text/css">
     <link rel="stylesheet" href="css/infoBox.css" type="text/css">
     <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
     <link rel="stylesheet" href="css/footer.css" type="text/css">
@@ -509,7 +509,7 @@
 					<h4>Examples</h4>
 					<div class="findRelated_example">
 						<b>Find Sender:</b>
-						<code>[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+</code>	
+						<code class="regex">[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+</code>	
 						<p>
 							Use this expression to find emails to or from the email address of the original sender
 							of the current email. it matches any email address in the sender. 
@@ -524,7 +524,7 @@
 					</div>
 					<div class="findRelated_example">
 						<b>[Keyword] from Subject:</b>
-						<code>\[.*\]</code>	
+						<code class="regex">\[.*\]</code>	
 						<p>
 							Extract a keyword from subject that is within square brackets.
 							the match will include the square brackets, for example:
@@ -536,8 +536,31 @@
 							body of emails to catch more results. modify to your needs):
 						</p>
 						<img src="images/findRelated-ex2.png" alt="Find keyword" class="screenshot">
+					</div>
+					<div class="findRelated_example">
+						<b>Order number from Fastspring notification</b>
+						<code class="regex">\[.*\]</code>	
+						<p>
+							Extracts an order number from a order notification email.
+							Use this to extract a customer name from subject lines like this one:
+						</p>
+						<p>
+							"Order: QUI241204-7079-41101 - John Doe - QuickFolders Pro" 
+						</p>
+						<p>
+							this will extract the result "John Doe" and then put into the quicksearch.
+							I use it to find related orders based on a customer name.
+						</p>
+						<p>
+							You can set it up like this. I am using the group number 2 
+							for matching contents of the 2nd parenthetical 
+							expression <code class="regex">(.*)</code>. 
+							Read more about search groups <a target="_blank" href="https://regex101.com/r/D5mUTo/1">at regex101.com</a>
+						</p>
+						<img src="images/findRelated-ex3.png" alt="Find related Orders" class="screenshot">
 
 					</div>
+
 				</td>
 			</tr>
 			 
