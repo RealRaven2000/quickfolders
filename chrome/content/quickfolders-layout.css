@@ -754,11 +754,10 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 }
 
 
-#QuickFolders-Toolbar toolbarbutton.icon,
+#QuickFolders-Toolbar toolbarbutton,
 #QuickFolders-paintBucketActive .toolbarbutton-icon,
 #QuickFolders-PalettePopup .menu-iconic-icon,
 #qfTabColorMenu menuitem .menu-iconic-icon {
-  -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 }
