@@ -149,4 +149,4 @@ QuickFolders.onGlobalQFCommand = (data) => {
   }
 }
 
-QuickFolders.Util.notifyTools.registerListener(QuickFolders.onGlobalQFCommand);
+QuickFolders.Util.notifyTools.addListener(QuickFolders.onGlobalQFCommand);
