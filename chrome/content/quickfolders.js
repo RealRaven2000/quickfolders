@@ -471,10 +471,12 @@ END LICENSE BLOCK */
     ## completed Vietnamese translations
     ## Support compatibility with Thunderbird 133
 
-  6.8.1 QuickFolders Pro - WIP
+  6.8.1 QuickFolders Pro - 01/12/2024
     ## findRelated: improved transmitting regex options to regex101
     ## [issue 509] Tb 129+ deal with removal of MozElements.NotificationBox.shown() #
     ## Support compatibility with Thunderbird 134
+
+  6.8.2 QuickFolders Pro - WIP
 
 
 	TO DO next
