@@ -263,13 +263,13 @@ QuickFolders.Interface = {
  				passedPopup.removeChild(passedPopup.firstChild);
 			}
 			menupopup = passedPopup;
- 		}
- 		else {
+ 		} else {
 			menupopup = this.createIconicElement("menupopup","*", doc);
  			menupopup.setAttribute("id",popupId);
  		}
 
 		menupopup.setAttribute("position","after_start"); //
+		menupopup.setAttribute("needsgutter",""); 
 		menupopup.className = "QuickFolders-folder-popup";
 		if (isCreate) {
 			// if popup is null, we are creating the button - no need to populate the menu as it is being done again on the click / drag event!
@@ -301,8 +301,7 @@ QuickFolders.Interface = {
           if (recentFolders.length>=maxLen) break;
         }
       }
-    }
-    else {
+    } else {
       recentFolders = util.generateMRUlist();
     }
 
@@ -3952,12 +3951,12 @@ QuickFolders.Interface = {
 		const { util, prefs, entry, folder, button } = vars,
 		      doc = button.ownerDocument;
 		/***  QUICKFOLDERS COMMANDS   ***/
-			let QFcommandPopup = this.createIconicElement("menupopup", "*", doc);
+		let QFcommandPopup = this.createIconicElement("menupopup", "*", doc);
 		QFcommandPopup.className = "QuickFolders-folder-popup";
 
 		// tab colors menu
 		// we should clone this!
-			let colorMenu = this.createIconicElement("menu", "*", doc);
+		let colorMenu = this.createIconicElement("menu", "*", doc);
 		colorMenu.setAttribute("tag","qfTabColorMenu");
 		colorMenu.setAttribute("label", this.getUIstring("qfMenuTabColorPopup"));
 		colorMenu.className = 'QuickFolders-folder-popup';
@@ -3975,8 +3974,7 @@ QuickFolders.Interface = {
 		}
 		this.initElementPaletteClass(QFcommandPopup, button);
 
-		if (!entry)
-			return null;
+		if (!entry) { return null; }
 
 		// append color menu to QFcommandPopup
 		QFcommandPopup.appendChild(colorMenu);
@@ -4366,6 +4364,7 @@ QuickFolders.Interface = {
 
     menupopup.setAttribute("id", popupId);
     menupopup.setAttribute("position", "after_start"); //
+    menupopup.setAttribute("needsgutter", "true"); 
     // [Bug 26575] (safety?) - seems to be only triggered on non folder commands
     // this.setEventAttribute(menupopup, "onclick","QuickFolders.Interface.clickHandler(event,this);");
     this.setEventAttribute(menupopup, "oncommand","QuickFolders.Interface.clickHandler(event,this);");
@@ -4386,8 +4385,7 @@ QuickFolders.Interface = {
         // newsgroups have no subfolders anyway
         MailCommands = menupopup;
         isRootMenu = true;
-      }
-      else {
+      } else {
         MailCommands = this.createIconicElement("menupopup", "QuickFolders-folder-popup", doc);
         // removed mailCmd menu-iconic from class [Bug 26575]
         isRootMenu = false;
