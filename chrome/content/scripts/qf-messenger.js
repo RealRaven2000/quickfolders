@@ -485,11 +485,12 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
   mylisteners["removeQuickFoldersIcon"] = removeIcon;
 
-
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
+  // make sure we do not get our install stuff _before_ our listeners are ready!!
+  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "listenersReady" });
 
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 

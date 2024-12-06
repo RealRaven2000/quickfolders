@@ -267,6 +267,7 @@ pref("extensions.quickfolders.hasNews", false); /* splash screen status after up
 pref("extensions.quickfolders.hideVersionOnUpdate", true);
 pref("extensions.quickfolders.folderTree.icons", true);
 pref("extensions.quickfolders.folderTree.icons.injectCSS", true);
+pref("extensions.quickfolders.version", "?");
 
 // Filter Template
 pref("extensions.quickfolders.filters.currentTemplate", "from");

@@ -40,10 +40,65 @@ async function isDebugOn() {
 messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
 
 
+function compareVersions(v1, v2) {
+  const v1Parts = v1.split(".").map(Number);
+  const v2Parts = v2.split(".").map(Number);
+
+  const maxLength = Math.max(v1Parts.length, v2Parts.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    const part1 = v1Parts[i] || 0; // Default to 0 if segment is missing
+    const part2 = v2Parts[i] || 0;
+
+    if (part1 > part2) return 1; // v1 > v2
+    if (part1 < part2) return -1; // v1 < v2
+  }
+
+  return 0; // v1 == v2
+}
+
+function versionGreaterOrEqual(v1, v2) {
+  return compareVersions(v1, v2) >= 0;
+}
+
+function versionGreater(v1, v2) {
+  return compareVersions(v1, v2) > 0;
+}
+
+function versionEqual(v1, v2) {
+  return compareVersions(v1, v2) === 0;
+}
+
+
+// special listener to be ready for sending up the firstRun message:
+let listenersReadyPromise = new Promise((resolve) => {
+  const listenerFunction = (message) => {
+    if (message.func === "listenersReady") {
+      console.log("Listeners are ready, resolving the promise...");
+      resolve();
+      // making sure this is only used once, in case we reinstall multiple times in a session.
+      messenger.NotifyTools.onNotifyBackground.removeListener(listenersReadyListener);
+    }
+  }
+
+  messenger.NotifyTools.onNotifyBackground.addListener(listenerFunction);
+});
+
 
 messenger.runtime.onInstalled.addListener(async (data) => {
-  let { reason, temporary } = data,
-      isDebug = isDebugOn();
+  let { reason, previousVersion, temporary } = data;
+  const isDebug = await isDebugOn();
+  const manifest = await messenger.runtime.getManifest();
+
+  if (isDebug) {
+    debugger;
+    console.log("%cQuickFolders onInstalled:", "background: black; color: yellow;", {
+      reason,
+      previousVersion,
+      temporary,
+      installed_ver: manifest.version,
+    });
+  }
   
   // Wait until the main startup routine has finished!
   await new Promise((resolve) => {
@@ -73,29 +128,63 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       if (currentLicenseInfo.status == "Valid") {
         // suppress update popup for users with licenses that have been recently renewed
         let gpdays = currentLicenseInfo.licensedDaysLeft,
-            isLicensed = (currentLicenseInfo.status == "Valid");
+          isLicensed = currentLicenseInfo.status == "Valid";
         if (isLicensed) {
-          if (isDebug) console.log("QuickFolders License - " + gpdays  + " Days left.");
+          if (isDebug) console.log("QuickFolders License - " + gpdays + " Days left.");
         }
-      } 
+      }
 
-      // set a flag which will be cleared by clicking the [QuickFolders] button once
-      setTimeout(
-        async function() {
-          let origVer = await messenger.LegacyPrefs.getPref(legacyPrefPath("version"),"0");
-          const manifest = await messenger.runtime.getManifest();
-          // get pure version number / remove pre123 indicator
-          let installedVersion = manifest.version.replace(/pre.*/,""); 
-          if (installedVersion > origVer) {
+      // Define a Map of silent update rules with wildcards
+      const silentUpdateMap = new Map([
+        ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
+      ]);
+
+      // Helper function to check if a version matches a pattern
+      function versionMatches(version, pattern) {
+        const regex = new RegExp(`^${pattern.replace(/\*/g, "\\d+")}$`);
+        return regex.test(version);
+      }
+
+      // Function to check if an update is silent
+      function isSilentUpdate(fromVersion, toVersion) {
+        const patterns = silentUpdateMap.get(fromVersion);
+        if (!patterns) return false; // No silent updates defined for this `fromVersion`
+
+        // Check if `toVersion` matches any pattern in the list
+        return patterns.some((pattern) => versionMatches(toVersion, pattern));
+      }
+
+      (async () => {
+        try {
+          await listenersReadyPromise; // we want to make sure all listeners are set up and ready to receive events.
+          // set a flag which will be cleared by clicking the [QuickFolders] button once
+          let origVer = await messenger.LegacyPrefs.getPref(legacyPrefPath("version"), "0");
+          // get pure version number
+          // remove prerelease + any trailing "." that might be before pre
+          let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+          const isUpgrade = versionGreater(installedVersion, origVer),
+            isSilent = isSilentUpdate(origVer, installedVersion);
+
+          if (isDebug) {
+            console.log(`QuickFolders Update - from ${origVer} to ${installedVersion}\n`, {
+              upgraded: isUpgrade,
+              silenced: isSilent,
+            });
+          }
+
+          if (isUpgrade && !isSilent) {
             messenger.LegacyPrefs.setPref(legacyPrefPath("hasNews"), true);
           }
-          messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
-          // replacement for showing history!!
-          //   window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
-          messenger.NotifyTools.notifyExperiment({event: "firstRun"});
-        },
-        200
-      )
+
+          messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
+          if (isDebug) {
+            console.log("%cQF notifying experiment: firstRun", "background: black; color: yellow;");
+          }
+          messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+        } catch (error) {
+          console.error("Error during QuickFolders onInstalled listener:", error);
+        }
+      })();
     }
     break;
   // see below
@@ -739,6 +828,7 @@ async function main() {
           browser.tabs.create({ active: true, url: data.URL });
         }
         break;
+
     }
   }
   
