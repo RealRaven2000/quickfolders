@@ -90,7 +90,7 @@ QuickFolders.Util = {
         }       
       }      
     }   
-    QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
+    QuickFolders.Util.notifyTools.addListener(onBackgroundUpdates);
     QuickFolders.Util.licenseInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
     QuickFolders.Util.platformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
     QuickFolders.Util.browserInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
@@ -196,18 +196,20 @@ QuickFolders.Util = {
   } ,
 
   get VersionSanitized() {
-    function strip(version, token) {
-      let cutOff = version.indexOf(token);
-      if (cutOff > 0) {   // make sure to strip of any pre release labels
-        return version.substring(0, cutOff);
+    // List of unwanted tokens to strip from the version string
+    const tokensToRemove = ['pre', 'beta', 'alpha', '.hc'];
+
+    // Strip each token from the version string
+    let pureVersion = QuickFolders.Util.Version;
+    for (let token of tokensToRemove) {
+      const cutOff = pureVersion.indexOf(token);
+      if (cutOff > 0) {
+        pureVersion = pureVersion.substring(0, cutOff);
       }
-      return version;
     }
 
-    let pureVersion = strip(QuickFolders.Util.Version, 'pre');
-    pureVersion = strip(pureVersion, 'beta');
-    pureVersion = strip(pureVersion, 'alpha');
-    return strip(pureVersion, '.hc');
+    // Remove any trailing period
+    return pureVersion.replace(/\.$/, '');
   },
   
   versionGreaterOrEqual: function(a, b) {
@@ -1861,10 +1863,9 @@ allowUndo = true)`
   
   // All following code was added a shim Objects in earlier versions to be backwards compatible  
   FirstRun : {
-    init: async function init() {
+    init: async function () {
       const util = QuickFolders.Util,
-            prefs = QuickFolders.Preferences,
-            quickMoveSettings = QuickFolders.quickMove.Settings;
+        prefs = QuickFolders.Preferences;
       let prev = -1, firstrun = true,
           showFirsts = true, debugFirstRun = false,
           prefBranchString = "extensions.quickfolders.",
@@ -1914,9 +1915,10 @@ allowUndo = true)`
       }
       finally {
         util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
-        let suppressVersionScreen = false,
+        let suppressVersionScreen = false;
+
         // AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-            pureVersion = util.VersionSanitized;
+        const pureVersion = util.VersionSanitized;
         util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
         
         // STORE CURRENT VERSION NUMBER!
