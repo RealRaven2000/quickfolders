@@ -884,7 +884,7 @@ async function initButtons() {
       }
     } 
 
-    encodedRegex = searchValue ? encodeURIComponent(searchValue) : "enter search pattern";
+    const encodedRegex = searchValue ? encodeURIComponent(searchValue) : "enter search pattern";
     if (searchFlags) {
       flagsParam = "&flags=" + encodeURIComponent(searchFlags);
     }
