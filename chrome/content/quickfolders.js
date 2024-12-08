@@ -477,6 +477,7 @@ END LICENSE BLOCK */
     ## Support compatibility with Thunderbird 134
 
   6.8.2 QuickFolders Pro - WIP
+    ## fix "edit regex" button of find Related mail [issue 488]
 
 
 	TO DO next
