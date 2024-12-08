@@ -1917,7 +1917,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Dokončano: Pro-funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega sporočila – zdaj lahko izbirate med različnimi iskanji v spustnem meniju. [issue 488]{L2}{L1} Popravljeno: premikanje e-pošt v zavihke z uporabo Ctrl+Številka. {L2} {L1} Popravljeno: Bližnjice na tipkovnici so povzročale težave pri vnosu besedila v drugih dodatkih, kot je QNote++. [issue 497]{L2}{L1} Popravljeno: Imena map, ki vsebujejo enojne narekovaje, so povzročala napake pri navigaciji. {L2}"
+    "message": "{L1} Dokončano: Pro-funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega sporočila – zdaj lahko izbirate med različnimi iskanji v spustnem meniju. [issue 488]{L2}{L1} Popravljeno: premikanje e-pošt v zavihke z uporabo Ctrl+Številka. {L2} {L1} Popravljeno: Bližnjice na tipkovnici so povzročale težave pri vnosu besedila v drugih dodatkih, kot je QNote++. [issue 497]{L2}{L1} Popravljeno: Imena map, ki vsebujejo enojne narekovaje, so povzročala napake pri navigaciji. {L2}{L1} 6.8.2 Popravljen gumb za urejanje na strani z nastavitvami za iskanje povezanih e-poštnih sporočil. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1957,7 +1957,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Fertiggestellt: Pro-Funktion zum Finden verwandter E-Mails anhand von Suchbegriffen, die aus der aktuell angezeigten E-Mail extrahiert wurden – Sie können jetzt aus verschiedenen Suchen in einem Dropdown-Menü auswählen. [issue 488]{L2}{L1} Behoben: Verschieben von E-Mails zu Tabs durch Strg+Zahl. {L2} {L1} Behoben: Tastenkombinationen kollidierten mit der Texteingabe in anderen Add-ons wie z.B. QNote++. [issue 497]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen führten zu Fehlfunktion der Navigation. {L2}"
+    "message": "{L1} Fertiggestellt: Pro-Funktion zum Finden verwandter E-Mails anhand von Suchbegriffen, die aus der aktuell angezeigten E-Mail extrahiert wurden – Sie können jetzt aus verschiedenen Suchen in einem Dropdown-Menü auswählen. [issue 488]{L2}{L1} Behoben: Verschieben von E-Mails zu Tabs durch Strg+Zahl. {L2} {L1} Behoben: Tastenkombinationen kollidierten mit der Texteingabe in anderen Add-ons wie z.B. QNote++. [issue 497]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen führten zu Fehlfunktion der Navigation. {L2}{L1} 6.8.2 Repariert: Bearbeiten-Schaltfläche auf der Einstellungsseite für verwandte E-Mails. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

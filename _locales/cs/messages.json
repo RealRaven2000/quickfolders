@@ -382,7 +382,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Dokončeno: Pro funkce pro hledání souvisejících e-mailů pomocí hledaných výrazů extrahovaných z aktuálně zobrazeného e-mailu – nyní můžete vybírat z různých hledání v rozbalovací nabídce. [issue 488]{L2}{L1} Opraveno: Přesun e-mailů na záložky pomocí Ctrl+Číslo. {L2} {L1} Opraveno: Klávesové zkratky kolidovaly se zadáváním textu v jiných doplňcích, jako je QNote++. [issue 497]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky narušovaly navigaci. {L2}"
+    "message": "{L1} Dokončeno: Pro funkce pro hledání souvisejících e-mailů pomocí hledaných výrazů extrahovaných z aktuálně zobrazeného e-mailu – nyní můžete vybírat z různých hledání v rozbalovací nabídce. [issue 488]{L2}{L1} Opraveno: Přesun e-mailů na záložky pomocí Ctrl+Číslo. {L2} {L1} Opraveno: Klávesové zkratky kolidovaly se zadáváním textu v jiných doplňcích, jako je QNote++. [issue 497]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky narušovaly navigaci. {L2}{L1} 6.8.2 Opraveno tlačítko pro úpravu na stránce nastavení pro hledání souvisejících e-mailů. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

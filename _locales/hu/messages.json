@@ -1726,7 +1726,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Elkészült: Pro funkció kapcsolódó e-mailek keresésére, amely az aktuálisan megjelenített e-mailből kinyert keresési kifejezéseket használja – most már különböző keresések közül választhat egy legördülő menüben. [issue 488]{L2}{L1} Javítva: E-mailek áthelyezése fülekre Ctrl+Szám kombinációval. {L2} {L1} Javítva: Billentyűparancsok ütköztek más kiegészítők, például a QNote++ szövegbevitelével. [issue 497]{L2}{L1} Javítva: Az egyszerű idézőjelet tartalmazó mappanevek navigációs hibát okoztak. {L2}"
+    "message": "{L1} Elkészült: Pro funkció kapcsolódó e-mailek keresésére, amely az aktuálisan megjelenített e-mailből kinyert keresési kifejezéseket használja – most már különböző keresések közül választhat egy legördülő menüben. [issue 488]{L2}{L1} Javítva: E-mailek áthelyezése fülekre Ctrl+Szám kombinációval. {L2} {L1} Javítva: Billentyűparancsok ütköztek más kiegészítők, például a QNote++ szövegbevitelével. [issue 497]{L2}{L1} Javítva: Az egyszerű idézőjelet tartalmazó mappanevek navigációs hibát okoztak. {L2}{L1} 6.8.2 Javítva a beállítások oldalon a kapcsolódó e-mailek szerkesztőgombja. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

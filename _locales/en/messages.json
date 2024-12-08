@@ -2021,7 +2021,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Completed Pro feature to find related emails one through search terms extracted from the currently displayed email - you can now select from different searches in a drop down menu. [issue 488]{L2}{L1} Fixed: moving mail to tabs through Ctrl+Number.{L2} {L1} Fixed: Keyboard shortcuts conflicted with typing text in other Add-ons such as QNote++. [issue 497]{L2} {L1} Fixed: Folder names containing single quotes broke navigation.{L2}"
+    "message": "{L1} Completed Pro feature to find related emails one through search terms extracted from the currently displayed email - you can now select from different searches in a drop down menu. [issue 488]{L2}{L1} Fixed: moving mail to tabs through Ctrl+Number.{L2} {L1} Fixed: Keyboard shortcuts conflicted with typing text in other Add-ons such as QNote++. [issue 497]{L2} {L1} Fixed: Folder names containing single quotes broke navigation.{L2}{L1} 6.8.2 Fixed edit button in settings page for find related mails.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

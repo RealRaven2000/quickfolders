@@ -1968,7 +1968,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Voltooid: Pro-functie om gerelateerde e-mails te vinden met behulp van zoektermen die zijn gehaald uit de momenteel weergegeven e-mail: u kunt nu kiezen uit verschillende zoekopdrachten in een dropdownmenu. [issue 488]{L2}{L1} Opgelost: e-mails verplaatsen naar tabbladen met Ctrl+Nummer. {L2} {L1} Opgelost: sneltoetsen kwamen in conflict met het invoeren van tekst in andere add-ons, zoals QNote++. [issue 497]{L2}{L1} Opgelost: mapnamen met enkele aanhalingstekens veroorzaakten navigatiefouten. {L2}"
+    "message": "{L1} Voltooid: Pro-functie om gerelateerde e-mails te vinden met behulp van zoektermen die zijn gehaald uit de momenteel weergegeven e-mail: u kunt nu kiezen uit verschillende zoekopdrachten in een dropdownmenu. [issue 488]{L2}{L1} Opgelost: e-mails verplaatsen naar tabbladen met Ctrl+Nummer. {L2} {L1} Opgelost: sneltoetsen kwamen in conflict met het invoeren van tekst in andere add-ons, zoals QNote++. [issue 497]{L2}{L1} Opgelost: mapnamen met enkele aanhalingstekens veroorzaakten navigatiefouten. {L2}{L1} 6.8.2 Bewerken-knop op de instellingenpagina voor gerelateerde e-mails opgelost. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

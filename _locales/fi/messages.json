@@ -311,7 +311,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Valmis: Pro-ominaisuus liittyvien sähköpostien löytämiseen käyttämällä haettuja termejä, jotka on poimittu näkyvästä sähköpostista – voit nyt valita eri hauista avattavassa valikossa. [issue 488]{L2}{L1} Korjattu: Sähköpostien siirtäminen välilehtiin Ctrl+Numero. {L2} {L1} Korjattu: Pikanäppäimet ristiriidassa tekstin syöttämisen kanssa muissa lisäosissa, kuten QNote++. [issue 497]{L2}{L1} Korjattu: Kansioiden nimet, joissa on yksinkertaisia lainausmerkkejä, haittasivat navigointia. {L2}"
+    "message": "{L1} Valmis: Pro-ominaisuus liittyvien sähköpostien löytämiseen käyttämällä haettuja termejä, jotka on poimittu näkyvästä sähköpostista – voit nyt valita eri hauista avattavassa valikossa. [issue 488]{L2}{L1} Korjattu: Sähköpostien siirtäminen välilehtiin Ctrl+Numero. {L2} {L1} Korjattu: Pikanäppäimet ristiriidassa tekstin syöttämisen kanssa muissa lisäosissa, kuten QNote++. [issue 497]{L2}{L1} Korjattu: Kansioiden nimet, joissa on yksinkertaisia lainausmerkkejä, haittasivat navigointia. {L2}{L1} 6.8.2 Korjattu muokkauspainike Asetukset-sivulla liittyvien sähköpostien etsimiseen. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

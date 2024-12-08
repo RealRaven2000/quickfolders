@@ -1981,7 +1981,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Slutfört: Pro-funktion för att hitta relaterade e-postmeddelanden med hjälp av sökord som hämtats från det aktuellt visade e-postmeddelandet – du kan nu välja mellan olika sökningar i en rullgardinsmeny. [issue 488]{L2}{L1} Fixat: Flytta e-post till flikar med Ctrl+Nummer. {L2} {L1} Fixat: Kortkommandon krockade med textinmatning i andra tillägg som QNote++. [issue 497]{L2}{L1} Fixat: Mappnamn som innehåller enkla citattecken bröt navigeringen. {L2}"
+    "message": "{L1} Slutfört: Pro-funktion för att hitta relaterade e-postmeddelanden med hjälp av sökord som hämtats från det aktuellt visade e-postmeddelandet – du kan nu välja mellan olika sökningar i en rullgardinsmeny. [issue 488]{L2}{L1} Fixat: Flytta e-post till flikar med Ctrl+Nummer. {L2} {L1} Fixat: Kortkommandon krockade med textinmatning i andra tillägg som QNote++. [issue 497]{L2}{L1} Fixat: Mappnamn som innehåller enkla citattecken bröt navigeringen. {L2}{L1} 6.8.2 Fixat redigeringsknappen på inställningssidan för att hitta relaterade mejl. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

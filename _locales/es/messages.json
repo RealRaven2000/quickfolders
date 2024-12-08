@@ -1971,7 +1971,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Completado: función Pro para encontrar correos electrónicos relacionados mediante términos de búsqueda extraídos del correo electrónico mostrado actualmente: ahora puedes seleccionar entre diferentes búsquedas en un menú desplegable. [issue 488]{L2}{L1} Corregido: mover correos electrónicos a pestañas con Ctrl+Número. {L2} {L1} Corregido: los atajos de teclado entraban en conflicto con la escritura de texto en otros complementos como QNote++. [issue 497]{L2}{L1} Corregido: los nombres de carpetas que contienen comillas simples causaban errores en la navegación. {L2}"
+    "message": "{L1} Completado: función Pro para encontrar correos electrónicos relacionados mediante términos de búsqueda extraídos del correo electrónico mostrado actualmente: ahora puedes seleccionar entre diferentes búsquedas en un menú desplegable. [issue 488]{L2}{L1} Corregido: mover correos electrónicos a pestañas con Ctrl+Número. {L2} {L1} Corregido: los atajos de teclado entraban en conflicto con la escritura de texto en otros complementos como QNote++. [issue 497]{L2}{L1} Corregido: los nombres de carpetas que contienen comillas simples causaban errores en la navegación. {L2}{L1} 6.8.2 Corregido el botón de edición en la página de configuración para encontrar correos relacionados. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

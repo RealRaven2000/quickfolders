@@ -1644,7 +1644,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hoàn thiện: Tính năng Pro để tìm email liên quan bằng cách sử dụng các từ khóa tìm kiếm được trích xuất từ email hiện đang hiển thị – bạn có thể chọn các tìm kiếm khác nhau từ menu thả xuống. [issue 488]{L2}{L1} Đã sửa: Di chuyển email vào các thẻ bằng Ctrl+Số. {L2} {L1} Đã sửa: Phím tắt xung đột với việc nhập văn bản trong các tiện ích bổ sung khác như QNote++. [issue 497]{L2}{L1} Đã sửa: Tên thư mục chứa dấu nháy đơn gây lỗi điều hướng. {L2}"
+    "message": "{L1} Hoàn thiện: Tính năng Pro để tìm email liên quan bằng cách sử dụng các từ khóa tìm kiếm được trích xuất từ email hiện đang hiển thị – bạn có thể chọn các tìm kiếm khác nhau từ menu thả xuống. [issue 488]{L2}{L1} Đã sửa: Di chuyển email vào các thẻ bằng Ctrl+Số. {L2} {L1} Đã sửa: Phím tắt xung đột với việc nhập văn bản trong các tiện ích bổ sung khác như QNote++. [issue 497]{L2}{L1} Đã sửa: Tên thư mục chứa dấu nháy đơn gây lỗi điều hướng. {L2}{L1} 6.8.2 Đã sửa nút chỉnh sửa trong trang cài đặt để tìm email liên quan. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1944,7 +1944,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Concluído: função Pro para encontrar e-mails relacionados usando termos de busca extraídos do e-mail exibido atualmente – agora é possível selecionar diferentes buscas em um menu suspenso. [issue 488]{L2}{L1} Corrigido: mover e-mails para abas usando Ctrl+Número. {L2} {L1} Corrigido: atalhos de teclado entravam em conflito com a digitação de texto em outros complementos, como o QNote++. [issue 497]{L2}{L1} Corrigido: nomes de pastas contendo aspas simples quebravam a navegação. {L2}"
+    "message": "{L1} Concluído: função Pro para encontrar e-mails relacionados usando termos de busca extraídos do e-mail exibido atualmente – agora é possível selecionar diferentes buscas em um menu suspenso. [issue 488]{L2}{L1} Corrigido: mover e-mails para abas usando Ctrl+Número. {L2} {L1} Corrigido: atalhos de teclado entravam em conflito com a digitação de texto em outros complementos, como o QNote++. [issue 497]{L2}{L1} Corrigido: nomes de pastas contendo aspas simples quebravam a navegação. {L2}{L1} 6.8.2 Corrigido o botão de edição na página de configurações para encontrar emails relacionados. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

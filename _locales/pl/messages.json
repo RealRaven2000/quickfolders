@@ -1962,7 +1962,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Ukończono: Funkcja Pro do znajdowania powiązanych wiadomości e-mail za pomocą terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanej wiadomości e-mail – teraz można wybierać różne wyszukiwania z menu rozwijanego. [issue 488]{L2}{L1} Naprawiono: przenoszenie wiadomości e-mail do kart za pomocą Ctrl+Numer. {L2} {L1} Naprawiono: Skróty klawiszowe kolidowały z wprowadzaniem tekstu w innych dodatkach, takich jak QNote++. [issue 497]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy powodowały błędy nawigacji. {L2}"
+    "message": "{L1} Ukończono: Funkcja Pro do znajdowania powiązanych wiadomości e-mail za pomocą terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanej wiadomości e-mail – teraz można wybierać różne wyszukiwania z menu rozwijanego. [issue 488]{L2}{L1} Naprawiono: przenoszenie wiadomości e-mail do kart za pomocą Ctrl+Numer. {L2} {L1} Naprawiono: Skróty klawiszowe kolidowały z wprowadzaniem tekstu w innych dodatkach, takich jak QNote++. [issue 497]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy powodowały błędy nawigacji. {L2}{L1} 6.8.2 Naprawiono przycisk edycji na stronie ustawień do znajdowania powiązanych wiadomości. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

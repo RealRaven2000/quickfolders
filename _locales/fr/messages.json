@@ -2007,7 +2007,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Terminé : Fonction Pro pour trouver des e-mails associés en utilisant des termes de recherche extraits de l'e-mail actuellement affiché : vous pouvez maintenant choisir entre différentes recherches dans un menu déroulant. [issue 488]{L2}{L1} Corrigé : Déplacement des e-mails vers des onglets avec Ctrl+Numéro. {L2} {L1} Corrigé : Les raccourcis clavier entraient en conflit avec la saisie de texte dans d'autres modules comme QNote++. [issue 497]{L2}{L1} Corrigé : Les noms de dossiers contenant des apostrophes perturbaient la navigation. {L2}"
+    "message": "{L1} Terminé : Fonction Pro pour trouver des e-mails associés en utilisant des termes de recherche extraits de l'e-mail actuellement affiché : vous pouvez maintenant choisir entre différentes recherches dans un menu déroulant. [issue 488]{L2}{L1} Corrigé : Déplacement des e-mails vers des onglets avec Ctrl+Numéro. {L2} {L1} Corrigé : Les raccourcis clavier entraient en conflit avec la saisie de texte dans d'autres modules comme QNote++. [issue 497]{L2}{L1} Corrigé : Les noms de dossiers contenant des apostrophes perturbaient la navigation. {L2}{L1} 6.8.2 Correction du bouton de modification sur la page des paramètres pour trouver des courriels associés. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

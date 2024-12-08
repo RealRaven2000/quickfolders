@@ -1913,7 +1913,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Finalitzat: funció Pro per trobar correus electrònics relacionats a través de termes de cerca extrets del correu electrònic actualment mostrat: ara podeu seleccionar diferents cerques en un menú desplegable. [issue 488]{L2}{L1} Solucionat: moure correus electrònics a pestanyes amb Ctrl+Número. {L2} {L1} Solucionat: els dreceres de teclat entraven en conflicte amb la introducció de text en altres complements com ara QNote++. [issue 497]{L2}{L1} Solucionat: els noms de carpetes amb cometes simples causaven errors de navegació. {L2}"
+    "message": "{L1} Finalitzat: funció Pro per trobar correus electrònics relacionats a través de termes de cerca extrets del correu electrònic actualment mostrat: ara podeu seleccionar diferents cerques en un menú desplegable. [issue 488]{L2}{L1} Solucionat: moure correus electrònics a pestanyes amb Ctrl+Número. {L2} {L1} Solucionat: els dreceres de teclat entraven en conflicte amb la introducció de text en altres complements com ara QNote++. [issue 497]{L2}{L1} Solucionat: els noms de carpetes amb cometes simples causaven errors de navegació. {L2}{L1} 6.8.2 Solucionat el botó d'edició a la pàgina de configuració per trobar correus relacionats. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

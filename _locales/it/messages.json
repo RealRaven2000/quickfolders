@@ -2018,7 +2018,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{L1} Completato: funzione Pro per trovare e-mail correlate utilizzando termini di ricerca estratti dall'e-mail attualmente visualizzata: ora è possibile selezionare diverse ricerche in un menu a tendina. [issue 488]{L2}{L1} Risolto: spostamento delle e-mail nelle schede con Ctrl+Numero. {L2} {L1} Risolto: scorciatoie da tastiera in conflitto con l'inserimento di testo in altri componenti aggiuntivi come QNote++. [issue 497]{L2}{L1} Risolto: i nomi delle cartelle contenenti apici causavano errori di navigazione. {L2}"
+    "message": "{L1} Completato: funzione Pro per trovare e-mail correlate utilizzando termini di ricerca estratti dall'e-mail attualmente visualizzata: ora è possibile selezionare diverse ricerche in un menu a tendina. [issue 488]{L2}{L1} Risolto: spostamento delle e-mail nelle schede con Ctrl+Numero. {L2} {L1} Risolto: scorciatoie da tastiera in conflitto con l'inserimento di testo in altri componenti aggiuntivi come QNote++. [issue 497]{L2}{L1} Risolto: i nomi delle cartelle contenenti apici causavano errori di navigazione. {L2}{L1} 6.8.2 Risolto il pulsante di modifica nella pagina delle impostazioni per trovare email correlate. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

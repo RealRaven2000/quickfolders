@@ -6,7 +6,8 @@
 *   Added an option to reset quick filter when clicking "Move to next mail" [issue #494]
 *   Added icon to menuitem that gets messages.
 *   The API [issue with Owl accounts not working](https://bugzilla.mozilla.org/show_bug.cgi?id=1909005) for license validation has been resolved by Thunderbird 128.2
-*   compatible with Tb 134
+*   v6.8.1 compatible with Tb 134
+*   v6.8.2 Fixed edit button in settings page for find related mails.
   
 
 **Bug Fixes**
