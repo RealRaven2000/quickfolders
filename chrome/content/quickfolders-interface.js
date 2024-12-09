@@ -10,7 +10,15 @@
 /* import-globals-from folderDisplay.js */ 
 //  we need gFolderDisplay.navigate !!!!
 
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { MailServices } =
+  MailServices ||
+  (QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
+
 
 QuickFolders.Interface = {
 	PaintModeActive: false,
@@ -3595,7 +3603,7 @@ QuickFolders.Interface = {
    
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
-	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
+	onCreateInstantFolder: function (parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 
@@ -4747,7 +4755,7 @@ QuickFolders.Interface = {
 				let targetDocument = popupMenu.ownerDocument;
 				let newMenuItem = folderPaneContext.querySelector("#folderPaneContext-new");
 				if (newMenuItem) {
-					let createFolderMenuItem =  this.createIconicElement("menuitem","*", targetDocument); // newMenuItem.cloneNode(true);
+					let createFolderMenuItem = this.createIconicElement("menuitem","*", targetDocument); // newMenuItem.cloneNode(true);
 					createFolderMenuItem.setAttribute("label", newMenuItem.getAttribute("label"));
 					createFolderMenuItem.setAttribute("accesskey", newMenuItem.getAttribute("accesskey"));
 					if (folder.hasSubFolders) {
@@ -8066,7 +8074,9 @@ QuickFolders.Interface = {
 
 		let currentTabId = null;
 		try {
-			var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+			const { ExtensionParent } = ChromeUtils.importESModule(
+				"resource://gre/modules/ExtensionParent.sys.mjs"
+			);
 			const extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
 			const tabInfo = window.gTabmail.currentTabInfo;
 			currentTabId = extension.tabManager.getWrapper(tabInfo).id;

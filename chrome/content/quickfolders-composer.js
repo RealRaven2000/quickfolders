@@ -17,6 +17,19 @@ Object.defineProperty(QuickFolders, "MainQuickFolders",
 	return mail3PaneWindow.QuickFolders;
 } } );
 
+var { AppConstants } = AppConstants || ChromeUtils.importESModule(
+  "resource://gre/modules/AppConstants.sys.mjs"
+);
+var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+var { MailServices } =
+  MailServices ||
+  (QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
+
+
+
 
 	// -------------------------------------------------------------------
 	// A handler to change headers in composer
@@ -159,7 +172,6 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 	function setMailHeaders(folder, options, isOrigin) {
 		const ADVANCED_FLAGS = util.ADVANCED_FLAGS,
           msgComposeType = Ci.nsIMsgCompType;
-		var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		
 		if (!folder.URI) return;
 		if (preferences.isDebugOption('composer')) { debugger; }

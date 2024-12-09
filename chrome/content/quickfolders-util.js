@@ -7,8 +7,13 @@
 
   END LICENSE BLOCK */
 
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
  
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); 
+var { MailServices } = MailServices || 
+  (QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
 
 var QuickFolders_ConsoleService = null;
 
@@ -739,8 +744,9 @@ QuickFolders.Util = {
     try {
       try {
         util.logDebugOptional('dnd,quickMove,moveCopy', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
+      } catch(e) { 
+        util.alert('QuickFolders.Util.moveMessages:' + e); 
       }
-      catch(e) { util.alert('QuickFolders.Util.moveMessages:' + e); }
 
       if (targetFolder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
         util.slideAlert ("QuickFolders moveMessages()", util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
@@ -772,8 +778,7 @@ QuickFolders.Util = {
           let newMsgs = segment.messages;
           newMsgs.push({msg: Message, uri: messageUri});
           segment.messages = newMsgs;
-        }
-        else {
+        } else {
           // create new segment
           let newMsgs = [{msg: Message, uri: messageUri}];
           segmentedMsgArray.push({
@@ -1559,7 +1564,9 @@ allowUndo = true)`
 
   getBundleString: function getBundleString(id, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
-    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    var { ExtensionParent } = ChromeUtils.importESModule(
+      "resource://gre/modules/ExtensionParent.sys.mjs"
+    );
     let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be');
     let localized = extension.localeData.localizeMessage(id, substitions);
   
@@ -2006,9 +2013,7 @@ allowUndo = true)`
   // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
   // isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
   allFoldersIterator: function allFoldersIterator(writable, isQuickJumpOrMove = false) {
-    let Ci = Components.interfaces,
-        Cc = Components.classes,
-        acctMgr = MailServices.accounts,
+    let acctMgr = MailServices.accounts,
         FoldersArray, allFolders,
         util = QuickFolders.Util,
         quickMoveSettings = QuickFolders.quickMove.Settings,
@@ -2024,9 +2029,6 @@ allowUndo = true)`
       }
       quickMoveSettings.loadExclusions(); // prepare list of servers to omit
     }
-    
-    // toXPCOMArray(allFolders, Ci.nsIMutableArray) ? 
-    // var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
     
     if (acctMgr.allFolders) { // Thunderbird & modern builds
       FoldersArray = [];
@@ -2167,7 +2169,6 @@ allowUndo = true)`
   // refactored from async Task with help of @freaktechnik
   getOrCreateFolder: async function (aUrl, aFlags) {
     const Ci = Components.interfaces,
-          Cc = Components.classes,
           Cr = Components.results,
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
@@ -2179,7 +2180,6 @@ allowUndo = true)`
     }     
     
     logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
-    var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
     let fls = MailServices.folderLookup; // nsIFolderLookupService
     if (fls) {
       folder = fls.getOrCreateFolderForURL(aUrl); 
@@ -2342,10 +2342,18 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
 
 // the following adds the notifyTools API as a util method to communicate with the background page
 // this mechanism will be used to replace legacy code with API calls.
-var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
-Services.scriptloader.loadSubScript(
-  QuickFolders.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
-  QuickFolders.Util,
-  "UTF-8"
-);
+try {
+  const { ExtensionParent } = ChromeUtils.importESModule(
+    "resource://gre/modules/ExtensionParent.sys.mjs"
+  );
+
+  QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+  Services.scriptloader.loadSubScript(
+    QuickFolders.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+    QuickFolders.Util,
+    "UTF-8"
+  );
+
+} catch(ex) {
+  console.log(ex);
+}

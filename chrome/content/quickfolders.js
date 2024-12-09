@@ -478,6 +478,7 @@ END LICENSE BLOCK */
 
   6.8.2 QuickFolders Pro - WIP
     ## fix "edit regex" button of find Related mail [issue 488]
+    ## prepare for removal of ESMIfy fallback (Thunderbird 136)
 
 
 	TO DO next
@@ -2814,7 +2815,12 @@ QuickFolders.CopyListener = {
           let entry = QuickFolders.bookmarks.Entries[i];
           try {
             if (entry.invalid) {
-              var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+              var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+              var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+              var { MailUtils } = MailUtils || (ESM
+                ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+                : ChromeUtils.import("resource:///modules/MailUtils.jsm")); 
+
               // [issue 265] try to fix the bookmark URI
               if (entry.messageId) {
                 let msg = MailUtils.getMsgHdrForMsgId(entry.messageId);

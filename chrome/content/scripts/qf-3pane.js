@@ -304,7 +304,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
 
   // the following adds the notifyTools API to communicate with the background page
-  var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+  var { ExtensionParent } = ChromeUtils.importESModule(
+    "resource://gre/modules/ExtensionParent.sys.mjs"
+  );  
   let ext = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
   Services.scriptloader.loadSubScript(
     ext.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
