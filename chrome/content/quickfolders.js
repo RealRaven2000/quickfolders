@@ -1332,12 +1332,8 @@ var QuickFolders = {
         const model = QuickFolders.Model,
               prefs = QuickFolders.Preferences,
               isEncodeUri = prefs.getBoolPref("newFolderCallback.encodeURI");
-              
         
-				let step = '0 - determine folder URI',
-				    isManyFolders = false,
-				    sourceFolder = null;
-            
+				let step = '0 - determine folder URI';
         aName = aName.trim(); 
 				if (aName) try {
           
@@ -2817,9 +2813,12 @@ QuickFolders.CopyListener = {
             if (entry.invalid) {
               var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
               var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-              var { MailUtils } = MailUtils || (ESM
-                ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
-                : ChromeUtils.import("resource:///modules/MailUtils.jsm")); 
+              var { MailUtils } =
+                typeof MailUtils !== "undefined" && MailUtils
+                  ? { MailUtils }
+                  : ESM
+                    ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+                    : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
 
               // [issue 265] try to fix the bookmark URI
               if (entry.messageId) {

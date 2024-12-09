@@ -9,18 +9,19 @@
 
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-
 var { MailServices } =
-  MailServices ||
-  (QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
-
+  typeof MailServices !== "undefined" && MailServices
+    ? { MailServices }
+    : QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { MailUtils } =
-  MailUtils ||
-  (QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailUtils.jsm")); 
+  typeof MailUtils !== "undefined" && MailUtils
+    ? { MailUtils }
+    : QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
+
 
 
 QuickFolders.Model = {

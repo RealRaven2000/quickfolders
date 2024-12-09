@@ -6,14 +6,26 @@
   For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
-
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
- 
-var { MailServices } = MailServices || 
-  (QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
+
+var { MailServices } =
+  typeof MailServices !== "undefined" && MailServices
+    ? { MailServices }
+    : QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailServices.jsm");
+
+
+try {
+  var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+} catch (ex) {
+  console.log(
+    "QF.Util AppConstants + MailServices after load:",
+    AppConstants,
+    MailServices,
+    QuickFolders_ESM
+  );
+}    
 
 var QuickFolders_ConsoleService = null;
 
