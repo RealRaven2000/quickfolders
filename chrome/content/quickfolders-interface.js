@@ -14,10 +14,11 @@ var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppCon
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
 var { MailServices } =
-  MailServices ||
-  (QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
+  typeof MailServices !== "undefined" && MailServices
+    ? { MailServices }
+    : QuickFolders_ESM
+			? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+			: ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 QuickFolders.Interface = {
@@ -3603,7 +3604,7 @@ QuickFolders.Interface = {
    
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
-	onCreateInstantFolder: function (parentFolder, folderName) {
+	onCreateInstantFolder: async function (parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 
@@ -3630,31 +3631,34 @@ QuickFolders.Interface = {
 		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
 
 		// this asynchronous function is in quickfolders-shim as Postbox doesn't support the new syntax
-		util.getOrCreateFolder(
-		  newFolderUri,
-		  util.FolderFlags.MSG_FOLDER_FLAG_MAIL).then(  // avoiding nsMsgFolderFlags for postbox...
-			  function createFolderCallback() {
-					// create QuickFolders Tab?
-					if (check.value) {
-						let cat = QI.CurrentlySelectedCategories;
-						QuickFolders.Model.addFolder(newFolderUri, cat);
-					}
-					// move emails or jump to folder after creation
-					if (isQuickMove) {
-						QuickFolders.quickMove.execute(newFolderUri, parentFolder.name);
-					}
-					else if (isFindFolder) { // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
-						QuickFolders_MySelectFolder(newFolderUri, true);
-					}
-					if (isFindFolder) { // tidy up quickMove menu
-						QI.findFolder(false);
-						QI.hideFindPopup();
-					}
-		    },
-				function failedCreateFolder(reason) {
-					util.logToConsole(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, reason);
-				}
-			);
+		try {
+      let folder = await util.getOrCreateFolder(newFolderUri, util.FolderFlags.MSG_FOLDER_FLAG_MAIL);
+
+			// resulting URI could be different for various reasons?
+      newFolderUri = folder.URI;
+
+      // create QuickFolders Tab?
+      if (check.value) {
+        let cat = QI.CurrentlySelectedCategories;
+        QuickFolders.Model.addFolder(newFolderUri, cat);
+      }
+      // move emails or jump to folder after creation
+      if (isQuickMove) {
+        QuickFolders.quickMove.execute(newFolderUri, parentFolder.name, folder);
+      } else if (isFindFolder) {
+        // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
+        QuickFolders_MySelectFolder(newFolderUri, true);
+      }
+      if (isFindFolder) {
+        // tidy up quickMove menu
+        QI.findFolder(false);
+        QI.hideFindPopup();
+      }
+    }
+		catch(ex) {
+			util.logException(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, ex);
+		}
+
 	},
 
 	onSearchMessages: async function onSearchMessages(element) {

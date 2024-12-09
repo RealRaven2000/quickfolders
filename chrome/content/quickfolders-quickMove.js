@@ -9,11 +9,12 @@
   var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
   var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
-var { MailServices } =
-  MailServices ||
-  (QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailServices.jsm"));
+  var { MailServices } =
+    typeof MailServices !== "undefined" && MailServices
+      ? { MailServices }
+      : QuickFolders_ESM
+        ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+        : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 // drop target which defers a move to a quickJump operation
 QuickFolders.quickMove = {
@@ -100,7 +101,7 @@ QuickFolders.quickMove = {
   // move or copy mails (or both at the same time!)
 	// parentName = optional parameter for remembering for autofill - 
 	// only pass this when search was done in the format parent/folder
-  execute: async function(targetFolderUri, parentName) {
+  execute: async function(targetFolderUri, parentName, folder) {
     function showFeedback(actionCount, messageIdList, isCopy) {
       // show notification
       if (!actionCount) 
@@ -171,7 +172,7 @@ QuickFolders.quickMove = {
     var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
 					
     let actionCount,
-        fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
+        fld = folder || QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
         tabMode = QI.CurrentTabMode,    
         tabmail = document.getElementById("tabmail"),
         currentTab = tabmail.selectedTab;
@@ -301,7 +302,9 @@ QuickFolders.quickMove = {
       menu.appendChild(document.createXULElement('menuseparator'));
     for (let f of foldersArray) {
       if (this.folders.includes(f)) {
-        util.logDebug("Omitting folder " + f.prettyname + " as it is already on the list!")
+        QuickFolders.Util.logDebug(
+          "Omitting folder " + f.prettyname + " as it is already on the list!"
+        );
         continue;
       }
       this.folders.push(f);
@@ -322,7 +325,7 @@ QuickFolders.quickMove = {
   } ,
   
   // Add an item to the list of things to be moved.
-  add: function add(newUri, sourceFolder, isCopy)  {
+  add: function (newUri, sourceFolder, isCopy)  {
     // remove any pending folders to move!
     if (this.hasFolders) {
       this.resetMenu();
