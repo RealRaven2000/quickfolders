@@ -443,7 +443,7 @@
     "message": "调试模式"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "鼠标右键点选进入高级调试选项"
+    "message": "点击设置齿轮以获取高级调试选项"
   },
   "qf.checkbox.displaylabel": {
     "message": "在工具栏显示「目录导航」标签"

@@ -449,7 +449,7 @@
     "message": "Debug Modus"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Rechtsklick für zusätzliche Debug Optionen"
+    "message": "Klicken Sie auf das Zahnrad für erweiterte Debug-Optionen"
   },
   "qf.checkbox.displaylabel": {
     "message": "'QuickFolders' Titel in Werkzeugleiste anzeigen"

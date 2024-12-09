@@ -410,7 +410,7 @@
     "message": "Debug mód"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "kattintson jobb gombbal a jelölőnégyzetbe a debug opciókhoz"
+    "message": "Kattintson a beállításkerékre a speciális hibakeresési lehetőségekhez"
   },
   "qf.checkbox.displaylabel": {
     "message": "'QuickFolders' címke megjelenítése az eszköztáron"

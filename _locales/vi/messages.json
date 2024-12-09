@@ -364,7 +364,7 @@
     "message": "Chế độ sửa lỗi"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "ấn chuột phải vào ô kiểm này cho các tùy chọn sửa lỗi nâng cao"
+    "message": "Nhấp vào bánh xe cài đặt để xem các tùy chọn gỡ lỗi nâng cao"
   },
   "qf.checkbox.displaylabel": {
     "message": "Hiển thị 'QuickFolders' trên thanh công cụ"

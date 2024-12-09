@@ -430,7 +430,7 @@
     "message": "デバッグモード"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "このチェックボックスを右クリックすると詳細デバッグオプションを表示します"
+    "message": "詳細なデバッグオプションを表示するには設定ホイールをクリックしてください"
   },
   "qf.checkbox.displaylabel": {
     "message": "ツールバーに 'QuickFolders' ラベルを表示する"

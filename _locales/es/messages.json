@@ -451,7 +451,7 @@
     "message": "Modo de depuración"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Haga clic secundario en esta casilla para opciones de depuración avanzadas"
+    "message": "Haz clic en la rueda de configuración para opciones avanzadas de depuración"
   },
   "qf.checkbox.displaylabel": {
     "message": "Mostrar la etiqueta 'QuickFolders' en la barra de herramientas"

@@ -459,7 +459,7 @@
     "message": "Modalità di debug"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Fare clic con il pulsante dx del mouse su questa casella di controllo per le opzioni avanzate di debug"
+    "message": "Fai clic sulla ruota delle impostazioni per opzioni di debug avanzate"
   },
   "qf.checkbox.displaylabel": {
     "message": "Visualizza l'etichetta \"QuickFolders\" sulla barra degli strumenti"

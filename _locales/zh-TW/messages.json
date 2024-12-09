@@ -445,7 +445,7 @@
     "message": "除錯模式"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "以滑鼠右鍵選取進階除錯選項"
+    "message": "點擊設定齒輪以獲取高級除錯選項"
   },
   "qf.checkbox.displaylabel": {
     "message": "在工具列顯示「Quick Folders」的標籤"

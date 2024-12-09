@@ -453,7 +453,7 @@
     "message": "Mode de Depuració"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Feu clic amb el botó dret a aquesta casella per a les opcions avançades de depuració"
+    "message": "Fes clic a la roda de configuració per a opcions avançades de depuració"
   },
   "qf.checkbox.displaylabel": {
     "message": "Mostra 'QuickFolders' a la barra d'eines"

@@ -442,7 +442,7 @@
     "message": "Modo Debug"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "clique com o botão direito nesta caixa para opções avançadas de depuração"
+    "message": "Clique na roda de configurações para opções avançadas de depuração"
   },
   "qf.checkbox.displaylabel": {
     "message": "Mostrar o 'QuickFolders' na barra de ferramentas"

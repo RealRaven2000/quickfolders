@@ -445,7 +445,7 @@
     "message": "Tryb debugowania"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Kliknij tutaj prawym przyciskiem, by wyświetlić zaawansowane opcje debugowania"
+    "message": "Kliknij koło ustawień, aby uzyskać zaawansowane opcje debugowania"
   },
   "qf.checkbox.displaylabel": {
     "message": "Wyświetlaj nazwę QuickFolders na pasku folderów"

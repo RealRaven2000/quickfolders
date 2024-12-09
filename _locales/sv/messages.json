@@ -449,7 +449,7 @@
     "message": "Felsökningsläge"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "högerklicka på den här kryssrutan för avancerade felsökningsalternativ"
+    "message": "Klicka på inställningshjulet för avancerade felsökningsalternativ"
   },
   "qf.checkbox.displaylabel": {
     "message": "Visa 'QuickFolders'-etiketten i verktygsfältet"

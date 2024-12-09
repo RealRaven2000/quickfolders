@@ -442,7 +442,7 @@
     "message": "Foutopsporingsmodus"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Kik met rechts op dit selectievakje voor geavanceerde foutopsporingsopties"
+    "message": "Klik op het instellingenwiel voor geavanceerde debugopties"
   },
   "qf.checkbox.displaylabel": {
     "message": "Het label ‘QuickFolders’ in de werkbalk weergeven"

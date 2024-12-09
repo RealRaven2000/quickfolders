@@ -462,7 +462,7 @@
     "message": "Mode débogage"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Clic droit sur cette case à cocher pour des options de débogage avancées"
+    "message": "Cliquez sur la roue des paramètres pour des options de débogage avancées"
   },
   "qf.checkbox.displaylabel": {
     "message": "Afficher le libellé « QuickFolders » dans la barre d'outils"

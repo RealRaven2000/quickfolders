@@ -443,7 +443,7 @@
     "message": "Modo de depuración"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Clic con el botón derecho para opciones avanzadas de depuración"
+    "message": "Haz clic en el engranaje de configuración para opciones avanzadas de depuración"
   },
   "qf.checkbox.displaylabel": {
     "message": "Muestra la etiqueta 'QuickFolders' en la barra"
