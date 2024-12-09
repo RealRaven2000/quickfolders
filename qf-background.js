@@ -77,7 +77,7 @@ let listenersReadyPromise = new Promise((resolve) => {
       console.log("Listeners are ready, resolving the promise...");
       resolve();
       // making sure this is only used once, in case we reinstall multiple times in a session.
-      messenger.NotifyTools.onNotifyBackground.removeListener(listenersReadyListener);
+      messenger.NotifyTools.onNotifyBackground.removeListener(listenerFunction);
     }
   }
 
