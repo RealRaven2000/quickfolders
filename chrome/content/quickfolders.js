@@ -1358,13 +1358,12 @@ var QuickFolders = {
 				if (aName) try {       
 					let currentURI = QuickFolders.Util.CurrentFolder.URI,
             aFolder = FolderParam.QueryInterface(Ci.nsIMsgFolder),
-            uriName = isEncodeUri ? encodeURI(aName) : aName;
+            uriName = isEncodeUri ? encodeURI(aName) : aName; // encoding leads to problems with spaces!
             
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
-          let newFolderUri = aFolder.URI + "/" + uriName,
-              encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
+          let newFolderUri = aFolder.URI + "/" + uriName;
           util.getOrCreateFolder(
             newFolderUri, 
             Ci.nsMsgFolderFlags.Mail).then(
