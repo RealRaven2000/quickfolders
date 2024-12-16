@@ -1,11 +1,9 @@
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 var { MailServices } =
-  typeof MailServices !== "undefined" && MailServices
-    ? { MailServices }
-    : QuickFolders_ESM
-      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-      : ChromeUtils.import("resource:///modules/MailServices.jsm");
+  QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
@@ -505,45 +503,79 @@ async function onLoad(activatedWhileWindowOpen) {
 }
 
 function onUnload(isAddOnShutDown) {
+  let isError = false;
   // Disable the global notify notifications from background.
-  window.QuickFolders.Util.notifyTools.disable();
-  window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.QuickFolders.Util.notifyTools.removeAllListeners();
+  try {
+    window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  } catch (ex) {
+    console.error(`QuickFolders - Error removing BackgroundUpdate listener:`, ex, window);
+    isError = true;
+  }
 
   for (let m in mylisteners) {
-    window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
+    try {
+      window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
+      window.QuickFolders.Util.logDebugOptional("events", `Successfully removed listener for ${m}`);
+    } catch (ex) {
+      console.error(`QuickFolders - Error removing listener for ${m}:`, ex);
+      isError = true;
+    }
   }
+
   // tidy up key listener!
-  if (window.QuickFolders.keyListen) {
-    window.QuickFolders.removeKeyListeners.call(window.QuickFolders, window);
+  try {
+    if (window.QuickFolders.keyListen) {
+      window.QuickFolders.removeKeyListeners.call(window.QuickFolders, window);
+      delete window.QuickFolders.keyListen;
+    }
+  } catch (ex) {
+    console.error(`QuickFolders - Error removing key listener:`, ex, window);
+    isError = true;
   }
-  
+
   // if quickFilters buttons are in the UI, move them back to the hidden panel in the toolbar!
   function stashQuickFiltersButton(id, toParent) {
-    let el=document.getElementById(id);
+    let el = document.getElementById(id);
     if (el) {
       toParent.appendChild(el);
     }
   }
-  let stashBox = document.getElementById("quickFilters-injected");
-  if (stashBox) {
-    stashQuickFiltersButton("quickfilters-current-listbutton", stashBox);
-    stashQuickFiltersButton("quickfilters-current-searchfilterbutton", stashBox);
-    stashQuickFiltersButton("quickfilters-current-runbutton", stashBox);
-    stashQuickFiltersButton("quickfilters-current-msg-runbutton", stashBox);
+  try {
+    let stashBox = document.getElementById("quickFilters-injected");
+    if (stashBox) {
+      stashQuickFiltersButton("quickfilters-current-listbutton", stashBox);
+      stashQuickFiltersButton("quickfilters-current-searchfilterbutton", stashBox);
+      stashQuickFiltersButton("quickfilters-current-runbutton", stashBox);
+      stashQuickFiltersButton("quickfilters-current-msg-runbutton", stashBox);
+    }
+  } catch (ex) {
+    console.error(`QuickFolders - Error stashing quickFilters buttons:`, ex);
+    isError = true;
   }
-  
+
   // remove all listeners
   try {
     window.QuickFolders.Interface.removeToolbarHiding.call(window.QuickFolders.Interface);
     MailServices.mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
     window.QuickFolders.removeTabEventListener.call(window.QuickFolders);
-   //  window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
+    //  window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
+  } catch (ex) {
+    console.error("QuickFolders - remove remaining listener failed", ex);
+    isError = true;
   }
-  catch(ex) {
-    console.log(ex);
+  try {
+    window.removeEventListener("activate", window.QuickFolders.themeHandler);
+    window.removeEventListener("windowlwthemeupdate", window.QuickFolders.themeHandler);
+    window.removeEventListener("toolbarvisibilitychange", window.QuickFolders.themeHandler);
+  } catch (ex) {
+    console.error("QuickFolders - removing theme event handler failed", ex);
+    isError = true;
   }
-  window.removeEventListener("activate", window.QuickFolders.themeHandler);
-  window.removeEventListener("windowlwthemeupdate", window.QuickFolders.themeHandler);  
-  window.removeEventListener("toolbarvisibilitychange", window.QuickFolders.themeHandler);  
-  
+  if (!isError & window.QuickFolders.Preferences.isDebug) {
+    window.QuickFolders.Util.logHighlight("onUnload executed without throwing errors", {
+      color: "lightyellow",
+      background: "#00CC99",
+    });
+  }
 }
