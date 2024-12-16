@@ -524,17 +524,7 @@ QuickFolders.FolderTree = {
     }
     
     function countSubfolders(parentFolder) {
-      let childFolders;
-      if (parentFolder.subFolders.hasMoreElements) { // Tb78 and older
-        let myenum = parentFolder.subFolders;
-        childFolders = [];
-        while (myenum.hasMoreElements()) {
-          childFolders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
-        }
-      }
-      else { // Tb 88
-        childFolders = parentFolder.subFolders;
-      }
+      let childFolders = parentFolder.subFolders;
       return childFolders.length;
     }
     
