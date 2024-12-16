@@ -6,26 +6,16 @@
   For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
+
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
 var { MailServices } =
-  typeof MailServices !== "undefined" && MailServices
-    ? { MailServices }
-    : QuickFolders_ESM
-      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-      : ChromeUtils.import("resource:///modules/MailServices.jsm");
+  QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
-try {
-  var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-} catch (ex) {
-  console.log(
-    "QF.Util AppConstants + MailServices after load:",
-    AppConstants,
-    MailServices,
-    QuickFolders_ESM
-  );
-}    
 
 var QuickFolders_ConsoleService = null;
 
@@ -1279,7 +1269,7 @@ allowUndo = true)`
     return timePassed;
   },
 
-  logTime: function logTime() {
+  logTime: function () {
     let timePassed = '',
         end = new Date(),
         endTime = end.getTime();
@@ -2179,16 +2169,17 @@ allowUndo = true)`
   },
   
   // refactored from async Task with help of @freaktechnik
-  getOrCreateFolder: async function (aUrl, aFlags) {
+  getOrCreateFolder: async function (aUrl, aFlags, parentFolder) {
     const Ci = Components.interfaces,
-          Cr = Components.results,
-          util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences,
-          isDebug = prefs.isDebugOption('getOrCreateFolder');
+      Cr = Components.results,
+      util = QuickFolders.Util,
+      prefs = QuickFolders.Preferences,
+      isDebug = prefs.isDebugOption('getOrCreateFolder');
     let folder = null;
     function logDebug(text) {
-      if (isDebug) 
+      if (isDebug) {
         util.logDebugOptional('getOrCreateFolder', text);
+      }
     }     
     
     logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
@@ -2198,15 +2189,16 @@ allowUndo = true)`
     }
 
 
-    logDebug('folder = ' + folder);   
+    logDebug("folderForURL: ", folder);   
     // Now try to ask the server if it has the folder. This will force folder
     // discovery, so if the folder exists, its properties will be properly
     // fleshed out if it didn't exist. This also catches folders on servers
     // that don't exist.
     try {
-      folder = folder.server.getMsgFolderFromURI(folder, aUrl);
-    } catch (e) {
-      util.logException('getMsgFolderFromURI ', ex);    
+      let sF = parentFolder || folder; // for getting server folder, let's use parent
+      folder = sF.server.getMsgFolderFromURI(folder, aUrl);
+    } catch (ex) {
+      util.logException("getMsgFolderFromURI ", ex);
       throw Cr.NS_ERROR_INVALID_ARG;
     }
 
@@ -2234,16 +2226,30 @@ allowUndo = true)`
           
       logDebug('no folder parent. needToCreate = ' + needToCreate + ' async = ' + isAsync);   
       
-      
       if (needToCreate) {
         const deferred = new Promise((resolve, reject) => {
           const listener = {
             OnStartRunningUrl(url) {},
             OnStopRunningUrl(url, aExitCode) {
-              if (aExitCode == Cr.NS_OK)
+              if (isDebug) debugger;
+              if (aExitCode == Cr.NS_OK) {
                 resolve();
-              else
+              } else {
+                const { AppConstants } = ChromeUtils.importESModule(
+                  "resource://gre/modules/AppConstants.sys.mjs"
+                );
+                const ESM = (AppConstants.MOZ_APP_VERSION >= 128);
+                const { ImapUtils } = ESM
+                  ? ChromeUtils.importESModule("resource:///modules/ImapUtils.sys.mjs")
+                  : ChromeUtils.import("resource:///modules/ImapUtils.jsm");
+                const hexCode = `0x${aExitCode.toString(16).toUpperCase()}`;
+                let txtDetail = hexCode;
+                if (aExitCode == ImapUtils.NS_MSG_ERROR_IMAP_COMMAND_FAILED) {
+                  txtDetail += " (NS_MSG_ERROR_IMAP_COMMAND_FAILED)";
+                };
+                console.log(`folder.createStorageIfMissing() was rejected with\n${txtDetail}`);
                 reject(aExitCode);
+              }
             },
             QueryInterface: ChromeUtils.generateQI([Ci.nsIUrlListener])
           };
