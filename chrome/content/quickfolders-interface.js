@@ -6957,7 +6957,7 @@ QuickFolders.Interface = {
 	} ,
 
   // return true if the next tab was successfully selected.
-	goNextQuickFolder: function goNextQuickFolder() {
+	goNextQuickFolder: function () {
 		let aFolder = QuickFolders.Util.CurrentFolder,
 		    found = false,
 		    firstOne = null;
@@ -6985,7 +6985,7 @@ QuickFolders.Interface = {
 	} ,
 
   // return true if the previous tab was successfully selected.
-	goPreviousQuickFolder: function goPreviousQuickFolder() {
+	goPreviousQuickFolder: function () {
 		let aFolder = QuickFolders.Util.CurrentFolder,
 		    found = false,
 		    lastOne = null;
@@ -7012,27 +7012,15 @@ QuickFolders.Interface = {
     return false;
 	} ,
 
-	goPreviousSiblingFolder: function goPreviousSiblingFolder() {
-    const Cc = Components.classes,
-		      Ci = Components.interfaces;
+	goPreviousSiblingFolder: function () {
 		let current = QuickFolders.Util.CurrentFolder,
-		    parentFolder = current.parent,
-		    myenum; // force instanciation for SM
+			parentFolder = current.parent;
 		if (!current || !parentFolder)
 			return;
     
-    let childFolders;
-    
-    if (parentFolder.subFolders.hasMoreElements) {
-      let myenum = parentFolder.subFolders;
-      childFolders = [];
-      while (myenum.hasMoreElements()) {
-        childFolders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
-      }
-    }
-    else { // Tb 88
-      childFolders = parentFolder.subFolders;
-    }
+    let childFolders = parentFolder.subFolders.sort((a, b) => {
+      return a.prettyName.localeCompare(b.prettyName); // [issue 513]
+    });
     
     // do nothing if this is the only folder:
     if (childFolders.length == 1) return;
@@ -7047,35 +7035,25 @@ QuickFolders.Interface = {
     }
     if (iCurrent==0) { // go to last element
       target = childFolders[childFolders.length-1];
-    }
-    else
+    } else {
       target = childFolders[iCurrent-1];
+		}
     
 		if (null!=target)
 			QuickFolders_MySelectFolder(target.URI);
 
 	} ,
 
-	goNextSiblingFolder: function goNextSiblingFolder() {
+	goNextSiblingFolder: function () {
 		let current = QuickFolders.Util.CurrentFolder,
-		    parentFolder = current.parent,
-        myenum; // force instanciation for SM
+		    parentFolder = current.parent;
 		if (!current || !parentFolder)
 			return;
       
-    let childFolders;
-      
-    if (parentFolder.subFolders.hasMoreElements) {
-      let myenum = parentFolder.subFolders;
-      childFolders = [];
-      while (myenum.hasMoreElements()) {
-        childFolders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
-      }
-    }
-    else { // Tb 88
-      childFolders = parentFolder.subFolders;
-    }
-    
+    let childFolders = parentFolder.subFolders.sort((a, b) => {
+      return a.prettyName.localeCompare(b.prettyName); // [issue 513]
+    });
+
     // do nothing if this is the only folder:
     if (childFolders.length == 1) return;
     
