@@ -14,11 +14,9 @@ var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppCon
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
 var { MailServices } =
-  typeof MailServices !== "undefined" && MailServices
-    ? { MailServices }
-    : QuickFolders_ESM
-			? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-			: ChromeUtils.import("resource:///modules/MailServices.jsm");
+	QuickFolders_ESM
+		? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+		: ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 QuickFolders.Interface = {
@@ -1900,7 +1898,8 @@ QuickFolders.Interface = {
     const QI = QuickFolders.Interface,
       util = QuickFolders.Util,
       prefs = QuickFolders.Preferences;
-    let isAlt = e.altKey,
+    let isAlt = e.altKey, // the Option key [⌥] on Mac
+      isMeta = e.metaKey, // the Command key [⌘] on Mac
       isCtrl = e.ctrlKey,
       isShift = e.shiftKey,
       eventTarget = e.target,
@@ -1908,6 +1907,24 @@ QuickFolders.Interface = {
       isShortcutMatched = false,
       tabmode = null; // move down to optimize text entries.
 
+		if (isMeta) {
+      // exclude all metakey combos [issue 514]
+			return;
+    }
+		if (QuickFolders.Util.lastTime) {
+      let end = new Date(),
+        endTime = end.getTime(),
+        elapsed = endTime - QuickFolders.Util.lastTime; // time in milliseconds
+      // avoid repeat triggering, if key listener was not tidied up by Thunderbird during Add-on update (WIP).
+      if (elapsed < 150) return; // (assuming user doesn't mash keys)
+			if (prefs.getBoolPref("debug.events.keyboard") && !prefs.isDebug) {
+				console.log(`QF keypress elapsed: ${elapsed} ms`);
+			}
+    } 
+		if (!prefs.isDebug) {
+      // in case no logging is enabled, this was never set:
+      QuickFolders.Util.lastTime = new Date().getTime();
+    }
     // Ctrl+Alt+F for refresh, should always work.
     if (isCtrl && isAlt && dir != "up" && prefs.isUseRebuildShortcut) {
       if (e.key.toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
@@ -3590,16 +3607,12 @@ QuickFolders.Interface = {
 		this.rebuildSummary(folder);
 	} ,
 
-	onNewFolder: function onNewFolder(element,evt) {
-		let util = QuickFolders.Util,
-				QI = QuickFolders.Interface,
-        folder = util.getPopupNode(element).folder;
-        
+	onNewFolder: function (element, evt) {
+		const folder = QuickFolders.Util.getPopupNode(element).folder;
     if (evt) evt.stopPropagation();
 
-    util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
-    
-    QI.onCreateInstantFolder(folder);  // async function
+    QuickFolders.Util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
+    QuickFolders.Interface.onCreateInstantFolder(folder);  // async function
 	},
    
 	// * function for creating a new folder under a given parent
@@ -3619,22 +3632,31 @@ QuickFolders.Interface = {
 			isFindFolder = false;
 		}
 
-    util.logDebugOptional("interface", "QuickFolders.Interface.onCreateInstantFolder(" + parentFolder.prettyName + ", " + folderName + ")");
+    util.logDebugOptional("interface", 
+			`QuickFolders.Interface.onCreateInstantFolder(${parentFolder.prettyName},${folderName})`);
     let title = util.getBundleString("qf.prompt.newFolder.title"),
-        text = util.getBundleString("qf.prompt.newFolder.newChildName") + ":",
-        checkBoxText = util.getBundleString("qf.prompt.newFolder.createQFtab"),
-        input = { value: folderName },
-        check = { value: false },
-        result = Services.prompt.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+			text = util.getBundleString("qf.prompt.newFolder.newChildName") + ":",
+			checkBoxText = util.getBundleString("qf.prompt.newFolder.createQFtab"),
+			input = { value: folderName },
+			check = { value: false },
+			result = Services.prompt.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+
     if (!result) return;
     if (!parentFolder.canCreateSubfolders) throw ("cannot create a subfolder for: " + parentFolder.prettyName);
-		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
+		let newFolderUri = parentFolder.URI + "/" + input.value // [issue 512] spaces makes move fail. // encodeURI(input.value);
 
 		// this asynchronous function is in quickfolders-shim as Postbox doesn't support the new syntax
 		try {
-      let folder = await util.getOrCreateFolder(newFolderUri, util.FolderFlags.MSG_FOLDER_FLAG_MAIL);
+      let folder = await util.getOrCreateFolder(
+        newFolderUri,
+        util.FolderFlags.MSG_FOLDER_FLAG_MAIL,
+        parentFolder
+      );
 
 			// resulting URI could be different for various reasons?
+			QuickFolders.Util.logDebug(
+        `URI after getOrCreateFolder():\n in:${newFolderUri}\nout:${folder.URI}`
+      );
       newFolderUri = folder.URI;
 
       // create QuickFolders Tab?
@@ -3656,7 +3678,10 @@ QuickFolders.Interface = {
       }
     }
 		catch(ex) {
-			util.logException(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, ex);
+			util.logException(
+        `Exception in onCreateInstantFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `,
+        ex
+      );
 		}
 
 	},
@@ -3901,8 +3926,6 @@ QuickFolders.Interface = {
 		if (folder.canCreateSubfolders) {
 			let id = "QF_folderPaneContext-new";
 			menuitem = createMailCmdMenuItem(id,this.getUIstring("qfNewFolder"));
-			// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onNewFolder(this,event);");
-			// what about the click event bubbling up?
 			menuitem.addEventListener("click",
 			  function(event) {
 					if (!QI.checkIsDuplicateEvent({id:id}))
@@ -4291,14 +4314,14 @@ QuickFolders.Interface = {
 					  isIdHandler = false;
 				}
 			}
-			if( isIdHandler || isTagHandler )
+			if( isIdHandler || isTagHandler ) {
 				util.logDebug("..handled command from click event.");
-			else
+			} else {
 				util.logDebug("No emergency handler for this event type.");
-		}
-		else
+			}
+		} else {
 			util.logDebug("Click event but missing event target.");
-
+		}
 	} ,
 
 	// against duplication of events, log time in ms
@@ -5511,18 +5534,19 @@ QuickFolders.Interface = {
 		}
 
     const util = QuickFolders.Util,
-          model = QuickFolders.Model,
-          prefs = QuickFolders.Preferences,
-					CHEVRON = "\u00BB".toString(),
-          maxResults = prefs.getIntPref("quickMove.maxResults"),
-		      isFiling = QuickFolders.quickMove.isActive;
+			model = QuickFolders.Model,
+			prefs = QuickFolders.Preferences,
+			CHEVRON = "\u00BB".toString(),
+			maxResults = prefs.getIntPref("quickMove.maxResults"),
+			isFiling = QuickFolders.quickMove.isActive;
 
 		let isSelected = false,
-				enteredSearch = searchBox.value,
-	      searchString = enteredSearch.toLocaleLowerCase().trim(),
-        searchFolderName = "",
-        parentString = "",  // effective parent string (using resulting prettyName atoms)
-				enteredParent = ""; // what's entered
+			enteredSearch = searchBox.value,
+			searchString = enteredSearch.toLocaleLowerCase().trim(),
+			searchFolderName = "",
+			parentString = "",  // effective parent string (using resulting prettyName atoms)
+			enteredParent = ""; // what's entered
+
     util.logDebug("findFolder (" + searchString + ")");
 		if (!searchString)
 			return;
@@ -5544,11 +5568,11 @@ QuickFolders.Interface = {
       return;
     }
 
-		let matches = [],
-				parents = [],
-        excludedServers = QuickFolders.quickMove.Settings.excludedIds,
-        isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
-        currentFolder = util.CurrentFolder;
+		const matches = [],
+			parents = [],
+			excludedServers = QuickFolders.quickMove.Settings.excludedIds,
+			isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
+			currentFolder = util.CurrentFolder;
 
 		// change: if only 1 character is given, then the name must start with that character!
 		// first, search QuickFolders
@@ -5654,7 +5678,6 @@ QuickFolders.Interface = {
 		if (parentPos>0) {
 			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
 			// [Bug 26283] add matches from quickfolders (if named differently)
-			let isFound = false;
 			for (let i=0; i<model.selectedFolders.length; i++) {
 				let folderEntry = model.selectedFolders[i],
 				    folderNameSearched = folderEntry.name.toLocaleLowerCase(),
@@ -5714,12 +5737,13 @@ QuickFolders.Interface = {
 				}
 				let theLabel = label.replace("{0}", f.rootFolder.name + ": " + parFld).replace("{1}", enteredSearch);
 				menuitem.setAttribute("label", theLabel);
-				if (prefs.isDebugOption("quickMove"))
+				if (prefs.isDebugOption("quickMove")) {
 					txtDebugMenu = txtDebugMenu + "menuItem: " + theLabel.padEnd(20, " ") + " - parentString:" + parentString + "\n";
+				}
 
 				menuitem.setAttribute("parentString", parentString); // remember parent string in menu item (easiest)
-				menuitem.addEventListener("command", function(event) {
-						QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch);
+				menuitem.addEventListener("command", async (event) => {
+						const fld = await QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch);
 						return false;
 					}, false
 				);
