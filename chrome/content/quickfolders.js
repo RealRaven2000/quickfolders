@@ -476,9 +476,13 @@ END LICENSE BLOCK */
     ## [issue 509] Tb 129+ deal with removal of MozElements.NotificationBox.shown() #
     ## Support compatibility with Thunderbird 134
 
-  6.8.2 QuickFolders Pro - WIP
+  6.8.2 QuickFolders Pro - 08/12/2024
     ## fix "edit regex" button of find Related mail [issue 488]
     ## prepare for removal of ESMIfy fallback (Thunderbird 136)
+
+  6.8.3 QuickFolders Pro - WIP
+    ## [issue 512] Creating a subfolder with space in name from quickMove raises an error
+    ## [issue 514] QuickFolders blocks native Thunderbird keystrokes that contain Option (metaKey)
 
 
 	TO DO next
@@ -564,6 +568,12 @@ var QuickFolders_getDocument= function() {
 	return QuickFolders_globalDoc;
 }
 
+if (window.QuickFolders) {
+  console.log("There is still a reference to QuickFolders!");
+  delete window.QuickFolders.keyListen;
+  window.QuickFolders = {}
+}
+
 var QuickFolders = {
 	doc: null,
 	win: null,
@@ -620,10 +630,10 @@ var QuickFolders = {
 		util.logDebug ("initDocAndWindow()\nQuickFolders_globalDoc = " + QuickFolders_globalDoc.location);
 	},
 
-	initDelayed: async function initDelayed(WLorig) {
+	initDelayed: async function (WLorig) {
     const prefs = QuickFolders.Preferences,
-					util = QuickFolders.Util,
-					QI = QuickFolders.Interface;
+      util = QuickFolders.Util,
+      QI = QuickFolders.Interface;
 	  if (this.initDone) return;
     
     // from the time we passed in the window as win
@@ -674,7 +684,7 @@ var QuickFolders = {
 			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + win.document.title + "\nwait " + nDelay + " msec until init()...");
 
 			win.setTimeout(function() { 
-        QuickFolders.init(); 
+        QuickFolders.init(win); 
       }, nDelay);
       
       util.logDebug("Adding Search Input event handler...");
@@ -775,33 +785,47 @@ var QuickFolders = {
 		catch(e) { return false; }
 	} ,
      
-	initKeyListeners: function () {
-			const win = window,
-			      prefs = QuickFolders.Preferences;
-			// only add event listener on startup if necessary as we don't
-			// want to consume unnecessary performance during keyboard presses!
-			if (!prefs.isKeyboardListeners) { return; }
+	initKeyListeners: function (win) {
+      if (!win) {
+        win = QuickFolders.Util.getMail3PaneWindow();
+      }
+      if (QuickFolders.keyListen) {
+        QuickFolders.removeKeyListeners(win);
+        delete QuickFolders.keyListen;
+      }
+			// only add event listener on startup if necessary
+			if (!QuickFolders.Preferences.isKeyboardListeners) {
+        return;
+      }
 
       if(!QuickFolders.Interface.boundKeyListener) {
-        win.addEventListener("keydown", this.keyListen = function(e) {
-          // https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
-          // keypress is deprecated. let's use keydown instead
-          QuickFolders.Interface.windowKeyPress(e,'down');
-        }, true);
-        /*
-        win.addEventListener("keyup", function(e) {
-          QuickFolders.Interface.windowKeyPress(e,'up');
-        }, true);
-        */
+        if (QuickFolders.Preferences.isDebug) {
+          QuickFolders.Util.logHighlight("Adding shortcut key listener.", {
+            color: "lightyellow",
+            background: "#AF3C00",
+          });
+        }
+        win.addEventListener(
+          "keydown",
+          (QuickFolders.keyListen = function (e) {
+            QuickFolders.Interface.windowKeyPress(e, "down");
+          }),
+          true
+        );
         QuickFolders.Interface.boundKeyListener = true;
       }
 	},
 
   removeKeyListeners: function(win) {
-    if (this.keyListen) {
-      win.removeEventListener("keydown", this.keyListen);
+    if (QuickFolders.keyListen) {
+      if (QuickFolders.Preferences.isDebug) {
+        QuickFolders.Util.logHighlight("Removing shortcut key listener.", {
+          color: "lightyellow",
+          background: "#AF3C00",
+        });
+      }
+      win.removeEventListener("keydown", QuickFolders.keyListen);
     }
-
   },
 	
 	initTabsFromEntries: function initTabsFromEntries(folderEntries) {
@@ -868,12 +892,9 @@ var QuickFolders = {
     }
 	},
 
-	init: async function init() {
+	init: async function (win) {
     const util = QuickFolders.Util,
-		      that = this.isQuickFolders ? this : QuickFolders,
-					QI = that.Interface, // main window Interface!
-					Cc = Components.classes,
-					Ci = Components.interfaces;
+		      that = this.isQuickFolders ? this : QuickFolders;
 		let myver = that.Util.Version, 
 		    ApVer, ApName,
         prefs = that.Preferences; 
@@ -884,15 +905,15 @@ var QuickFolders = {
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
 		that.addTabEventListener();
-		QuickFolders.initKeyListeners();
+		QuickFolders.initKeyListeners(win);
     
     // [issue 208] - wait for folders to be ready to avoid "invalid" tabs - WIP
     await new Promise(resolve => {
-      let { gMailInit } = window;
+      let { gMailInit } = win;
       if (!gMailInit || !gMailInit.delayedStartupFinished) {
         util.logDebug("delayedStartupFinished is not set yet - waiting for event to initialize folders...")
         let obs = (finishedWindow, topic, data) => {
-          if (finishedWindow != window) {
+          if (finishedWindow != win) {
             return;
           }
           Services.obs.removeObserver(
@@ -1330,29 +1351,16 @@ var QuickFolders = {
 			// FolderParam = parent folder [uri in Postbox] passed back by the create folder dialog
 			function newFolderCallback(aName, FolderParam) {
         const model = QuickFolders.Model,
-              prefs = QuickFolders.Preferences,
-              isEncodeUri = prefs.getBoolPref("newFolderCallback.encodeURI");
+          isEncodeUri = QuickFolders.Preferences.getBoolPref("newFolderCallback.encodeURI");
         
 				let step = '0 - determine folder URI';
         aName = aName.trim(); 
-				if (aName) try {
-          
-					let currentURI, aFolder,
-					    uriName = isEncodeUri ? encodeURI(aName) : aName;
+				if (aName) try {       
+					let currentURI = QuickFolders.Util.CurrentFolder.URI,
+            aFolder = FolderParam.QueryInterface(Ci.nsIMsgFolder),
+            uriName = isEncodeUri ? encodeURI(aName) : aName;
+            
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
-					if (typeof GetSelectedFolderURI === 'function') {
-						// old Postbox
-						currentURI = GetSelectedFolderURI();
-						aFolder = model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
-					}
-					else {
-						// [issue 381]
-						currentURI = QuickFolders.Util.CurrentFolder.URI;
-						//else -- TO DO - once Thunderbird 115 supports selecting multiple folders, we need to figure this out
-						//	isManyFolders = true;
-						aFolder = FolderParam.QueryInterface(Ci.nsIMsgFolder);
-					}
-          
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
           let newFolderUri = aFolder.URI + "/" + uriName,
@@ -1434,10 +1442,10 @@ var QuickFolders = {
 					}
 				}
 
-
 				let dualUseFolders = true;
-				if (targetFolder.server instanceof Ci.nsIImapIncomingServer)
+				if (targetFolder.server instanceof Ci.nsIImapIncomingServer) {
 					dualUseFolders = targetFolder.server.dualUseFolders;
+        }
 
 				util.logDebugOptional('dnd,dragToNew',
 				  "window.openDialog (newFolderDialog.xhtml)\n"
@@ -1446,7 +1454,11 @@ var QuickFolders = {
         window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
             "",
             "chrome,modal,resizable=no,centerscreen",
-            {folder: targetFolder, dualUseFolders: dualUseFolders, okCallback: newFolderCallback});
+            {
+              folder: targetFolder, 
+              dualUseFolders: dualUseFolders, 
+              okCallback: newFolderCallback
+            });
 			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop event: " + e); return false}
 			return true;
 		}
@@ -2133,20 +2145,6 @@ var QuickFolders = {
 }; // QuickFolders main object
 
 
-// wrap function for session store: persist / restore categories	
-
-function QuickFolders_MyChangeSelection(tree, newIndex) {
-  if(newIndex >= 0)
-  {
-		QuickFolders.Util.logDebugOptional("folders.select", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
-		tree.view.selection.select(newIndex);
-		if (tree.ensureRowIsVisible)
-			tree.ensureRowIsVisible(newIndex);  // Tb 68
-		else
-			tree.treeBoxObject.ensureRowIsVisible(newIndex);
-  }
-}
-
 // the core function for selecting a folder
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
@@ -2405,10 +2403,6 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       );
       // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
       gTabmail.currentTabInfo.folder = msgFolder;
-
-      // theTreeView.selectFolder (msgFolder, true);
-      QuickFolders.Util.logTb115("ensureRowIsVisible()..");
-      // theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
     } catch (e) {
       util.logException("Exception selecting via treeview: ", e);
     }
