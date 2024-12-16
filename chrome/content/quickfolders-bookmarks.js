@@ -10,15 +10,11 @@ END LICENSE BLOCK */
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 var { MailServices } =
-  typeof MailServices !== "undefined" && MailServices
-    ? { MailServices }
-    : QuickFolders_ESM
+   QuickFolders_ESM
       ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
       : ChromeUtils.import("resource:///modules/MailServices.jsm");
-var { MailUtils } =
-  typeof MailUtils !== "undefined" && MailUtils
-    ? { MailUtils }
-    : QuickFolders_ESM
+var { MailUtils } = 
+   QuickFolders_ESM
       ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
       : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
 

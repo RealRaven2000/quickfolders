@@ -10,11 +10,9 @@
   var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
   var { MailServices } =
-    typeof MailServices !== "undefined" && MailServices
-      ? { MailServices }
-      : QuickFolders_ESM
-        ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-        : ChromeUtils.import("resource:///modules/MailServices.jsm");
+    QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 // drop target which defers a move to a quickJump operation
 QuickFolders.quickMove = {
