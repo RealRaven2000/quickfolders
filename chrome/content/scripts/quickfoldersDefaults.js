@@ -280,6 +280,7 @@ pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.disableSpace", false); // optimization?
+pref("extensions.quickfolders.premium.skipUnreadFolder.sort", true);
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
