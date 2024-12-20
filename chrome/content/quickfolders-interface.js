@@ -3258,11 +3258,18 @@ QuickFolders.Interface = {
 				winProps +=",alwaysRaised"; // only for testing. we don't use it anymore.
 			}
 			// the window may correct its x position if cropped by screen's right edge
+
+			const propsDlg = QuickFolders_ESM
+        ? "quickfolders-advanced-tab-props-new.xhtml"
+        : "quickfolders-advanced-tab-props.xhtml";
+
 			let win = window.openDialog(
-				"chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml",
-				"quickfolders-advanced",
-				winProps, 
-				folder, entry); //
+        `chrome://quickfolders/content/${propsDlg}`,
+        "quickfolders-advanced",
+        winProps,
+        folder,
+        entry
+      ); //
 			win.focus();
 			win.addEventListener("blur", (event) => {
 				console.log("advanced tab lost focus:", event);
