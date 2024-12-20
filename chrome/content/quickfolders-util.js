@@ -2014,7 +2014,7 @@ allowUndo = true)`
   // iterate all folders
   // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
   // isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
-  allFoldersIterator: function allFoldersIterator(writable, isQuickJumpOrMove = false) {
+  allFoldersIterator: function (writable, isQuickJumpOrMove = false) {
     let acctMgr = MailServices.accounts,
         FoldersArray, allFolders,
         util = QuickFolders.Util,
@@ -2064,23 +2064,118 @@ allowUndo = true)`
   },
   
   // find next unread folder
-  getNextUnreadFolder: function getNextUnreadFolder(currentFolder) {
+  getNextUnreadFolder: function (currentFolder) {
     const util = QuickFolders.Util,
-          unwantedFolders = util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS   // skip drafts
-                               | util.FolderFlags.MSG_FOLDER_FLAG_TRASH // skip trash
-                               | util.FolderFlags.MSG_FOLDER_FLAG_QUEUE // skip queue
-                               | util.FolderFlags.MSG_FOLDER_FLAG_JUNK; // skip spam
+      unwantedFolders =
+        util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS | // skip drafts
+        util.FolderFlags.MSG_FOLDER_FLAG_TRASH | // skip trash
+        util.FolderFlags.MSG_FOLDER_FLAG_QUEUE | // skip queue
+        util.FolderFlags.MSG_FOLDER_FLAG_JUNK; // skip spam
     let found = false,
-        isUnread = false,
-        lastFolder,
-        firstUnread = null,
-        folder; // remember this one for turnaround!
-      // progress the folder variable to the next sibling
-      // if no next sibling available to next sibling of parent folder (recursive)
-      // question: should own child folders also be included?
+      isUnread = false,
+      lastFolder,
+      firstUnread = null,
+      folder; // remember this one for turnaround!
+    // progress the folder variable to the next sibling
+    // if no next sibling available to next sibling of parent folder (recursive)
+    // question: should own child folders also be included?
 
+    // Step 1: Build a map to store server identifiers
+    const accountMap = new Map();
+    let serverIdCounter = 1;
 
-    for (folder of util.allFoldersIterator(false)) {
+    function getServerUri(f) {
+      // Extract the server part (e.g., "imap://example.com")
+      const match = f.URI.match(/^([a-zA-Z]+:\/\/[^\/]+)/)[0];
+      return match ? match[0] : "";
+    }
+
+    // Step 2: Recursive function to build the path based on prettyName
+    function buildPath(folder) {
+      // Base case: if the folder has no parent, return its own prettyName
+      if (!folder.parent) {
+        return folder.prettyName;
+      }
+
+      // Recursively build the path from parent folder + / + prettyName
+      return buildPath(folder.parent) + "/" + folder.prettyName;
+    }
+
+    util.logDebug("iterating all folders");
+
+    // Step 3: Build the list of folders, respecting unread mail filter and account map
+    const allFolders = [];
+    let sortedFolders;
+    for (let folder of util.allFoldersIterator(false)) {
+      if (folder != currentFolder) {
+        // we must always include current folder even if it is unread!
+        // Only consider folders with unread mails
+        if (folder.flags & unwantedFolders) continue;
+        if (!folder.getNumUnread(false)) continue;
+      }
+      allFolders.push(folder);
+
+      // Step 4: Assign a unique identifier for each server if not already assigned
+      const serverUri = getServerUri(folder); // Extract the server part (e.g., "imap://example.com")
+      if (!accountMap.has(serverUri)) {
+        accountMap.set(serverUri, `id${String(serverIdCounter).padStart(3, "0")}`);
+        serverIdCounter++;
+      }
+    }
+
+    if (QuickFolders.Preferences.getBoolPref("premium.skipUnreadFolder.sort")) {
+      // [issue 513] follow lexical order while skipping
+      util.logDebug(
+        "Unread folders + account map",
+        allFolders.map(
+          (a) => a.parent.prettyName + "/" + a.prettyName + (a == currentFolder ? " [current]" : "")
+        ),
+        Array.from(accountMap.entries())
+      );
+
+      // Step 5: Build a new "full path" for sorting, using prettyName and server identifier
+      const folderPaths = allFolders.map((folder) => {
+        const serverUri = getServerUri(folder); // Extract the server part
+        const serverId = accountMap.get(serverUri); // Get the server identifier
+        const relativePath = buildPath(folder); // Get the path from prettyName
+
+        // Combine the server identifier with the folder's relative path for sorting
+        const fullPath = `${serverId}/${relativePath}`;
+
+        return { folder, fullPath };
+      });
+
+      // Step 6: Sort the folders by their full path (which includes the server ID)
+      folderPaths.sort((a, b) => {
+        // Split both full paths into components
+        const pathA = a.fullPath.split("/");
+        const pathB = b.fullPath.split("/");
+
+        // Compare each component of the paths using localCompare
+        for (let i = 0; i < Math.max(pathA.length, pathB.length); i++) {
+          const componentA = pathA[i] || ""; // Use empty string for undefined components
+          const componentB = pathB[i] || "";
+          // Use localCompare to compare the components lexicographically
+          const comparison = componentA.localeCompare(componentB, undefined, {
+            sensitivity: "base",
+          });
+          if (comparison !== 0) {
+            return comparison; // Return the result of the comparison
+          }
+        }
+        // If the paths are identical, return 0 (they are equal)
+        return 0;
+      });
+
+      util.logDebug("Map of sorted paths: ", folderPaths);
+      // Step 7: Extract the sorted folders from the result
+      sortedFolders = folderPaths.map((item) => item.folder);
+    } else {
+      // don't sort
+      sortedFolders = allFolders;
+    }
+
+    for (folder of sortedFolders) {
       if (!found && !firstUnread) {
         // get first unread folder (before current folder)
         if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
@@ -2092,10 +2187,13 @@ allowUndo = true)`
         // after current folder: unread folders only
         if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
           isUnread = true;
-          util.logDebugOptional("navigation", "Arrived in next unread after found current: " + folder.prettyName);
+          util.logDebugOptional(
+            "navigation",
+            "Arrived in next unread after found current: " + folder.prettyName
+          );
           break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
         }
-      } 
+      }
       if (folder.URI === currentFolder.URI) {
         util.logDebugOptional("navigation", "Arrived in current folder. ");
         found = true; // found current folder
@@ -2103,11 +2201,15 @@ allowUndo = true)`
       lastFolder = folder;
     }
     if (!isUnread) {
-      if (firstUnread && firstUnread!=currentFolder) {
+      if (firstUnread && firstUnread != currentFolder) {
         util.logDebugOptional("navigation", "no folder found. ");
         return firstUnread;
       }
-      util.logDebug("Could not find another unread folder after:" + lastFolder ? lastFolder.URI : currentFolder.URI);
+      util.logDebug(
+        "Could not find another unread folder after:" + lastFolder
+          ? lastFolder.URI
+          : currentFolder.URI
+      );
       return currentFolder;
     }
     return folder;
@@ -2235,11 +2337,7 @@ allowUndo = true)`
               if (aExitCode == Cr.NS_OK) {
                 resolve();
               } else {
-                const { AppConstants } = ChromeUtils.importESModule(
-                  "resource://gre/modules/AppConstants.sys.mjs"
-                );
-                const ESM = (AppConstants.MOZ_APP_VERSION >= 128);
-                const { ImapUtils } = ESM
+                const { ImapUtils } = QuickFolders_ESM
                   ? ChromeUtils.importESModule("resource:///modules/ImapUtils.sys.mjs")
                   : ChromeUtils.import("resource:///modules/ImapUtils.jsm");
                 const hexCode = `0x${aExitCode.toString(16).toUpperCase()}`;
@@ -2264,12 +2362,6 @@ allowUndo = true)`
         await deferred; 
       
       }
-/*
-      if (needToCreate && (folder.parent == null || folder.rootFolder == folder)) {
-        logDebug('unexpected: no folder.parent or folder is its own root');   
-        throw Cr.NS_ERROR_UNEXPECTED;
-      }
-      */
     }
 
     // Finally, we have a valid folder. Return it.
