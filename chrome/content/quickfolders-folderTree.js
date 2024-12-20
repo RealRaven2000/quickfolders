@@ -512,10 +512,8 @@ QuickFolders.FolderTree = {
   
   refreshTree: function() {
     const util = QuickFolders.Util,
-          Ci = Components.interfaces,
-          theTreeView = gFolderTreeView,
-          NS_MSG_ERROR_OFFLINE = 0x80550014,
-          ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
+      theTreeView = gFolderTreeView,
+      ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
     let iCount = 0;
         
     let isProfiling = QuickFolders.Preferences.isDebugOption("folderTree,performance");
