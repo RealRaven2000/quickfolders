@@ -2149,7 +2149,7 @@ var QuickFolders = {
 
 // the core function for selecting a folder
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
-function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
+function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
   const util = QuickFolders.Util,
     prefs = QuickFolders.Preferences,
     model = QuickFolders.Model,
@@ -2167,11 +2167,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   if (!folderUri) return false;
 
   // TEST: for (let i of gTabmail.tabInfo) { console.log(i?.folder?.prettyName , i.mode.name)}
-  // TB 115
   const currentTabInfo = gTabmail.currentTabInfo;
   if (!["mail3PaneTab", "mailMessageTab"].includes(currentTabInfo.mode.name)) {
     QuickFolders.Util.logDebug(
-      "QuickFolders_MySelectFolder exit, because of tabMode: " +currentTabInfo.mode.name
+      `QuickFolders_MySelectFolder exit, because of tabMode: ${currentTabInfo.mode.name}`
     );
     return false;
   }
@@ -2179,7 +2178,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     isInvalid = false;
   try {
     msgFolder = model.getMsgFolderFromUri(folderUri, true);
-    if (prefs.getBoolPref("autoValidateFolders")) {
+    if (msgFolder && prefs.getBoolPref("autoValidateFolders")) {
       isInvalid = !util.doesMailFolderExist(msgFolder);
     }
   } catch (ex) {

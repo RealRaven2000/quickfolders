@@ -2086,7 +2086,7 @@ allowUndo = true)`
 
     function getServerUri(f) {
       // Extract the server part (e.g., "imap://example.com")
-      const match = f.URI.match(/^([a-zA-Z]+:\/\/[^\/]+)/)[0];
+      const match = f.URI.match(/^([a-zA-Z]+:\/\/[^\/]+)/);
       return match ? match[0] : "";
     }
 
@@ -2125,13 +2125,18 @@ allowUndo = true)`
 
     if (QuickFolders.Preferences.getBoolPref("premium.skipUnreadFolder.sort")) {
       // [issue 513] follow lexical order while skipping
-      util.logDebug(
-        "Unread folders + account map",
-        allFolders.map(
-          (a) => a.parent.prettyName + "/" + a.prettyName + (a == currentFolder ? " [current]" : "")
-        ),
-        Array.from(accountMap.entries())
-      );
+      if (QuickFolders.Preferences.isDebug) {
+        util.logDebug(
+          "Unread folders + account map",
+          allFolders.map(
+            (a) =>
+              a.parent.prettyName + "/" + a.prettyName + (a == currentFolder ? " [current]" : "")
+          ),
+          Array.from(accountMap.entries()).map(
+            (a) => `${a[1]} : ${a[0]}`
+          )
+        );
+      }
 
       // Step 5: Build a new "full path" for sorting, using prettyName and server identifier
       const folderPaths = allFolders.map((folder) => {
