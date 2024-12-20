@@ -482,7 +482,10 @@ END LICENSE BLOCK */
 
   6.8.3 QuickFolders Pro - WIP
     ## [issue 512] Creating a subfolder with space in name from quickMove raises an error
+    ## [issue 513] Next / previous sibling folder does not follow (lexical) folder tree order
+    ## [issue 513] Skip unread folders also should follow tree order (lexical)
     ## [issue 514] QuickFolders blocks native Thunderbird keystrokes that contain Option (metaKey)
+    ## [issue 518] Tab-Specific Properties broken in Thunderbird beta 134
 
 
 	TO DO next
@@ -2467,7 +2470,7 @@ QuickFolders.FolderTreeSelect = function FolderTreeSelect(event) {
       QI = QuickFolders.Interface,
       folders = GetSelectedMsgFolders();
   try {
-    logDO("events", "FolderTreeSelect: event target = " + event.target);
+    logDO("events", "FolderTreeSelect: event target = ", event.target);
     if (folders.length) {
       let selFolder = folders[0];
       logDO("events", "FolderTreeSelect selecting folder  " + selFolder.prettyName);
