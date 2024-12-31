@@ -730,7 +730,7 @@ QuickFolders.Util = {
       return true;
     if (this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL & folder.flags)
       return true;
-    return (folder.username && folder.username == 'nobody') || (folder.hostname == 'smart mailboxes');
+    return (folder?.username == 'nobody') || (folder?.hostname == 'smart mailboxes');
   } ,
 
   // change: let's pass back the messageList that was moved / copied
@@ -916,7 +916,13 @@ QuickFolders.Util = {
           goDoCommand('cmd_nextMsg');
           QuickFolders.Interface.ensureCurrentFolder();
         }
-        document.getElementById('messagepane').focus();
+        try {
+          tabmail.currentTabInfo.browser.focus();
+          // document.getElementById('messagepane').focus();
+        }
+        catch(ex) {
+          console.log(ex);
+        }
       }
       
       step = 6;
@@ -1745,34 +1751,29 @@ allowUndo = true)`
     let f = QuickFolders.Model.getMsgFolderFromUri(URI);
     return (f && f.parent) ? true : false;
   },
-  
+
   // open an email in a new tab
-  openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
-    let util = QuickFolders.Util,
-        tabmail = util.$("tabmail");
-    // TO DO - do sanity check on msgHdr (does the message still exist) and throw!
-    tabmail.openTab("mailMessageTab", {msgHdr: hdr, background: false}); 
-  },
-  
-  // open an email in a new tab
-  openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
+  openMessageTabFromUri: function (messageUri) {
     try {
-      let hdr = MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-      if (!hdr || hdr.messageId==0) {
-        return false;
+      const newTab = tabmail.openTab("mailMessageTab", {
+        messageURI: messageUri,
+        background: true, // [issue 507] a thunderbird bug? [bug 1939577]
+      }); 
+      if (newTab) {
+        // this.panelContainer.selectedPanel = tab.panel;
+        // tabmail.switchToTab(0);
+        tabmail.switchToTab(tabmail.tabInfo[tabmail.tabInfo.length - 1]);
       }
-      this.openMessageTabFromHeader(hdr);
     }
     catch(ex) {
+      QuickFolders.Util.logException(`Couldn't reopen tab with message: ${messageUri}`, ex);
       return false;
     }
     return true;
   } ,
   
   loadPlatformStylesheet: function loadPlatformStylesheet(win) {
-    const QI = QuickFolders.Interface,
-          util = QuickFolders.Util,
-          styleEngine = QuickFolders.Styles;
+    const util = QuickFolders.Util;
     util.logDebug("Loading platform styles for " + util.HostSystem + "…");
     let path="";
     switch (util.HostSystem) {
