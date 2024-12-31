@@ -400,7 +400,7 @@ QuickFolders.Interface = {
 
 	},
 
-	onClickRecent: function onClickRecent(button, evt, forceDisplay) {
+	onClickRecent: function (button, evt, forceDisplay) {
 		const QI = QuickFolders.Interface,
 		      prefs = QuickFolders.Preferences;
 		// refresh the recent menu on right click
@@ -5159,10 +5159,9 @@ QuickFolders.Interface = {
 	} ,
 
 	// select subfolder (on click)
-	onSelectSubFolder: function onSelectSubFolder(folderUri, evt) {
+	onSelectSubFolder: function (folderUri, evt) {
     let util = QuickFolders.Util,
-		    isCtrlKey = evt ? evt.ctrlKey : false,
-				target = evt ? evt.target : null;
+		    isCtrlKey = evt ? evt.ctrlKey : false;
 		util.logDebugOptional ("interface,popupmenus", "onSelectSubFolder: " + folderUri +  (evt
 		     ? "\n type= " + evt.type + " \n target= " + evt.target
 				 : "[no event argument]")
@@ -5173,38 +5172,17 @@ QuickFolders.Interface = {
 		}
 		try {
 			if (isCtrlKey) {
-				if (MsgOpenNewTabForFolders) {
-					let folder = QuickFolders.Model.getMsgFolderFromUri(folderUri);
-					MsgOpenNewTabForFolders([folder], {
-						evt,
-						folderPaneVisible: true,
-						messagePaneVisible: true,
-						background: false
-					});
-					return;
+				if (!MsgOpenNewTabForFolders) {
+					console.warn("onSelectSubFolder: Missing global function MsgOpenNewTabForFolders!");
+					return false;
 				}
-
-				// older code
-				let tabmail = document.getElementById("tabmail");
-				if (tabmail) {
-          let tab = tabmail.openTab("mail3PaneTab", 
-					  {
-							folder: folderUri, 
-							messagePaneVisible:true, 
-							background: false, 
-							disregardOpener: true 
-						} 
-					);
-					// we need to make sure tab.chromeBrowser.contentWindow is initialized first!
-					setTimeout(
-						() => {
-							util.logDebug({contentWindow:tab.chromeBrowser?.contentWindow});
-							QuickFolders_MySelectFolder(folderUri);
-						},
-						600
-					); 
-					return;
-				}
+				let folder = QuickFolders.Model.getMsgFolderFromUri(folderUri);
+				return MsgOpenNewTabForFolders([folder], {
+          evt,
+          folderPaneVisible: true,
+          messagePaneVisible: true,
+          background: false,
+        });
 			}
 		}
 		catch (ex) { util.logToConsole(ex); };

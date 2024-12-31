@@ -572,7 +572,7 @@ QuickFolders.FilterWorker = {
   // [legacy] direct call of filter creation - but only applies with quickFilters 5.6 and older
   // where isNewAssistantMode is not defined (or false)
   // going forward this will be handled by quickFilters.MsgFolderListener.msgsMoveCopyCompleted instead.
-	createFilterAsync: async function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow) {
+	createFilterAsync: async function (sourceFolder, targetFolder, messageList, isCopy, isSlow) {
     let util = QuickFolders.Util;
     util.logDebugOptional ("filters", "createFilterAsync()");
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
