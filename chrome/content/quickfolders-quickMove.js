@@ -100,7 +100,7 @@ QuickFolders.quickMove = {
 	// parentName = optional parameter for remembering for autofill - 
 	// only pass this when search was done in the format parent/folder
   execute: async function(targetFolderUri, parentName, folder) {
-    function showFeedback(actionCount, messageIdList, isCopy) {
+    function showFeedback(actionCount, isCopy) {
       // show notification
       if (!actionCount) 
         return;
@@ -110,58 +110,71 @@ QuickFolders.quickMove = {
         ?  util.getBundleString("quickfoldersQuickCopiedMails")
         :  util.getBundleString("quickfoldersQuickMovedMails");
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
-      
-      // if we are in single message mode we now have to jump into the folder and reselect the message!
-      if (tabMode == "mailMessageTab" && messageIdList.length) {
-        let theMessage = messageIdList[0];
-        //let treeView = (typeof gFolderTreeView!='undefined') ? gFolderTreeView : GetFolderTree().view; 
-        //treeView.selectFolder(fld);
-        let messageDb = fld.msgDatabase || null;
-        if (messageDb && !isCopy) {
-          // reusing the existing Tab didn't work so we close & re-open msg from the new location.
-          // [issue 132] only reopen the moved mail if this option is enabled (default is false)
-          if (QuickFolders.quickMove.Settings.isReopen) {
-            setTimeout( 
-              function() {
-                let msgHdr = messageDb.getMsgHdrForMessageID(theMessage);
-                util.logDebugOptional('quickMove', 'reopen mail in tab:' + msgHdr.mime2DecodedSubject );
-                QuickFolders.Util.openMessageTabFromHeader(msgHdr);
-              }, 1200);
-          }
-        }
-      }
 			if (!QuickFolders.quickMove.Settings.isSilent) {
 				util.slideAlert("QuickFolders", notify);
       }
     }
     async function copyList(uris, origins, isCopy) {
       if (!uris.length) return;
+      const isSingleMessageTab = (tabMode == "mailMessageTab");
       actionCount = 0;
-      
+
       // Move / Copy Messages
       let messageIdList = await util.moveMessages(fld, uris, isCopy);
 
       // should return an array of message ids...
-      if (messageIdList) { 
+      if (messageIdList) {
         // ...which we should match before deleting our URIs?
         // use new flag FilterModeLegacy to avoid multiple assistant triggers.
         if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
           let sourceFolder = origins.length ? origins[0] : null;
-          for (let i=0; i<origins.length; i++) {
-            if (sourceFolder!=origins[i]) {
+          for (let i = 0; i < origins.length; i++) {
+            if (sourceFolder != origins[i]) {
               sourceFolder = null;
-              util.slideAlert('creating filters from multiple folders is currently not supported!');
+              util.slideAlert("creating filters from multiple folders is currently not supported!");
               break;
             }
           }
-          await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
+          await QuickFolders.FilterWorker.createFilterAsync(
+            sourceFolder,
+            fld,
+            messageIdList,
+            isCopy,
+            true
+          );
         }
         actionCount = messageIdList.length;
       }
-      let theAction = isCopy ? 'copy Messages' : 'move Messages';
-      util.logDebugOptional('quickMove', 'After ' + theAction + ' actionCount: ' + actionCount + ' resetting menu');
+      let theAction = isCopy ? "copy Messages" : "move Messages";
+      util.logDebugOptional(
+        "quickMove",
+        "After " + theAction + " actionCount: " + actionCount + " resetting menu"
+      );
       // ==================================================================
-      showFeedback(actionCount, messageIdList, isCopy);  // .bind(QuickFolders.quickMove)
+      showFeedback(actionCount, isCopy); // .bind(QuickFolders.quickMove)
+
+      // if we are in single message mode we now have to jump into the folder and reselect the message!
+      if (isSingleMessageTab && messageIdList.length) {
+        let theMessage = messageIdList[0];
+        let messageDb = fld.msgDatabase || null;
+        if (messageDb && !isCopy) {
+          // reusing the existing Tab didn't work so we close & re-open msg from the new location.
+          // [issue 132] only reopen the moved mail if this option is enabled (default is false)
+          if (QuickFolders.quickMove.Settings.isReopen) {
+            setTimeout(function () {
+              let msgHdr = messageDb.getMsgHdrForMessageID(theMessage),
+                URI = msgHdr.folder.getUriForMsg(msgHdr);
+              util.logDebugOptional(
+                "quickMove",
+                `reopen mail in tab: ${msgHdr.mime2DecodedSubject}\n` + 
+                `URI: ${URI}\n` + 
+                `MessageId: ${theMessage}`
+              );
+              QuickFolders.Util.openMessageTabFromUri(URI);
+            }, 2000);
+          }
+        }
+      }
     }
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
 		const util = QuickFolders.Util,
@@ -179,7 +192,6 @@ QuickFolders.quickMove = {
     
     let hasMove = (this.IsCopy.includes(false)); // are any message moved, close in case this is a single message tab
     if (tabMode == "mailMessageTab" && hasMove) {
-      
       if (QuickFolders.quickMove.Settings.isSingleTabAutoClose) {
         // close currentTab!
         if (currentTab.canClose) {
