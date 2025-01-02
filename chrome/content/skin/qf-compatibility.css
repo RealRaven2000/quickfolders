@@ -475,3 +475,8 @@ button.helpLink {
 .hasConfigEvent button[disabled="true"].configSettings:hover {
 	filter: grayscale(70%); /* desaturate because disabled! */
 }
+
+/* fix dropdown chevron of select dropdowns */
+select:not([size], [multiple]) {
+  --logical-padding: 4px;
+}
