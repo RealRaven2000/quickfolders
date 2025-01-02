@@ -480,12 +480,14 @@ END LICENSE BLOCK */
     ## fix "edit regex" button of find Related mail [issue 488]
     ## prepare for removal of ESMIfy fallback (Thunderbird 136)
 
-  6.8.3 QuickFolders Pro - WIP
+  6.9 QuickFolders Pro - WIP
     ## [issue 512] Creating a subfolder with space in name from quickMove raises an error
-    ## [issue 513] Next / previous sibling folder does not follow (lexical) folder tree order
-    ## [issue 513] Skip unread folders also should follow tree order (lexical)
+    ## [issue 513] Skip unread and Next / Previous sibling folder don't follow tree order (lexical)
     ## [issue 514] QuickFolders blocks native Thunderbird keystrokes that contain Option (metaKey)
-    ## [issue 518] Tab-Specific Properties broken in Thunderbird beta 134
+    ## [issue 518] Fixed: Tab-Specific Properties broken in Thunderbird beta 134
+    ## [issue 507] Open Message from reading list / quickMove in tab broken 
+    ## [issue 524] Display QuickFolders toolbar when its settings tab is shown
+    ## force QF dialog to stay on top
 
 
 	TO DO next
@@ -494,13 +496,12 @@ END LICENSE BLOCK */
     ## [issue 504] Clicking a QuickFolders tab from a search result (show as list) should open a new tab.
     ## [issue 494] Global Settings tab for find related functions (go next = to delete quick search)
     ## [issue 423] Color Tabs with unread messages
-    ## [issue ]
+    ## [issue ] convert Tab-Specific Properties to HTML
     ## [issue ]
 
 
 	Future Work
 	===========
-    ## [issue ]
     ## [issue ]
     ## [issue 354] Add permanent notifications for messages moved.
     ## [issue 103] Feature Request: Support copying folders

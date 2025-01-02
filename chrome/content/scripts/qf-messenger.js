@@ -471,7 +471,10 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
-  mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(window.QuickFolders.Interface);
+  mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(
+    window.QuickFolders.Interface
+  );
+
 
   toggleIcon = (event) => {
     window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
