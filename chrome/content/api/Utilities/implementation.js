@@ -339,8 +339,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           if (btn) {
             util.logDebug("toggleToolbarAction()");
             console.log(btn);
-            win.QuickFolders.Interface.toggleToolbar(btn, keepState);
+            win.QuickFolders.Interface.toggleToolbar({button:btn, toggle:!keepState});
           }
+        },
+
+        // simplified function to toggle QF toolbar when settings tab is shown
+        displayMainToolbar: function(displayStatus) {
+          win.QuickFolders.Interface.toggleToolbar({ forceVisible: displayStatus });
         },
 
         getFolderIcon: async function(accountId, path = null) {

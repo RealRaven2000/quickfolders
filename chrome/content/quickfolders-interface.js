@@ -2230,21 +2230,27 @@ QuickFolders.Interface = {
 		return null;
 	} ,
 
-	toggleToolbar: async function (button, keepState = false) {
-		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar(" + button.checked + ")");
-		let toolbar = this.Toolbar,
-		    // toolbar.style.display = "flex";  // was:   -moz-inline-box 
-		    isVisible = !(toolbar.collapsed),
-				makeVisible = keepState ? isVisible : !isVisible;
+	toggleToolbar: async function (toggleOptions = { button: null, toogle: true, forceVisible: null }) {
+		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar()", toggleOptions);
+		const toolbar = this.Toolbar,
+			// toolbar.style.display = "flex";  // was:   -moz-inline-box 
+			isVisible = !(toolbar.collapsed);
+		let makeVisible;
+		if (toggleOptions.forceVisible != null) {
+			makeVisible = toggleOptions.forceVisible;
+		} else {
+			makeVisible = toggleOptions.toogle ? !isVisible : isVisible;
+		}
 		toolbar.setAttribute("collapsed", !makeVisible);
-		let theButton = button.querySelector("button");
-		theButton.classList.add("check-button");
-		theButton.classList.add("button");
-		let WAIT = 250; // a hack until we get native checkbox support
-		setTimeout(
-		  () => { theButton.setAttribute("aria-pressed",makeVisible); },
-			WAIT
-		)
+		if (toggleOptions.button) {
+      const theButton = toggleOptions.button.querySelector("button");
+      theButton.classList.add("check-button");
+      theButton.classList.add("button");
+      const WAIT = 250; // a hack until we get native checkbox support
+      setTimeout(() => {
+        theButton.setAttribute("aria-pressed", makeVisible);
+      }, WAIT);
+    }
 		// remember in current Tabinfo object:
 		let tabmail = document.getElementById("tabmail");
 		if (tabmail && tabmail.currentTabInfo) {
@@ -7304,7 +7310,7 @@ QuickFolders.Interface = {
 			let checkButton = toggleButtonElement.querySelector(".check-button");
 			if (!checkButton) { 
 				// button has to be patched first!
-				await QuickFolders.Interface.toggleToolbar(toggleButtonElement, true);
+				await QuickFolders.Interface.toggleToolbar({ button: toggleButtonElement, toggle:false });
 				checkButton = toggleButtonElement.querySelector(".check-button");
 			}
 			if (checkButton) {

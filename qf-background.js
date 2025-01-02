@@ -925,14 +925,56 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});
       }
       if (isDebugLicenser) console.log("QF license info:", currentLicense.info); // test
-    }
-    else {
+    } else {
       if (isDebugLicenser) console.log("QF license state after adding account:", currentLicense.info)
     }
   });
 
+  function getOptionsPageURL() {
+    const optionsPageURL = browser.runtime.getURL("html/options.html");
+    return optionsPageURL;
+  }
+  async function onOptionsTabActivated() {
+    // tell experiment to make QuickFolders toolbar visible
+    console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
+    messenger.Utilities.displayMainToolbar(true);
+  }
+
+  messenger.tabs.onActivated.addListener(async (activeInfo) => {
+    console.log(activeInfo);
+    const theTab = await messenger.tabs.get(activeInfo.tabId);
+    if (theTab.url == getOptionsPageURL()) {
+      onOptionsTabActivated();
+    }
+  });
+
+  messenger.tabs.onCreated.addListener(async (activeTab) => {
+    console.log(activeTab);
+    // Function to wait for the tab to reach "complete" status and then check the URL
+    const checkTabStatus = async (tabId) => {
+      return new Promise((resolve) => {
+        const listener = (updatedTabId, changeInfo) => {
+          if (updatedTabId === tabId && changeInfo.status === "complete") {
+            messenger.tabs.onUpdated.removeListener(listener);
+            resolve();
+          }
+        };
+        messenger.tabs.onUpdated.addListener(listener);
+      });
+    };
+
+    // Wait for the tab to reach "complete" status
+    await checkTabStatus(activeTab.id);
+    
+    const theTab = await messenger.tabs.get(activeTab.id);
+    // const theTab = await messenger.tabs.get(activeInfo.tabId);
+    if (theTab.url == getOptionsPageURL()) {
+      onOptionsTabActivated();
+    }
+  });  
+
   if (isDebug) {
-    console.log ("QuickFolders: add toggle-foldertree command... ")
+    console.log ("QuickFolders: add toggle-foldertree command... ");
   }
 
   let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");

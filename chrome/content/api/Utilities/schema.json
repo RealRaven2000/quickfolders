@@ -124,6 +124,18 @@
       },
 
       {
+        "name": "displayMainToolbar",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "displayStatus",
+            "type": "boolean",
+            "description": "show/hide toolbar visible (for settings tab only)"
+          }          
+        ]
+      },
+
+      {
         "name": "getFolderIcon",
         "type": "function",
         "async": true,
