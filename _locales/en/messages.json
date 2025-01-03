@@ -2021,7 +2021,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Improved performance of quickMove / quickJump search results while typing for users with many folders. [issue 463]{L2}{L1} Skip unread and Next / Previous sibling folder now follow tree in lexical order [issue 513]{L2}{L1} Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems. {L2} {L1} Tab-Specific Properties now work again in Thunderbird beta 134. [issue 518]{L2} {L1} Fixed: Folder names containing single quotes broke navigation.{L2}{L1} Fixed: Allow creating a subfolder with space in name from quickMove [issue 512].{L2}"
+    "message": "{L1} Improved performance of quickMove / quickJump search results while typing for users with many folders. [issue 463]{L2}{L1} Skip unread and Next / Previous sibling folder now follow tree in lexical order [issue 513]{L2}{L1} QuickFolders toolbar is now displayed when settings tab is opened. [issue 524] {L2}{L1} Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems. {L2} {L1} Tab-Specific Properties now work again in Thunderbird beta 134. [issue 518]{L2} {L1} Fixed: Folder names containing single quotes broke navigation.{L2}{L1} Fixed: Allow creating a subfolder with space in name from quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
