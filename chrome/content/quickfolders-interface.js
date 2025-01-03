@@ -5335,13 +5335,8 @@ QuickFolders.Interface = {
         if (tabEntry && tabEntry.flags && tabEntry.flags & flag) {
           util.logDebugOptional(
             "quickMove",
-            "checkFolderFlag(" +
-              fName +
-              ") will omit.\n" +
-              "Parent tab: " +
-              tabEntry.name +
-              " - flags = " +
-              tabEntry.flags
+						`checkFolderFlag(${fName}) ) will omit.\n` +
+						`Parent tab: ${tabEntry.name} - flags = ${tabEntry.flags}`
           );
           return true;
         }
