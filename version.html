@@ -334,9 +334,11 @@
       <ul>
 				<h4 class="inList">Improvements</h4>
 				<li>
-					Improved performance of quickMove / quickJump auto-filling search
-					results while typing
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/463">[issue 463]</a>
+					<p>
+						Improved performance of quickMove / quickJump auto-filling search
+						results while typing <a href="https://github.com/RealRaven2000/QuickFolders/issues/463">[issue 463]</a>:
+					</p>
+					<img src="images/system-search+type.png" alt="type while search" class="screenshot"/>
 				</li>
 				<li>
 					 The QuickFolders toolbar is now displayed when the settings tab 
@@ -350,6 +352,21 @@
         <li> 
 					Tab-Specific Properties now work again in Thunderbird beta 134. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/518">[issue 518]</a>
+				</li>
+				<li>
+					<p>
+						In dark mode, many system folder icons (such as Inbox, Trash, Sent, Drafts, Junk etc.) 
+						showed up as dark icons. 
+						This is because they use the values context-fill and context-fill-opacity, 
+						which are not accessible to Add-ons <a href="https://github.com/RealRaven2000/QuickFolders/issues/525">[issue 525]</a>						
+						:
+					</p>
+					<img src="images/system-folders-dark-before.png" alt="system folder icons" class="screenshot"/>
+					<p>
+						Instead, I now provide our own versions that are theme-aware:
+					</p>
+					<img src="images/system-folders-dark-after.png" alt="system folder icons (theme aware)" class="screenshot"/>
+					
 				</li>
       </ul>
 
