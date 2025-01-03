@@ -208,7 +208,7 @@ QuickFolders.FolderTree = {
         iNoIcon = 0,
         iErrors = 0;
 
-		for (let folder of util.allFoldersIterator()) { 
+		for await (let folder of util.allFoldersIterator()) { 
 		  iCount++;
 			if (typeof folder.getStringProperty == 'undefined') continue;
       try {
@@ -510,7 +510,7 @@ QuickFolders.FolderTree = {
     return true;
 	},
   
-  refreshTree: function() {
+  refreshTree: async function() {
     const util = QuickFolders.Util,
       theTreeView = gFolderTreeView,
       ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
@@ -539,7 +539,7 @@ QuickFolders.FolderTree = {
       util.ensureNormalFolderView();
       let collapsedFolders = [];          
       util.logDebug("refreshTree() starting to iterate all folders which Thunderbird sees...");
-      for (let folder of QuickFolders.Util.allFoldersIterator()) {
+      for await (let folder of QuickFolders.Util.allFoldersIterator()) {
         // open folder in tree...
         let rowIndex = theTreeView.getIndexOfFolder(folder),
             isExpanded = rowIndex ? theTreeView._rowMap[rowIndex].open : false;

@@ -188,6 +188,7 @@ pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
 pref("extensions.quickfolders.debug.interface.currentFolderBar", false);
 pref("extensions.quickfolders.debug.interface.findFolder", false);
+pref("extensions.quickfolders.debug.interface.findFolder.keyDelay", 0);
 pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.listeners.tabmail", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);

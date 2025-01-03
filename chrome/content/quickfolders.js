@@ -481,13 +481,13 @@ END LICENSE BLOCK */
     ## prepare for removal of ESMIfy fallback (Thunderbird 136)
 
   6.9 QuickFolders Pro - WIP
+    ## [issue 463] Improve auto-fill performance of quickMove / quickJump while typing
     ## [issue 512] Creating a subfolder with space in name from quickMove raises an error
     ## [issue 513] Skip unread and Next / Previous sibling folder don't follow tree order (lexical)
     ## [issue 514] QuickFolders blocks native Thunderbird keystrokes that contain Option (metaKey)
     ## [issue 518] Fixed: Tab-Specific Properties broken in Thunderbird beta 134
     ## [issue 507] Open Message from reading list / quickMove in tab broken 
     ## [issue 524] Display QuickFolders toolbar when its settings tab is shown
-    ## force QF dialog to stay on top
 
 
 	TO DO next
@@ -497,6 +497,7 @@ END LICENSE BLOCK */
     ## [issue 494] Global Settings tab for find related functions (go next = to delete quick search)
     ## [issue 423] Color Tabs with unread messages
     ## [issue ] convert Tab-Specific Properties to HTML
+    ## force QF settings dialog to stay on top
     ## [issue ]
 
 
@@ -582,6 +583,8 @@ var QuickFolders = {
 	doc: null,
 	win: null,
 	WL: {},
+  keyAbortController: null,
+  findFolderNameStackCount: 0,
 	isQuickFolders: true, // to verify this
 	get mailFolderTree() {
     return document.getElementById('folderTree');
@@ -694,7 +697,14 @@ var QuickFolders = {
       util.logDebug("Adding Search Input event handler...");
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
       if (findFolderBox) {
-        findFolderBox.addEventListener("input", function() {
+        findFolderBox.addEventListener("input", function(event) {
+            if (event && !event.data) switch (event?.inputType){
+              case "deleteContentBackward": // [BACKSPACE] fallthrough
+              case "deleteContentForward":  // [DEL]
+                break;
+              default:
+                return;
+            } 
             QI.findFolderName(findFolderBox);
           }
         );

@@ -560,7 +560,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// exit unread folder skip to next...
-	onSkipFolder: function (button, isSingleMessage = false) {
+	onSkipFolder: async function (button, isSingleMessage = false) {
 		const util = QuickFolders.Util,
 				  prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces;
@@ -573,7 +573,7 @@ QuickFolders.Interface = {
     }
 
 		if (prefs.isDebugOption("navigation")) { debugger; }
-		folder = util.getNextUnreadFolder(currentFolder);
+		folder = await util.getNextUnreadFolder(currentFolder);
 
 		if (folder) {
 			util.logDebug("selecting next unread folder:" + folder.prettyName + "\n" + folder.URI);
@@ -1398,7 +1398,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// find orphaned tabs
-	tidyDeadFolders: function tidyDeadFolders() {
+	tidyDeadFolders: function() {
     const util = QuickFolders.Util,
 		      model = QuickFolders.Model;
 		util.logDebugOptional("interface", "tidyDeadFolders()");
@@ -1407,8 +1407,7 @@ QuickFolders.Interface = {
 		    sMsg = this.getUIstring("qfTidyDeadFolders");
 		if (!confirm(sMsg))
 			return;
-		let isCancel = false,
-		    check = {value: false},
+		let check = {value: false},
 				isContinue = false,
 				lastAnswer = 0,
 				countOrphans = 0,
@@ -1508,12 +1507,9 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-
-	testTreeIcons: function testTreeIcons() {
+	testTreeIcons: function() {
     const util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					Cc = Components.classes,
-          Ci = Components.interfaces;
+					prefs = QuickFolders.Preferences;
 		util.logDebug("testTreeIcons()…");
 		try {
 			const winType = "global:console";
@@ -1524,12 +1520,12 @@ QuickFolders.Interface = {
 		}
 		catch(e) {util.logException("testTreeIcons - ", e);}
 
-		setTimeout(function() {
+		setTimeout( async () => {
 			const separator = "==============================\n";
 			let f = 0, affected = 0;
 			util.logDebug(separator + "loading Dictionary…");
 			util.logDebug(separator + "Iterating all folders…");
-			for (let folder of util.allFoldersIterator(false)) {
+			for await (let folder of util.allFoldersIterator(false)) {
 				//let folder = allFolders[i];
         let folderIcon, iconURL;
         try {
@@ -1547,9 +1543,7 @@ QuickFolders.Interface = {
 				// folder.setForcePropertyEmpty("folderIcon", false); // remove property
 			}
 			util.logDebug(separator + "…testTreeIcons() ENDS\nIterated " + f + " folders with " + affected + " having a folderIcon property.\n" + separator);
-		},200);
-
-
+		}, 200);
 	},
 	// workaround for [Bug 26566]
   repairTreeIcons: function repairTreeIcons(silent) {
@@ -1917,7 +1911,7 @@ QuickFolders.Interface = {
         elapsed = endTime - QuickFolders.Util.lastTime; // time in milliseconds
       // avoid repeat triggering, if key listener was not tidied up by Thunderbird during Add-on update (WIP).
       if (elapsed < 150) return; // (assuming user doesn't mash keys)
-			if (prefs.getBoolPref("debug.events.keyboard") && !prefs.isDebug) {
+			if (prefs.getBoolPref("debug.events.keyboard") && !util.isDebug) {
 				console.log(`QF keypress elapsed: ${elapsed} ms`);
 			}
     } 
@@ -3311,7 +3305,7 @@ QuickFolders.Interface = {
 		this.compactFolder(folder, command);
 	} ,
 
-	onMarkAllRead: function (element,evt,recursive) {
+	onMarkAllRead: async function (element,evt,recursive) {
     let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     // check whether f has folder as parent
@@ -3333,7 +3327,7 @@ QuickFolders.Interface = {
       f.markAllMessagesRead(msgWindow); // msgWindow  - global
       if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
         // iterate all folders and mark all children as read:
-        for (let folder of util.allFoldersIterator(false)) {
+        for await (let folder of util.allFoldersIterator(false)) {
           // check unread
           if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
             setTimeout(
@@ -5208,7 +5202,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
-	findFolderKeyPress: function findFolderKeyPress(event) {
+	findFolderKeyPress: function (event) {
     const prefs = QuickFolders.Preferences,
           util = QuickFolders.Util,
           QI = QuickFolders.Interface;
@@ -5286,103 +5280,124 @@ QuickFolders.Interface = {
 	} ,
 
   // forceFind - enter key has been pressed, so we want the first match to force a jump
-	findFolderName: async function findFolderName(searchBox, forceFind) {
+	findFolderName: async function (searchBox, forceFind) {
     // make the abbreviated string for the menu item
-		function buildParentString(folder, parentCount) {
-			let pS = "", // build expanded parent string
-					par = folder.parent,
-          countParents = parentCount;
-      if (parentString) { // build a longer string if we needed to skip parent parts.
+    function buildParentString(folder, parentCount) {
+			if (!folder) return "";
+      let pS = "", // build expanded parent string
+        par = folder.parent,
+        countParents = parentCount;
+      if (parentString) {
+        // build a longer string if we needed to skip parent parts.
         // recalculate the count of parents:
         let parts = parentString.split(/[\/>]/),
-            p=parts[parts.length]; // get right-most part
+          p = parts[parts.length]; // get right-most part
         while (parts.length && par.parent) {
-          if (!pS)  {
+          if (!pS) {
             pS = par.prettyName;
-          }
-          else {
+          } else {
             pS = par.prettyName + "/" + pS;
-          }  
-          if (par.prettyName.toLocaleLowerCase().startsWith(p))
-            p=parts.pop();
+          }
+          if (par.prettyName.toLocaleLowerCase().startsWith(p)) p = parts.pop();
           par = par.parent;
         }
-				return pS;
+        return pS;
       }
-			for (let i=countParents; i>0; i--) {
-				if (!par || par.isServer) break; // do not add server here
-				if (!pS)  {
-					pS = par.prettyName;
-				} else {
-					pS = par.prettyName + "/" + pS;
-				}
-				par = par.parent;
-			}
-			return pS;
-		}
+      for (let i = countParents; i > 0; i--) {
+        if (!par || par.isServer) break; // do not add server here
+        if (!pS) {
+          pS = par.prettyName;
+        } else {
+          pS = par.prettyName + "/" + pS;
+        }
+        par = par.parent;
+      }
+      return pS;
+    }
 
     // [Bug 26692] omit folders with this tab
     function checkFolderFlag(folder, flag, includeParents) {
-			if (!folder) return false;
-			let fName = folder.prettyName,
-			    tabEntry = model.getFolderEntry(folder.URI);
-			if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
-				util.logDebugOptional("quickMove", "checkFolderFlag(" + fName + ") will omit - flags = " + tabEntry.flags);
-				return true;
-			}
-			if (!includeParents)
-				return false;
-			// check whether parent folder entries may have the flag set.
-			while (folder.parent)	{
-				folder = folder.parent;
-				tabEntry = model.getFolderEntry(folder.URI);
-				if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
-					util.logDebugOptional("quickMove", "checkFolderFlag(" + fName + ") will omit.\n" +
-					  "Parent tab: " + tabEntry.name + " - flags = " + tabEntry.flags);
-					return true;
-				}
-			}
-			return false;
-		}
+      if (!folder) return false;
+      let fName = folder.prettyName,
+        tabEntry = model.getFolderEntry(folder.URI);
+      if (tabEntry && tabEntry.flags && tabEntry.flags & flag) {
+        util.logDebugOptional(
+          "quickMove",
+          "checkFolderFlag(" + fName + ") will omit - flags = " + tabEntry.flags
+        );
+        return true;
+      }
+      if (!includeParents) return false;
+      // check whether parent folder entries may have the flag set.
+      while (folder.parent) {
+        folder = folder.parent;
+        tabEntry = model.getFolderEntry(folder.URI);
+        if (tabEntry && tabEntry.flags && tabEntry.flags & flag) {
+          util.logDebugOptional(
+            "quickMove",
+            "checkFolderFlag(" +
+              fName +
+              ") will omit.\n" +
+              "Parent tab: " +
+              tabEntry.name +
+              " - flags = " +
+              tabEntry.flags
+          );
+          return true;
+        }
+      }
+      return false;
+    }
 
     // folder name match algorithm -at the heart of quickMove / quickJump. searchString should be trimmed
-		function addMatchingFolder(matches, folder) {
-			function addMatch() {
-				let pS = buildParentString(folder, parentCount),
-						maxFindSearch = QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
-						detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail");
+    function addMatchingFolder(matches, folder) {
+      function addMatch() {
+        let pS = buildParentString(folder, parentCount),
+          maxFindSearch = QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
+          detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail");
 
-				// let ct = pS.split("/").length + 1, // count parent folders parts including final name
-				// ct should be max(pLevel) from isParentMatch, and not length of the _complete_ path
-				// if (parentCount) maxFindSearch = Math.max(ct, maxFindSearch); 
-				
-				let fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
-				matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:"folder", folder:folder, parentString: pS } );
-			}
+        // let ct = pS.split("/").length + 1, // count parent folders parts including final name
+        // ct should be max(pLevel) from isParentMatch, and not length of the _complete_ path
+        // if (parentCount) maxFindSearch = Math.max(ct, maxFindSearch);
 
-			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
-			    matchPos = folderNameSearched.indexOf(searchFolderName),
-          rank = 0,
-          enableMultiWordMatch = !QuickFolders.Preferences.getBoolPref("premium.findFolder.disableSpace");  // [issue 179] option to disable multi word matching
-          
+        let fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
+        matches.push({
+          name: fName,
+          lname: folderNameSearched,
+          uri: folder.URI,
+          rank: rank,
+          type: "folder",
+          folder: folder,
+          parentString: pS,
+        });
+      }
+			if (!folder) return;
+
+      let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
+        matchPos = folderNameSearched.indexOf(searchFolderName),
+        rank = 0,
+        enableMultiWordMatch = !QuickFolders.Preferences.getBoolPref(
+          "premium.findFolder.disableSpace"
+        ); // [issue 179] option to disable multi word matching
+
       // [issue 177] matchPos=0 means partial or full match, no need to split!
-      if (enableMultiWordMatch && matchPos < 0 && searchFolderName.includes(" ")) { // multi word matching [issue 155]
-        if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
-          return;          // add unless already matched:
+      if (enableMultiWordMatch && matchPos < 0 && searchFolderName.includes(" ")) {
+        // multi word matching [issue 155]
+        if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) return; // add unless already matched:
         let sArray = searchFolderName.split(" "),
-            fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible word boundaries
+          fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible word boundaries
         while (sArray.length) {
           let search = sArray.shift(),
-              foundEl = false;
-          if (matches.some( a => (a.uri == folder.URI) )) {
+            foundEl = false;
+          if (matches.some((a) => a.uri == folder.URI)) {
             return;
           }
-          for (let i=0; i<fArray.length; i++) {
+          for (let i = 0; i < fArray.length; i++) {
             if (fArray[i].startsWith(search)) {
-              if (search == fArray[i])  // full match
-                rank+=7;
-              else
-                rank+=3; // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
+              if (search == fArray[i])
+                // full match
+                rank += 7;
+              else rank += 3; // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
               fArray[i] = "####"; // blank out matched element
               foundEl = true;
               break;
@@ -5390,65 +5405,67 @@ QuickFolders.Interface = {
           }
           if (!foundEl) return;
         }
-        
+
         addMatch();
-				return;
+        return;
       }
 
-			// add all child folders if "parentName/" entered
-			if (searchFolderName=="" && parentString!="") matchPos = 0;
-			if (matchPos >= 0) {
-				// only add to matches if not already there
-				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
-					rank = 1; // searchString.length - folder.prettyName.length;
-					if (searchFolderName.length == folder.prettyName.length) rank += 7;  // full match - promote
-					if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
-					if (searchFolderName.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
-						// is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
-						if (" .-,_+&@".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
-							return;  // skip if not starting with single letter
-					}
+      // add all child folders if "parentName/" entered
+      if (searchFolderName == "" && parentString != "") matchPos = 0;
+      if (matchPos >= 0) {
+        // only add to matches if not already there
+        if (
+          !matches.some(function (a) {
+            return a.uri == folder.URI;
+          })
+        ) {
+          rank = 1; // searchString.length - folder.prettyName.length;
+          if (searchFolderName.length == folder.prettyName.length) rank += 7; // full match - promote
+          if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
+          if (searchFolderName.length <= 2 && matchPos != 0) {
+            // doesn't start with single/two letters?
+            // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
+            if (" .-,_+&@".indexOf(folderNameSearched.substr(matchPos - 1, 1)) < 0) return; // skip if not starting with single letter
+          }
 
-					// [Bug 26692] skip if they are flagged for ignoring
-					if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
-						return;
-					
-					addMatch();
-				}
-			}        
-		}
+          // [Bug 26692] skip if they are flagged for ignoring
+          if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) return;
 
-		// check if any word in foldername string starts with typed characters
+          addMatch();
+        }
+      }
+    }
+
+    // check if any word in foldername string starts with typed characters
     function wordStartMatch(fName, search) {
       if (QuickFolders.Preferences.getBoolPref("premium.findFolder.disableSpace"))
         return fName.startsWith(search);
-      
-			// if search string contains a space just match the whole result rather than breaking up the folder into "words"
-			if (search.indexOf(" ")>0) {
-				// if (fName.indexOf(search)==0) 
+
+      // if search string contains a space just match the whole result rather than breaking up the folder into "words"
+      if (search.indexOf(" ") > 0) {
+        // if (fName.indexOf(search)==0)
         // [issue 135] as this is an in string search, always accept the first result
         return true;
-			}
-			else {
-				let m = fName.split(" ");
-				for (let i=0; i<m.length; i++) {
-					if (m[i].indexOf(search)==0) return true;
-				}
-			}
+      } else {
+        let m = fName.split(" ");
+        for (let i = 0; i < m.length; i++) {
+          if (m[i].indexOf(search) == 0) return true;
+        }
+      }
       return false;
     }
 
     // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passed search string
-		// 4.14 - extend parent to allow / within string to specify grandparent / parent
+    // 4.14 - extend parent to allow / within string to specify grandparent / parent
     function isParentMatch(folder, search, maxLevel, parentList) {
       if (!search) return true; // ??? should be false?
       let f = folder,
-			    pLevel = 1,
-			    ancestors = search.split(/[\/>]/), // use / for direct children and allow > for skipping folders (test)
-					firstParent = null,
-          skipParents = searchString.includes(">"); // new syntax for skipping some parents
-					
-			maxLevel = ancestors.length;
+        pLevel = 1,
+        ancestors = search.split(/[\/>]/), // use / for direct children and allow > for skipping folders (test)
+        firstParent = null,
+        skipParents = searchString.includes(">"); // new syntax for skipping some parents
+
+      maxLevel = ancestors.length;
       while (f.parent && maxLevel) {
         maxLevel--;
         f = f.parent;
@@ -5459,378 +5476,476 @@ QuickFolders.Interface = {
         // [issue 135] allow in-string search for parents using delimiters: _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[\-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
-        if (folderNameMatches.length>1) {
+        if (folderNameMatches.length > 1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
         }
         // [issue 199] include folders that are 1 character long!
-        let parentHasSpace = ancestors[maxLevel].includes (" ");
-        if (folderNameMatches.some(a => 
-           { 
+        let parentHasSpace = ancestors[maxLevel].includes(" ");
+        if (
+          folderNameMatches.some((a) => {
             if (a.startsWith(ancestors[maxLevel])) return true;
-            if (parentHasSpace) { // [issue 297] Parent folder with space in name not shown
-              let m = (ancestors[maxLevel].split(" "));
-              if (m.length>folderNameMatches.length) return false;
-              for (let mm=0; mm<m.length && mm<folderNameMatches.length; mm++) {
-                if (!folderNameMatches[mm].startsWith(m[mm]))
-                  return false;
+            if (parentHasSpace) {
+              // [issue 297] Parent folder with space in name not shown
+              let m = ancestors[maxLevel].split(" ");
+              if (m.length > folderNameMatches.length) return false;
+              for (let mm = 0; mm < m.length && mm < folderNameMatches.length; mm++) {
+                if (!folderNameMatches[mm].startsWith(m[mm])) return false;
               }
               return true;
             }
             return false;
-           }
-          )) { 
-					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
-						if (!parentList.includes(firstParent))
-							parentList.push(firstParent);
-						return pLevel;
-					}
-				}
-				else if (skipParents) {
+          })
+        ) {
+          if (maxLevel == 0) {
+            // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
+            if (!parentList.includes(firstParent)) parentList.push(firstParent);
+            return pLevel;
+          }
+        } else if (skipParents) {
           maxLevel++; // no match, stay on this level (this skips the current folder and goes on at the next parent)
-        }
-        else return 0; // direct parents only.
-				pLevel++;
+        } else return 0; // direct parents only.
+        pLevel++;
       }
       return 0;
     }
 
-		function addIfMatch(folder, search, parentList) {
-			let ancestors = search.split(/[\/>]/),
-			    maxLevel = ancestors.length,
-					f = folder,
-					directParent = null;
-			while (f && maxLevel) {
-				maxLevel--;
+    function addIfMatch(folder, search, parentList) {
+      let ancestors = search.split(/[\/>]/),
+        maxLevel = ancestors.length,
+        f = folder,
+        directParent = null;
+      while (f && maxLevel) {
+        maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[\-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
-        if (folderNameMatches.length>1) {
+        if (folderNameMatches.length > 1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
         }
-				if (folderNameMatches.some(a => a.startsWith(search))) {   
-					if (!directParent) directParent = folder;
-					if (maxLevel == 0) {
-						if (parentList.indexOf(directParent)<0) {
-							if (!checkFolderFlag(directParent, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) // [Bug 26692]
-								parentList.push(directParent);
-						}
-						return true;
-					}
-				}
-				else
-					return false;
-				f=f.parent;
-			}
-			return false;
-		}
+        if (folderNameMatches.some((a) => a.startsWith(search))) {
+          if (!directParent) directParent = folder;
+          if (maxLevel == 0) {
+            if (parentList.indexOf(directParent) < 0) {
+              if (!checkFolderFlag(directParent, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
+                // [Bug 26692]
+                parentList.push(directParent);
+            }
+            return true;
+          }
+        } else return false;
+        f = f.parent;
+      }
+      return false;
+    }
+
+		function payLoad(finalURI) {
+			if (!QuickFolders.quickMove.isActive) {
+        // go to folder
+        isSelected = QuickFolders_MySelectFolder(finalURI);
+        let ps = parentCount
+          ? buildParentString(QuickFolders.Model.getMsgFolderFromUri(finalURI), parentCount)
+          : "";
+        setTimeout(function () {
+          QuickFolders.quickMove.rememberLastFolder(finalURI, ps);
+          QuickFolders.Interface.tearDownSearchBox();
+        }, 400);
+				return;
+      } 
+
+			// move mails?
+			setTimeout(function () {
+				QuickFolders.quickMove.execute(finalURI, parentString);
+				QuickFolders.Interface.tearDownSearchBox();
+			});
+    }
 
     const util = QuickFolders.Util,
-			model = QuickFolders.Model,
-			prefs = QuickFolders.Preferences,
-			CHEVRON = "\u00BB".toString(),
-			maxResults = prefs.getIntPref("quickMove.maxResults"),
-			isFiling = QuickFolders.quickMove.isActive;
+      model = QuickFolders.Model,
+      prefs = QuickFolders.Preferences,
+      CHEVRON = "\u00BB".toString(),
+      maxResults = prefs.getIntPref("quickMove.maxResults"),
+      isFiling = QuickFolders.quickMove.isActive;
 
-		let isSelected = false,
-			enteredSearch = searchBox.value,
-			searchString = enteredSearch.toLocaleLowerCase().trim(),
-			searchFolderName = "",
-			parentString = "",  // effective parent string (using resulting prettyName atoms)
-			enteredParent = ""; // what's entered
-
-    util.logDebug("findFolder (" + searchString + ")");
-		if (!searchString)
-			return;
-    if (searchString=== "=") { // recent folder token
-      // QuickFolders.Interface.onClickRecent(searchBox, null, true); PROTOTYPE
-      // we need to focus on the popup menu as well, also hide the search box.
-      let isDrag = isFiling; // see isFiling below
-      //                                                      (popup, drag, isCreate, isCurrentFolderButton)
-      let menupopup = QuickFolders.Interface.createRecentPopup(null, isDrag, false, "QuickFolders-FindFolder-popup-Recent");
-      let searchbutton = document.getElementById("QuickFolders-quickMove");
-      if (menupopup.childElementCount > 0) {
-        searchbutton.appendChild(menupopup);
-        QuickFolders.Interface.findFolder(false); // collapse search box
-        QuickFolders.Interface.showPopup(searchbutton, menupopup.id, null);  
-        searchbutton.dispatchEvent(new KeyboardEvent("keydown", {key: "ArrowDown"}));
-        searchbutton.dispatchEvent(new KeyboardEvent("keyup", {key: "ArrowDown"}));
-        menupopup.childNodes[0].focus();
-      }
-      return;
+    // ABORT the previous search if it exists
+    if (QuickFolders.keyAbortController) {
+      QuickFolders.keyAbortController.abort();
+      util.logDebugOptional("interface.findFolder", "Previous search aborted");
     }
+    // Create a new AbortController for the current search operation
+    QuickFolders.keyAbortController = new AbortController();
+    const signal = QuickFolders.keyAbortController.signal;
+    // Increment the global stack counter (this is to avoid unneccessarily aborting a
+    // non existing controller after the last search has been over for a while)
+    QuickFolders.findFolderNameStackCount++;
+		util.logDebugOptional("interface.findFolder",`after new AbortController() find stack=${QuickFolders.findFolderNameStackCount}`);
 
-		const matches = [],
-			parents = [],
-			excludedServers = QuickFolders.quickMove.Settings.excludedIds,
-			isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
-			currentFolder = util.CurrentFolder;
+    let isSelected = false,
+      enteredSearch = searchBox.value,
+      parentCount, // (global) number of parents in a search expression containing "/" - used by the addMatchingFolder callback!
+      searchString = enteredSearch.toLocaleLowerCase().trim(),
+      searchFolderName = "",
+      parentString = "", // effective parent string (using resulting prettyName atoms)
+      enteredParent = ""; // what's entered
 
-		// change: if only 1 character is given, then the name must start with that character!
-		// first, search QuickFolders
-		for (let i=0; i<model.selectedFolders.length; i++) {
-			let folderEntry = model.selectedFolders[i],
-		      folderNameSearched = folderEntry.name.toLocaleLowerCase(),
-			    // folderEntry.uri
-			    matchPos = folderNameSearched.indexOf(searchString);
-			if (matchPos >= 0) {
-				let rank = 0; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
-				if (searchString.length == folderEntry.name.length) rank += 4;  // full match - promote
-				if (matchPos == 0)  rank += 2; // promote the rank if folder name starts with this string
-				if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
-				  // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred" ":fred" "(fred" "@fred"
-				  if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
-					  continue;  // skip if not starting with single letter
-				}
-				let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
-        if (!fld) continue; // invalid tabs lead to search failing
-        if (excludedServers.includes(fld.server.key)) continue;
-				// [issue 451] there is no current folder in conversation view, so we cannot lock search to "current folder" in this case
-        if (isLockInAccount &&  fld.server && currentFolder?.server && fld.server.key!=currentFolder.server?.key) continue;
-				if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) continue; 
-				// avoid duplicates
-				if (!matches.some( function(a) { return (a.uri == folderEntry.uri); })) {
-					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:"quickFolder" } );
-				}
-			}
-		}
-		// SLASH command - list child folders !
-    let parentPos = Math.max(searchString.lastIndexOf("/"), searchString.lastIndexOf(">")),
-		    parentCount = 0;  // number of parent folders in search string
-    if (parentPos>0) { // we have a parent folder
-      enteredParent = searchString.substr(0, parentPos);
- 			parentString = enteredParent;
-      searchFolderName = searchString.substr(parentPos+1);
-			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
-			parentCount = parentString.split(/[\/>]/).length + 1; // original entry for parent
-    } else {
-      searchFolderName = searchString;
-    }
+		util.logDebug("findFolder (" + searchString + ")");
 
-    // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
-		// "parent/" no name given, only lists the direct children
-		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
-    let maxParentLevel = searchFolderName.length ? prefs.getIntPref("premium.findFolder.maxParentLevel") : 1;
-		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
-
-		// multiple slashes?
-    util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
-    util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
-    util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
-
-		// no parent matches - Add one for a folder without children.
-		if (!matches.length && parentPos>0) {
-      for (let folder of util.allFoldersIterator(isFiling, true)) {
-        addIfMatch(folder, matches.parentString || parentString, parents);
-      }
-		}
-		util.logDebugOptional("interface.findFolder", "built list: " + matches.length + " matches found. Building menu…");
-
-		// rebuild popup
-		let menupopup, txtDebugMenu = "";
-		if (true) {
-			matches.sort(function (a,b) { 
-        if (b.rank - a.rank == 0) 
-          return b.lname - a.lname; // Alphabetic
-        return b.rank - a.rank; 
-      });
-
-			menupopup = util.$("QuickFolders-FindPopup");
-      if (QuickFolders.quickMove.isActive) {
-        menupopup.setAttribute("tag", "quickMove");
-      } else {
-        menupopup.removeAttribute("tag");
-      }
-
-			//rebuild the popup menu
-			while (menupopup.firstChild) {
-				menupopup.removeChild(menupopup.firstChild);
-			}
-		  if (matches.length) {
-				// restrict results to 25
-				let count = Math.min(matches.length, maxResults);
-				for (let j=0; j<count; j++) {
-					let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument);
-					// menuitem.className="color menuitem-iconic";
-					menuitem.setAttribute("label", matches[j].name);
-					menuitem.setAttribute("value", matches[j].uri);
-					if (matches[j].type == "quickFolder")
-						menuitem.className = "quickFolder menuitem-iconic";
-          else
-            menuitem.className = "menuitem-iconic";
-					if (matches[j].parentString)
-						menuitem.setAttribute("parentString", matches[j].parentString);
-					menupopup.appendChild(menuitem);
-				}
-			}
-		}
-		util.logDebugOptional("interface.findFolder", "built menu.");
-
-		// special commands: if slash was entered, allow creating subfolders.
-		if (parentPos>0) {
-			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
-			// [Bug 26283] add matches from quickfolders (if named differently)
-			for (let i=0; i<model.selectedFolders.length; i++) {
-				let folderEntry = model.selectedFolders[i],
-				    folderNameSearched = folderEntry.name.toLocaleLowerCase(),
-						matchPos = folderNameSearched.indexOf(parentString);
-
-				if (folderEntry.flags && folderEntry.flags & util.ADVANCED_FLAGS.IGNORE_QUICKJUMP) {
-				  // [Bug 26692]
-					util.logDebugOptional("quickMove", "Omitting tab " + folderEntry.name + " - flags = " + folderEntry.flags);
-					continue;
-				}
-
-				if (matchPos == 0
-				   &&
-				   !parents.some(p => (p.uri == folderEntry.uri))) {  
-					let nsIfolder = model.getMsgFolderFromUri(folderEntry.uri, false); // determine the real folder name
-					// this folder does not exist (under its real name) - add it!
-					nsIfolder.setStringProperty("isQuickFolder", true); // add this flag
-					parents.push(nsIfolder);
-				}
-			}
-
-			let isInsertNewFolderTop = prefs.getBoolPref("quickMove.createFolderOnTop");
-			if (parents.length) {
-				util.logDebugOptional("interface.findFolder", "/ create subfolder entries ");
-      }
-
-			// create new subfolder case - let's omit for ">" case for now
-      if (!searchString.includes(">")) while (parents.length) {
-				let f = parents.pop();
-
-        // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
-				if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">","/"))) continue; 
-        // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
-				if (matches.length &&
-					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch.replace(">","/")).toLocaleLowerCase()) {
-          continue; 
+    try {
+      if (!searchString) return;
+      if (searchString === "=") {
+        // recent folder token
+        // QuickFolders.Interface.onClickRecent(searchBox, null, true); PROTOTYPE
+        // we need to focus on the popup menu as well, also hide the search box.
+        let isDrag = isFiling; // see isFiling below
+        //                                                      (popup, drag, isCreate, isCurrentFolderButton)
+        let menupopup = QuickFolders.Interface.createRecentPopup(
+          null,
+          isDrag,
+          false,
+          "QuickFolders-FindFolder-popup-Recent"
+        );
+        let searchbutton = document.getElementById("QuickFolders-quickMove");
+        if (menupopup.childElementCount > 0) {
+          searchbutton.appendChild(menupopup);
+          QuickFolders.Interface.findFolder(false); // collapse search box
+          QuickFolders.Interface.showPopup(searchbutton, menupopup.id, null);
+          searchbutton.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
+          searchbutton.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
+          menupopup.childNodes[0].focus();
         }
-            
-				let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
-				    label = this.getUIstring("qfNewSubFolder");
+        return;
+      }
 
-				let pc = parentCount,
-				    parFld = "",
-						atom = null;
-				while (pc>0) { // rewrite parentString, too
-					atom = atom ? atom.parent : f;
-					if (atom.isServer) break;
-					if (!parFld)  {
-						parFld = atom.prettyName;
-					  parentString = atom.prettyName;
-					}
-					else {
-						parFld = atom.prettyName + " " + CHEVRON + " " + parFld; // prepend ancestor
-					  parentString = atom.prettyName + "/" + parentString;
-					}
-					pc--;
-				}
-				let theLabel = label.replace("{0}", f.rootFolder.name + ": " + parFld).replace("{1}", enteredSearch);
-				menuitem.setAttribute("label", theLabel);
-				if (prefs.isDebugOption("quickMove")) {
-					txtDebugMenu = txtDebugMenu + "menuItem: " + theLabel.padEnd(20, " ") + " - parentString:" + parentString + "\n";
-				}
+      const matches = [],
+        parents = [],
+        excludedServers = QuickFolders.quickMove.Settings.excludedIds,
+        isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
+        currentFolder = util.CurrentFolder;
+      const menupopup = util.$("QuickFolders-FindPopup");
 
-				menuitem.setAttribute("parentString", parentString); // remember parent string in menu item (easiest)
-				menuitem.addEventListener("command", async (event) => {
-						const fld = await QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch);
-						return false;
-					}, false
-				);
-				menuitem.className = "menuitem-iconic deferred"; // use "deferred" to avoid selectFound handler
-        try {
-          if (f.getStringProperty("isQuickFolder")) {
-            f.setStringProperty("isQuickFolder", ""); // remove this temporary property
-            menuitem.classList.add("quickFolder");
+      // SLASH command - list child folders !
+      let parentPos = Math.max(searchString.lastIndexOf("/"), searchString.lastIndexOf(">"));
+      parentCount = 0; // number of parent folders in search string
+      if (parentPos > 0) {
+        // we have a parent folder
+        enteredParent = searchString.substr(0, parentPos);
+        parentString = enteredParent;
+        searchFolderName = searchString.substr(parentPos + 1);
+        enteredSearch = enteredSearch.substr(parentPos + 1); // original mixed case for subfolder creation; include placeholder for account
+        parentCount = parentString.split(/[\/>]/).length + 1; // original entry for parent
+      } else {
+        searchFolderName = searchString;
+      }
+
+      if (menupopup.state == "open" && forceFind) {
+        const targets = menupopup.querySelectorAll("& > menuitem");
+        if (targets.length) {
+          let finalURI = targets[0].value;
+          return payLoad(finalURI);
+        }
+      }
+
+      // change: if only 1 character is given, then the name must start with that character!
+      // first, search QuickFolders
+      for (let i = 0; i < model.selectedFolders.length; i++) {
+        let folderEntry = model.selectedFolders[i],
+          folderNameSearched = folderEntry.name.toLocaleLowerCase(),
+          // folderEntry.uri
+          matchPos = folderNameSearched.indexOf(searchString);
+        if (matchPos >= 0) {
+          let rank = 0; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
+          if (searchString.length == folderEntry.name.length) rank += 4; // full match - promote
+          if (matchPos == 0) rank += 2; // promote the rank if folder name starts with this string
+          if (searchString.length <= 2 && matchPos != 0) {
+            // doesn't start with single/two letters?
+            // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred" ":fred" "(fred" "@fred"
+            if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos - 1, 1)) < 0) continue; // skip if not starting with single letter
+          }
+          let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
+          if (!fld) continue; // invalid tabs lead to search failing
+          if (excludedServers.includes(fld.server.key)) continue;
+          // [issue 451] there is no current folder in conversation view, so we cannot lock search to "current folder" in this case
+          if (
+            isLockInAccount &&
+            fld.server &&
+            currentFolder?.server &&
+            fld.server.key != currentFolder.server?.key
+          )
+            continue;
+          if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) continue;
+          // avoid duplicates
+          if (
+            !matches.some(function (a) {
+              return a.uri == folderEntry.uri;
+            })
+          ) {
+            matches.push({
+              name: folderEntry.name,
+              lname: folderNameSearched,
+              uri: folderEntry.uri,
+              rank: rank,
+              type: "quickFolder",
+            });
           }
         }
-        catch(ex) {;}
-
-				if (menupopup.firstChild && isInsertNewFolderTop)
-					menupopup.insertBefore(menuitem, menupopup.firstChild);
-				else
-					menupopup.appendChild(menuitem);
-			}
-
-			if (!menupopup.childElementCount) {
-				const menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
-          noMatchWrn = util.getBundleString("qfNoFolderMatch");
-				menuitem.setAttribute("label", noMatchWrn); // just one dummy to show we were searching
-				menuitem.setAttribute("tag", "dummy");
-				menupopup.appendChild(menuitem);
-			}
-		}
-
-		if (txtDebugMenu) {
-			util.logDebugOptional("quickMove", txtDebugMenu);
-		}
-		if (menupopup.childElementCount>1) {
-			// remove dummy!
-			for (let i = menupopup.children.length-1; i>0; i--) {
-				let item = menupopup.children[i];
-				if (item.getAttribute("tag") == "dummy")
-				 menupopup.removeChild(item);
-			}
-		}
-		util.logDebugOptional("interface.findFolder", "showPopup:");
-
-		menupopup.setAttribute("ignorekeys", "true");
-    
-    // [issue 241] force the last URI if popup not shown
-    let forceSingleURI;
-    if (menupopup.state=="closed" && forceFind && matches.length) {
-      forceSingleURI = prefs.getStringPref("quickMove.lastFolderURI");
-      if (!matches.find(e => e.uri == forceSingleURI)) {
-        forceSingleURI = "";
-			}
-    } 
-    
-    if (!forceSingleURI) {
-      //  menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
-      menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
-    }
-		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
-		if (matches.length == 1 || (matches.length>0 && forceFind) ) {
-			util.logDebugOptional("quickMove", forceFind ? "Enter key forces match" : "single match found…");
-      if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
-				let finalURI = forceSingleURI || matches[0].uri;
-				if (!isFiling) {
-					// go to folder
-					isSelected = QuickFolders_MySelectFolder(finalURI);
-					let ps = parentCount ? buildParentString(QuickFolders.Model.getMsgFolderFromUri(finalURI), parentCount) : "";
-					setTimeout(function() {
-						QuickFolders.quickMove.rememberLastFolder(finalURI, ps);
-						QuickFolders.Interface.tearDownSearchBox();
-					}, 400);
-				} else { // move mails?
-					setTimeout(function() {
-						QuickFolders.quickMove.execute(finalURI, parentString);
-						QuickFolders.Interface.tearDownSearchBox();
-					});
-				}
-				return;
       }
-			// make it easy to hit return to jump into folder instead:
-			// isSelected = QuickFolders_MySelectFolder(matches[0].uri);
-			setTimeout( function() {
-					let fm = Services.focus;
-					fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
-					let fC = menupopup.firstChild;
-					fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
-				}, 250 );
-			return; // avoid searchBox.focus()
-		}
 
-		if (isSelected) {
-			// success: collapses the search box!
-			this.findFolder(false);
-			this.hideFindPopup();
-		} else {
-			searchBox.focus();
+      // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
+      // "parent/" no name given, only lists the direct children
+      // "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
+      let maxParentLevel = searchFolderName.length
+        ? prefs.getIntPref("premium.findFolder.maxParentLevel")
+        : 1;
+      if (parentPos > 0) maxParentLevel = 1; // no subfolders when SLASH is entered
+
+      // multiple slashes?
+      util.logDebugOptional(
+        "interface.findFolder",
+        `Calling allFoldersMatch(${isFiling}, isParentMatch(), parent=${parentString},${maxParentLevel},...)`
+      );
+      await util.allFoldersMatch(
+        isFiling,
+        isParentMatch,
+        parentString,
+        maxParentLevel,
+        parents,
+        addMatchingFolder,
+        matches,
+        signal // pass the abort signal
+      );
+      util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
+
+      // no parent matches - Add one for a folder without children.
+      if (!matches.length && parentPos > 0) {
+        for await (let folder of util.allFoldersIterator(isFiling, true, signal)) {
+          addIfMatch(folder, matches.parentString || parentString, parents);
+        }
+      }
+      util.logDebugOptional(
+        "interface.findFolder",
+        "built list: " + matches.length + " matches found. Building menu…"
+      );
+
+      // rebuild popup
+      let txtDebugMenu = "";
+      if (true) {
+        matches.sort(function (a, b) {
+          if (b.rank - a.rank == 0) return b.lname - a.lname; // Alphabetic
+          return b.rank - a.rank;
+        });
+
+        if (QuickFolders.quickMove.isActive) {
+          menupopup.setAttribute("tag", "quickMove");
+        } else {
+          menupopup.removeAttribute("tag");
+        }
+
+        //rebuild the popup menu
+        while (menupopup.firstChild) {
+          menupopup.removeChild(menupopup.firstChild);
+        }
+        if (matches.length) {
+          // restrict results to 25
+          let count = Math.min(matches.length, maxResults);
+          for (let j = 0; j < count; j++) {
+            let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument);
+            // menuitem.className="color menuitem-iconic";
+            menuitem.setAttribute("label", matches[j].name);
+            menuitem.setAttribute("value", matches[j].uri);
+            if (matches[j].type == "quickFolder")
+              menuitem.className = "quickFolder menuitem-iconic";
+            else menuitem.className = "menuitem-iconic";
+            if (matches[j].parentString)
+              menuitem.setAttribute("parentString", matches[j].parentString);
+            menupopup.appendChild(menuitem);
+          }
+        }
+      }
+      util.logDebugOptional("interface.findFolder", "built menu.");
+
+      // special commands: if slash was entered, allow creating subfolders.
+      if (parentPos > 0) {
+        util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
+        // [Bug 26283] add matches from quickfolders (if named differently)
+        for (let i = 0; i < model.selectedFolders.length; i++) {
+          let folderEntry = model.selectedFolders[i],
+            folderNameSearched = folderEntry.name.toLocaleLowerCase(),
+            matchPos = folderNameSearched.indexOf(parentString);
+
+          if (folderEntry.flags && folderEntry.flags & util.ADVANCED_FLAGS.IGNORE_QUICKJUMP) {
+            // [Bug 26692]
+            util.logDebugOptional(
+              "quickMove",
+              "Omitting tab " + folderEntry.name + " - flags = " + folderEntry.flags
+            );
+            continue;
+          }
+
+          if (matchPos == 0 && !parents.some((p) => p.uri == folderEntry.uri)) {
+            let nsIfolder = model.getMsgFolderFromUri(folderEntry.uri, false); // determine the real folder name
+            // this folder does not exist (under its real name) - add it!
+            nsIfolder.setStringProperty("isQuickFolder", true); // add this flag
+            parents.push(nsIfolder);
+          }
+        }
+
+        let isInsertNewFolderTop = prefs.getBoolPref("quickMove.createFolderOnTop");
+        if (parents.length) {
+          util.logDebugOptional("interface.findFolder", "/ create subfolder entries ");
+        }
+
+        // create new subfolder case - let's omit for ">" case for now
+        if (!searchString.includes(">"))
+          while (parents.length) {
+            let f = parents.pop();
+
+            // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
+            if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">", "/"))) continue;
+            // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
+            if (
+              matches.length &&
+              matches[0].uri.toLocaleLowerCase() ==
+                (f.URI + "/" + enteredSearch.replace(">", "/")).toLocaleLowerCase()
+            ) {
+              continue;
+            }
+
+            let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
+              label = this.getUIstring("qfNewSubFolder");
+
+            let pc = parentCount,
+              parFld = "",
+              atom = null;
+            while (pc > 0) {
+              // rewrite parentString, too
+              atom = atom ? atom.parent : f;
+              if (atom.isServer) break;
+              if (!parFld) {
+                parFld = atom.prettyName;
+                parentString = atom.prettyName;
+              } else {
+                parFld = atom.prettyName + " " + CHEVRON + " " + parFld; // prepend ancestor
+                parentString = atom.prettyName + "/" + parentString;
+              }
+              pc--;
+            }
+            let theLabel = label
+              .replace("{0}", f.rootFolder.name + ": " + parFld)
+              .replace("{1}", enteredSearch);
+            menuitem.setAttribute("label", theLabel);
+            if (prefs.isDebugOption("quickMove")) {
+              txtDebugMenu =
+                txtDebugMenu +
+                "menuItem: " +
+                theLabel.padEnd(20, " ") +
+                " - parentString:" +
+                parentString +
+                "\n";
+            }
+
+            menuitem.setAttribute("parentString", parentString); // remember parent string in menu item (easiest)
+            menuitem.addEventListener(
+              "command",
+              async (event) => {
+                const fld = await QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch);
+                return false;
+              },
+              false
+            );
+            menuitem.className = "menuitem-iconic deferred"; // use "deferred" to avoid selectFound handler
+            try {
+              if (f.getStringProperty("isQuickFolder")) {
+                f.setStringProperty("isQuickFolder", ""); // remove this temporary property
+                menuitem.classList.add("quickFolder");
+              }
+            } catch (ex) {}
+
+            if (menupopup.firstChild && isInsertNewFolderTop)
+              menupopup.insertBefore(menuitem, menupopup.firstChild);
+            else menupopup.appendChild(menuitem);
+          }
+
+        if (!menupopup.childElementCount) {
+          const menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
+            noMatchWrn = util.getBundleString("qfNoFolderMatch");
+          menuitem.setAttribute("label", noMatchWrn); // just one dummy to show we were searching
+          menuitem.setAttribute("tag", "dummy");
+          menupopup.appendChild(menuitem);
+        }
+      }
+
+      if (txtDebugMenu) {
+        util.logDebugOptional("quickMove", txtDebugMenu);
+      }
+      if (menupopup.childElementCount > 1) {
+        // remove dummy!
+        for (let i = menupopup.children.length - 1; i > 0; i--) {
+          let item = menupopup.children[i];
+          if (item.getAttribute("tag") == "dummy") menupopup.removeChild(item);
+        }
+      }
+      util.logDebugOptional("interface.findFolder", "showPopup:");
+
+      menupopup.setAttribute("ignorekeys", "true");
+
+      // [issue 241] force the last URI if popup not shown
+      let forceSingleURI;
+      if (menupopup.state == "closed" && forceFind && matches.length) {
+        forceSingleURI = prefs.getStringPref("quickMove.lastFolderURI");
+        if (!matches.find((e) => e.uri == forceSingleURI)) {
+          forceSingleURI = "";
+        }
+      }
+
+      if (!forceSingleURI) {
+        //  menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
+        menupopup.openPopup(searchBox, "after_start", 0, -1, true, false); // ,evt
+      }
+
+      if (matches.length == 1 || (matches.length > 0 && forceFind)) {
+        util.logDebugOptional(
+          "quickMove",
+          forceFind ? "Enter key forces match" : "single match found…"
+        );
+        if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
+          let finalURI = forceSingleURI || matches[0].uri;
+          return payLoad(finalURI);
+        }
+        // make it easy to hit return to jump into folder instead:
+        // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+        setTimeout(function () {
+          let fm = Services.focus;
+          fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
+          let fC = menupopup.firstChild;
+          fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
+        }, 250);
+        return; // avoid searchBox.focus()
+      }
+
+      if (isSelected) {
+        // success: collapses the search box!
+        this.findFolder(false);
+        this.hideFindPopup();
+      } else {
+        searchBox.focus();
+      }
+    } catch (ex) {
+      if (signal.aborted) {
+        util.logDebugOptional("interface.findFolder", "Search aborted by user");
+      } else {
+        util.logException("Error during folder search:", ex);
+      }
+    } finally {
+      QuickFolders.findFolderNameStackCount--;
+      if (QuickFolders.findFolderNameStackCount <= 0) {
+        QuickFolders.keyAbortController = null;
+        QuickFolders.findFolderNameStackCount = 0; // Ensure counter is reset
+        util.logDebugOptional(
+          "interface.findFolder",
+          "Reset keyAbortController - search COMPLETED"
+        );
+      }
     }
-
- 	} ,
+  } ,
 
   tearDownSearchBox: function tearDownSearchBox() {
     QuickFolders.Util.logDebugOptional("quickMove,interface.findFolder", "tearDownSearchBox()");

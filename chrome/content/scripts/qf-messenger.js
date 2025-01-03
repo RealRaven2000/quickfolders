@@ -351,7 +351,6 @@ async function onLoad(activatedWhileWindowOpen) {
                        context="QuickFolders-quickMoveMenu"
                        />
         <search-textbox id="QuickFolders-FindFolder" 
-                 oncommand="QuickFolders.Interface.findFolderName(this);"
                  onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
                  class="searchBox input-sizer"
                  type="search"

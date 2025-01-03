@@ -2011,61 +2011,107 @@ allowUndo = true)`
     return found;
   } , // QuickFolders.Util.iterateFolders
 
+  sleepBlocking: function(ms) {
+    const end = Date.now() + Math.min(ms,20); // don't allow more than 20ms
+    while (Date.now() < end) {
+      // Keep the CPU busy for the specified time (ms)
+    }
+  } ,
+
+  sleepNonBlocking: function(ms) {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  },
+
+  sleepIdle: function(ms) {
+    return new Promise((resolve) => {
+      requestIdleCallback(() => {
+        setTimeout(resolve, ms);
+      });
+    });
+  },
 
   // iterate all folders
   // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
   // isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
-  allFoldersIterator: function (writable, isQuickJumpOrMove = false) {
-    let acctMgr = MailServices.accounts,
-        FoldersArray, allFolders,
-        util = QuickFolders.Util,
-        quickMoveSettings = QuickFolders.quickMove.Settings,
-        isLockedInAccount = quickMoveSettings.isLockInAccount,
-        currentFolder, currentServer = 0;
+  // function* : using a generator instead of building an array which will support lazy eval.
+  allFoldersIterator: async function* (writable, isQuickJumpOrMove = false, abortSignal = null) {
+    const acctMgr = MailServices.accounts, // FoldersArray,
+      util = QuickFolders.Util,
+      quickMoveSettings = QuickFolders.quickMove.Settings;
+    let isLockedInAccount = quickMoveSettings.isLockInAccount,
+      currentFolder,
+      allFolders,
+      currentServer = 0,
+      keyDelay = 0,
+      count = 0;
+    if (QuickFolders.Preferences.isDebugOption("interface.findFolder")) {
+      keyDelay = QuickFolders.Preferences.getIntPref("debug.interface.findFolder.keyDelay"); // 10ms should do it
+    }
+
     if (isQuickJumpOrMove) {
       currentFolder = util.CurrentFolder;
       if (!currentFolder) { // [issue 136] search result list has no current folder!
         isLockedInAccount = false;
-      }
-      else {
+      } else {
         currentServer = currentFolder.server ? currentFolder.server.key : null;
       }
       quickMoveSettings.loadExclusions(); // prepare list of servers to omit
     }
-    
-    if (acctMgr.allFolders) { // Thunderbird & modern builds
-      FoldersArray = [];
-      allFolders = acctMgr.allFolders;
-      for (let aFolder of allFolders) { // removed fixIterator in Tb91
-        // filter out non-fileable folders (newsgroups...)
-        if (writable && 
-             (!aFolder.canFileMessages || 
-             (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) ||
-             (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSHOST))) {
-            continue;
-        }
-        if (isQuickJumpOrMove) {
-          if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
-            continue;
-          if (quickMoveSettings.excludedIds.length) {
-            // exclude account
-            if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
-              continue;
-            }
-          }
-        }
-        FoldersArray.push(aFolder);
-      }          
-      return FoldersArray; 
-    }
-    else { 
+
+    if (!acctMgr.allFolders) { // should exist in all modern builds of Tb
       util.logToConsole("Error: allFolders missing in MailServices.accounts!");
       return [];
     }
+    
+    // FoldersArray = [];
+    allFolders = acctMgr.allFolders;
+    let fCount = 0;
+    for (let aFolder of allFolders) { 
+      fCount++;
+      if (abortSignal?.aborted) {
+        util.logDebugOptional(
+          "interface.findFolder",
+          `Util.allFoldersIterator() aborted due to keystroke after ${fCount} folders`
+        );
+        return; // Stop iteration if aborted
+      }
+
+      count++;
+      // only if AbortController is set up: Simulate some delay (per keystroke) 
+      if (abortSignal && keyDelay && count % 10 === 0) {
+        util.logHighlight(`Test: delay ${keyDelay * 10} ms after ${count} items`, {
+          color: "rgb(27, 63, 8)",
+          background: "rgb(139, 224, 97)",
+        });
+        await util.sleepIdle(keyDelay * 10);
+      }
+
+      // filter out non-fileable folders (newsgroups...)
+      if (writable && 
+            (!aFolder.canFileMessages || 
+            (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) ||
+            (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSHOST))) {
+          continue;
+      }
+      if (isQuickJumpOrMove) {
+        if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
+          continue;
+        if (quickMoveSettings.excludedIds.length) {
+          // exclude account
+          if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
+            continue;
+          }
+        }
+      }
+      // FoldersArray.push(aFolder);
+      yield aFolder; // returns iterable
+    }        
   },
   
   // find next unread folder
-  getNextUnreadFolder: function (currentFolder) {
+  getNextUnreadFolder: async function (currentFolder) {
     const util = QuickFolders.Util,
       unwantedFolders =
         util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS | // skip drafts
@@ -2107,7 +2153,7 @@ allowUndo = true)`
     // Step 3: Build the list of folders, respecting unread mail filter and account map
     const allFolders = [];
     let sortedFolders;
-    for (let folder of util.allFoldersIterator(false)) {
+    for await (let folder of util.allFoldersIterator(false)) {
       if (folder != currentFolder) {
         // we must always include current folder even if it is unread!
         // Only consider folders with unread mails
@@ -2266,11 +2312,21 @@ allowUndo = true)`
       iterateFunction(key,value,obj);
     }
   },
-  
-  allFoldersMatch: function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
+
+  allFoldersMatch: async function (isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches, abortSignal) {
     const util = QuickFolders.Util;
-    util.logDebugOptional("interface.findFolder","allFoldersMatch()");
-    for (let folder of util.allFoldersIterator(isFiling, true)) {
+    util.logDebugOptional(
+      "interface.findFolder",
+      `allFoldersMatch(isFiling:${isFiling}, parentString:${parentString}, maxParentLevel:${maxParentLevel})`
+    );
+    for await (let folder of util.allFoldersIterator(isFiling, true, abortSignal)) {
+      if (abortSignal?.aborted) {
+        util.logDebugOptional(
+          "interface.findFolder",
+          "Util.allFoldersMatch() aborted due to keystroke"
+        );
+        return; // Stop iteration if aborted
+      }
       if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
       addMatchingFolder(matches, folder);
     }
