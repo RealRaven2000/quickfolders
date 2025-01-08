@@ -1,8 +1,9 @@
 
-var sales_name = "CYBER WEEK SALE"; // .saleName
-var sales_start_lbl = "November 25th"; // .saleStart
-var sales_end_lbl = "December 8th";  // .saleEnd
-var sales_end = new Date("2024-12-08");
+var sales_name = "NEW YEAR SALE"; // .saleName
+var sales_start_lbl = "January 10th"; // .saleStart
+var sales_end_lbl = "January 24th";  // .saleEnd
+var sales_start = new Date("2025-01-10");
+var sales_end = new Date("2025-01-24");
 
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
@@ -95,30 +96,28 @@ var removedItems = [];
 			}
 		}
 		// remove sales stuff
-		if (sales_end && new Date() > sales_end) {
-			removableItems.forEach(
-				(e) => {
-					if (!removedItems.includes(e)) {
-						removeClassItems(e);
-						removedItems.push(e);
-					}
-				}
-			);
-		} else {
-			// update all sales items:
-			let saleLabels = document.querySelectorAll(".saleName");
-			for (let s of saleLabels) {
-				s.textContent = sales_name; // e.g. "AUTUMN SALE"
-			}
-			let saleStarts =  document.querySelectorAll(".saleStart");
-			for (let s of saleStarts) {
-				s.textContent = sales_start_lbl; // e.g. "September 25th"
-			}			
-			let saleEnds =  document.querySelectorAll(".saleEnd");
-			for (let s of saleEnds) {
-				s.textContent = sales_end_lbl; // e.g. "October 9th"
-			}			
-		}
+		if ((sales_end && new Date() > sales_end) || sales_start < new Date()) {
+      removableItems.forEach((e) => {
+        if (!removedItems.includes(e)) {
+          removeClassItems(e);
+          removedItems.push(e);
+        }
+      });
+    } else {
+      // update all sales items:
+      let saleLabels = document.querySelectorAll(".saleName");
+      for (let s of saleLabels) {
+        s.textContent = sales_name; // e.g. "AUTUMN SALE"
+      }
+      let saleStarts = document.querySelectorAll(".saleStart");
+      for (let s of saleStarts) {
+        s.textContent = sales_start_lbl; // e.g. "September 25th"
+      }
+      let saleEnds = document.querySelectorAll(".saleEnd");
+      for (let s of saleEnds) {
+        s.textContent = sales_end_lbl; // e.g. "October 9th"
+      }
+    }
 
 
 	});
