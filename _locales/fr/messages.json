@@ -180,6 +180,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Pour utiliser cette fonctionnalité, il vous suffit de configurer au moins un modèle de recherche."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Cliquez avec le bouton droit sur [Trouver des mails associés] pour sélectionner un modèle de recherche. Cela exécute la recherche et enregistre ses paramètres pour la prochaine fois que vous cliquez sur le bouton."
+  },
   "findRelated.options.title": {
     "message": "Options"
   },
@@ -325,7 +328,7 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} La dernière version de $addonName$ est maintenant compatible avec Thunderbird jusqu'à la version 133. La version Pro dispose d'un {A-findRelated}outil de recherche amélioré{A} pour trouver les e-mails liés à celui actuellement affiché. Veuillez consulter le journal des modifications complet dans le lien ci-dessous pour une documentation détaillée. {P2}",
+    "message": "{P1} La dernière version de $addonName$ est maintenant compatible avec Thunderbird jusqu'à la version 134. La version Pro dispose d'un {A-findRelated}outil de recherche amélioré{A} pour trouver les e-mails liés à celui actuellement affiché. Veuillez consulter le journal des modifications complet dans le lien ci-dessous pour une documentation détaillée. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2007,7 +2010,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Terminé : Fonction Pro pour trouver des e-mails associés en utilisant des termes de recherche extraits de l'e-mail actuellement affiché : vous pouvez maintenant choisir entre différentes recherches dans un menu déroulant. [issue 488]{L2}{L1} Corrigé : Déplacement des e-mails vers des onglets avec Ctrl+Numéro. {L2} {L1} Corrigé : Les raccourcis clavier entraient en conflit avec la saisie de texte dans d'autres modules comme QNote++. [issue 497]{L2}{L1} Corrigé : Les noms de dossiers contenant des apostrophes perturbaient la navigation. {L2}{L1} 6.8.2 Correction du bouton de modification sur la page des paramètres pour trouver des courriels associés. {L2}"
+    "message": "{L1} Amélioration des performances des résultats de recherche quickMove / quickJump lors de la saisie pour les utilisateurs ayant de nombreux dossiers. [issue 463]{L2}{L1} Les messages non lus sont désormais ignorés et le dossier frère suivant / précédent suit désormais l'ordre lexical de l'arbre [issue 513]{L2}{L1} La barre d'outils QuickFolders est maintenant affichée lorsque l'onglet des paramètres est ouvert. [issue 524]{L2}{L1} Correction : QuickFolders bloquait les raccourcis clavier natifs de Thunderbird contenant la touche Option (metaKey) sur les systèmes Mac. {L2}{L1} Les propriétés spécifiques à l'onglet fonctionnent à nouveau dans la version bêta 134 de Thunderbird. [issue 518]{L2}{L1} Correction : Les noms de dossiers contenant des apostrophes simples ne génèrent plus d'erreurs lors de la navigation.{L2}{L1} QuickFolders prend désormais en charge la création de sous-dossiers avec des espaces dans les noms via quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

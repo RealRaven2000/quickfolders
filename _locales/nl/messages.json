@@ -169,6 +169,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Om deze functie te gebruiken, hoef je slechts één zoekpatroon in te stellen."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Klik met de rechtermuisknop op [Vind verwante e-mails] om een zoekpatroon te selecteren. Dit voert de zoekopdracht uit en slaat de instellingen op voor de volgende keer dat je de knop klikt."
+  },
   "findRelated.options.title": {
     "message": "Opties"
   },
@@ -314,7 +317,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 133. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
+    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 134. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1968,7 +1971,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Voltooid: Pro-functie om gerelateerde e-mails te vinden met behulp van zoektermen die zijn gehaald uit de momenteel weergegeven e-mail: u kunt nu kiezen uit verschillende zoekopdrachten in een dropdownmenu. [issue 488]{L2}{L1} Opgelost: e-mails verplaatsen naar tabbladen met Ctrl+Nummer. {L2} {L1} Opgelost: sneltoetsen kwamen in conflict met het invoeren van tekst in andere add-ons, zoals QNote++. [issue 497]{L2}{L1} Opgelost: mapnamen met enkele aanhalingstekens veroorzaakten navigatiefouten. {L2}{L1} 6.8.2 Bewerken-knop op de instellingenpagina voor gerelateerde e-mails opgelost. {L2}"
+    "message": "{L1} Migliorato il rendimento dei risultati di ricerca di quickMove / quickJump durante la digitazione per gli utenti con molte cartelle. [issue 463]{L2}{L1} I messaggi non letti vengono ora saltati e la cartella sorella successiva / precedente segue ora l'ordine lessicale nell'albero [issue 513]{L2}{L1} La barra degli strumenti di QuickFolders viene ora visualizzata quando la scheda delle impostazioni è aperta. [issue 524]{L2}{L1} Corretto: QuickFolders bloccava le scorciatoie da tastiera native di Thunderbird che contengono il tasto Opzione (metaKey) sui sistemi Mac. {L2}{L1} Le proprietà specifiche della scheda ora funzionano di nuovo in Thunderbird beta 134. [issue 518]{L2}{L1} Corretto: I nomi delle cartelle contenenti apostrofi semplici non causano più errori durante la navigazione.{L2}{L1} QuickFolders ora supporta la creazione di sottocartelle con spazi nei nomi tramite quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

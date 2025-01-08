@@ -173,6 +173,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Per utilitzar aquesta funció, només cal que configureu almenys un patró de cerca."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Feu clic dret sobre [Trobar correus relacionats] per seleccionar un patró de cerca. Això executa la cerca i desa la seva configuració per a la propera vegada que feu clic al botó."
+  },
   "findRelated.options.title": {
     "message": "Opcions"
   },
@@ -322,7 +325,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird fins a la versió 133. La versió Pro inclou una {A-findRelated}eina de cerca millorada{A} per trobar correus relacionats amb el que es mostra actualment. Visiteu el registre complet de canvis al següent enllaç per a documentació detallada. {P2}",
+    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird fins a la versió 134. La versió Pro inclou una {A-findRelated}eina de cerca millorada{A} per trobar correus relacionats amb el que es mostra actualment. Visiteu el registre complet de canvis al següent enllaç per a documentació detallada. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1913,7 +1916,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Finalitzat: funció Pro per trobar correus electrònics relacionats a través de termes de cerca extrets del correu electrònic actualment mostrat: ara podeu seleccionar diferents cerques en un menú desplegable. [issue 488]{L2}{L1} Solucionat: moure correus electrònics a pestanyes amb Ctrl+Número. {L2} {L1} Solucionat: els dreceres de teclat entraven en conflicte amb la introducció de text en altres complements com ara QNote++. [issue 497]{L2}{L1} Solucionat: els noms de carpetes amb cometes simples causaven errors de navegació. {L2}{L1} 6.8.2 Solucionat el botó d'edició a la pàgina de configuració per trobar correus relacionats. {L2}"
+    "message": "{L1} Millorada el rendiment dels resultats de cerca de quickMove / quickJump mentre s'escriu per a usuaris amb molts carpetes. [issue 463]{L2}{L1} S'ometen els no llegits i el següent / anterior carpeta germana ara segueix l'ordre lexical de l'arbre [issue 513]{L2}{L1} La barra d'eines de QuickFolders es mostra ara quan es desa la pestanya de configuració oberta. [issue 524]{L2}{L1} Reparat: QuickFolders bloquejava les combinacions de tecles natives de Thunderbird que contenien la tecla d'opció (metaKey) a sistemes Mac. {L2}{L1} Les propietats específiques de la pestanya ara tornen a funcionar a Thunderbird beta 134. [issue 518]{L2}{L1} Reparat: Els noms de carpeta que contenien cometes simples ja no causen errors a la navegació.{L2}{L1} QuickFolders ara permet crear subcarpetes amb espais en els noms des de quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

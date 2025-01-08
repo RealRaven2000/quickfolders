@@ -172,6 +172,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Para usar esta función, solo necesitas configurar al menos un patrón de búsqueda."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Haz clic derecho sobre [Encontrar correos relacionados] para seleccionar un patrón de búsqueda. Esto ejecutará la búsqueda y guardará su configuración para la próxima vez que hagas clic en el botón."
+  },
   "findRelated.options.title": {
     "message": "Opciones"
   },
@@ -317,7 +320,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird hasta la versión 133. La versión Pro incluye una {A-findRelated}herramienta de búsqueda mejorada{A} para encontrar correos relacionados con el que se está viendo actualmente. Consulte el registro completo de cambios en el enlace a continuación para obtener documentación detallada. {P2}",
+    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird hasta la versión 134. La versión Pro incluye una {A-findRelated}herramienta de búsqueda mejorada{A} para encontrar correos relacionados con el que se está viendo actualmente. Consulte el registro completo de cambios en el enlace a continuación para obtener documentación detallada. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1971,7 +1974,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Completado: función Pro para encontrar correos electrónicos relacionados mediante términos de búsqueda extraídos del correo electrónico mostrado actualmente: ahora puedes seleccionar entre diferentes búsquedas en un menú desplegable. [issue 488]{L2}{L1} Corregido: mover correos electrónicos a pestañas con Ctrl+Número. {L2} {L1} Corregido: los atajos de teclado entraban en conflicto con la escritura de texto en otros complementos como QNote++. [issue 497]{L2}{L1} Corregido: los nombres de carpetas que contienen comillas simples causaban errores en la navegación. {L2}{L1} 6.8.2 Corregido el botón de edición en la página de configuración para encontrar correos relacionados. {L2}"
+    "message": "{L1} Mejorada el rendimiento de los resultados de búsqueda de quickMove / quickJump mientras escribes para usuarios con muchas carpetas. [issue 463]{L2}{L1} Se omiten los no leídos y la carpeta siguiente / anterior de hermanos ahora sigue el árbol en orden lexical [issue 513]{L2}{L1} La barra de herramientas de QuickFolders ahora se muestra cuando se abre la pestaña de configuración. [issue 524]{L2}{L1} Arreglado: QuickFolders bloqueaba las teclas nativas de Thunderbird que contienen la tecla Option (metaKey) en sistemas Mac. {L2}{L1} Las propiedades específicas de la pestaña ahora vuelven a funcionar en la beta de Thunderbird 134. [issue 518]{L2}{L1} Arreglado: Los nombres de carpetas que contienen comillas simples ya no causan errores en la navegación.{L2}{L1} QuickFolders ahora soporta la creación de subcarpetas con espacios en el nombre a través de quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

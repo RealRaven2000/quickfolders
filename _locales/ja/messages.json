@@ -157,6 +157,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "この機能を使用するには、少なくとも1つの検索パターンを設定する必要があります。"
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "[関連するメールを検索]を右クリックして検索パターンを選択します。これにより検索が実行され、次回ボタンをクリックしたときの設定が保存されます。"
+  },
   "findRelated.options.title": {
     "message": "オプション"
   },
@@ -302,7 +305,7 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} L'ultima edizione di $addonName$ è ora compatibile con Thunderbird fino alla versione 133. La versione Pro offre uno {A-findRelated}strumento di ricerca migliorato{A} per trovare email correlate a quella attualmente visualizzata. Visita il registro completo delle modifiche nel link sottostante per una documentazione dettagliata. {P2}",
+    "message": "{P1} L'ultima edizione di $addonName$ è ora compatibile con Thunderbird fino alla versione 134. La versione Pro offre uno {A-findRelated}strumento di ricerca migliorato{A} per trovare email correlate a quella attualmente visualizzata. Visita il registro completo delle modifiche nel link sottostante per una documentazione dettagliata. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1857,7 +1860,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} 完了: 現在表示されているメールから抽出された検索用語を使用して関連するメールを見つけるPro機能 - ドロップダウンメニューから複数の検索を選択できるようになりました。[issue 488]{L2}{L1} 修正: Ctrl+数字でメールをタブに移動する機能。[issue 497]{L2} {L1} 修正: 他のアドオン（例: QNote++）でのテキスト入力とショートカットキーの競合。[issue 497]{L2}{L1} 修正: シングルクォートを含むフォルダ名がナビゲーションを壊していた問題。[issue 497]{L2}{L1} 6.8.2 設定ページで関連メールを検索するための編集ボタンを修正しました。 {L2}"
+    "message": "{L1} 多くのフォルダを持つユーザー向けに、typing中のquickMove / quickJump検索結果のパフォーマンスを改善しました。 [issue 463]{L2}{L1} 未読はスキップされ、次/前の兄弟フォルダがツリー内で辞書順に従うようになりました [issue 513]{L2}{L1} 設定タブを開いた時にQuickFoldersツールバーが表示されるようになりました。 [issue 524]{L2}{L1} 修正: QuickFoldersは、MacシステムのOption（metaKey）を含むThunderbirdのネイティブキーストロークをブロックしていました。{L2}{L1} タブ固有のプロパティがThunderbird Beta 134で再び機能するようになりました。 [issue 518]{L2}{L1} 修正: シングルクォートを含むフォルダ名は、ナビゲーション中にエラーを引き起こさなくなりました。{L2}{L1} QuickFoldersは、quickMoveからスペースを含む名前でサブフォルダの作成をサポートするようになりました [issue 512]。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

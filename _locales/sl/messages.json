@@ -157,6 +157,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Za uporabo te funkcije je dovolj, da nastavite vsaj en iskalni vzorec."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Kliknite desno na [Poišči povezane e-pošte], da izberete iskalni vzorec. To bo izvedlo iskanje in shranilo nastavitve za naslednjič, ko kliknete gumb."
+  },
   "findRelated.options.title": {
     "message": "Параметры"
   },
@@ -302,7 +305,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Najnovejša različica $addonName$ zdaj deluje v Thunderbird do različice 133. Pro različica vključuje {A-findRelated}izboljšano orodje za iskanje{A}, ki omogoča iskanje sporočil, povezanih z izbranim. Za podrobno dokumentacijo obiščite celoten dnevnik sprememb prek spodnje povezave. {P2}",
+    "message": "{P1} Najnovejša različica $addonName$ zdaj deluje v Thunderbird do različice 134. Pro različica vključuje {A-findRelated}izboljšano orodje za iskanje{A}, ki omogoča iskanje sporočil, povezanih z izbranim. Za podrobno dokumentacijo obiščite celoten dnevnik sprememb prek spodnje povezave. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

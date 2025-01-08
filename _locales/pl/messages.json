@@ -169,6 +169,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Aby skorzystać z tej funkcji, wystarczy ustawić co najmniej jeden wzorzec wyszukiwania."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Kliknij prawym przyciskiem myszy na [Znajdź powiązane e-maile], aby wybrać wzór wyszukiwania. To uruchomi wyszukiwanie i zapisze jego ustawienia na następny raz, gdy klikniesz przycisk."
+  },
   "findRelated.options.title": {
     "message": "Opcje"
   },
@@ -311,7 +314,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 133. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
+    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 134. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1962,7 +1965,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Ukończono: Funkcja Pro do znajdowania powiązanych wiadomości e-mail za pomocą terminów wyszukiwania wyodrębnionych z aktualnie wyświetlanej wiadomości e-mail – teraz można wybierać różne wyszukiwania z menu rozwijanego. [issue 488]{L2}{L1} Naprawiono: przenoszenie wiadomości e-mail do kart za pomocą Ctrl+Numer. {L2} {L1} Naprawiono: Skróty klawiszowe kolidowały z wprowadzaniem tekstu w innych dodatkach, takich jak QNote++. [issue 497]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy powodowały błędy nawigacji. {L2}{L1} 6.8.2 Naprawiono przycisk edycji na stronie ustawień do znajdowania powiązanych wiadomości. {L2}"
+    "message": "{L1} Poprawiona wydajność wyników wyszukiwania quickMove / quickJump podczas pisania dla użytkowników z wieloma folderami. [issue 463]{L2}{L1} Nieprzeczytane wiadomości są teraz pomijane, a następna / poprzednia siostrzana foldera teraz podąża za porządkiem leksykalnym w drzewie [issue 513]{L2}{L1} Pasek narzędzi QuickFolders jest teraz wyświetlany, gdy zakładka ustawień jest otwarta. [issue 524]{L2}{L1} Naprawiono: QuickFolders blokował natywne skróty klawiaturowe Thunderbirda, które zawierają klawisz Opcja (metaKey) w systemach Mac. {L2}{L1} Właściwości specyficzne dla zakładki działają teraz ponownie w wersji beta Thunderbirda 134. [issue 518]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy nie powodują już błędów podczas nawigacji.{L2}{L1} QuickFolders teraz obsługuje tworzenie subfolderów z nazwami zawierającymi spacje za pomocą quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

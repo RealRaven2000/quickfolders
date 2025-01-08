@@ -170,6 +170,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "För att använda den här funktionen behöver du bara ställa in minst ett sökmönster."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Högerklicka på [Hitta relaterade e-postmeddelanden] för att välja ett sökmönster. Detta kör sökningen och sparar inställningarna för nästa gång du klickar på knappen."
+  },
   "findRelated.options.title": {
     "message": "Alternativ"
   },
@@ -315,7 +318,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Den senaste versionen av $addonName$ kan nu användas med Thunderbird upp till version 133. Pro-versionen innehåller ett {A-findRelated}förbättrat sökverktyg{A} för att hitta e-postmeddelanden relaterade till det som visas. Besök hela ändringsloggen via länken nedan för detaljerad dokumentation. {P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ kan nu användas med Thunderbird upp till version 134. Pro-versionen innehåller ett {A-findRelated}förbättrat sökverktyg{A} för att hitta e-postmeddelanden relaterade till det som visas. Besök hela ändringsloggen via länken nedan för detaljerad dokumentation. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1981,7 +1984,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Slutfört: Pro-funktion för att hitta relaterade e-postmeddelanden med hjälp av sökord som hämtats från det aktuellt visade e-postmeddelandet – du kan nu välja mellan olika sökningar i en rullgardinsmeny. [issue 488]{L2}{L1} Fixat: Flytta e-post till flikar med Ctrl+Nummer. {L2} {L1} Fixat: Kortkommandon krockade med textinmatning i andra tillägg som QNote++. [issue 497]{L2}{L1} Fixat: Mappnamn som innehåller enkla citattecken bröt navigeringen. {L2}{L1} 6.8.2 Fixat redigeringsknappen på inställningssidan för att hitta relaterade mejl. {L2}"
+    "message": "{L1} Förbättrad prestanda för quickMove / quickJump sökresultat under skrivning för användare med många mappar. [issue 463]{L2}{L1} Olästa meddelanden hoppar nu över och nästa / föregående syskonmapp följer nu den lexikaliska ordningen i trädet [issue 513]{L2}{L1} QuickFolders verktygsfält visas nu när inställningsfliken öppnas. [issue 524]{L2}{L1} Åtgärdat: QuickFolders blockerade Thunderbird-native kortkommandon som innehåller Option (metaKey) på Mac-system. {L2}{L1} Flik-specifika egenskaper fungerar nu igen i Thunderbird beta 134. [issue 518]{L2}{L1} Åtgärdat: Mappnamn som innehåller enkla citationstecken orsakar inte längre fel under navigering.{L2}{L1} QuickFolders stödjer nu skapande av undermappar med mellanslag i namnet via quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

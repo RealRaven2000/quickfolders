@@ -173,6 +173,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "要使用此功能，您只需设置至少一个搜索模式。"
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "右键点击 [查找相关邮件] 以选择搜索模式。这样会执行搜索并保存其设置，以便下次点击按钮时使用。"
+  },
   "findRelated.options.title": {
     "message": "选项"
   },
@@ -318,7 +321,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} $addonName$ 的最新版本现已支持 Thunderbird 133 版。Pro 版本提供了一个 {A-findRelated}改进的搜索工具{A}，用于查找与当前查看的邮件相关的邮件。请访问以下链接查看完整的更新日志和详细文档。 {P2}",
+    "message": "{P1} $addonName$ 的最新版本现已支持 Thunderbird 134 版。Pro 版本提供了一个 {A-findRelated}改进的搜索工具{A}，用于查找与当前查看的邮件相关的邮件。请访问以下链接查看完整的更新日志和详细文档。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1903,7 +1906,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 完成：通过提取当前显示的电子邮件中的搜索术语来查找相关电子邮件的Pro功能 – 现在可以从下拉菜单中选择不同的搜索。 [issue 488]{L2}{L1} 修复：通过 Ctrl+数字 将邮件移动到选项卡。 {L2} {L1} 修复：快捷键与其他附加组件（如 QNote++）中的文本输入冲突。[issue 497]{L2}{L1} 修复：包含单引号的文件夹名称导致导航错误。 {L2}{L1} 6.8.2 修复了设置页面中查找相关邮件的编辑按钮。 {L2}"
+    "message": "{L1} 改进了在输入时，quickMove / quickJump 搜索结果的性能，适用于拥有许多文件夹的用户。 [issue 463]{L2}{L1} 跳过未读邮件，下一/上一兄弟文件夹现在按字典顺序跟随树形结构 [issue 513]{L2}{L1} 设置标签页打开时，QuickFolders 工具栏现在会显示。 [issue 524]{L2}{L1} 修复：QuickFolders 阻止了 Mac 系统上包含 Option (metaKey) 的 Thunderbird 本地快捷键。 {L2}{L1} 特定标签的属性现在在 Thunderbird beta 134 中重新生效。 [issue 518]{L2}{L1} 修复：包含单引号的文件夹名称不再导致导航错误。{L2}{L1} QuickFolders 现在支持通过 quickMove 创建包含空格的子文件夹 [issue 512]。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

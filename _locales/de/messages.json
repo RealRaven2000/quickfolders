@@ -170,6 +170,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "Um diese Funktion zu nutzen, richten Sie bitte mindestens ein Suchmuster ein."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Wählen Sie ein Suchmuster über Rechtsklick auf [Ähnliche Mails finden] aus. Dies führt die Suche aus und speichert deren Einstellungen für das nächste Mal, wenn Sie die Schaltfläche verwenden."
+  },
   "findRelated.options.title": {
     "message": "Optionen"
   },
@@ -315,7 +318,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird bis Version 133 kompatibel. Die Pro-Version enthält ein {A-findRelated}verbessertes Suchwerkzeug{A}, um E-Mails zu finden, die mit der aktuell angezeigten zusammenhängen. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link für detaillierte Dokumentation. {P2}",
+    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird bis Version 134 kompatibel. Die Pro-Version enthält ein {A-findRelated}verbessertes Suchwerkzeug{A}, um E-Mails zu finden, die mit der aktuell angezeigten zusammenhängen. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link für detaillierte Dokumentation. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1957,7 +1960,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Fertiggestellt: Pro-Funktion zum Finden verwandter E-Mails anhand von Suchbegriffen, die aus der aktuell angezeigten E-Mail extrahiert wurden – Sie können jetzt aus verschiedenen Suchen in einem Dropdown-Menü auswählen. [issue 488]{L2}{L1} Behoben: Verschieben von E-Mails zu Tabs durch Strg+Zahl. {L2} {L1} Behoben: Tastenkombinationen kollidierten mit der Texteingabe in anderen Add-ons wie z.B. QNote++. [issue 497]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen führten zu Fehlfunktion der Navigation. {L2}{L1} 6.8.2 Repariert: Bearbeiten-Schaltfläche auf der Einstellungsseite für verwandte E-Mails. {L2}"
+    "message": "{L1} Verbesserte Performance der quickMove / quickJump-Suchergebnisse beim Tippen für Benutzer mit vielen Ordnern. [issue 463]{L2}{L1} Ungelesene überspringen und Nächster / Vorheriger Schwesterordner folgen jetzt der lexikalischen Reihenfolge. [issue 513]{L2}{L1} Die QuickFolders-Werkzeugleiste wird jetzt mit angezeigt, wenn der Einstellungs-Tab geöffnet ist. [issue 524]{L2}{L1} Behoben: QuickFolders blockierte native Thunderbird-Tastenkombinationen, die die Optionstaste (metaKey) auf Mac-Systemen enthalten. {L2}{L1} Tab-spezifische Eigenschaften funktionieren nun wieder in Thunderbird Beta 134. [issue 518]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen erzeugten Fehler in der Navigation. {L2}{L1} Behoben: Ein Unterordner, der per quickMove erzeugt wird, kann jetzt Leerzeichen im Namen enthalten [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

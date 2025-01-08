@@ -155,6 +155,9 @@
   "findRelated.prompt.enterPattern": {
     "message": "A funkció használatához legalább egy keresési mintát kell beállítani."
   },
+  "findRelated.prompt.selectPattern": {
+    "message": "Kattintson a jobb gombbal [Kapcsolódó levelek keresése] lehetőségre a keresési minta kiválasztásához. Ez végrehajtja a keresést, és elmenti annak beállításait a következő alkalomra, amikor rákattint a gombra."
+  },
   "findRelated.options.title": {
     "message": "Beállítások"
   },
@@ -285,7 +288,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A $addonName$ legújabb verziója már kompatibilis a Thunderbird 133-as verziójáig. A Pro verzió tartalmaz egy {A-findRelated}fejlesztett keresőeszközt{A}, amely segít megtalálni az aktuálisan megtekintett e-maillel kapcsolatos leveleket. A részletes dokumentációért látogasson el az alábbi linkre a teljes változáslistához. {P2}",
+    "message": "{P1} A $addonName$ legújabb verziója már kompatibilis a Thunderbird 134-as verziójáig. A Pro verzió tartalmaz egy {A-findRelated}fejlesztett keresőeszközt{A}, amely segít megtalálni az aktuálisan megtekintett e-maillel kapcsolatos leveleket. A részletes dokumentációért látogasson el az alábbi linkre a teljes változáslistához. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1726,7 +1729,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Elkészült: Pro funkció kapcsolódó e-mailek keresésére, amely az aktuálisan megjelenített e-mailből kinyert keresési kifejezéseket használja – most már különböző keresések közül választhat egy legördülő menüben. [issue 488]{L2}{L1} Javítva: E-mailek áthelyezése fülekre Ctrl+Szám kombinációval. {L2} {L1} Javítva: Billentyűparancsok ütköztek más kiegészítők, például a QNote++ szövegbevitelével. [issue 497]{L2}{L1} Javítva: Az egyszerű idézőjelet tartalmazó mappanevek navigációs hibát okoztak. {L2}{L1} 6.8.2 Javítva a beállítások oldalon a kapcsolódó e-mailek szerkesztőgombja. {L2}"
+    "message": "{L1} A quickMove / quickJump keresési eredmények teljesítményének javítása gépelés közben azok számára, akik sok mappát használnak. [issue 463]{L2}{L1} A nem olvasott elemek most már kihagyásra kerülnek, és a következő / előző testvérmappa mostantól a fa lexikális sorrendjét követi [issue 513]{L2}{L1} A QuickFolders eszköztár mostantól megjelenik, amikor a beállítások fülre kattintunk. [issue 524]{L2}{L1} Javítva: A QuickFolders blokkolta a Thunderbird natív billentyűparancsokat, amelyek tartalmazzák az Option (metaKey) billentyűt Mac rendszereken. {L2}{L1} A lap-specifikus beállítások most ismét működnek a Thunderbird beta 134-es verziójában. [issue 518]{L2}{L1} Javítva: Az egyszeres idézőjeleket tartalmazó mappanevek már nem okoznak hibákat a navigáció során.{L2}{L1} A QuickFolders mostantól támogatja a quickMove segítségével létrehozott almappák nevét, amelyek szóközöket tartalmaznak [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
