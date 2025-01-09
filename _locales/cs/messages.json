@@ -1,6 +1,6 @@
 {
   "_l10nstatus": {
-    "message": "SPLASH+LICENSE"
+    "message": "SPLASH+UI"
   },
   "account.label": {
     "message": "Vyberte účet:"
@@ -34,6 +34,18 @@
   "btn-want-to-donate": {
     "message": "Chci pomoci s jednorázovým darem."
   },
+  "btnApply": {
+    "message": "Použít"
+  },
+  "btnCategory": {
+    "message": "Kategorie"
+  },
+  "btnCategory.tooltip": {
+    "message": "Definovat kategorie záložek"
+  },
+  "btnReset": {
+    "message": "Obnovit výchozí nastavení"
+  },
   "buyDomainLicense.button": {
     "message": "Koupit licenci na domény"
   },
@@ -52,11 +64,65 @@
   "buyStandardLicense.instruct": {
     "message": "Nemůžete si dovolit prémiové funkce? Získejte vysoce dostupnou standardní licenci a pokračujte v testování prémiových funkcí."
   },
+  "chkComposerSubfolders": {
+    "message": "Použít také pro podsložky"
+  },
+  "chkHideFromQuickJump": {
+    "message": "Vyloučit z rychlého skoku / rychlého přesunu"
+  },
+  "chkHideFromQuickJump.tooltip": {
+    "message": "Vyloučit tuto složku a její podřízené složky z výsledků rychlého skoku / rychlého přesunu"
+  },
+  "chkIgnoreCounts": {
+    "message": "Skrýt počet e-mailů"
+  },
+  "chkIgnoreCounts.tooltip": {
+    "message": "Nikdy nezobrazovat počet obsažených e-mailů."
+  },
+  "chkIgnoreUnread": {
+    "message": "Skrýt stav nepřečtených"
+  },
+  "chkIgnoreUnread.tooltip": {
+    "message": "Nikdy nezobrazovat tučné písmo nebo počet nepřečtených e-mailů, i když složka obsahuje nepřečtené zprávy."
+  },
+  "chkSetMailsUnread": {
+    "message": "Nastavit e-mail jako nepřečtený"
+  },
+  "chkSetMailsUnread.tooltip": {
+    "message": "Pokud přesunete e-mail do této složky, bude nastaven jako nepřečtený."
+  },
   "commands.toggleFolderTree": {
     "message": "Přepnout viditelnost stromu složek"
   },
   "cost-of-independence": {
     "message": "Vývoj softwaru stojí čas a peníze - na rozdíl od mnoha aplikací na platformě nejsou doplňky napsány velkými korporacemi, ani nejsou žádným způsobem sponzorovány společností Mozilla."
+  },
+  "cssBackground": {
+    "message": "Pozadí"
+  },
+  "cssBackground.tooltip": {
+    "message": "Zadejte CSS pozadí, např. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
+  },
+  "cssColor": {
+    "message": "Barva textu"
+  },
+  "cssColor.tooltip": {
+    "message": "Zadejte CSS barvu, např. rgba(100,20,20,0.8)"
+  },
+  "defaultAccountAddress.value": {
+    "message": "Výchozí identita účtu"
+  },
+  "domainLicense.email": {
+    "message": "Budeme vás kontaktovat pomocí této e-mailové adresy pro vytvoření vaší doménové licence; prosím, počkejte dva pracovní dny, než se s vámi spojíme. Doménu pro licenci zadejte na další stránce."
+  },
+  "domainLicense.header": {
+    "message": "Licencovaná e-mailová doména"
+  },
+  "domainLicense.instruct": {
+    "message": "Licence je vázána na doménu vaší firmy. Licence umožní uživatelům s e-mailovými adresami končícími touto doménou používat QuickFolders Pro. Například pokud zadáte doménu 'abc.com', budou uživatelé s e-mailovými adresami jako fred@abc.com, martha@abc.com, mike.doe@abc.com atd. mít přístup k licenci. Maximální počet platných jednotlivých uživatelů je počet, který jste zadali na úvodní obrazovce."
+  },
+  "domainLicense.validate": {
+    "message": "Ujistěte se, že zadáte doménu *přesně tak, jak je* v e-mailových adresách vaší firmy (část *po* znaku @), protože bude použita pro autorizaci e-mailových adres vašich uživatelů."
   },
   "donate": {
     "message": "Pomozte s jednorázovým darem."
@@ -76,14 +142,100 @@
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
   },
+  "extensionDescription": {
+    "message": "Uložte své oblíbené e-mailové složky v Thunderbirdu."
+  },
+  "extensionName": {
+    "message": "QuickFolders"
+  },
+  "extensions.quickfolders@curious.be.description": {
+    "message": "Uložte své oblíbené e-mailové složky v Thunderbirdu."
+  },
+  "findRelated.btnAdd": {
+    "message": "Přidat"
+  },
+  "findRelated.btnDelete": {
+    "message": "Smazat"
+  },
+  "findRelated.btnUpdate": {
+    "message": "Aktualizovat"
+  },
+  "findRelated.btn.label": {
+    "message": "Najít související e-maily"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Hledejte podobné e-maily na základě vybraného e-mailu a uživatelem definovaných vyhledávacích vzorcích"
+  },
+  "findRelated.menu.configure": {
+    "message": "Nastavit vyhledávací vzory…"
+  },
+  "findRelated.prompt.title": {
+    "message": "Najít související e-maily: Vyhledávání podle vzoru"
+  },
+  "findRelated.prompt.enterPattern": {
+    "message": "Pro použití této funkce nastavte alespoň jeden vyhledávací vzor."
+  },
+  "findRelated.prompt.selectPattern": {
+    "message": "Klikněte pravým tlačítkem na [Najít související e-maily] pro výběr vyhledávacího vzoru. To spustí vyhledávání a uloží jeho nastavení pro příště."
+  },
+  "findRelated.options.title": {
+    "message": "Možnosti"
+  },
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Tlačítko 'Přejít na další e-mail' vymaže vyhledávání."
+  },
+  "findRelated.searchGroup": {
+    "message": "Skupina vyhledávání (0 pro úplnou shodu):"
+  },
+  "findRelated.searchPattern": {
+    "message": "Vyhledávací vzor:"
+  },
+  "findRelated.term.menutitle": {
+    "message": "Název:"
+  },
+  "findRelated.term.subject": {
+    "message": "Předmět"
+  },
+  "findRelated.term.sender": {
+    "message": "Odesílatel"
+  },
+  "findRelated.term.recipients": {
+    "message": "Příjemci"
+  },
+  "findRelated.term.body": {
+    "message": "Tělo"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Získejte vyhledávací řetězec z:"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Co hledat v souvisejících e-mailech:"
+  },
   "firstName.label": {
     "message": "Jméno:"
   },
+  "freeLicense": {
+    "message": "Pokud jste nedávno přispěli na projekt QuickFolders nebo jste provedli přispívání, jako je překlad nebo psaní oprav, můžete být způsobilí pro získání zdarma licenčního klíče. Kontaktujte mě přes kartu podpory v možnostech QuickFolders."
+  },
+  "fromAddress": {
+    "message": "Od:"
+  },
+  "fromAddress.tooltip": {
+    "message": "Výchozí identita při psaní e-mailů"
+  },
   "getQuickFolders": {
-    "message": "Licence QuickFolders"
+    "message": "Licencování QuickFolders"
+  },
+  "grpComposer": {
+    "message": "Výchozí pole e-mailu"
+  },
+  "grpCustomCSS": {
+    "message": "Vlastní CSS"
+  },
+  "grpTabBehavior": {
+    "message": "Pokročilé chování karet"
   },
   "heading-installed": {
-    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Úspěšně nainstalován $addonName$",
     "placeholders": {
       "addonName": {
@@ -93,7 +245,6 @@
     }
   },
   "heading-updated": {
-    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ Úspěšně aktualizováno",
     "placeholders": {
       "addonName": {
@@ -106,7 +257,7 @@
     "message": "Roční licence pro QuickFolders Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější."
   },
   "keyshortcuts.news": {
-    "message": "V současné době Thunderbird používá tyto klávesové zkratky jako vestavěné, ale můžete je uvolnit pomocí doplňku tbkeys lite. Klikněte na tlačítko (?) pro více informací:"
+    "message": "Aktuálně Thunderbird používá tyto zkratky jako vestavěné, ale můžete je uvolnit pomocí doplňku tbkeys lite. Klikněte na (?) pro více informací:"
   },
   "lastName.label": {
     "message": "Příjmení:"
@@ -119,6 +270,9 @@
         "example": "10"
       }
     }
+  },
+  "lblCustomPalette": {
+    "message": "Vlastní paleta:"
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -170,7 +324,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Nejnovější verze $addonName$ nyní funguje až do Thunderbird verze 133. Verze Pro obsahuje {A-findRelated}vylepšený nástroj pro hledání{A} e-mailů souvisejících s aktuálně zobrazeným. Navštivte odkaz na celý seznam změn níže a získejte podrobnou dokumentaci. {P2}",
+    "message": "{P1} Nejnovější verze $addonName$ nyní funguje až do Thunderbird verze 134. Verze Pro obsahuje {A-findRelated}vylepšený nástroj pro hledání{A} e-mailů souvisejících s aktuálně zobrazeným. Navštivte odkaz na celý seznam změn níže a získejte podrobnou dokumentaci. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -205,17 +359,787 @@
   "purchase-heading": {
     "message": "Nákup licence!"
   },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Nepodařilo se vytvořit karty. Podívejte se na nástroje / chybovou konzolu pro podrobnosti."
+  },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Momentálně nepodporovaný typ záložky: $bookmarkType$ {NewLine}Vyberte alespoň jednu zprávu nebo jednoduše přetáhněte e-maily na tlačítko",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },
+  "qf.backupAndRestore": {
+    "message": "Zálohování / Obnovení"
+  },
+  "qf.button.add": {
+    "message": "Přidat!"
+  },
+  "qf.button.configureTooltips": {
+    "message": "Konfigurovat nápovědy…"
+  },
+  "qf.button.currentFolderBackground.set": {
+    "message": "aplikovat"
+  },
+  "qf.button.default": {
+    "message": "Výchozí"
+  },
+  "qf.button.defaultcolors": {
+    "message": "Výchozí barvy"
+  },
+  "qf.button.deleteselectedcategory": {
+    "message": "Smazat vybranou kategorii"
+  },
+  "qf.button.down": {
+    "message": "Dolů"
+  },
+  "qf.button.pasteLicense": {
+    "message": "vložit"
+  },
+  "qf.button.rename": {
+    "message": "Přejmenovat"
+  },
+  "qf.button.reorderButtonBottom": {
+    "message": "Přesunout na spodní"
+  },
+  "qf.button.reorderButtonBottom.accessKey": {
+    "message": "b"
+  },
+  "qf.button.reorderButtonBottom.toolTip": {
+    "message": "Uspořádat filtr tak, aby se spustil po všech ostatních"
+  },
+  "qf.button.reorderButtonTop": {
+    "message": "Přesunout na vrchol"
+  },
+  "qf.button.reorderButtonTop.accessKey": {
+    "message": "o"
+  },
+  "qf.button.reorderButtonTop.toolTip": {
+    "message": "Uspořádat filtr tak, aby se spustil před všemi ostatními"
+  },
+  "qf.button.up": {
+    "message": "Nahoru"
+  },
+  "qf.button.validateLicense": {
+    "message": "ověřit"
+  },
+  "qf.caption.currentFolderBackground": {
+    "message": "Pozadí panelu aktuální složky"
+  },
+  "qf.categories.supportMultiple": {
+    "message": "Podpora výběru více kategorií karet"
+  },
+  "qf.categories.supportMultiple.tooltip": {
+    "message": "Použijte klávesu SHIFT pro výběr více než jedné kategorie v rozbalovacím seznamu."
+  },
+  "qf.checkbox.autoFocusPreview": {
+    "message": "Zaostřit na seznam zpráv při přepínání karet"
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skrýt QuickFolders v záložkách s jednou zprávou"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Odstraní panel QuickFolders v záložkách, které zobrazují jednu zprávu."
+  },
+  "qf.checkbox.currentFolder.closeButton": {
+    "message": "Tlačítko Zavřít"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Zobrazit panel nástrojů"
+  },
+  "qf.checkbox.currentfolder.lightweight": {
+    "message": "integrovat s lehkým tématem"
+  },
+  "qf.checkbox.debug": {
+    "message": "Režim ladění"
+  },
+  "qf.checkbox.debug.tooltip": {
+    "message": "Klikněte na ikonu nastavení pro pokročilé možnosti ladění"
+  },
+  "qf.checkbox.displaylabel": {
+    "message": "Zobrazit štítek 'QuickFolders' na panelu nástrojů"
+  },
+  "qf.checkbox.displaylabel.tooltip": {
+    "message": "Klikněte pravým tlačítkem pro změnu textu tohoto štítku"
+  },
+  "qf.checkbox.enableTransitions": {
+    "message": "Povolit CSS přechody"
+  },
+  "qf.checkbox.enableTransitions.tooltip": {
+    "message": "Zobrazuje plynulé přechody mezi různými aspekty zbarvení karet."
+  },
+  "qf.checkbox.hideCategoryBox": {
+    "message": "Skrýt kategorie"
+  },
+  "qf.checkbox.hideCategoryBox.tooltip": {
+    "message": "Minimalizuje menu kategorií, aby zabíralo méně místa."
+  },
+  "qf.checkbox.highlightNewMail": {
+    "message": "Zvýraznit složky s novou poštou"
+  },
+  "qf.checkbox.highlightNewMail.outline": {
+    "message": "Také orámovat název (nejlépe s tmavými/barenými pozadími)"
+  },
+  "qf.checkbox.menus.dragToNewFolder": {
+    "message": "Přetáhnout do nové podsložky"
+  },
+  "qf.checkbox.menus.emptyJunk": {
+    "message": "Vyprázdnit Spam"
+  },
+  "qf.checkbox.menus.emptyTrash": {
+    "message": "Vyprázdnit Koš"
+  },
+  "qf.checkbox.menus.getMailForInbox": {
+    "message": "Získat zprávy (Poštovní účty)"
+  },
+  "qf.checkbox.menus.getMailForNews": {
+    "message": "Získat zprávy (Zpravodajské účty)"
+  },
+  "qf.checkbox.menus.markAllRead": {
+    "message": "Označit všechny jako přečtené"
+  },
+  "qf.checkbox.menus.markAllReadRecursive": {
+    "message": "Oz označit všechny jako přečtené (rekurzivně)"
+  },
+  "qf.checkbox.quickCopy": {
+    "message": "quickCopy - Kopírovat poštu do jakékoli složky pomocí zkratky:"
+  },
+  "qf.checkbox.quickCopy.tip": {
+    "message": "Zkratka pro přetahování e-mailů na tlačítko quickCopy pro nejrychlejší kopírování do libovolné složky pomocí zadání názvu."
+  },
+  "qf.checkbox.quickJump": {
+    "message": "quickJump - Přejít do libovolné složky pomocí zkratky:"
+  },
+  "qf.checkbox.quickJump.tip": {
+    "message": "Zkratka pro kliknutí na tlačítko quickJump pro nejrychlejší navigaci kamkoli pomocí zadání názvu."
+  },
+  "qf.checkbox.quickMove": {
+    "message": "quickMove - Přesunout poštu do jakékoli složky pomocí zkratky:"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Zkratka pro přetahování e-mailů na tlačítko quickMove pro nejrychlejší zařazení do libovolné složky pomocí zadání názvu."
+  },
+  "qf.checkbox.quickmove.autofill": {
+    "message": "Vložit název poslední úspěšně použité složky"
+  },
+  "qf.checkbox.quickmove.autofill.tip": {
+    "message": "Poslední složka úspěšně použitá bude vložena. Stiskněte Enter pro její použití nebo ji jednoduše přepište pro jiný cíl."
+  },
+  "qf.checkbox.readingList": {
+    "message": "Seznam k přečtení"
+  },
+  "qf.checkbox.readingList.tooltip": {
+    "message": "Seznam pro e-maily, které by měly být přečteny později. Přetáhněte důležité e-maily na toto tlačítko."
+  },
+  "qf.checkbox.shadows": {
+    "message": "stíny"
+  },
+  "qf.checkbox.shift": {
+    "message": "Shift"
+  },
+  "qf.checkbox.showCountInSubFolders": {
+    "message": "Zobrazit také součty podsložek"
+  },
+  "qf.checkbox.showCountInSubFolders.tooltip": {
+    "message": "Součty jsou zobrazeny oddělené znakem '+' vedle hlavních součtů; nepřečtená pošta způsobí ztučnění záložky, pokud je aktivní výše uvedená možnost"
+  },
+  "qf.checkbox.showFilterButton": {
+    "message": "Tlačítko 'Vytvořit filtry'"
+  },
+  "qf.checkbox.showFilterButton.tooltip": {
+    "message": "Filtry můžete také vytvořit pomocí kontextové nabídky QuickFolders."
+  },
+  "qf.checkbox.showFolderNavigation": {
+    "message": "Tlačítka pro navigaci ve složkách"
+  },
+  "qf.checkbox.showIconButtons": {
+    "message": "Tlačítko pro přizpůsobení ikon"
+  },
+  "qf.checkbox.showIcons": {
+    "message": "Zobrazit ikony (Doručená pošta, Odeslané, Nevyžádané, Koš, Koncepty, Archivované, Šablony)"
+  },
+  "qf.checkbox.showMailFolderCommands": {
+    "message": "Příkazy složek pošty"
+  },
+  "qf.checkbox.showMessageNavigation": {
+    "message": "Tlačítka pro navigaci zpráv"
+  },
+  "qf.checkbox.showNewMailItalics": {
+    "message": "Zobrazit záložky s nově příchozí poštou kurzívou"
+  },
+  "qf.checkbox.showNonEmptyItalics": {
+    "message": "Zobrazit záložky s obsahem kurzívou"
+  },
+  "qf.checkbox.showQuickMove": {
+    "message": "Tlačítko quickMove"
+  },
+  "qf.checkbox.showQuickMove.tooltip": {
+    "message": "Tlačítko quickMove lze použít k přetažení e-mailů do pojmenované cílové složky. Můžete shromažďovat e-maily z více složek. Po nasbírání požadovaných e-mailů zadejte do vyhledávacího pole název cílové složky."
+  },
+  "qf.checkbox.showRecentButton": {
+    "message": "Tlačítko 'Nedávné složky'"
+  },
+  "qf.checkbox.showRecentTab": {
+    "message": "Záložka 'Nedávné složky'"
+  },
+  "qf.checkbox.showSubfolders": {
+    "message": "Rozbalit podsložky v kontextových nabídkách"
+  },
+  "qf.checkbox.showTotalMessageCount": {
+    "message": "Zobrazit celkový počet zpráv"
+  },
+  "qf.checkbox.showUnreadBold": {
+    "message": "Zobrazit záložky s nepřečtenými zprávami tučně"
+  },
+  "qf.checkbox.showUnreadMessageCount": {
+    "message": "Zobrazit počet nepřečtených zpráv"
+  },
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Zobrazit číslo klávesové zkratky na štítcích složek"
+  },
+  "qf.checkbox.singleMessage.currentFolder.show": {
+    "message": "…také v oknech pro jednotlivé zprávy"
+  },
+  "qf.checkbox.singleMessage.currentFolder.tooltip": {
+    "message": "Zobrazit panel aktuální složky v okně, které se otevře při zobrazení e-mailu v novém okně"
+  },
+  "qf.checkbox.singleMessageTab.currentFolder.show": {
+    "message": "Panel v záložkách pro jednotlivé zprávy"
+  },
+  "qf.checkbox.skipFolder": {
+    "message": "Přeskočit nepřečtenou složku – použijte zkratku: SHIFT +"
+  },
+  "qf.checkbox.skipFolder.tip": {
+    "message": "Klávesová zkratka pro přeskočení na další nepřečtenou složku."
+  },
+  "qf.checkbox.sortMenusAlpha": {
+    "message": "Vynutit abecední řazení nabídek s podsložkami."
+  },
+  "qf.checkbox.sortMenusAlpha.tooltip": {
+    "message": "Použijte tuto možnost pouze tehdy, pokud váš e-mailový klient neřadí podsložky správně."
+  },
+  "qf.checkbox.storeConfig.general": {
+    "message": "Zahrnout obecná nastavení"
+  },
+  "qf.checkbox.storeConfig.layout": {
+    "message": "Zahrnout pokročilá nastavení a rozvržení"
+  },
+  "qf.checkbox.storeConfig.tabs": {
+    "message": "Zahrnout záložky QuickFolders"
+  },
+  "qf.checkbox.tabMenuIcon": {
+    "message": "Ikona nabídky panelu nástrojů"
+  },
+  "qf.checkbox.tabMenuIcon.tooltip": {
+    "message": "Tuto nabídku lze také vyvolat kliknutím pravým tlačítkem na samotný panel nástrojů"
+  },
+  "qf.checkbox.transparent": {
+    "message": "průhledný"
+  },
+  "qf.checkbox.useNavigationShortcuts": {
+    "message": "ALT-Šipka vlevo / ALT-Šipka vpravo pro předchozí / další záložku"
+  },
+  "qf.checkbox.usePalette": {
+    "message": "Použít paletu"
+  },
+  "qf.checkbox.useRebuildShortcut": {
+    "message": "Obnovit záložky zkratkou: Ctrl + Alt +"
+  },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Použít klávesové zkratky (Alt + 1 až Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Použít Ctrl místo Alt"
+  },
+  "configurable.tooltip": {
+    "message": "Klikněte na ozubené kolečko pro další možnosti konfigurace"
+  },
+  "qf.continueFilter.label": {
+    "message": "Vytvořit filtr…"
+  },
+  "qf.continueFilter.shortcut": {
+    "message": "F"
+  },
+  "qf.copyfolders": {
+    "message": "Kopírovat karty"
+  },
+  "qf.copyfolders.tooltip": {
+    "message": "Zkopírujte konfiguraci karet QuickFolders do schránky"
+  },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird motiv"
+  },
+  "qf.currentFolderBackground.custom": {
+    "message": "vlastní"
+  },
+  "qf.currentFolderBackground.dark": {
+    "message": "tmavý"
+  },
+  "qf.currentFolderBackground.default": {
+    "message": "stříbrný"
+  },
+  "qf.currentFolderBackground.translucent": {
+    "message": "průhledný"
+  },
+  "qf.currentfolder.leftSpacer": {
+    "message": "Levý odsazovač:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Pravý odsazovač:"
+  },
+  "qf.description.github": {
+    "message": "Pro oficiální požadavky na funkce a hlášení chyb prosím využijte GitHub"
+  },
+  "qf.description.categoryusage": {
+    "message": "Tuto kartu můžete zařadit do kategorie (např. 'Práce', 'Soukromé', …)."
+  },
+  "qf.description.changeCategory": {
+    "message": "Klikněte pravým tlačítkem na kartu pro organizaci do jedné nebo více kategorií. Vytvoří filtr pro kategorie nalevo od karet."
+  },
+  "qf.description.contactMe": {
+    "message": "Můžete mě také kontaktovat osobně na $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
+  },
+  "qf.description.donate": {
+    "message": "Pokud máte QuickFolders rádi stejně jako my a chtěli byste podpořit jeho vývoj, můžete přispět na další vývoj QuickFolders."
+  },
+  "qf.description.dragToAdd": {
+    "message": "Přetáhněte složky e-mailů na prázdnou oblast nové lišty a vytvořte novou rychlou složku (funguje jako zástupce/alias). Přetáhněte zprávy na rychlou složku pro přesun do odpovídající složky (nebo kopírujte s klávesou modifikátoru). Klikněte na rychlou složku pro přechod do složky e-mailů."
+  },
+  "qf.description.dragToPopup": {
+    "message": "Přetáhněte zprávy na rozbalovací menu rychlé složky pro přesun do podřízených složek."
+  },
+  "qf.description.dragToPosition": {
+    "message": "Přetahujte rychlé složky do stran pro změnu jejich pozic. Klikněte pravým tlačítkem na rychlou složku pro kontextové menu; výběrem přejdete do podřízených složek. 'Přejmenovat kartu' změní popisek rychlé složky. 'Odstranit kartu' smaže rychlou složku (ne složku e-mailů)."
+  },
+  "qf.description.dragexplain": {
+    "message": "Karty lze také přetahovat pro změnu pozic! Pusťte kartu na jinou pro vložení před / za ni."
+  },
+  "qf.description.editcategory": {
+    "message": "Vyberte existující kategorii dvojklikem na ni, nebo přidejte novou kategorii níže."
+  },
+  "qf.description.experimentalItems": {
+    "message": "Následující položky jsou experimentální, doufáme, že budou fungovat v příštím vydání!"
+  },
+  "qf.description.languages": {
+    "message": "QuickFolders podporuje lokalizaci - můžete pomoci přidáním překladu do vašeho jazyka na GitHubu:"
+  },
+  "qf.description.linkNote": {
+    "message": "Navštivte domovskou stránku QuickFolders pro podrobný uživatelský průvodce, tipy a FAQ:"
+  },
+  "qf.description.multicategory": {
+    "message": "Pro přidání složky do více kategorií: podržte SHIFT nebo CONTROL při výběru položek."
+  },
+  "qf.description.pulldown": {
+    "message": "Lišta QuickFolders zobrazí rozbalovací menu, které vám umožní filtrovat karty podle kategorie."
+  },
+  "qf.description.rightClickOptions": {
+    "message": "Klikněte pravým tlačítkem na prázdnou oblast pro otevření nabídky možností. V možnostech můžete vybrat nativní styl (menší) nebo plochý styl (přehlednější; podporuje indikátor přetahování)."
+  },
+  "qf.description.tipMsg": {
+    "message": "Tip: Pokud máte rozsáhlé množství složek, vyzkoušejte rozšíření Nostalgy pro klávesově řízenou organizaci zpráv."
+  },
+  "qf.description.versionhistory": {
+    "message": "Podrobná historie verzí na quickfolders.org"
+  },
+  "qf.dialog.changeorder": {
+    "message": "Změnit pořadí karet"
+  },
+  "qf.dialog.quickmove.settings": {
+    "message": "Pokročilá nastavení quickMove"
+  },
+  "qf.dialog.setcategory": {
+    "message": "Nastavit kategorii pro kartu"
+  },
+  "qf.donate.tooltip": {
+    "message": "Podpořte vývoj QuickFolders!"
+  },
+  "qf.filters.instructions": {
+    "message": "Vyberte šablonu. Pravidla filtru můžete upravit na další obrazovce."
+  },
+  "qf.filters.template.from": {
+    "message": "Podle odesílatele (from)"
+  },
+  "qf.filters.template.from.description": {
+    "message": "Pravděpodobně nejpoužívanější vzor: získá e-mailovou adresu odesílatele a vloží ji do polí 'from' a 'to' v podmínkách filtru. Takto budou celé konverzace s odesílatelem přesunuty do nové složky."
+  },
+  "qf.filters.template.list": {
+    "message": "Poštovní seznam"
+  },
+  "qf.filters.template.list.description": {
+    "message": "Podobné jako Podle odesílatele, ale nevyplňuje pole podmínky 'to'."
+  },
+  "qf.filters.template.tag": {
+    "message": "Podle štítků"
+  },
+  "qf.filters.template.tag.description": {
+    "message": "Používá štítky e-mailu a přidává je jako podmínky filtru."
+  },
+  "qf.filters.template.to": {
+    "message": "Podle příjemce (to)"
+  },
+  "qf.filters.template.to.description": {
+    "message": "Podobné jako 'Podle odesílatele': použijte, když označíte e-mail, který jste poslali někomu jinému. Získá e-mailovou adresu příjemce a vloží ji do polí podmínek filtru 'from' a 'to'."
+  },
+  "qf.filters.template.topic": {
+    "message": "Podle předmětu"
+  },
+  "qf.filters.template.topic.description": {
+    "message": "Vyhledává speciální výrazy v závorkách, např. [sběratelé známek] nebo {vegani}, a vytvoří podmínku filtru na základě těchto výrazů."
+  },
+  "qf.filters.title": {
+    "message": "Vytvořit filtry"
+  },
+  "qf.filters.toggleMessage.notificationText": {
+    "message": "Režim učení filtrů spuštěn. Kdykoli přesunete e-mail do QuickFolders, spustí se průvodce 'Vytvořit pravidlo filtru'. Thunderbird používá pravidla pro automatické přesouvání e-mailů na základě pravidel, jako je 'kdo je odesílatel?', 'je v předmětu určitý klíčový výraz?'. Pro ukončení režimu učení filtrů stiskněte tlačítko filtru v levém horním rohu lišty QuickFolders."
+  },
+  "qf.filters.toggleMessage.title": {
+    "message": "Vytváření filtrů"
+  },
+
+  "qf.foldercontextmenu.quickfolders.customizeIcon": {
+    "message": "Přizpůsobit ikonu…"
+  },
+  "qf.foldercontextmenu.quickfolders.removeIcon": {
+    "message": "Odstranit přizpůsobenou ikonu"
+  },
+  "qf.fpJsonFile": {
+    "message": "Soubor JSON"
+  },
+  "qf.goNextUnread.auto": {
+    "message": "Přejít do další složky bez ptaní (doporučeno)"
+  },
+  "qf.goNextUnread.none": {
+    "message": "Nic nedělat, pokud ve složce nezůstal žádný nepřečtený e-mail"
+  },
+  "qf.goNextUnread.prompt": {
+    "message": "Zeptat se na přechod do další složky s nepřečtenou poštou"
+  },
+  "qf.group.navigation": {
+    "message": "Navigace zpráv"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Barva aktivní karty:"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paleta barevných karet:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paleta pro karty s uživatelsky přiřazenou barvou"
+  },
+  "qf.label.DragOverBackground": {
+    "message": "Barva při přetažení:"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Barva zvýrazněné karty:"
+  },
+  "qf.label.Toolbar": {
+    "message": "Panel nástrojů"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Šířka spodní čáry:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Šířka čáry pod kartami. Změňte její barvu výběrem barvy aktivní karty níže."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Pozadí panelu nástrojů:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Nepotištěná karta"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Vzhled (neaktivních) karet bez konkrétně zvolené barvy"
+  },
+  "qf.label.appearance": {
+    "message": "Vzhled"
+  },
+  "qf.label.behavior": {
+    "message": "Chování"
+  },
+  "qf.label.github": {
+    "message": "Nahlásit chybu / Požádat o funkci…"
+  },
+  "qf.label.buttonFontSizeNumeric": {
+    "message": "Velikost písma tlačítek (0 pro výchozí):"
+  },
+  "qf.label.cancel": {
+    "message": "Zrušit"
+  },
+  "qf.label.colors": {
+    "message": "Barvy"
+  },
+  "qf.label.contactLink": {
+    "message": "Kontaktujte mě (anglicky nebo německy)…"
+  },
+  "qf.label.currentFolderToolbar": {
+    "message": "Panel aktuální složky"
+  },
+  "qf.label.donate": {
+    "message": "Darovat"
+  },
+  "qf.label.donateLink": {
+    "message": "Navštivte stránku darů…"
+  },
+  "qf.label.dragFolderLabel": {
+    "message": "Přetáhněte složky sem pro vytvoření karty. Klikněte na kartu pro otevření složky, přetáhněte zprávy pro jejich přesun/kopírování."
+  },
+  "qf.label.existingcategories": {
+    "message": "Existující kategorie:"
+  },
+  "qf.label.filterCountN_of_M": {
+    "message": "{0} z {1}"
+  },
+  "qf.label.filterEntities": {
+    "message": "položky"
+  },
+  "qf.label.filterSingleEntity": {
+    "message": "1 položka"
+  },
+  "qf.label.getQuickFilters": {
+    "message": "Pro vylepšený a výkonnější způsob vytváření filtrů nainstalujte moje rozšíření quickFilters!"
+  },
+  "qf.label.goNextUnread": {
+    "message": "Přejít na další nepřečtený e-mail:"
+  },
+  "qf.label.goNextUnread.tip": {
+    "message": "Thunderbird se obvykle ptá, zda při přechodu na další nepřečtenou poštu přejít do jiné složky."
+  },
   "qf.label.haveLicense": {
     "message": "Už máte licenci?"
+  },
+  "qf.label.homePage": {
+    "message": "Najděte podrobné informace na stránce QuickFolders na quickfolders.org…"
+  },
+  "qf.label.initdelay": {
+    "message": "[ms] zpoždění inicializace {1000 je standardní}:"
+  },
+  "qf.label.insertLicense": {
+    "message": "Vložte svůj osobní licenční klíč zde:"
+  },
+  "qf.label.insertLicense.tooltip": {
+    "message": "Váš licenční klíč je obsažen ve vašem potvrzovacím e-mailu od Fastspring."
+  },
+  "qf.label.instantApplyMsg": {
+    "message": "Poznámka: pokud vidíte pouze tlačítko [Zavřít] níže, nastavení barev nemusí fungovat – jako alternativu zkuste kliknout pravým tlačítkem na prázdnou oblast lišty quickfolders pro výběr možností… tím se zobrazí tlačítko [Ok], které by mělo barvy uložit."
+  },
+  "qf.label.keyboard": {
+    "message": "Klávesové zkratky"
+  },
+  "qf.label.languagesLink": {
+    "message": "Přidat překlad…"
   },
   "qf.label.licenseValid": {
     "message": "Vaše licence je platná do:"
   },
+  "qf.label.mainToolbar": {
+    "message": "Hlavní panel nástrojů"
+  },
+  "qf.label.menuFontSizeNumeric": {
+    "message": "Velikost písma menu (0 pro výchozí):"
+  },
+  "qf.label.menus": {
+    "message": "Konfigurace menu"
+  },
+  "qf.label.menus.customIcon": {
+    "message": "Přizpůsobit ikonu"
+  },
+  "qf.label.menus.help": {
+    "message": "Nápověda QuickFolders"
+  },
+  "qf.label.menus.hideQFunlessCTRL": {
+    "message": "Zobrazit pouze při držení klávesy CTRL"
+  },
+  "qf.label.menus.lineBreak": {
+    "message": "Vložit zalomení řádku"
+  },
+  "qf.label.menus.mailFolder": {
+    "message": "Příkazy pošty"
+  },
+  "qf.label.menus.openInNewTab": {
+    "message": "Otevřít v nové kartě"
+  },
+  "qf.label.menus.options": {
+    "message": "Možnosti"
+  },
+  "qf.label.menus.quickFolder": {
+    "message": "Příkazy QuickFolders"
+  },
+  "qf.label.menus.separator": {
+    "message": "Vložit oddělovač"
+  },
+  "qf.label.menus.support": {
+    "message": "Podpora QuickFolders"
+  },
+  "qf.label.misc": {
+    "message": "Různé"
+  },
+  "qf.label.newcategory": {
+    "message": "Nová kategorie:"
+  },
+  "qf.label.pixels": {
+    "message": "pixely"
+  },
+  "qf.label.quickFilters.link": {
+    "message": "získat quickFilters!"
+  },
+  "qf.label.quickfolders": {
+    "message": "QuickFolders:"
+  },
+  "qf.label.renameselectedcategory": {
+    "message": "Přejmenovat vybranou kategorii"
+  },
+  "qf.label.setcolors": {
+    "message": "Nastavit [Barvu textu], [Barvu pozadí]"
+  },
+  "qf.label.tabContent": {
+    "message": "Obsah karty"
+  },
+  "qf.label.testfolder": {
+    "message": "Testovací složka"
+  },
+  "qf.label.testfolder2": {
+    "message": "Testovací složka 2"
+  },
+  "qf.label.themes": {
+    "message": "Témata:"
+  },
+  "qf.label.versionhistory": {
+    "message": "Přečíst historii verzí…"
+  },
+  "qf.licenseValidation.expired": {
+    "message": "Zadaný licenční klíč již vypršel. Stiskněte tlačítko níže pro obnovení licence."
+  },
+  "qf.licenseValidation.failed": {
+    "message": "Zadaný licenční klíč není platný. Zkontrolujte svůj e-mail od FastSpring pro pokyny. Pokud problém přetrvává, kontaktujte mě z karty Podpora."
+  },
+  "qf.licenseValidation.guessAddon": {
+    "message": "(Zadaný klíč může být pro {2})."
+  },
+  "qf.licenseValidation.invalidAddon": {
+    "message": "Zadaný licenční klíč může být pro jiný doplněk. Licenční klíče pro {0} začínají {1}."
+  },
+  "qf.licenseValidation.invalidMail": {
+    "message": "E-mailová adresa přiřazená k licenčnímu klíči [{1}] se momentálně nenachází mezi vašimi e-mailovými účty. Kontaktujte mě z karty Podpora pro asistenci."
+  },
+  "qf.licenseValidation.notMatchedMail": {
+    "message": "Šifrovaná e-mailová adresa neodpovídá čitelné."
+  },
+  "qf.licenseValidation.passed": {
+    "message": "Děkujeme za registraci QuickFolders Pro! Všechny prémiové funkce jsou nyní odemčeny."
+  },
+  "qf.licenseValidation.standard": {
+    "message": "Děkujeme za registraci licence QuickFolders - Velmi tím pomáháte tomuto doplňku! Pokud potřebujete více funkcí, můžete vždy upgradovat na licenci Pro."
+  },
+  "qf.loadConfig": {
+    "message": "Načíst konfiguraci…"
+  },
+  "qf.menu.Color": {
+    "message": "Barva"
+  },
+  "qf.menu.tabColor": {
+    "message": "Výchozí barva!"
+  },
+  "qf.menuitem.quickfolders.changeOrder": {
+    "message": "Změnit pořadí karet"
+  },
+  "qf.menuitem.quickfolders.changeOrderAccess": {
+    "message": "Z"
+  },
   "qf.menuitem.quickfolders.checkLicense": {
     "message": "Zkontrolujte stav licence…"
   },
+  "qf.menuitem.quickfolders.deleteDeadTabs": {
+    "message": "Odstranit neplatné karty"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+    "message": "K"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbar": {
+    "message": "Zobrazit nástroje aktuální složky"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
+    "message": "Z"
+  },
+  "qf.menuitem.quickfolders.filters": {
+    "message": "Vytvořit filtry zpráv…"
+  },
+  "qf.menuitem.quickfolders.filtersAccess": {
+    "message": "F"
+  },
+  "qf.menuitem.quickfolders.find": {
+    "message": "Najít složku…"
+  },
+  "qf.menuitem.quickfolders.findAccess": {
+    "message": "N"
+  },
+  "qf.menuitem.quickfolders.help": {
+    "message": "Nápověda QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.helpAccess": {
+    "message": "H"
+  },
+  "qf.menuitem.quickfolders.options": {
+    "message": "Možnosti QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.optionsAccess": {
+    "message": "M"
+  },
+  "qf.menuitem.quickfolders.register": {
+    "message": "Licence QuickFolders Pro…"
+  },
+  "qf.menuitem.quickfolders.repairTabs": {
+    "message": "Obnovit viditelné karty!"
+  },
+  "qf.menuitem.quickfolders.repairTabsAccess": {
+    "message": "O"
+  },
+  "qf.menuitem.quickfolders.repairTreeIcons": {
+    "message": "Opravit ikony stromu"
+  },
   "qf.menuitem.quickfolders.splash": {
     "message": "Nejnovější aktualizace Novinky…"
+  },
+  "qf.menuitem.quickfolders.support": {
+    "message": "Podpora QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.supportAccess": {
+    "message": "P"
+  },
+  "qf.menuitem.quickfolders.togglePaintMode": {
+    "message": "Režim malování"
+  },
+  "qf.menuitem.quickfolders.togglePaintModeAccess": {
+    "message": "M"
+  },
+  "qf.moveMailStatus.action.none": {
+    "message": "Nedělat nic"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Označit zprávu jako neotevřenou"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "Označit zprávu jako přečtenou"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "Při přesunu zprávy do QuickFolderu:"
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "Tento režim použít i pro zprávy při použití quickMove."
+  },
+  "qf.moveMailStatus.title": {
+    "message": "Stav přesunuté zprávy"
+  },
+  "qf.notification.categoryIsReadOnly": {
+    "message": "Tento položka nemůže být smazána."
+  },
+  "qf.notification.dontShowAgain": {
+    "message": "Znovu toto hlášení nezobrazovat."
   },
   "qf.notification.newsFlash": {
     "message": "$addonName$ bylo aktualizováno! Důležité novinky…",
@@ -241,6 +1165,119 @@
   "qf.notification.premium.btn.upgrade": {
     "message": "Upgradujte na Pro"
   },
+  "qf.notification.premium.readingList": {
+    "message": "Máte nyní definováno {1} záložek. Bezplatná verze QuickFolders umožňuje maximálně {2}."
+  },
+  "qf.notification.premium.shortcut": {
+    "message": "Pro licence vám navíc poskytuje konfigurovatelnou klávesovou zkratku."
+  },
+  "qf.notification.premium.tabIcons": {
+    "message": "Nyní používáte $cntIcons$ vlastní ikony pro záložky. Bezplatná verze QuickFolders podporuje maximálně $maxFreeIcons$. Standardní licence podporuje $maxStdIcons$. QuickFolders Pro nemá žádný limit.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
+  },
+  "qf.notification.premium.text": {
+    "message": "{1} je prémiová funkce, prosím získejte QuickFolders Pro licenci pro její použití."
+  },
+  "qf.notification.premium.title": {
+    "message": "Prémiová funkce"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Máte nyní definováno {1} záložek. Standardní licence QuickFolders umožňuje maximálně {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} je funkce omezená licencí, prosím získejte QuickFolders licenci pro její použití."
+  },
+  "qf.notification.standard.title": {
+    "message": "Funkce podle licence"
+  },
+  "qf.options.LayoutColorAppearance": {
+    "message": "Individuální vzhled barev záložek"
+  },
+  "qf.options.LayoutColorAppearanceFilled": {
+    "message": "(vyplněný styl)"
+  },
+  "qf.options.LayoutColorAppearanceStriped": {
+    "message": "(pruhovaný styl)"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Autor motivu:"
+  },
+  "qf.options.theme.pastelColors": {
+    "message": "Pastelové barvy"
+  },
+  "qf.options.themes.customCornerRadius.Bottom.label": {
+    "message": "Spodní:"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Horní:"
+  },
+  "qf.options.themes.customCornerRadius.checkbox": {
+    "message": "Vlastní zaoblení rohů"
+  },
+  "qf.options.themes.showBorders.checkbox": {
+    "message": "Vždy zobrazovat okraje"
+  },
+  "qf.options.versionnumber.tooltip": {
+    "message": "Klikněte pro historii verzí."
+  },
+  "qf.palette.inactive": {
+    "message": "Stejné jako neaktivní záložky"
+  },
+  "qf.palette.night": {
+    "message": "Noční režim"
+  },
+  "qf.palette.pastel": {
+    "message": "Pastelové barvy"
+  },
+  "qf.palette.standard": {
+    "message": "Standardní paleta"
+  },
+  "qf.palette.twoColors": {
+    "message": "2 barvy"
+  },
+  "qf.pastefolders": {
+    "message": "Vložit záložky"
+  },
+  "qf.pastefolders.tooltip": {
+    "message": "Odstranit všechny QuickFolders a načíst novou konfiguraci ze schránky"
+  },
+  "qf.pathFormat.AccountAndPath": {
+    "message": "Účet - Cesta k složce"
+  },
+  "qf.pathFormat.PathOnly": {
+    "message": "Pouze cesta ke složce"
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI složky"
+  },
+  "qf.pathFormat.folderAndAccount": {
+    "message": "Název složky - Poštovní účet"
+  },
+  "qf.pathFormat.folderName": {
+    "message": "Název složky"
+  },
+  "qf.pathFormat.maxDepth": {
+    "message": "Maximální hloubka cesty:"
+  },
+  "qf.pathFormat.tooltip": {
+    "message": "Maximální počet složek zobrazených v cestě k složce."
+  },
+  "qf.prefwindow.quickfolders.options": {
+    "message": "Možnosti QuickFolders"
+  },
   "qf.premium.renew": {
     "message": "Platnost licence vyprší za $daysLeft$ dní",
     "placeholders": {
@@ -248,6 +1285,581 @@
         "content": "$1"
       }
     }
+  },
+  "qf.premium.renewLicense.tooltip": {
+    "message": "Your license expired {1} days ago"
+  },
+  "qf.premiumConfig": {
+    "message": "Premium Features"
+  },
+  "qf.prompt.category.deleteMultiple": {
+    "message": "Ok to delete multiple categories?"
+  },
+  "qf.prompt.contact.subject": {
+    "message": "Please enter a short subject line:"
+  },
+  "qf.prompt.contact.title": {
+    "message": "Contact QuickFolders Support"
+  },
+  "qf.prompt.loadFolders.confirm": {
+    "message": "Accept the loaded Tabs?"
+  },
+  "qf.prompt.newFolder.createQFtab": {
+    "message": "Also create a QuickFolders Tab"
+  },
+  "qf.prompt.newFolder.newChildName": {
+    "message": "Enter name for new child folder under {0}"
+  },
+  "qf.prompt.newFolder.title": {
+    "message": "New Folder"
+  },
+  "qf.prompt.pasteFolders": {
+    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
+  },
+  "qf.prompt.pasteFolders.confirm": {
+    "message": "Keep the displayed Tabs?"
+  },
+  "qf.prompt.readingList.removeItem": {
+    "message": "Remove this item?"
+  },
+  "qf.prompt.readingList.searchMissingItem": {
+    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+  },
+  "qf.prompt.restoreFolders": {
+    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
+  },
+  "qf.prompt.switchDomainLicense": {
+    "message": "Switch to Domain License?"
+  },
+  "qf.quickMove.escapeClears": {
+    "message": "Escape Key always clears messages list."
+  },
+  "qf.quickMove.excludeAccounts": {
+    "message": "Select any account that should be excluded from the search results:"
+  },
+  "qf.quickMove.lockAccount": {
+    "message": "Only show results from current mail account."
+  },
+  "qf.quickMove.maxResults": {
+    "message": "Maximum number of search results"
+  },
+  "qf.quickMove.path.format": {
+    "message": "Display Format:"
+  },
+  "qf.quickMove.silent": {
+    "message": "Omit notifications after moving mails."
+  },
+  "qf.register.licenseValid.expired": {
+    "message": "Your license expired on:"
+  },
+  "qf.search.advanced": {
+    "message": "Advanced search settings…"
+  },
+  "qf.storeConfig": {
+    "message": "Save Configuration…"
+  },
+  "qf.tab.advanced": {
+    "message": "Advanced"
+  },
+  "qf.tab.findRelated": {
+    "message": "Find related mails"
+  },
+  "qf.tab.general": {
+    "message": "General"
+  },
+  "qf.tab.gopro": {
+    "message": "Licenses"
+  },
+  "qf.tab.layout": {
+    "message": "Bling My Tabs!"
+  },
+  "qf.tab.quickhelp": {
+    "message": "Quick Help"
+  },
+  "qf.tab.support": {
+    "message": "Support"
+  },
+  "qf.textbox.searchBox.emptyText": {
+    "message": "Search filters by name…"
+  },
+  "qf.textbox.searchBox.toolTip": {
+    "message": "enter a keyword to search filters by name"
+  },
+  "qf.themes.applePills.description": {
+    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+  },
+  "qf.themes.applePills.label": {
+    "message": "Apple Pills"
+  },
+  "qf.themes.flatButtons.description": {
+    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+  },
+  "qf.themes.flatButtons.label": {
+    "message": "Toolbar Buttons"
+  },
+  "qf.themes.flatTabs.description": {
+    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+  },
+  "qf.themes.flatTabs.label": {
+    "message": "Flat Style"
+  },
+  "qf.themes.nativeTabs.description": {
+    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Native Tabs"
+  },
+  "qf.themes.realButtons.description": {
+    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+  },
+  "qf.themes.realButtons.label": {
+    "message": "Pushbuttons"
+  },
+  "qf.toolbar.quickfolders.toolbar": {
+    "message": "QuickFolders Toolbar"
+  },
+  "qf.toolbarIcon.customSize": {
+    "message": "Custom Icon Size"
+  },
+  "qf.toolbarIconSize": {
+    "message": "Large Toolbar Icons"
+  },
+  "qf.toolbarMinimumHeight": {
+    "message": "Minimum height:"
+  },
+  "qf.toolbarMinimumHeight.tooltip": {
+    "message": "For Mac systems who encounter [Bug 25021]"
+  },
+  "qf.toolbarTopPadding": {
+    "message": "Top Padding"
+  },
+  "qf.tooltip.RecentFolders": {
+    "message": "Recent Folders"
+  },
+  "qf.tooltip.closeToolbar": {
+    "message": "Close this toolbar"
+  },
+  "qf.tooltip.conversationRead": {
+    "message": "Mark Conversation as Read and jump to next unread Email"
+  },
+  "qf.tooltip.emailIcon": {
+    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+  },
+  "qf.tooltip.filters": {
+    "message": "Stop creating filters."
+  },
+  "qf.tooltip.folderUp": {
+    "message": "Go to Parent Folder"
+  },
+  "qf.tooltip.goNextFolder": {
+    "message": "Move to the next [unread] message"
+  },
+  "qf.tooltip.goPreviousFolder": {
+    "message": "Move to the previous [unread] message"
+  },
+  "qf.tooltip.mailFolderCommands": {
+    "message": "Mail Folder Commands"
+  },
+  "qf.tooltip.mainOptions": {
+    "message": "QuickFolders options and advanced commands"
+  },
+  "qf.tooltip.paintCanActive": {
+    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+  },
+  "qf.tooltip.quickFoldersNavToggle": {
+    "message": "toggle navigating unread only / all mails"
+  },
+  "qf.tooltip.quickMove": {
+    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+  },
+  "qf.tooltip.skipUnreadFolder": {
+    "message": "Skip to next Unread Folder"
+  },
+  "qf.tooltip.threadIcon": {
+    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+  },
+  "qf.update.title": {
+    "message": "Updates"
+  },
+  "qf.update.hideVersionHistory": {
+    "message": "Do not open tab with version history"
+  },
+  "qf.youtube.description": {
+    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+  },
+  "qf.youtube.link": {
+    "message": "Watch Videos about QuickFolders…"
+  },
+  "qf.youtube.tbdaily": {
+    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+  },
+  "qfAlertCopyString": {
+    "message": "Řetězec složky byl zkopírován do schránky!"
+  },
+  "qfAlertDropFolderVirtual": {
+    "message": "Nelze kopírovat poštu do virtuální složky!"
+  },
+  "qfAlertUpgradeSuccess": {
+    "message": "QuickFolders byl úspěšně aktualizován na verzi:"
+  },
+  "qfAll": {
+    "message": "(Zobrazit vše)"
+  },
+  "qfCantMoveFolder": {
+    "message": "Složku {0} nelze přesunout."
+  },
+  "qfColorPickingWIP": {
+    "message": "Omlouváme se, tato funkce je stále ve vývoji!"
+  },
+  "qfCommandAccess": {
+    "message": "Q"
+  },
+  "qfCommandPopup": {
+    "message": "Příkazy QuickFolders"
+  },
+  "qfCompactFolder": {
+    "message": "Sbalit složku"
+  },
+  "qfCompactFolderAccess": {
+    "message": "C"
+  },
+  "qfCompacted": {
+    "message": "Sbaleno:"
+  },
+  "qfCompactedBytesFreed": {
+    "message": "Uvolněné bajty"
+  },
+  "qfCompactedFolder": {
+    "message": "Sbalená složka"
+  },
+  "qfCompactedNewFolderSize": {
+    "message": "Nová velikost"
+  },
+  "qfCompactedOriginalFolderSize": {
+    "message": "Původní velikost"
+  },
+  "qfConfirmCopyFolder": {
+    "message": "Opravu chcete zkopírovat složku {0} do {1}?"
+  },
+  "qfConfirmMoveFolder": {
+    "message": "Opravu chcete přesunout složku {0} do {1}?"
+  },
+  "qfConfirmVersionLink": {
+    "message": "Zobrazit historii verzí pro QuickFolders"
+  },
+  "qfDeadTabsCount": {
+    "message": "Nalezeno # neplatných karet."
+  },
+  "qfDeadTabsDeleted": {
+    "message": "Smazáno # neplatných karet."
+  },
+  "qfDeleteFolder": {
+    "message": "Smazat složku"
+  },
+  "qfDeleteFolderAccess": {
+    "message": "D"
+  },
+  "qfDeleteJunk": {
+    "message": "Vyčistit nevyžádanou poštu"
+  },
+  "qfDown": {
+    "message": "Dolů"
+  },
+  "qfDownloadAll": {
+    "message": "Stáhnout vše"
+  },
+  "qfEditVirtual": {
+    "message": "Vlastnosti hledání…"
+  },
+  "qfEmptiedJunk": {
+    "message": "Vyprázdněno nevyžádané pošty a složka byla zkompaktována"
+  },
+  "qfEmptiedTrash": {
+    "message": "Koš byl vyprázdněn."
+  },
+  "qfEmptyJunk": {
+    "message": "Vyprázdnit nevyžádanou poštu"
+  },
+  "qfEmptyJunkAccess": {
+    "message": "J"
+  },
+  "qfEmptyTrash": {
+    "message": "Vyprázdnit koš"
+  },
+  "qfEmptyTrashAccess": {
+    "message": "T"
+  },
+  "qfFolderAccess": {
+    "message": "F"
+  },
+  "qfFolderAlreadyBookmarked": {
+    "message": "Složka již má záložku."
+  },
+  "qfFolderOpenLocation": {
+    "message": "Prozkoumat umístění složky…"
+  },
+  "qfFolderPopup": {
+    "message": "Příkazy poštovní složky"
+  },
+  "qfFolderProperties": {
+    "message": "Vlastnosti složky…"
+  },
+  "qfFolderPropertiesAccess": {
+    "message": "P"
+  },
+  "qfFolderRepair": {
+    "message": "Opravit složku"
+  },
+  "qfFolderRepairAccess": {
+    "message": "F"
+  },
+  "qfFolderRepairedMsg": {
+    "message": "Složka byla opravena:"
+  },
+  "qfFolderSearchMessages": {
+    "message": "Hledat zprávy"
+  },
+  "qfGetMail": {
+    "message": "Stáhnout zprávy"
+  },
+  "qfGetMailAccess": {
+    "message": "G"
+  },
+  "qfInsertLineBreak": {
+    "message": "Vložit zalomení řádku"
+  },
+  "qfInsertSeparator": {
+    "message": "Vložit oddělovač"
+  },
+  "qfInvalidTabCount": {
+    "message": "Bylo nalezeno {0} karet s neplatným umístěním složky. Tyto lze odstranit pomocí příkazu '{1}' v menu nástrojů QuickFolders."
+  },
+  "qfMarkAllRead": {
+    "message": "Označit složku jako přečtenou"
+  },
+  "qfMarkAllReadAccess": {
+    "message": "M"
+  },
+  "qfMarkAllReadNews": {
+    "message": "Označit novou skupinu jako přečtenou"
+  },
+  "qfMarkAllReadRecursive": {
+    "message": "Označit složku + podadresáře jako přečtené"
+  },
+  "qfMarkAllRead.next": {
+    "message": "Označit složku jako přečtenou a přejít na další nečtenou složku"
+  },
+  "qfMenuColor": {
+    "message": "Barva"
+  },
+  "qfMenuTabColorDisabledInTheme": {
+    "message": "Zvolte jiný motiv pro podporu barevného označení…"
+  },
+  "qfMenuTabColorNone": {
+    "message": "Výchozí barva!"
+  },
+  "qfMenuTabColorPopup": {
+    "message": "Barva karty"
+  },
+  "qfMoveFolderOrNewTab": {
+    "message": "Přetáhněte složky do prázdné oblasti na panelu nástrojů - pro PŘESUN složky držte SHIFT a přetáhněte na kartu."
+  },
+  "qfNavigationWrapped": {
+    "message": "Nebyla nalezena žádná jiná nečtená složka, pokračuji v {1}."
+  },
+  "qfNewFolder": {
+    "message": "Nová podadresář…"
+  },
+  "qfNewFolderAccess": {
+    "message": "N"
+  },
+  "qfNewName": {
+    "message": "Zadejte nový název pro kartu"
+  },
+  "qfNewSubFolder": {
+    "message": "Vytvořit podadresář {0} » {1}…"
+  },
+  "qfNoFolderMatch": {
+    "message": "Nebyly nalezeny žádné podadresáře se shodujícím rodičovským adresářem."
+  },
+  "qfPaintToggle": {
+    "message": "Dokončit režim malování"
+  },
+  "qfRecentFolders": {
+    "message": "Nedávné složky"
+  },
+  "qfRemoveBookmark": {
+    "message": "Odstranit záložku"
+  },
+  "qfRemoveBookmarkAccess": {
+    "message": "R"
+  },
+  "qfRemoveCategory": {
+    "message": "Odstranit z aktuální kategorie"
+  },
+  "qfRemoveCategoryPrompt": {
+    "message": "Kategorie je '{1}' - Chcete ji odstranit?"
+  },
+  "qfRemoveIcon": {
+    "message": "Odstranit vlastní ikonu"
+  },
+  "qfRemoveLineBreak": {
+    "message": "Odstranit zalomení řádku"
+  },
+  "qfRemoveSeparator": {
+    "message": "Odstranit oddělovač"
+  },
+  "qfRenameBookmark": {
+    "message": "Přejmenovat záložku…"
+  },
+  "qfRenameBookmarkAccess": {
+    "message": "N"
+  },
+  "qfRenameFolder": {
+    "message": "Přejmenovat složku…"
+  },
+  "qfRenameFolderAccess": {
+    "message": "R"
+  },
+  "qfRepairTreeIconsMissing": {
+    "message": "Následující soubory ikon neexistují:"
+  },
+  "qfSavePrompt": {
+    "message": "Uložit tyto změny?"
+  },
+  "qfSelectIcon": {
+    "message": "Upravit ikonu…"
+  },
+  "qfSetCategory": {
+    "message": "Nastavit kategorii karty…"
+  },
+  "qfSetCategoryA": {
+    "message": "C"
+  },
+  "qfShowAlways": {
+    "message": "Zobrazit vždy!"
+  },
+  "qfShowNever": {
+    "message": "Nikdy nezobrazovat (alias složky)"
+  },
+  "qfTabAdvancedOptions": {
+    "message": "Specifické vlastnosti karty…"
+  },
+  "qfTabDeleteOption": {
+    "message": "Proveďte toto se zbývajícími {0} složkami."
+  },
+  "qfTabDeletePrompt": {
+    "message": "Smazat tuto kartu?"
+  },
+  "qfThisTabIsInvalid": {
+    "message": "$tabName$ je karta s neplatným umístěním složky. Tento problém může být způsoben odstraněním složky nebo změnou údajů o serveru.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
+  },
+  "qfTidyDeadFolders": {
+    "message": "Toto odstraní karty, které nemají platné složky přiřazené.\nTo se někdy stane, pokud byla složka odstraněna nebo přesunuta, aniž by o tom QuickFolders věděl."
+  },
+  "qfTreeIconsInvalidCount": {
+    "message": "{0} ikon chybí"
+  },
+  "qfTreeIconsRepairedCount": {
+    "message": "{0} ikony stromu byly opraveny"
+  },
+  "qfUncategorized": {
+    "message": "(Nezařazeno)"
+  },
+  "qfUp": {
+    "message": "Nahoru"
+  },
+  "qfUpdatedThemesEngineMsg": {
+    "message": "Byl nainstalován nový motor pro motivy pro QuickFolders. Vyberte položku z rozevíracího seznamu a klikněte na [Ok]."
+  },
+  "qfVersionDisableOnUpdate": {
+    "message": "Chcete zastavit zobrazování historie verzí po aktualizacích?"
+  },
+  "quickMove.help.head": {
+    "message": "Help for {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Advanced Features"
+  },
+  "quickMove.help.l1a": {
+    "message": "Type the start of a folder name or words in it, delimited by space."
+  },
+  "quickMove.help.l1b": {
+    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Type {1} for entering grandparent/parent/searched folder."
+  },
+  "quickMove.help.l2b": {
+    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+  },
+  "quickMove.help.l3a": {
+    "message": "Type {1} for skipping any folders in between."
+  },
+  "quickMove.help.l3b": {
+    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+  },
+  "quickMove.help.l4a": {
+    "message": "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
+  },
+  "quickMove.help.advanced": {
+    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Display next mail after moving current one"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Reopen original mail after it was moved"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Single Message Tab"
+  },
+  "quickfolders.findFolder.placeHolder": {
+    "message": "folder name"
+  },
+  "quickfolders.findFolder.help": {
+    "message": "help with search"
+  },
+  "quickfolders.quickMove.menu.cancel": {
+    "message": "Cancel quickMove"
+  },
+  "quickfolders.quickMove.menu.hideSearch": {
+    "message": "Hide Folder Name box"
+  },
+  "quickfolders.quickMove.menu.showSearch": {
+    "message": "Show Folder Name box"
+  },
+  "quickfolders.quickMove.menu.suspend": {
+    "message": "Jump to folder (don't move mails)"
+  },
+  "quickfolders.readingList.addCurrent": {
+    "message": "Add current Item"
+  },
+  "quickfolders.readingList.clear": {
+    "message": "Clear Reading List"
+  },
+  "quickfolders.readingList.tooltip": {
+    "message": "Reading List"
+  },
+  "quickfolders.toolbar.newsubfolder": {
+    "message": "New Subfolder…"
+  },
+  "quickfolders.toolbar.skip": {
+    "message": "Skip unread mails"
+  },
+  "quickfoldersQuickCopiedMails": {
+    "message": "Mail copied to folder {2};{1} mails copied to folder {2}"
+  },
+  "quickfoldersQuickMovedMails": {
+    "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
   },
   "renew-your-license": {
     "message": "Obnovte si licenci."
@@ -362,9 +1974,24 @@
       }
     }
   },
+  "toAddress": {
+    "message": "Komu:"
+  },
+  "toAddress.tooltip": {
+    "message": "Výchozí adresa To při psaní nových e-mailů"
+  },
   "translated-by-google": {
-    "description": "disclaimer.",
-    "message": "překlady poskytované google"
+    "description": "zřetel.",
+    "message": "překlady laskavě poskytnuté ChatGPT"
+  },
+  "update.tooltip": {
+    "message": "Klikněte zde jednou, abyste si přečetli, co je nového v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "updates.title": {
     "message": "Aktualizace"
@@ -382,7 +2009,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Dokončeno: Pro funkce pro hledání souvisejících e-mailů pomocí hledaných výrazů extrahovaných z aktuálně zobrazeného e-mailu – nyní můžete vybírat z různých hledání v rozbalovací nabídce. [issue 488]{L2}{L1} Opraveno: Přesun e-mailů na záložky pomocí Ctrl+Číslo. {L2} {L1} Opraveno: Klávesové zkratky kolidovaly se zadáváním textu v jiných doplňcích, jako je QNote++. [issue 497]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky narušovaly navigaci. {L2}{L1} 6.8.2 Opraveno tlačítko pro úpravu na stránce nastavení pro hledání souvisejících e-mailů. {L2}"
+    "message": "{L1} Zlepšený výkon výsledků vyhledávání quickMove / quickJump při psaní pro uživatele s mnoha složkami. [issue 463]{L2}{L1} Nepřečtené jsou nyní přeskočeny a Následující / Předchozí složka sourozence nyní sleduje strom v lexikografickém pořadí [issue 513]{L2}{L1} Nástrojová lišta QuickFolders je nyní zobrazena při otevření karty nastavení. [issue 524]{L2}{L1} Opraveno: QuickFolders blokoval nativní klávesové zkratky Thunderbird, které obsahují klávesu Option (metaKey) na systémech Mac. {L2}{L1} Vlastnosti specifické pro kartu nyní opět fungují v beta verzi Thunderbird 134. [issue 518]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky již nevyvolávají chyby při navigaci.{L2}{L1} QuickFolders nyní podporuje vytváření podsložek, které obsahují mezery v názvu pomocí quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
