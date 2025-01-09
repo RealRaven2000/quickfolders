@@ -1544,7 +1544,7 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "8 tháng 12"
+    "message": "24 tháng 1"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -1647,7 +1647,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hoàn thiện: Tính năng Pro để tìm email liên quan bằng cách sử dụng các từ khóa tìm kiếm được trích xuất từ email hiện đang hiển thị – bạn có thể chọn các tìm kiếm khác nhau từ menu thả xuống. [issue 488]{L2}{L1} Đã sửa: Di chuyển email vào các thẻ bằng Ctrl+Số. {L2} {L1} Đã sửa: Phím tắt xung đột với việc nhập văn bản trong các tiện ích bổ sung khác như QNote++. [issue 497]{L2}{L1} Đã sửa: Tên thư mục chứa dấu nháy đơn gây lỗi điều hướng. {L2}{L1} 6.8.2 Đã sửa nút chỉnh sửa trong trang cài đặt để tìm email liên quan. {L2}"
+    "message": "{L1} Cải thiện hiệu suất kết quả tìm kiếm quickMove / quickJump khi đang gõ cho người dùng có nhiều thư mục. [issue 463]{L2}{L1} Bỏ qua thư mục chưa đọc và Next / Previous thư mục anh em giờ theo thứ tự từ điển. [issue 513]{L2}{L1} Thanh công cụ QuickFolders giờ được hiển thị khi tab cài đặt được mở. [issue 524] {L2}{L1} Đã thêm bản dịch đầy đủ tiếng Séc cho giao diện người dùng.{L2}{L1} Đã sửa lỗi: QuickFolders đã chặn các phím tắt mặc định của Thunderbird chứa Option (metaKey) trên hệ thống Mac. {L2}{L1} Các thuộc tính riêng biệt cho tab giờ hoạt động trở lại trong Thunderbird beta 134. [issue 518]{L2}{L1} Tên thư mục chứa dấu nháy đơn giờ không còn gây lỗi khi điều hướng nữa. {L2}{L1} QuickFolders hiện hỗ trợ tạo các thư mục con có tên chứa dấu cách từ quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1695,7 +1695,7 @@
     "message": "Када извршите надоградњу са Стандарда, добијате једну пуну годину лиценцног периода од датума куповине без обзира на датум истека ваше претходне лиценце."
   },
   "special-offer-expiry": {
-    "message": "8. децембар"
+    "message": "24. јануар"
   },
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
@@ -1795,7 +1795,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Довршено: Про функција за проналажење повезаних е-порука помоћу појмова за претрагу извуцених из тренутно приказане е-поруке – сада можете бирати између различитих претрага у падајућем менију. [issue 488]{L2}{L1} Исправљено: Пребацивање е-порука на картице помоћу Ctrl+Број. {L2} {L1} Исправљено: Пречице на тастатури су биле у сукобу са уносом текста у другим додацима, као што је QNote++. [issue 497]{L2}{L1} Исправљено: Имена фасцикли која садрже једноструке наводнике су узроковала грешке у навигацији. {L2}{L1} 6.8.2 Исправљено дугме за измену на страници са подешавањима за проналажење повезаних имејлова. {L2}"
+    "message": "{L1} Poboljšana brzina pretrage rezultata quickMove / quickJump prilikom kucanja za korisnike sa mnogo fascikli. [issue 463]{L2}{L1} Preskočeni nepročitani i dugme Sledeća / Prethodna sestrinska fascikla sada prate stablo u leksikalnom redosledu. [issue 513]{L2}{L1} Traka sa alatkama QuickFolders se sada prikazuje kada je otvorena kartica sa podešavanjima. [issue 524] {L2}{L1} Dodat je kompletan češki prevod za korisnički interfejs.{L2}{L1} Ispravljeno: QuickFolders je blokirao osnovne prečice tastature Thunderbird koje sadrže Option (metaKey) na Mac sistemima. {L2}{L1} Svojstva specifična za karticu sada ponovo funkcionišu u Thunderbird beta 134. [issue 518]{L2}{L1} Imena fascikli koja sadrže jednostruke navodnike sada više ne izazivaju greške prilikom navigacije. {L2}{L1} QuickFolders sada podržava kreiranje podmapa sa imenima koja sadrže razmake iz quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

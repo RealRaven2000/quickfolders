@@ -223,7 +223,7 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "8. joulukuuta"
+    "message": "24. tammikuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -311,7 +311,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Parannettu quickMove / quickJump -haun suorituskykyä kirjoitettaessa käyttäjille, joilla on paljon kansioita. [issue 463]{L2}{L1} Lukemattomat ohitetaan ja Seuraava / Edellinen sisar-kansio seuraa nyt puuta sanakirjarajauksessa [issue 513]{L2}{L1} QuickFoldersin työkalupalkki näkyy nyt, kun asetuspaneeli on avattu. [issue 524]{L2}{L1} Korjattu: QuickFolders esti Thunderbirdin natiivikomentojen, jotka sisältävät Option (metaKey) -näppäimen Mac-järjestelmissä. {L2}{L1} Välilehteen liittyvät asetukset toimivat jälleen Thunderbirdin beta 134:ssä. [issue 518]{L2}{L1} Korjattu: Yksittäisiä lainausmerkkejä sisältävät kansioiden nimet eivät enää aiheuta virheitä navigoinnissa.{L2}{L1} QuickFolders tukee nyt alikansioiden luomista, joiden nimissä on välilyöntejä quickMove:n kautta [issue 512].{L2}"
+    "message": "{L1} Parannettu quickMove / quickJump -haun suorituskykyä kirjoitettaessa käyttäjille, joilla on paljon kansioita. [issue 463]{L2}{L1} Lukemattomat ohitetaan ja Seuraava / Edellinen sisar-kansio seuraa nyt puuta sanakirjarajauksessa [issue 513]{L2}{L1} QuickFoldersin työkalupalkki näkyy nyt, kun asetuspaneeli on avattu. [issue 524]{L2}{L1} Lisätty täydellinen tsekin käännös käyttöliittymälle.{L2}{L1} Korjattu: QuickFolders esti Thunderbirdin natiivikomentojen, jotka sisältävät Option (metaKey) -näppäimen Mac-järjestelmissä. {L2}{L1} Välilehteen liittyvät asetukset toimivat jälleen Thunderbirdin beta 134:ssä. [issue 518]{L2}{L1} Korjattu: Yksittäisiä lainausmerkkejä sisältävät kansioiden nimet eivät enää aiheuta virheitä navigoinnissa.{L2}{L1} QuickFolders tukee nyt alikansioiden luomista, joiden nimissä on välilyöntejä quickMove:n kautta [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

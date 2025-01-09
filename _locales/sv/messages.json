@@ -1878,7 +1878,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "8 december"
+    "message": "24 januari"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1984,7 +1984,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Förbättrad prestanda för quickMove / quickJump sökresultat under skrivning för användare med många mappar. [issue 463]{L2}{L1} Olästa meddelanden hoppar nu över och nästa / föregående syskonmapp följer nu den lexikaliska ordningen i trädet [issue 513]{L2}{L1} QuickFolders verktygsfält visas nu när inställningsfliken öppnas. [issue 524]{L2}{L1} Åtgärdat: QuickFolders blockerade Thunderbird-native kortkommandon som innehåller Option (metaKey) på Mac-system. {L2}{L1} Flik-specifika egenskaper fungerar nu igen i Thunderbird beta 134. [issue 518]{L2}{L1} Åtgärdat: Mappnamn som innehåller enkla citationstecken orsakar inte längre fel under navigering.{L2}{L1} QuickFolders stödjer nu skapande av undermappar med mellanslag i namnet via quickMove [issue 512].{L2}"
+    "message": "{L1} Förbättrad prestanda för quickMove / quickJump sökresultat medan du skriver för användare med många mappar. [issue 463]{L2}{L1} Hoppa över olästa och Nästa / Föregående systermapp följer nu trädet i lexikografisk ordning. [issue 513]{L2}{L1} QuickFolders verktygsfält visas nu när inställningsfliken öppnas. [issue 524] {L2}{L1} Fullständig tjeckisk översättning för användargränssnittet tillagd.{L2}{L1} Fixat: QuickFolders blockerade inbyggda snabbkommandon i Thunderbird som innehåller Option (metaKey) på Mac-system. {L2}{L1} Flikspecifika egenskaper fungerar nu igen i Thunderbird beta 134. [issue 518]{L2}{L1} Mappnamn som innehåller enkla citationstecken orsakar nu inte längre några fel vid navigering. {L2}{L1} QuickFolders stöder nu att skapa undermappar med namn som innehåller mellanslag från quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

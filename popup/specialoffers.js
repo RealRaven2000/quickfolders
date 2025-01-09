@@ -9,9 +9,9 @@ END LICENSE BLOCK */
 /* shared module for installation and update popups */
 
 const REDUCTION_RENEW = "25%",
-      REDUCTION_PRO = "40%",
-      REDUCTION_UPGRADE = "33%",
-      SALES_DATE= "2024-12-08";
+  REDUCTION_PRO = "40%",
+  REDUCTION_UPGRADE = "33%",
+  SALES_DATE = "2025-01-24";
 
 
 

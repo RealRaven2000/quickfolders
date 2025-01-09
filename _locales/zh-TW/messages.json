@@ -1815,7 +1815,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "12月8日"
+    "message": "1月24日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1921,7 +1921,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 提升了 quickMove / quickJump 搜尋結果在輸入時的效能，適用於擁有大量資料夾的使用者。 [issue 463]{L2}{L1} 跳過未讀郵件且下一個/前一個兄弟資料夾現在會按照字母順序排列。 [issue 513]{L2}{L1} 當設定頁籤被打開時，QuickFolders 工具列現在會顯示。 [issue 524]{L2}{L1} 修正：QuickFolders 阻擋了在 Mac 系統中包含 Option (metaKey) 的原生 Thunderbird 快捷鍵。 {L2}{L1} Tab 特定屬性現在在 Thunderbird beta 134 中再次運作。 [issue 518]{L2}{L1} 修正：包含單引號的資料夾名稱不再導致導航錯誤。 {L2}{L1} QuickFolders 現在支持從 quickMove 建立包含空格名稱的子資料夾 [issue 512]。{L2}"
+    "message": "{L1} 提升了有許多資料夾的使用者在輸入時 quickMove / quickJump 搜尋結果的效能。[issue 463]{L2}{L1} 跳過未讀項目與下一個 / 上一個兄弟資料夾現在會按照字典順序進行排列。[issue 513]{L2}{L1} 現在開啟設定頁籤時會顯示 QuickFolders 工具列。[issue 524] {L2}{L1} 新增完整捷克語介面翻譯。{L2}{L1} 修正：QuickFolders 阻擋了包含 Option (metaKey) 的原生 Thunderbird 快捷鍵，在 Mac 系統上造成衝突。 {L2}{L1} 標籤頁特定屬性在 Thunderbird beta 134 中恢復正常運作。[issue 518]{L2}{L1} 現在包含單引號的資料夾名稱不再會造成導航錯誤。 {L2}{L1} QuickFolders 現在支援從 quickMove 創建包含空格的子資料夾名稱。[issue 512]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

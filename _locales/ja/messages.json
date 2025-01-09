@@ -1754,7 +1754,7 @@
     "message": "Standardからアップグレードすると、以前のライセンスの有効期限に関係なく、購入日から1年間のライセンス期間が与えられます。"
   },
   "special-offer-expiry": {
-    "message": "12月8日"
+    "message": "1月24日"
   },
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
@@ -1860,7 +1860,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} 多くのフォルダを持つユーザー向けに、typing中のquickMove / quickJump検索結果のパフォーマンスを改善しました。 [issue 463]{L2}{L1} 未読はスキップされ、次/前の兄弟フォルダがツリー内で辞書順に従うようになりました [issue 513]{L2}{L1} 設定タブを開いた時にQuickFoldersツールバーが表示されるようになりました。 [issue 524]{L2}{L1} 修正: QuickFoldersは、MacシステムのOption（metaKey）を含むThunderbirdのネイティブキーストロークをブロックしていました。{L2}{L1} タブ固有のプロパティがThunderbird Beta 134で再び機能するようになりました。 [issue 518]{L2}{L1} 修正: シングルクォートを含むフォルダ名は、ナビゲーション中にエラーを引き起こさなくなりました。{L2}{L1} QuickFoldersは、quickMoveからスペースを含む名前でサブフォルダの作成をサポートするようになりました [issue 512]。{L2}"
+    "message": "{L1} 多くのフォルダを持つユーザー向けに、typing中のquickMove / quickJump検索結果のパフォーマンスを改善しました。 [issue 463]{L2}{L1} 未読はスキップされ、次/前の兄弟フォルダがツリー内で辞書順に従うようになりました [issue 513]{L2}{L1} 設定タブを開いた時にQuickFoldersツールバーが表示されるようになりました。 [issue 524]{L2}{L1} ユーザーインターフェースの完全なチェコ語翻訳が追加されました。{L2}{L1} 修正: QuickFoldersは、MacシステムのOption（metaKey）を含むThunderbirdのネイティブキーストロークをブロックしていました。{L2}{L1} タブ固有のプロパティがThunderbird Beta 134で再び機能するようになりました。 [issue 518]{L2}{L1} 修正: シングルクォートを含むフォルダ名は、ナビゲーション中にエラーを引き起こさなくなりました。{L2}{L1} QuickFoldersは、quickMoveからスペースを含む名前でサブフォルダの作成をサポートするようになりました [issue 512]。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

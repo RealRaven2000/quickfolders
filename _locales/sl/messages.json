@@ -1814,7 +1814,7 @@
     "message": "Ko nadgradite s standardnega, prejmete eno celoletno licenčno obdobje od datuma nakupa, ne glede na datum poteka vaše prejšnje licence."
   },
   "special-offer-expiry": {
-    "message": "8. december"
+    "message": "24. januar"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1920,7 +1920,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Dokončano: Pro-funkcija za iskanje povezanih e-poštnih sporočil z uporabo iskalnih izrazov, pridobljenih iz trenutno prikazanega sporočila – zdaj lahko izbirate med različnimi iskanji v spustnem meniju. [issue 488]{L2}{L1} Popravljeno: premikanje e-pošt v zavihke z uporabo Ctrl+Številka. {L2} {L1} Popravljeno: Bližnjice na tipkovnici so povzročale težave pri vnosu besedila v drugih dodatkih, kot je QNote++. [issue 497]{L2}{L1} Popravljeno: Imena map, ki vsebujejo enojne narekovaje, so povzročala napake pri navigaciji. {L2}{L1} 6.8.2 Popravljen gumb za urejanje na strani z nastavitvami za iskanje povezanih e-poštnih sporočil. {L2}"
+    "message": "{L1} Izboljšana hitrost iskanja rezultatov quickMove / quickJump med tipkanjem za uporabnike z mnogimi mapami. [issue 463]{L2}{L1} Preskočene neprebrane in gumb Naslednja / Prejšnja sestrska mapa sedaj sledijo drevesu v leksikalnem vrstnem redu. [issue 513]{L2}{L1} Orodna vrstica QuickFolders se zdaj prikaže, ko je odprta zavihka z nastavitvami. [issue 524] {L2}{L1} Dodan je popoln češki prevod za uporabniški vmesnik.{L2}{L1} Popravljeno: QuickFolders je blokiral privzete bližnjične tipke Thunderbird, ki vsebujejo Option (metaKey) na Mac sistemih. {L2}{L1} Lastnosti specifične za zavihek zdaj znova delujejo v Thunderbird beta 134. [issue 518]{L2}{L1} Imena map, ki vsebujejo enojne narekovaje, zdaj ne povzročajo napak pri navigaciji. {L2}{L1} QuickFolders zdaj podpira ustvarjanje podmap z imeni, ki vsebujejo presledke, iz quickMove [issue 512].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
