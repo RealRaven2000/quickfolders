@@ -173,6 +173,9 @@ END LICENSE BLOCK */
     ## [issue 518] Fixed: Tab-Specific Properties broken in Thunderbird beta 134
     ## [issue 507] Open Message from reading list / quickMove in tab broken 
     ## [issue 524] Display QuickFolders toolbar when its settings tab is shown
+    ## added a prompt for using find related search pattern (right-click to select)
+    ## Added full Czech translation for the User Interface (531 entitites).
+    ## Improved mail system icons for dark mode
 
 
 	TO DO next

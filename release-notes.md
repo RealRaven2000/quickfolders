@@ -5,6 +5,8 @@
 *   Skip unread and Next / Previous sibling folder now follow tree in lexical order. [issue #513]
 *   Tab-Specific Properties now work again in Thunderbird beta 134. [issue #518]
 *   Added a prompt for how to use 'find related mails' search pattern 
+*   Improved mail system icons for dark mode.
+*   Added Czech UI translations
   
 
 **Bug Fixes**
