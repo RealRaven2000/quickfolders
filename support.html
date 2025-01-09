@@ -113,22 +113,37 @@
 				</li>
 			</ol>
 
-			<h3>Investigating the Error Log</h3>
+			<h3>Analysing the Error Log</h3>
 
 			<p>So once you have JS Error Console configured, what can you do it? 
 				Remember you have to always open the log window to start logging errors / activity so make sure you do this
 				with <i>Tools</i> &laquo; <i>Developer Tools</i> &laquo; <i>Error Console</i> just before you do the 
         trouble shooting. </p>
 
-			<h4>STEP 1 - Setting up the Investigation</h4>
+			<h4>STEP 1 - Set up the Investigation</h4>
 
 			<p>It is always preferred to click the "Clear" button at the top immediately
 				 before you reproduce the problem or carry out the actions you investigate. 
          Also make sure to <b>not repeatedly</b> do your test steps once until
 				 the problem happens. 
          
-      <img src="support/images/console-clear.png" alt="clearing the console"/>
+      <img src="images/support/console-clear.png" title="clearing the console"/>
       </p>
+
+			<p>
+				Also set up the options to (at least) display Errors, Warnings and Logs:
+			</p>
+			<img src="images/support/console-setup.png" title="logging options" />
+
+			<p>
+				To make reading the log even easier, disable "show timestamps" and "group similar messages",
+				QuickFolders keeps track of its own operations and will show the elapsed
+				time since its last operation, so we can find out if something took
+				a long time.
+			</p>
+			<img src="images/support/console-options.png" title="console options" />
+
+			
 
 			<h4>STEP 2 - Saving the Error Log</h4>
 			<p>
@@ -137,7 +152,7 @@
 				 <b>Do <u>not take a screenshot</u></b> of the error log as it is much 
 				 harder to investigate - text is nice as I can search and filter it!
 				 You can always send me such error logs in an email if you are having problems.	<br>
-				 <img src="images/support/errorCopy.png" class="screenshot" title="Error Rightclick" alt="">
+				 <img src="images/support/error-console-copy-all.png" class="screenshot" title="Right-click and copy all messages" alt="">
 			</p>
 			<p>A note on typical Error messages: If there is a problem somewhere in Thunderbird code or an Add-on,
 				 warnings and errors usually provide a location of where this happened.
