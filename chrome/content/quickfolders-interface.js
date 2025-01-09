@@ -8149,6 +8149,18 @@ QuickFolders.Interface = {
       }
       regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
 			if (!regexOption.pattern) {
+				// is something defined? user needs to right-click to init the pattern.
+				const listString = QuickFolders.Preferences.getStringPref("findRelated.list") || "{}",
+          list = JSON.parse(listString);
+				if (list.items && list.items.length) {
+          Services.prompt.alert(
+            null,
+            QuickFolders.Util.getBundleString("findRelated.prompt.title"),
+            QuickFolders.Util.getBundleString("findRelated.prompt.selectPattern")
+          );
+          return;
+        }
+
 				// .prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
 				const result = Services.prompt.confirm(
           null,
