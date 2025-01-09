@@ -767,16 +767,37 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
     stroke: currentColor;
 }
 
-#QuickFolders-Toolbar toolbarbutton.inbox.icon, #QuickFolders-CurrentFolderTools toolbarbutton.inbox.icon {list-style-image: url("chrome://messenger/skin/icons/inbox.svg");}
-#QuickFolders-Toolbar toolbarbutton.sent.icon, #QuickFolders-CurrentFolderTools toolbarbutton.sent.icon {list-style-image: url("chrome://messenger/skin/icons/sent.svg");}
-#QuickFolders-Toolbar toolbarbutton.trash.icon, #QuickFolders-CurrentFolderTools toolbarbutton.trash.icon {list-style-image: url("chrome://messenger/skin/icons/delete.svg");}
-#QuickFolders-Toolbar toolbarbutton.junk.icon, #QuickFolders-CurrentFolderTools toolbarbutton.junk.icon {list-style-image: url("chrome://messenger/skin/icons/junk.svg");}
-#QuickFolders-Toolbar toolbarbutton.template.icon, #QuickFolders-CurrentFolderTools toolbarbutton.template.icon {list-style-image: url("chrome://messenger/skin/icons/template.svg");}
-#QuickFolders-Toolbar toolbarbutton.outbox.icon, #QuickFolders-CurrentFolderTools toolbarbutton.outbox.icon {list-style-image: url("chrome://messenger/skin/icons/outbox.svg");}
-#QuickFolders-Toolbar toolbarbutton.virtual.icon, #QuickFolders-CurrentFolderTools toolbarbutton.virtual.icon {list-style-image: url("chrome://messenger/skin/icons/search-folder.svg");}
-#QuickFolders-Toolbar toolbarbutton.draft.icon, #QuickFolders-CurrentFolderTools toolbarbutton.draft.icon {list-style-image: url("chrome://messenger/skin/icons/file-item.svg");}
-#QuickFolders-Toolbar toolbarbutton.news.icon, #QuickFolders-CurrentFolderTools toolbarbutton.news.icon {list-style-image: url("chrome://messenger/skin/icons/newsgroup.svg");}
-#QuickFolders-Toolbar toolbarbutton.archive.icon, #QuickFolders-CurrentFolderTools toolbarbutton.archive.icon {list-style-image: url("chrome://messenger/skin/icons/archive.svg");}
+/* system icons */
+#QuickFolders-Toolbar toolbarbutton.inbox.icon, #QuickFolders-CurrentFolderTools toolbarbutton.inbox.icon {
+  list-style-image: url("skin/ico/inbox.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.sent.icon, #QuickFolders-CurrentFolderTools toolbarbutton.sent.icon {
+  list-style-image: url("skin/ico/sent.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.trash.icon, #QuickFolders-CurrentFolderTools toolbarbutton.trash.icon {
+  list-style-image: url("skin/ico/delete.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.junk.icon, #QuickFolders-CurrentFolderTools toolbarbutton.junk.icon {
+  list-style-image: url("skin/ico/junk.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.template.icon, #QuickFolders-CurrentFolderTools toolbarbutton.template.icon {
+  list-style-image: url("skin/ico/template.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.outbox.icon, #QuickFolders-CurrentFolderTools toolbarbutton.outbox.icon {
+  list-style-image: url("skin/ico/outbox.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.virtual.icon, #QuickFolders-CurrentFolderTools toolbarbutton.virtual.icon {
+  list-style-image: url("skin/ico/search-folder.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.draft.icon, #QuickFolders-CurrentFolderTools toolbarbutton.draft.icon {
+  list-style-image: url("skin/ico/file-item.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.news.icon, #QuickFolders-CurrentFolderTools toolbarbutton.news.icon {
+  list-style-image: url("skin/ico/newsgroup.svg");
+}
+#QuickFolders-Toolbar toolbarbutton.archive.icon, #QuickFolders-CurrentFolderTools toolbarbutton.archive.icon {
+  list-style-image: url("skin/ico/archive.svg");
+}
 
 #QuickFolders-Toolbar toolbarbutton.invalid {
   list-style-image: url("chrome://quickfolders/content/skin/ico/clean.svg");
@@ -892,7 +913,7 @@ menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
 }
 menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"],
 menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] {
-  list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+  list-style-image: url('skin/ico/delete.svg') !important;
 }
 
 menuitem.cmd[tag="qfBreak"],
