@@ -11,6 +11,8 @@ END LICENSE BLOCK */
 async function updateActions() { 
   let endSale = new Date(SALES_DATE), // Next Sale End Date
       currentTime = new Date();
+
+  endSale.setDate(endSale.getDate() + 1); // add 1 day to include the last day?
       
   // Currently we do not notify this page if the license information is updated in the background.
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
