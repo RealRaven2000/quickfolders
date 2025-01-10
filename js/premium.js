@@ -96,7 +96,7 @@ var removedItems = [];
 			}
 		}
 		// remove sales stuff
-		if ((sales_end && new Date() > sales_end) || sales_start < new Date()) {
+		if ((sales_end && new Date() > sales_end) || new Date() < sales_start ) {
       removableItems.forEach((e) => {
         if (!removedItems.includes(e)) {
           removeClassItems(e);
