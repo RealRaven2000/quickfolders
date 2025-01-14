@@ -85,9 +85,21 @@
 			<ol>
 			  <li>
 					<p>Open Thunderbird Menu &laquo; <i>Tools</i> &laquo; <i>Developer Tools</i> &laquo; <i>Error Console</i> or hit the hotkeys Ctrl+Shift+J.</p>
-					<p>In Error Console, activate the the options
-            Errors, Warnings, Logs, Info and Debug.
-						<img src="images/support/console-options.png" class="screenshot" title="Console Options" alt="">
+					<p>
+						Set up the options to display Errors, Warnings and Logs:
+					</p>
+					<p>
+						<img src="images/support/console-setup.png" class="screenshot" title="logging options" />
+					</p>
+
+					<p>
+						To simplify reading the log, disable "show timestamps" and "group similar messages",
+						QuickFolders keeps track of its own operations and will show the elapsed
+						time since its last operation, so we can find out if something took
+						a long time.
+					</p>
+					<p>
+						<img src="images/support/console-options.png" class="screenshot"  title="console options" />
 					</p>
 				</li>
 			  <li>
@@ -130,22 +142,6 @@
 			<p>
 				<img src="images/support/console-clear.png" class="screenshot" title="clearing the console"/>
 			</p>
-			<p>
-				Also set up the options to (at least) display Errors, Warnings and Logs:
-			</p>
-			<p>
-				<img src="images/support/console-setup.png" class="screenshot" title="logging options" />
-			</p>
-
-			<p>
-				To make reading the log even easier, disable "show timestamps" and "group similar messages",
-				QuickFolders keeps track of its own operations and will show the elapsed
-				time since its last operation, so we can find out if something took
-				a long time.
-			</p>
-			<p>
-				<img src="images/support/console-options.png" class="screenshot"  title="console options" />
-			</p>
 
 			<h4>STEP 2 - Saving the Error Log</h4>
 			<p>
@@ -180,6 +176,12 @@ onTabSelected()
 					 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
 					 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 
 					 Underneath it may show additional information about what QuickFolders is doing at the moment.
+				</p>
+
+				<p>
+					Please <b>copy the log text</b> into a text file (just open notepad) and attach it to 
+					an email to support or to a 
+					<a href="https://github.com/RealRaven2000/QuickFolders/" target="_blank">Github Issue</a>.
 				</p>
 
 				<h4>STEP 3 - Looking for Particular Problems</h4>
