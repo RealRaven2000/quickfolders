@@ -29,6 +29,9 @@
     get isClearList() {
       return prefs.getBoolPref('quickMove.premium.escapeClearsList');
     },
+    get isCollapse() {
+      return prefs.getBoolPref("premium.findFolder.autoCollapse");
+    },
     get isGoNext() {
       return prefs.getBoolPref('quickMove.gotoNextMsgAfterMove');
     },

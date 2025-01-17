@@ -280,7 +280,7 @@ QuickFolders.quickMove = {
   
   hideSearch: function hideSearch() {
     QuickFolders.Util.logDebugOptional("interface.findFolder,quickMove", "quickMove.hideSearch()");
-    QuickFolders.Interface.findFolder(false);
+    QuickFolders.Interface.findFolder(false,"forceHide");
     QuickFolders.Interface.updateFindBoxMenus(false);
   },
   

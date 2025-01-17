@@ -188,6 +188,7 @@ pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
 pref("extensions.quickfolders.debug.interface.currentFolderBar", false);
 pref("extensions.quickfolders.debug.interface.findFolder", false);
+pref("extensions.quickfolders.debug.interface.findFolder.menus", false);
 pref("extensions.quickfolders.debug.interface.findFolder.keyDelay", 0);
 pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.listeners.tabmail", false);
@@ -281,6 +282,7 @@ pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.disableSpace", false); // optimization?
+pref("extensions.quickfolders.premium.findFolder.autoCollapse", true); // [issue 534]
 pref("extensions.quickfolders.premium.skipUnreadFolder.sort", true);
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
