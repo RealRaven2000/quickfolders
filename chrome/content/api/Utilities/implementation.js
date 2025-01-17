@@ -2,7 +2,6 @@
 var { ExtensionCommon } = ChromeUtils.importESModule(
   "resource://gre/modules/ExtensionCommon.sys.mjs"
 );
-var win = Services.wm.getMostRecentWindow("mail:3pane"); 
 
 
 
@@ -10,6 +9,7 @@ var win = Services.wm.getMostRecentWindow("mail:3pane");
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   
   async fileConfig(mode, jsonData, fname) {
+    const win = Services.wm.getMostRecentWindow("mail:3pane"); 
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = win.QuickFolders.Util,
@@ -28,8 +28,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
       if (defaultPath.exists()) { // avoid crashes if the folder has been deleted
         fp.displayDirectory = defaultPath; // nsILocalFile
         util.logDebug("Setting default path for filepicker: " + dPath);
-      }
-      else {
+      } else {
         util.logDebug("fileFilters()\nPath does not exist: " + dPath);
       }
     }
@@ -123,10 +122,12 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
       Utilities: {
 
         logDebug (text) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           win.QuickFolders.Util.logDebug(text);
         },
         
         getUserName : function () {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           const util = win.QuickFolders.Util;
           let Accounts = util.Accounts; 
           for (let a=0; a<Accounts.length; a++) {
@@ -141,6 +142,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
         
         showVersionHistory: function() {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           const util = win.QuickFolders.Util;
           util.showVersionHistory();
         },
@@ -151,6 +153,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
         
         showLicenseDialog: function(referrer) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           win.QuickFolders.Interface.showLicenseDialog(referrer);
         },
   
@@ -159,11 +162,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         getUserStyle: async function(id, type, defaultTxt) {
           // lazy workaround for now because messenger is not defined:
           // when calling from options - wo do not have it because we need to load in a "browser" window
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           let retVal = win.QuickFolders.Preferences.getUserStyle(id, type, defaultTxt);
           return retVal;
         },
         
         async storeConfig(config) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           // see options.copyFolderEntries
           const util = win.QuickFolders.Util,
                 prefs = win.QuickFolders.Preferences,
@@ -204,6 +209,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         } ,
 
         async loadConfig(preferences) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           const prefs = win.QuickFolders.Preferences,
                 util = win.QuickFolders.Util;
           
@@ -334,6 +340,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         toggleToolbarAction: function(keepState = false) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           const util = win.QuickFolders.Util;
           let btn = win.document.querySelector("[item-id='ext-quickfolders@curious.be']");
           if (btn) {
@@ -345,10 +352,12 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
         // simplified function to toggle QF toolbar when settings tab is shown
         displayMainToolbar: function(displayStatus) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           win.QuickFolders.Interface.toggleToolbar({ forceVisible: displayStatus });
         },
 
         getFolderIcon: async function(accountId, path = null) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           try {
             let retVal = null;
             if (path) {
@@ -374,6 +383,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         getFolderUri: async function(accountId, path = null) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
           try {
             let retVal = null;
             if (path) {
