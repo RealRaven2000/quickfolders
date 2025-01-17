@@ -1311,6 +1311,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Przełączyć do strony licencji?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Automatycznie zwinąć pole wyszukiwania."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Klawisz Escape czyści listę wiadomości."
   },

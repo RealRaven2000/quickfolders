@@ -1080,6 +1080,9 @@
   "qf.prompt.restoreFolders": {
     "message": "Điều này sẽ xóa tất cả các tab QuickFolders và thay thế chúng bằng các mục từ file.\n{0} mục đã được đọc.\nThay thế các tab?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Thu gọn hộp tìm kiếm tự động."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Phím Escape xóa danh sách tin nhắn."
   },

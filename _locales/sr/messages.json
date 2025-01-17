@@ -1165,6 +1165,9 @@
   "qf.prompt.readingList.searchMissingItem": {
     "message": "Није могуће наћи поруку. Могуће је да је негде премештена у међувремену.\n{1}\n\nЖелите ли да је потражите?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Аутоматски склопите поље за претрагу."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Есцапе Кеи брише листу порука."
   },

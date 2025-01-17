@@ -1318,6 +1318,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Byt till domänlicens?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Fäll ihop sökrutan automatiskt."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escape Key rensar meddelandelistan."
   },

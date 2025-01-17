@@ -1306,6 +1306,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Suchfeld automatisch einklappen."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escape Taste löscht die Nachrichtenliste."
   },

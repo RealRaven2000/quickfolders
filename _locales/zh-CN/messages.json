@@ -1279,6 +1279,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "切换到域授权？"
   },
+  "qf.quickMove.collapse": {
+    "message": "自动折叠搜索框。"
+  },
   "qf.quickMove.escapeClears": {
     "message": "退出鍵清除消息列表。"
   },

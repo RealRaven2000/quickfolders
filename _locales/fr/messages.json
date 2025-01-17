@@ -1343,6 +1343,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Passer à une licence de domaine ?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Réduire automatiquement la boîte de recherche."
+  },
   "qf.quickMove.escapeClears": {
     "message": "La touche d'échappement efface la liste des messages."
   },

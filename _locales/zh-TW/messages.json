@@ -1287,6 +1287,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "切換到主要的授權？"
   },
+  "qf.quickMove.collapse": {
+    "message": "自動摺疊搜尋框。"
+  },
   "qf.quickMove.escapeClears": {
     "message": "退出键清除消息列表。"
   },

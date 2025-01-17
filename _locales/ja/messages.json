@@ -1242,6 +1242,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "ドメインライセンスに切り替えますか？"
   },
+  "qf.quickMove.collapse": {
+    "message": "検索ボックスを自動的に折りたたみます。"
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escキーはメッセージリストをクリアします。"
   },

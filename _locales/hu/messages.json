@@ -1177,6 +1177,9 @@
   "qf.prompt.restoreFolders": {
     "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\n{0} entries were read.\nReplace tabs?"
   },
+  "qf.quickMove.collapse": {
+    "message": "A keresőmező automatikus bezárása."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Az Escape gomb törli az üzenetek listáját."
   },

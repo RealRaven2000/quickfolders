@@ -1286,6 +1286,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Canviar a la llicència de domini?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Col·lapsa automàticament el quadre de cerca."
+  },
   "qf.quickMove.escapeClears": {
     "message": "La tecla d'escapament sempre esborra la llista de missatges."
   },

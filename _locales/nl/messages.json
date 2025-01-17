@@ -1302,6 +1302,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Wisselen naar domeinlicentie?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Zoekvak automatisch inklappen."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escape-toets wist de berichtenlijst."
   },

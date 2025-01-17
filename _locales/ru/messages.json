@@ -1323,6 +1323,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Перейти на доменную лицензию?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Автоматически сворачивать поле поиска."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escape Key очищает список сообщений."
   },

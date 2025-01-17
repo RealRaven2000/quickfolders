@@ -1296,6 +1296,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Mudar para licença de domínio?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Recolher automaticamente a caixa de pesquisa."
+  },
   "qf.quickMove.escapeClears": {
     "message": "A tecla Escape limpa a lista de mensagens."
   },

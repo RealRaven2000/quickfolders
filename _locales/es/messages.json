@@ -1314,6 +1314,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "¿Cambiar a licencia de dominio?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Colapsar automáticamente el cuadro de búsqueda."
+  },
   "qf.quickMove.escapeClears": {
     "message": "La tecla Escape borra la lista de mensajes."
   },

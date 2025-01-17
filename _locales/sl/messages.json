@@ -1269,6 +1269,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Samodejno strni iskalno polje."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Escape Key izbriše seznam sporočil."
   },

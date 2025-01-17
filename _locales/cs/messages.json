@@ -1331,6 +1331,9 @@
   "qf.prompt.switchDomainLicense": {
     "message": "Přepnout na doménovou licenci?"
   },
+  "qf.quickMove.collapse": {
+    "message": "Automaticky sbalit vyhledávací pole."
+  },
   "qf.quickMove.escapeClears": {
     "message": "Klávesa Escape vždy vymaže seznam zpráv."
   },
