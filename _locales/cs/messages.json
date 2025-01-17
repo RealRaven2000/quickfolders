@@ -1287,214 +1287,214 @@
     }
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Your license expired {1} days ago"
+    "message": "Vaše licence vypršela před {1} dny"
   },
   "qf.premiumConfig": {
-    "message": "Premium Features"
+    "message": "Prémiové funkce"
   },
   "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
+    "message": "Opravdu chcete odstranit více kategorií?"
   },
   "qf.prompt.contact.subject": {
-    "message": "Please enter a short subject line:"
+    "message": "Zadejte krátký předmět:"
   },
   "qf.prompt.contact.title": {
-    "message": "Contact QuickFolders Support"
+    "message": "Kontaktovat podporu QuickFolders"
   },
   "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
+    "message": "Přijmout načtené karty?"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "Vytvořit také kartu QuickFolders"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "Zadejte název nové podřízené složky pod {0}"
   },
   "qf.prompt.newFolder.title": {
-    "message": "New Folder"
+    "message": "Nová složka"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
+    "message": "Tímto budou odstraněny všechny karty QuickFolders a nahrazeny položkami ze schránky.\nVe schránce bylo nalezeno {0} položek.\nNahradit karty?"
   },
   "qf.prompt.pasteFolders.confirm": {
-    "message": "Keep the displayed Tabs?"
+    "message": "Ponechat zobrazené karty?"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Remove this item?"
+    "message": "Odstranit tuto položku?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+    "message": "Nelze najít e-mail, mohl být mezitím přesunut jinam.\n{1}\n\nChcete jej vyhledat?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
+    "message": "Tímto budou odstraněny všechny karty QuickFolders a nahrazeny položkami ze souboru.\nBylo načteno {0} položek.\nNahradit karty?"
   },
   "qf.prompt.switchDomainLicense": {
-    "message": "Switch to Domain License?"
+    "message": "Přepnout na doménovou licenci?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "Klávesa Escape vždy vymaže seznam zpráv."
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Select any account that should be excluded from the search results:"
+    "message": "Vyberte účty, které mají být vyloučeny z výsledků hledání:"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Only show results from current mail account."
+    "message": "Zobrazit výsledky pouze z aktuálního e-mailového účtu."
   },
   "qf.quickMove.maxResults": {
-    "message": "Maximum number of search results"
+    "message": "Maximální počet výsledků hledání"
   },
   "qf.quickMove.path.format": {
-    "message": "Display Format:"
+    "message": "Formát zobrazení:"
   },
   "qf.quickMove.silent": {
-    "message": "Omit notifications after moving mails."
+    "message": "Po přesunutí e-mailů neukazovat oznámení."
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "Vaše licence vypršela:"
   },
   "qf.search.advanced": {
-    "message": "Advanced search settings…"
+    "message": "Pokročilé nastavení hledání…"
   },
   "qf.storeConfig": {
-    "message": "Save Configuration…"
+    "message": "Uložit konfiguraci…"
   },
   "qf.tab.advanced": {
-    "message": "Advanced"
+    "message": "Pokročilé"
   },
   "qf.tab.findRelated": {
-    "message": "Find related mails"
+    "message": "Najít související e-maily"
   },
   "qf.tab.general": {
-    "message": "General"
+    "message": "Obecné"
   },
   "qf.tab.gopro": {
-    "message": "Licenses"
+    "message": "Licence"
   },
   "qf.tab.layout": {
-    "message": "Bling My Tabs!"
+    "message": "Rozložení karet"
   },
   "qf.tab.quickhelp": {
-    "message": "Quick Help"
+    "message": "Rychlá pomoc"
   },
   "qf.tab.support": {
-    "message": "Support"
+    "message": "Podpora"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Search filters by name…"
+    "message": "Hledat filtry podle názvu…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "enter a keyword to search filters by name"
+    "message": "Zadejte klíčové slovo pro hledání filtrů podle názvu"
   },
   "qf.themes.applePills.description": {
-    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+    "message": "Příjemné rozvržení pro naše uživatele Macu - jednoduché a čisté, s volitelnými barevnými vylepšeními."
   },
   "qf.themes.applePills.label": {
     "message": "Apple Pills"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+    "message": "Standardní tlačítka nástrojové lišty - co nejblíže vzhledu původní verze 0.5!"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Toolbar Buttons"
+    "message": "Tlačítka nástrojové lišty"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+    "message": "Moderní vzhled s kartami - plně přizpůsobitelné. Vypadá skvěle na Windows a Linuxu."
   },
   "qf.themes.flatTabs.label": {
-    "message": "Flat Style"
+    "message": "Plochý styl"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "Rozvržení připomíná karty vašeho OS - méně možností barevného přizpůsobení, ale lépe zapadne a sladí se s motivy vašeho e-mailového klienta."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native Tabs"
+    "message": "Nativní karty"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "Tlačítka - vypadají jako standardní tlačítka v dialogových oknech"
   },
   "qf.themes.realButtons.label": {
-    "message": "Pushbuttons"
+    "message": "Tlačítka"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "QuickFolders Toolbar"
+    "message": "Nástrojová lišta QuickFolders"
   },
   "qf.toolbarIcon.customSize": {
-    "message": "Custom Icon Size"
+    "message": "Vlastní velikost ikon"
   },
   "qf.toolbarIconSize": {
-    "message": "Large Toolbar Icons"
+    "message": "Velké ikony nástrojové lišty"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "Minimální výška:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "For Mac systems who encounter [Bug 25021]"
+    "message": "Pro systémy Mac, které narazily na [Bug 25021]"
   },
   "qf.toolbarTopPadding": {
-    "message": "Top Padding"
+    "message": "Horní odsazení"
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Recent Folders"
+    "message": "Nedávné složky"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Close this toolbar"
+    "message": "Zavřít tuto nástrojovou lištu"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "Označit konverzaci jako přečtenou a přejít na další nepřečtený e-mail"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+    "message": "Aktuální e-mail - přetáhněte na kartu QuickFolders pro přesunutí zprávy"
   },
   "qf.tooltip.filterStart": {
-    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+    "message": "Aktivovat učení filtrů. Přetažením e-mailů na kartu QuickFolder vytvoříte nové filtry."
   },
   "qf.tooltip.filters": {
-    "message": "Stop creating filters."
+    "message": "Přestat vytvářet filtry."
   },
   "qf.tooltip.folderUp": {
-    "message": "Go to Parent Folder"
+    "message": "Přejít do nadřazené složky"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Move to the next [unread] message"
+    "message": "Přesunout na další [nepřečtenou] zprávu"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Move to the previous [unread] message"
+    "message": "Přesunout na předchozí [nepřečtenou] zprávu"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "Příkazy pro složky s poštou"
   },
   "qf.tooltip.mainOptions": {
-    "message": "QuickFolders options and advanced commands"
+    "message": "Možnosti QuickFolders a pokročilé příkazy"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+    "message": "Režim malování: klikněte pro paletu, klikněte na karty pro jejich barvení, pravým kliknutím na karty získáte jejich barvu"
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "toggle navigating unread only / all mails"
+    "message": "Přepnout mezi navigací nepřečtených zpráv / všech zpráv"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "Přetáhněte e-mail sem a poté zadejte název cílové složky (quickMove); nebo klikněte pro přechod do složky (quickJump)."
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Skip to next Unread Folder"
+    "message": "Přeskočit na další složku s nepřečtenými zprávami"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+    "message": "Aktuální vlákno - přetáhněte na kartu QuickFolders pro přesunutí konverzace"
   },
   "qf.update.title": {
-    "message": "Updates"
+    "message": "Aktualizace"
   },
   "qf.update.hideVersionHistory": {
-    "message": "Do not open tab with version history"
+    "message": "Neotevírat kartu s historií verzí"
   },
   "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    "message": "Pro podrobné videonávody o doplňcích pro Thunderbird a používání QuickFolders navštivte můj YouTube kanál Thunderbird Daily."
   },
   "qf.youtube.link": {
-    "message": "Watch Videos about QuickFolders…"
+    "message": "Sledovat videa o QuickFolders…"
   },
   "qf.youtube.tbdaily": {
-    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+    "message": "Navštivte Thunderbird Daily - YouTube kanál pro tipy a návody na používání QuickFolders"
   },
   "qfAlertCopyString": {
     "message": "Řetězec složky byl zkopírován do schránky!"
