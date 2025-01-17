@@ -1,4 +1,7 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
