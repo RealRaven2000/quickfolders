@@ -165,7 +165,7 @@ END LICENSE BLOCK */
     ## fix "edit regex" button of find Related mail [issue 488]
     ## prepare for removal of ESMIfy fallback (Thunderbird 136)
 
-  6.9 QuickFolders Pro - WIP
+  6.9 QuickFolders Pro - 09/01/2025
     ## [issue 463] Improved auto-fill performance of quickMove / quickJump while typing
     ## [issue 512] Creating a subfolder with space in name from quickMove raises an error
     ## [issue 513] Skip unread and Next / Previous sibling folder don't follow tree order (lexical)
@@ -176,6 +176,14 @@ END LICENSE BLOCK */
     ## added a prompt for using find related search pattern (right-click to select)
     ## Added full Czech translation for the User Interface (531 entitites).
     ## Improved mail system icons for dark mode
+
+  6.9.1 QuickFolders Pro - WIP
+    ## [issue 526] Fixed: Shortcut Key configured for quickMove / quickJump are ignored
+    ## [issue 531] Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes mutliple tries
+    ## Completed some missing Czech translations that were accidentally left in English.
+    ## [issue 534] Added advanced search setting to not collapse quickMove box after use.
+    ## [issue 530] - toggle toolbar button broken
+
 
 
 	TO DO next
@@ -262,7 +270,13 @@ var QuickFolders_getDocument= function() {
 }
 
 if (window.QuickFolders) {
-  console.log("There is still a reference to QuickFolders!");
+  // take care of previous keylisteners...
+  const options = { color: "rgb(253, 229, 50)", background: "rgb(141, 13, 4)" };
+  const txt = "There is still a reference to QuickFolders! Removing old key listener...";
+  console.log(
+    `QuickFolders %c${txt}`,
+    `color: ${options.color}; background: ${options.background}`
+  );  
   delete window.QuickFolders.keyListen;
   window.QuickFolders = {}
 }
@@ -385,17 +399,22 @@ var QuickFolders = {
       util.logDebug("Adding Search Input event handler...");
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
       if (findFolderBox) {
-        findFolderBox.addEventListener("input", function(event) {
-            if (event && !event.data) switch (event?.inputType){
+        // note, keypress events are hanler by QuickFolders.Interface.findFolderKeyDown
+        findFolderBox.addEventListener("input", function (event) {
+          if (event && !event.data)
+            switch (event?.inputType) {
               case "deleteContentBackward": // [BACKSPACE] fallthrough
-              case "deleteContentForward":  // [DEL]
+              case "deleteContentForward": // [DEL]
                 break;
               default:
+                util.logDebug(
+                  `find folder box - ìnput event without data: ${event?.inputType}, not calling findFolderName()`,
+                  event
+                );
                 return;
-            } 
-            QI.findFolderName(findFolderBox);
-          }
-        );
+            }
+          QI.findFolderName(findFolderBox);
+        });
       } else {
         util.logDebug("element not found: QuickFolders-FindFolder");
       }
@@ -494,6 +513,8 @@ var QuickFolders = {
       if (QuickFolders.keyListen) {
         QuickFolders.removeKeyListeners(win);
         delete QuickFolders.keyListen;
+        // [issue 526]
+        QuickFolders.Interface.boundKeyListener = false;
       }
 			// only add event listener on startup if necessary
 			if (!QuickFolders.Preferences.isKeyboardListeners) {
