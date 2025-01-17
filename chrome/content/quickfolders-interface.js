@@ -1884,9 +1884,9 @@ QuickFolders.Interface = {
           (isCtrl ? "CTRL + " : "") +
           (isShift ? "SHIFT + " : "") +
           "key = " +
-          e.key +
+          event.key +
           " = " +
-          (e.key.toLowerCase() + "\n" + "keyCode = " + e.keyCode)
+          (event.key.toLowerCase() + "\n" + "keyCode = " + event.keyCode)
       );
     }
     const QI = QuickFolders.Interface,
@@ -1905,15 +1905,33 @@ QuickFolders.Interface = {
       // exclude all metakey combos [issue 514]
 			return;
     }
+		if (typeof QuickFolders.Util.lastKey === "undefined") {
+      QuickFolders.Util.lastKey = ""; // used for debouncing logic
+    }
 		if (QuickFolders.Util.lastTime) {
       let end = new Date(),
         endTime = end.getTime(),
         elapsed = endTime - QuickFolders.Util.lastTime; // time in milliseconds
+
+      // Define modifier keys: SHIFT, CTRL, ALT, META
+      const modifierKeys = ["Shift", "Control", "Alt"];
+
+      // [issue 526] If the key is a modifier key and no other key is pressed in combination (i.e., a non-modifier key),
+      // (i.e., a non-modifier key), skip resetting the timer.
+      if (modifierKeys.includes(e.key) && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+				util.logDebugOptional("events.keyboard",`ignoring meta key ${e.key}`, e);
+        return; // Ignore modifier-only key presses (SHIFT or CTRL alone)
+      }
+
       // avoid repeat triggering, if key listener was not tidied up by Thunderbird during Add-on update (WIP).
-      if (elapsed < 150) return; // (assuming user doesn't mash keys)
-			if (prefs.getBoolPref("debug.events.keyboard") && !util.isDebug) {
-				console.log(`QF keypress elapsed: ${elapsed} ms`);
+      if (elapsed < 220 && e.key === QuickFolders.Util.lastKey) {
+				util.logDebugOptional("events.keyboard", `discarding repeat key ${(e.key)} after ${elapsed}ms`, e);
+				return; // (assuming user doesn't mash keys)
 			}
+      if (prefs.getBoolPref("debug.events.keyboard") && !util.isDebug) {
+        console.log(`QF keypress elapsed: ${elapsed} ms`);
+      }
+			QuickFolders.Util.lastKey = e.key;
     } 
 		if (!prefs.isDebug) {
       // in case no logging is enabled, this was never set:
@@ -1978,7 +1996,7 @@ QuickFolders.Interface = {
           theKeyPressed = e.key.toLowerCase();
         util.logDebugOptional(
           "premium.quickJump",
-          "hasValidLicense = true\n" +
+          "hasValidLicense = true - Settings:\n" +
             `quickJump Shortcut = ${prefs.isQuickJumpShortcut}, ${prefs.QuickJumpShortcutKey}\n` +
             `quickMove Shortcut = ${prefs.isQuickMoveShortcut}, ${prefs.QuickMoveShortcutKey}\n` +
             `Key Pressed: [${theKeyPressed}]`
@@ -3259,9 +3277,10 @@ QuickFolders.Interface = {
 			}
 			// the window may correct its x position if cropped by screen's right edge
 
-			const propsDlg = QuickFolders_ESM
-        ? "quickfolders-advanced-tab-props-new.xhtml"
-        : "quickfolders-advanced-tab-props.xhtml";
+			const propsDlg = //  "quickfolders-advanced-tab-props-new.xhtml"
+			  QuickFolders_ESM
+          ? "quickfolders-advanced-tab-props-new.xhtml"
+          : "quickfolders-advanced-tab-props.xhtml";
 
 			let win = window.openDialog(
         `chrome://quickfolders/content/${propsDlg}`,
@@ -5202,7 +5221,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
-	findFolderKeyPress: function (event) {
+	findFolderKeyDown: function (event) {
     const prefs = QuickFolders.Preferences,
           util = QuickFolders.Util,
           QI = QuickFolders.Interface;
@@ -5215,6 +5234,7 @@ QuickFolders.Interface = {
       return clonedEvent;
     }
 
+		util.logDebugOptional("interface.findFolder",`keydown: ${event.key} `, event);
 	  if (event.key) switch (event.key) {
       case "Enter":
 			  util.logDebugOptional("interface.findFolder","Enter");
@@ -5245,7 +5265,7 @@ QuickFolders.Interface = {
 
 					setTimeout( function() {
 						util.logDebugOptional("interface.findFolder","creating Keyboard Events…");
-						if (menupopup.dispatchEvent(makeEvent("keydown", event))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(event)) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
 						}
 						if (menupopup.dispatchEvent(makeEvent("keyup", event))) { // event was not cancelled with preventDefault()
@@ -5258,7 +5278,7 @@ QuickFolders.Interface = {
         event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
 			  if (isShift || prefs.getBoolPref("quickMove.premium.escapeClearsList") ) // [Bug 26660] SHIFT + ESC resets move list
 					QuickFolders.quickMove.resetList();
-			  QI.findFolder(false);
+			  QI.findFolder(false,"forceHide");
 			  QI.hideFindPopup();
         QI.updateFindBoxMenus(false);
         QI.toggleMoveModeSearchBox(false);
@@ -5272,7 +5292,7 @@ QuickFolders.Interface = {
 	  let menupopup = document.getElementById("QuickFolders-FindPopup"),
 		    state = menupopup.getAttribute("state"),
         util = QuickFolders.Util;
-    util.logDebugOptional("interface.findFolder","hideFindPopup - menupopup status = " + state);
+    util.logDebugOptional("interface.findFolder.menus","hideFindPopup - menupopup status = " + state);
 		//if (state == "open" || state == "showing")
     try {
 			menupopup.hidePopup();
@@ -5389,10 +5409,10 @@ QuickFolders.Interface = {
           }
           for (let i = 0; i < fArray.length; i++) {
             if (fArray[i].startsWith(search)) {
-              if (search == fArray[i])
+              if (search == fArray[i]) {
                 // full match
                 rank += 7;
-              else rank += 3; // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
+							} else { rank += 3; } // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
               fArray[i] = "####"; // blank out matched element
               foundEl = true;
               break;
@@ -5520,10 +5540,12 @@ QuickFolders.Interface = {
         if (folderNameMatches.some((a) => a.startsWith(search))) {
           if (!directParent) directParent = folder;
           if (maxLevel == 0) {
-            if (parentList.indexOf(directParent) < 0) {
-              if (!checkFolderFlag(directParent, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
-                // [Bug 26692]
-                parentList.push(directParent);
+            if (
+              parentList.indexOf(directParent) < 0 &&
+              !checkFolderFlag(directParent, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)
+            ) {
+              // [Bug 26692]
+              parentList.push(directParent);
             }
             return true;
           }
@@ -5542,7 +5564,7 @@ QuickFolders.Interface = {
           : "";
         setTimeout(function () {
           QuickFolders.quickMove.rememberLastFolder(finalURI, ps);
-          QuickFolders.Interface.tearDownSearchBox();
+					QuickFolders.Interface.tearDownSearchBox();
         }, 400);
 				return;
       } 
@@ -5692,11 +5714,6 @@ QuickFolders.Interface = {
         : 1;
       if (parentPos > 0) maxParentLevel = 1; // no subfolders when SLASH is entered
 
-      // multiple slashes?
-      util.logDebugOptional(
-        "interface.findFolder",
-        `Calling allFoldersMatch(${isFiling}, isParentMatch(), parent=${parentString},${maxParentLevel},...)`
-      );
       await util.allFoldersMatch(
         isFiling,
         isParentMatch,
@@ -5707,7 +5724,7 @@ QuickFolders.Interface = {
         matches,
         signal // pass the abort signal
       );
-      util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
+      util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches.");
 
       // no parent matches - Add one for a folder without children.
       if (!matches.length && parentPos > 0) {
@@ -5716,7 +5733,7 @@ QuickFolders.Interface = {
         }
       }
       util.logDebugOptional(
-        "interface.findFolder",
+        "interface.findFolder.menus",
         "built list: " + matches.length + " matches found. Building menu…"
       );
 
@@ -5755,7 +5772,7 @@ QuickFolders.Interface = {
           }
         }
       }
-      util.logDebugOptional("interface.findFolder", "built menu.");
+      util.logDebugOptional("interface.findFolder.menus", "built menu.");
 
       // special commands: if slash was entered, allow creating subfolders.
       if (parentPos > 0) {
@@ -5878,7 +5895,7 @@ QuickFolders.Interface = {
           if (item.getAttribute("tag") == "dummy") menupopup.removeChild(item);
         }
       }
-      util.logDebugOptional("interface.findFolder", "showPopup:");
+      util.logDebugOptional("interface.findFolder.menus", "showPopup:");
 
       menupopup.setAttribute("ignorekeys", "true");
 
@@ -5942,13 +5959,13 @@ QuickFolders.Interface = {
     }
   } ,
 
-  tearDownSearchBox: function tearDownSearchBox() {
+  tearDownSearchBox: function () {
     QuickFolders.Util.logDebugOptional("quickMove,interface.findFolder", "tearDownSearchBox()");
     let QI = QuickFolders.Interface;
     QI.findFolder(false);
     QI.hideFindPopup();
     QI.updateFindBoxMenus(false);
-    QI.toggleMoveModeSearchBox(false);
+		QI.toggleMoveModeSearchBox(false);
   } ,
 
   // when typing while search results popup is displayed
@@ -6000,8 +6017,7 @@ QuickFolders.Interface = {
 		if (isSelected) {
 			// success: collapses the search box!
       this.findFolder(false);
-		}
-		else {
+		} else {
 			if (el.classList.contains("quickFolder")) {
 				// this.correctFolderEntry(URI);
 				// in case we have deleted the QuickFolders (which QuickFolders_MySelectFolder allows now)
@@ -6061,9 +6077,14 @@ QuickFolders.Interface = {
         QuickMove = QuickFolders.quickMove;
     util.logDebugOptional("interface.findFolder,quickMove", "findFolder(" + show + ", " + actionType + ")");
 		try {
-			let ff = QI.FindFolderBox;
-			ff.collapsed = !show;
-      QI.FindFolderHelp.collapsed = !show;
+			let displaySearchControls = show;
+			if (!QuickFolders.Preferences.getBoolPref("premium.findFolder.autoCollapse") && !actionType) {
+				displaySearchControls = true;
+			}
+			const ff = QI.FindFolderBox;
+			ff.collapsed = !displaySearchControls;
+      QI.FindFolderHelp.collapsed = !displaySearchControls;
+
 			if (show) {
 				if (actionType) {
 					util.popupRestrictedFeature(actionType,util.getBundleString("qf.notification.premium.shortcut"),2); // Licensed Version Notification
@@ -7654,7 +7675,7 @@ QuickFolders.Interface = {
   } ,
 
   // make a special style visible to show that [Enter] will move the mails in the list (and not just jump to the folder)
-  toggleMoveModeSearchBox: function toggleMoveModeSearchBox(toggle) {
+  toggleMoveModeSearchBox: function (toggle) {
     QuickFolders.Util.logDebug("toggleMoveModeSearchBox(" + toggle + ")");
     let searchBox = QuickFolders.Interface.FindFolderBox;
 		if (toggle)
