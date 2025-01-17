@@ -2242,7 +2242,7 @@ QuickFolders.Interface = {
 		return null;
 	} ,
 
-	toggleToolbar: async function (toggleOptions = { button: null, toogle: true, forceVisible: null }) {
+	toggleToolbar: async function (toggleOptions = { button: null, toggle: true, forceVisible: null }) {
 		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar()", toggleOptions);
 		const toolbar = this.Toolbar,
 			// toolbar.style.display = "flex";  // was:   -moz-inline-box 
@@ -2251,7 +2251,7 @@ QuickFolders.Interface = {
 		if (toggleOptions.forceVisible != null) {
 			makeVisible = toggleOptions.forceVisible;
 		} else {
-			makeVisible = toggleOptions.toogle ? !isVisible : isVisible;
+			makeVisible = toggleOptions.toggle ? !isVisible : isVisible;
 		}
 		toolbar.setAttribute("collapsed", !makeVisible);
 		if (toggleOptions.button) {

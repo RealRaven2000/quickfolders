@@ -182,7 +182,7 @@ END LICENSE BLOCK */
     ## [issue 531] Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes mutliple tries
     ## Completed some missing Czech translations that were accidentally left in English.
     ## [issue 534] Added advanced search setting to not collapse quickMove box after use.
-    ## [issue 530] - toggle toolbar button broken
+    ## [issue 530] Fixed: toggle toolbar button broken.
 
 
 
