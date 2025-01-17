@@ -1912,7 +1912,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 提高了具有多个文件夹的用户在输入时的 quickMove / quickJump 搜索结果性能。[issue 463]{L2}{L1} 跳过未读项和下一步 / 上一步兄弟文件夹现在按字典顺序跟随树形结构。[issue 513]{L2}{L1} 现在打开设置选项卡时，QuickFolders 工具栏会显示。[issue 524] {L2}{L1} 添加了完整的捷克语用户界面翻译。{L2}{L1} 修复：QuickFolders 阻止了包含 Option (metaKey) 的本地 Thunderbird 快捷键，在 Mac 系统上发生冲突。 {L2}{L1} 选项卡特定属性在 Thunderbird beta 134 中恢复正常工作。[issue 518]{L2}{L1} 现在，包含单引号的文件夹名称不再导致导航错误。 {L2}{L1} QuickFolders 现在支持从 quickMove 创建包含空格的子文件夹名称。[issue 512]{L2}"
+    "message": "{L1} 6.9.1: 修复了键盘快捷键的问题，并完成了捷克语翻译。 {L2} {L1} 提高了具有多个文件夹的用户在输入时的 quickMove / quickJump 搜索结果性能。[issue 463]{L2}{L1} 跳过未读项和下一步 / 上一步兄弟文件夹现在按字典顺序跟随树形结构。[issue 513]{L2}{L1} 现在打开设置选项卡时，QuickFolders 工具栏会显示。[issue 524] {L2}{L1} 添加了完整的捷克语用户界面翻译。{L2}{L1} 修复：QuickFolders 阻止了包含 Option (metaKey) 的本地 Thunderbird 快捷键，在 Mac 系统上发生冲突。 {L2}{L1} 选项卡特定属性在 Thunderbird beta 134 中恢复正常工作。[issue 518]{L2}{L1} 现在，包含单引号的文件夹名称不再导致导航错误。 {L2}{L1} QuickFolders 现在支持从 quickMove 创建包含空格的子文件夹名称。[issue 512]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
