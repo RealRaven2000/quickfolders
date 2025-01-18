@@ -1682,8 +1682,14 @@ var QuickFolders = {
         // handler for dropping messages
         lastAction = "drop action payload";
         // quickMove menu
-        if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-          util.logDebugOptional("dnd", "drop: quickMove button - added " + messageUris.length + " message URIs");
+        if (
+          DropTarget?.id == "QuickFolders-quickMove" ||
+          DropTarget?.id == "QuickFolders-FindFolder"
+        ) {
+          util.logDebugOptional(
+            "dnd",
+            "drop: quickMove button - added " + messageUris.length + " message URIs"
+          );
           // copy message list into "holding area"
           while (messageUris.length) {
             let newUri = messageUris.pop();
@@ -1742,7 +1748,10 @@ var QuickFolders = {
       } else if (isDropFolder) {
         // was "text/x-moz-folder"
         // [issue 75] support moving folders through quickMove
-        if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+        if (
+          DropTarget?.id == "QuickFolders-quickMove" ||
+          DropTarget?.id == "QuickFolders-FindFolder"
+        )  {
           isMoveFolderQuickMove = true;
         }
         if (!isShift && !isMoveFolderQuickMove) {

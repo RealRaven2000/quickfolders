@@ -27,16 +27,18 @@ var mylisteners = {};
 var toggleIcon, removeIcon;
 
 async function onLoad(activatedWhileWindowOpen) {
-  window.QuickFolders.Util.logDebug(`============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`);
+  window.QuickFolders.Util.logDebug(
+    `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
+  );
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
   // layout.setAttribute("title", "QuickFolderStyles");
-  
+
   // version specific:
-  WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");  
-         
+  WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");
+
   let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
-  
+
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
@@ -394,8 +396,8 @@ async function onLoad(activatedWhileWindowOpen) {
     // inject brighttext if necessary
     // for some reason this is not generated automatically
     // which leads to badly matching icons in the toolbar...
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      myToolbar.setAttribute("brighttext",true);
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      myToolbar.setAttribute("brighttext", true);
     }
   }
   const themeHandler = {
@@ -403,15 +405,14 @@ async function onLoad(activatedWhileWindowOpen) {
       window.QuickFolders.Interface.patchToolbarTheme(event, {
         win: window,
         doc: document,
-        toolbarId: "QuickFolders-Toolbar"
+        toolbarId: "QuickFolders-Toolbar",
       });
-    }
-  }
+    },
+  };
   window.addEventListener("activate", themeHandler);
   window.addEventListener("windowlwthemeupdate", themeHandler);
   window.addEventListener("toolbarvisibilitychange", themeHandler);
   window.QuickFolders.themeHandler = themeHandler;
-
 
   // window.QuickFolders.initDocAndWindow(window);
   // [issue 378]
@@ -425,36 +426,54 @@ async function onLoad(activatedWhileWindowOpen) {
     }
   }
   */
-  
-  
+
+  // [issue 534] leave search box open: allow dragging more maisls for quickMove
+  const qm = myToolbar.querySelector("#QuickFolders-FindFolder");
+  if (qm) {
+    qm.addEventListener("dragenter", (e) => {
+      return window.QuickFolders.buttonDragObserver.dragEnter(e);
+    });
+    qm.addEventListener("drop", (e) => {
+      return window.QuickFolders.buttonDragObserver.drop(e);
+    });
+    qm.addEventListener("dragleave", (e) => {
+      return window.QuickFolders.buttonDragObserver.dragLeave(e);
+    });
+  }
+
   // add listeners
-  window.QuickFolders.Util.logDebug('Adding Folder Listener...');
-  MailServices.mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+  window.QuickFolders.Util.logDebug("Adding Folder Listener...");
+  MailServices.mailSession.AddFolderListener(
+    window.QuickFolders.FolderListener,
+    Components.interfaces.nsIFolderListener.all
+  );
 
   // call on background page to implement folder pane listener
-  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "addFolderPaneMenu" });   
+  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "addFolderPaneMenu" });
 
   // Thunderbird 115
   // iterate all mail tabs!
-  window.gTabmail.tabInfo.filter(t => t.mode.name == "mail3PaneTab").forEach(tabInfo => {
-    const QuickFolders = window.QuickFolders;
-    // const callBackCommands = tabInfo.chromeBrowser.contentWindow.commandController._callbackCommands;
-    // backup wrapped functions:
-    // callBackCommands.quickFilters_cmd_moveMessage = callBackCommands.cmd_moveMessage; 
-    // monkey foldertree patch drop method
-    QuickFolders.patchFolderTree(tabInfo);
-  });
+  window.gTabmail.tabInfo
+    .filter((t) => t.mode.name == "mail3PaneTab")
+    .forEach((tabInfo) => {
+      const QuickFolders = window.QuickFolders;
+      // const callBackCommands = tabInfo.chromeBrowser.contentWindow.commandController._callbackCommands;
+      // backup wrapped functions:
+      // callBackCommands.quickFilters_cmd_moveMessage = callBackCommands.cmd_moveMessage;
+      // monkey foldertree patch drop method
+      QuickFolders.patchFolderTree(tabInfo);
+    });
 
   await window.QuickFolders.Util.init();
   if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
   }
   window.QuickFolders.Util.notifyTools.notifyBackground({ func: "initActionButton" });
-  
+
   window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;
-  
+
   mylisteners["updateFoldersUI"] = QI.updateFoldersUI.bind(QI);
   mylisteners["updateAllTabs"] = QI.updateAllTabs.bind(QI);
   mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
@@ -465,35 +484,35 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["copyFolderEntriesToClipboard"] = QI.copyFolderEntriesToClipboard.bind(QI);
   mylisteners["pasteFolderEntriesFromClipboard"] = QI.pasteFolderEntriesFromClipboard.bind(QI);
   // function parameters in event.detail
-  mylisteners["updateMainWindow"] = 
-    (event) => QI.updateMainWindow.call(QI, event.detail ? event.detail.minimal : null); 
-  mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
+  mylisteners["updateMainWindow"] = (event) =>
+    QI.updateMainWindow.call(QI, event.detail ? event.detail.minimal : null);
+  mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI);
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
-  mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
+  mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(
+    window.QuickFolders.Util.FirstRun
+  );
   mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(
     window.QuickFolders.Interface
   );
 
-
   toggleIcon = (event) => {
-    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
+    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail);
     let element = {
-      id: "context-quickFoldersIcon"
-    }
+      id: "context-quickFoldersIcon",
+    };
     window.QuickFolders.Interface.onSelectIcon(element, event.detail);
-  }
+  };
   removeIcon = (event) => {
-    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
+    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail);
     let element = {
-      id: "context-quickFoldersRemoveIcon"
-    }
+      id: "context-quickFoldersRemoveIcon",
+    };
     window.QuickFolders.Interface.onRemoveIcon(element, event.detail);
-  }
+  };
 
   mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
   mylisteners["removeQuickFoldersIcon"] = removeIcon;
 
-  
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
@@ -501,7 +520,6 @@ async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.notifyTools.notifyBackground({ func: "listenersReady" });
 
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
-
 }
 
 function onUnload(isAddOnShutDown) {

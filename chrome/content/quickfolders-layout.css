@@ -136,14 +136,15 @@ toolbarbutton#QuickFolders-quickMove:hover,
 toolbarbutton#QuickFolders-readingList:-moz-drag-over,
 toolbarbutton#QuickFolders-quickMove:-moz-drag-over,
 toolbarbutton#QuickFolders-readingList.dragover,
-toolbarbutton#QuickFolders-quickMove.dragover {
+toolbarbutton#QuickFolders-quickMove.dragover,
+search-textbox#QuickFolders-FindFolder.dragover
+ {
   border-bottom-style: dotted !important;
   border-radius: 6px !important;
   outline: 2px gray dotted !important;
   outline-offset: -2px;
   border-width: 2px;
   margin-block: 1px;
- 
 }
 
 toolbarbutton#QuickFolders-readingList:hover image,
