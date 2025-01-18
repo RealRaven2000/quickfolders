@@ -1,4 +1,13 @@
-**Improvements**
+**Maintenance release 6.9.1**
+
+*   Fixed: Shortcut Key configured for quickMove / quickJump are ignored.  [issue #526]
+*   Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes multiple tries. [issue #531] 
+*   Completed some missing Czech translations that were accidentally left in English. [issue #530]
+*    Fixed: toggle toolbar button broken. 
+*   Added advanced search setting to not collapse quickMove box after use. [issue #534] 
+
+
+**Improvements (6.9)**
 
 *   Improved performance of quickMove / quickJump auto-filling search results while typing [issue #463]
 *   The QuickFolders toolbar is now displayed when the settings tab is opened. This makes it easier to see any executed layout changes. [issue #524]
@@ -9,7 +18,7 @@
 *   Added Czech UI translations
   
 
-**Bug Fixes**
+**Bug Fixes (6.9)**
 
 *   Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems.
 *   Fixed: Folder names containing single quotes broke navigation.
