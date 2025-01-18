@@ -3,8 +3,9 @@
 *   Fixed: Shortcut Key configured for quickMove / quickJump are ignored.  [issue #526]
 *   Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes multiple tries. [issue #531] 
 *   Completed some missing Czech translations that were accidentally left in English. [issue #530]
-*    Fixed: toggle toolbar button broken. 
+*   Fixed: toggle toolbar button broken. 
 *   Added advanced search setting to not collapse quickMove box after use. [issue #534] 
+*   Support compatibility with Thunderbird 135.*
 
 
 **Improvements (6.9)**

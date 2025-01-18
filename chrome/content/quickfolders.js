@@ -183,7 +183,7 @@ END LICENSE BLOCK */
     ## Completed some missing Czech translations that were accidentally left in English.
     ## [issue 534] Added advanced search setting to not collapse quickMove box after use.
     ## [issue 530] Fixed: toggle toolbar button broken.
-
+    ## Support compatibility with Thunderbird 135
 
 
 	TO DO next
