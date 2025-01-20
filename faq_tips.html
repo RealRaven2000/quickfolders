@@ -410,9 +410,24 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
   </li>
   <li>
     <a name="Centered">Centered Tabs</a><br>
-  <div class=cssCode>#QuickFolders-Toolbar   {
-  text-align:center !important;
+    <p>
+      QuickFolders is now using the "flex model" for its tabs, hence "text-align"
+      doesn't work anymore:
+    </p>
+  <div class=cssCode>#QuickFolders-FoldersBox {
+  justify-content: center;
 } </div>
+  </li>
+  <li>
+    <a name="Centered">Add new rows on top (instead of underneath)</a><br>
+    <p>
+      If you want your most important first row always close to the action (pinned to
+      the bottom of the toolbar) and new rows added on top:
+    </p>
+  <div class=cssCode>#QuickFolders-FoldersBox {
+  flex-wrap: wrap-reverse;
+} </div>
+
 
   </li>
 
