@@ -5654,7 +5654,7 @@ QuickFolders.Interface = {
       }
 
       if (menupopup.state == "open" && forceFind) {
-        const targets = menupopup.querySelectorAll("& > menuitem");
+        const targets = menupopup.querySelectorAll(":scope > menuitem"); // [issue 532]
         if (targets.length) {
           let finalURI = targets[0].value;
           return payLoad(finalURI);

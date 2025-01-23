@@ -1,3 +1,7 @@
+**Maintenance release 6.9.2**
+
+*   Fixed: Return key no longer moves emails when search finds only one folder [issue #532]</li>
+
 **Maintenance release 6.9.1**
 
 *   Fixed: Shortcut Key configured for quickMove / quickJump are ignored.  [issue #526]

@@ -177,13 +177,16 @@ END LICENSE BLOCK */
     ## Added full Czech translation for the User Interface (531 entitites).
     ## Improved mail system icons for dark mode
 
-  6.9.1 QuickFolders Pro - WIP
+  6.9.1 QuickFolders Pro - 18/01/2025
     ## [issue 526] Fixed: Shortcut Key configured for quickMove / quickJump are ignored
     ## [issue 531] Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes mutliple tries
     ## Completed some missing Czech translations that were accidentally left in English.
     ## [issue 534] Added advanced search setting to not collapse quickMove box after use.
     ## [issue 530] Fixed: toggle toolbar button broken.
     ## Support compatibility with Thunderbird 135
+
+  6.9.2 QuickFolders Pro - WIP
+    ## [issue 532] Return key no longer moves emails when search finds only one folder
 
 
 	TO DO next
