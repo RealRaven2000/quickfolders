@@ -185,8 +185,14 @@ END LICENSE BLOCK */
     ## [issue 530] Fixed: toggle toolbar button broken.
     ## Support compatibility with Thunderbird 135
 
-  6.9.2 QuickFolders Pro - WIP
+  6.9.2 QuickFolders Pro - 26/01/2025
     ## [issue 532] Return key no longer moves emails when search finds only one folder
+
+  6.9.3 QuickFolders Pro - WIP
+    ## [issue 541] CTRL+click Tab popup folder opens 2 Thunderbird tabs
+    ## [issue 543] Remove inline event handlers which will be deprecated in Thunderbird 136`
+    ## [issue 540] quickJump feature - Shortcut key to open specified folder in a new TB tab
+
 
 
 	TO DO next

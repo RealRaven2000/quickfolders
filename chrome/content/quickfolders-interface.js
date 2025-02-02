@@ -428,6 +428,7 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences;
 		// refresh the recent menu on right click
 		if (evt) evt.stopPropagation();
+		QuickFolders.Util.logDebugOptional("interface","onClickRecent()", button, evt);
 
 		if (this.PaintModeActive) {
 			let paintButton = this.PaintButton,
@@ -3007,7 +3008,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	openFolderInNewTab: function openFolderInNewTab(folder) {
+	openFolderInNewTab: function(folder) {
 		let util = QuickFolders.Util,
         tabmail = util.$("tabmail");
     util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewTab()");
@@ -3016,6 +3017,12 @@ QuickFolders.Interface = {
 			// was: tabmail.openTab("folder", {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
       tabmail.openTab("mail3PaneTab", {folderURI:folder.URI, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
 		}
+	} ,
+
+	openFolderInNewWindow: function(folder) {
+		let util = QuickFolders.Util;
+    util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewWindow()");
+		window.browsingContext.topChromeWindow.MsgOpenNewWindowForFolder(folder.URI, -1);
 	} ,
 
 	// new function to open folder of current email!
@@ -5309,6 +5316,9 @@ QuickFolders.Interface = {
 	onSelectSubFolder: function (folderUri, evt) {
     let util = QuickFolders.Util,
 		    isCtrlKey = evt ? evt.ctrlKey : false;
+		if (QuickFolders.Preferences.isDebugOption("interface")) {
+      debugger;
+    }
 		util.logDebugOptional ("interface,popupmenus", "onSelectSubFolder: " + folderUri +  (evt
 		     ? "\n type= " + evt.type + " \n target= " + evt.target
 				 : "[no event argument]")
@@ -5319,17 +5329,16 @@ QuickFolders.Interface = {
 		}
 		try {
 			if (isCtrlKey) {
-				if (!MsgOpenNewTabForFolders) {
-					console.warn("onSelectSubFolder: Missing global function MsgOpenNewTabForFolders!");
-					return false;
-				}
-				let folder = QuickFolders.Model.getMsgFolderFromUri(folderUri);
-				return MsgOpenNewTabForFolders([folder], {
+				const folder = QuickFolders.Model.getMsgFolderFromUri(folderUri);
+				QuickFolders.Interface.openFolderInNewTab(folder);
+				return true;
+	/*		return MsgOpenNewTabForFolders([folder], {
           evt,
           folderPaneVisible: true,
           messagePaneVisible: true,
           background: false,
         });
+  */
 			}
 		}
 		catch (ex) { util.logToConsole(ex); };
@@ -5366,7 +5375,10 @@ QuickFolders.Interface = {
 	  if (event.key) switch (event.key) {
       case "Enter":
 			  util.logDebugOptional("interface.findFolder","Enter");
-        QI.findFolderName(event.target, true);
+				const isCtrl = event.ctrlKey || false;
+				const isAlt = event.altKey || false;
+				const options = { forceFind: true, forceTab: isCtrl, forceWin: isAlt };
+        QI.findFolderName(event.target, options);
         event.preventDefault();
         break;
 		  case "ArrowDown":
@@ -5428,7 +5440,9 @@ QuickFolders.Interface = {
 	} ,
 
   // forceFind - enter key has been pressed, so we want the first match to force a jump
-	findFolderName: async function (searchBox, forceFind) {
+	findFolderName: async function (searchBox, options = { forceFind: false }) {
+		const forceFind = options.forceFind || false;
+		const forceTab = options.forceTab || false;
     // make the abbreviated string for the menu item
     function buildParentString(folder, parentCount) {
 			if (!folder) return "";
@@ -5683,25 +5697,33 @@ QuickFolders.Interface = {
       return false;
     }
 
-		function payLoad(finalURI) {
-			if (!QuickFolders.quickMove.isActive) {
+		function payLoad(finalURI, options) {
+      if (!QuickFolders.quickMove.isActive) {
+				const targetFolder = QuickFolders.Model.getMsgFolderFromUri(finalURI);
         // go to folder
-        isSelected = QuickFolders_MySelectFolder(finalURI);
+				if (options.forceTab) {
+					QuickFolders.Interface.openFolderInNewTab(targetFolder);
+				} else if (options.forceWin) {
+					QuickFolders.Interface.openFolderInNewWindow(targetFolder);
+					return;
+				} else {
+					isSelected = QuickFolders_MySelectFolder(finalURI);
+				}
         let ps = parentCount
-          ? buildParentString(QuickFolders.Model.getMsgFolderFromUri(finalURI), parentCount)
+          ? buildParentString(targetFolder, parentCount)
           : "";
         setTimeout(function () {
           QuickFolders.quickMove.rememberLastFolder(finalURI, ps);
-					QuickFolders.Interface.tearDownSearchBox();
+          QuickFolders.Interface.tearDownSearchBox();
         }, 400);
-				return;
-      } 
+        return;
+      }
 
-			// move mails?
-			setTimeout(function () {
-				QuickFolders.quickMove.execute(finalURI, parentString);
-				QuickFolders.Interface.tearDownSearchBox();
-			});
+      // move mails?
+      setTimeout(function () {
+        QuickFolders.quickMove.execute(finalURI, parentString);
+        QuickFolders.Interface.tearDownSearchBox();
+      });
     }
 
     const util = QuickFolders.Util,
@@ -5785,7 +5807,7 @@ QuickFolders.Interface = {
         const targets = menupopup.querySelectorAll(":scope > menuitem"); // [issue 532]
         if (targets.length) {
           let finalURI = targets[0].value;
-          return payLoad(finalURI);
+          return payLoad(finalURI, options);
         }
       }
 
@@ -6048,7 +6070,7 @@ QuickFolders.Interface = {
         );
         if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
           let finalURI = forceSingleURI || matches[0].uri;
-          return payLoad(finalURI);
+          return payLoad(finalURI, options);
         }
         // make it easy to hit return to jump into folder instead:
         // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
@@ -6137,7 +6159,16 @@ QuickFolders.Interface = {
     } /**************  quickMove End  **************/
     else {
 			util.logDebugOptional("quickMove","selectFound: quickMove End…", event);
-      isSelected = QuickFolders_MySelectFolder(URI, true);
+			if (event.ctrlKey) {
+				const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
+				QI.openFolderInNewTab(fld);
+				return;
+			} else if (event.altKey) {
+				const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
+        QI.openFolderInNewWindow(fld);
+			} else {
+        isSelected = QuickFolders_MySelectFolder(URI, true);
+			}
       if (isSelected) {
         QuickFolders.quickMove.rememberLastFolder(URI, parentName);
       }

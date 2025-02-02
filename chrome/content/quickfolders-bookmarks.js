@@ -168,7 +168,6 @@ QuickFolders.bookmarks = {
   onClick: function onClickBookmark(menuItem, evt, entry) {
     let util = QuickFolders.Util,
         prefs = QuickFolders.Preferences,
-		    isAlt = evt.altKey,
 		    isCtrl = evt.ctrlKey,
 		    isShift = evt.shiftKey;  
     evt.stopPropagation();
