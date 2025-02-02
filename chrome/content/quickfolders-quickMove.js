@@ -361,10 +361,11 @@ QuickFolders.quickMove = {
             label = sourceFolder.prettyName + Chevron + label;
           menuitem.setAttribute("label", label);
           menuitem.className='msgUri menuitem-iconic' + (isCopy ? ' msgCopy' : '');
-          QuickFolders.Interface.setEventAttribute(menuitem, 
-            "oncommand",
-            `QuickFolders.Util.openMessageTabFromUri("${newUri}");`
-          );
+          QuickFolders.Interface.addUniqueEventListener(menuitem, "command", (event) => {
+            event.stopPropagation();
+            QuickFolders.Util.openMessageTabFromUri(newUri)
+          });
+
           menu.appendChild(menuitem);
         }
         catch(ex) {

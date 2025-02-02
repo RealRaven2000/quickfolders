@@ -72,7 +72,6 @@ QuickFolders.AdvancedTab = {
 						return;
 					}
 					menuitem.setAttribute("id", "id" + dropdownCount++);
-					// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
 					menuitem.setAttribute("fullName", id.fullName);
 					menuitem.setAttribute("value", id.key);
 					menuitem.setAttribute("accountKey", account.key);

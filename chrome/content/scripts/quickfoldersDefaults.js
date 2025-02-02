@@ -205,7 +205,6 @@ pref("extensions.quickfolders.debug.popupmenus", false);
 pref("extensions.quickfolders.debug.popupmenus.verticalOffset",0);
 pref("extensions.quickfolders.debug.popupmenus.isCommandListeners", false);
 pref("extensions.quickfolders.debug.popupmenus.isOnCommandAttr", false);
-pref("extensions.quickfolders.debug.popupmenus.folderEventType", "oncommand"); // onclick
 pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);

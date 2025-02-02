@@ -290,8 +290,12 @@ QuickFolders.FilterList = {
     let reorderUpButton = document.getElementById("reorderUpButton"),
         reorderDownButton = document.getElementById("reorderDownButton"),
         runFiltersButton =  document.getElementById("runFiltersButton");
-    QuickFolders.Interface.setEventAttribute(reorderUpButton, "oncommand", "QuickFolders.FilterList.onUp(event);");
-    QuickFolders.Interface.setEventAttribute(reorderDownButton, "oncommand", "QuickFolders.FilterList.onDown(event);");
+		QuickFolders.Interface.addUniqueEventListener(reorderUpButton, "command", (event) =>
+			QuickFolders.FilterList.onUp(event)
+		);
+		QuickFolders.Interface.addUniqueEventListener(reorderDownButton, "command", (event) =>
+			QuickFolders.FilterList.onDown(event)
+		);
     
     // find the log button (first button in hbox) and move it down
     let filterLogButton = dropDown.parentNode.getElementsByTagName("button")[0];

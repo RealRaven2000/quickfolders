@@ -12,6 +12,7 @@
 
 /* [mx-l10n] This module handles front-end code for the licensing dialog  */
 
+
 // removed UI function from QuickFolders.Licenser
 var Register = {
   l10n: function() {
@@ -103,69 +104,102 @@ var Register = {
 				    btnStdLicense = getElement('btnStdLicense');
         
 				if(licenseInfo.status == "Expired") {
+          let eventHandler, btnMod;
+
           switch (licenseInfo.keyType) {
             case 0: // Pro
-              btnProLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
+              btnProLicense.label = util.getBundleString(
+                "qf.notification.premium.btn.renewLicense"
+              );
+              eventHandler = () => Register.goPro(0, true);
+              btnMod = btnProLicense;
               break;
             case 1: // Domain
-              btnDomainLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense");
-              btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
-              btnDomainLicense.classList.add('register');
-              btnProLicense.classList.remove('register');
+              btnDomainLicense.label = util.getBundleString(
+                "qf.notification.premium.btn.renewLicense"
+              );
+              eventHandler = () => Register.goPro(1, true);
+              btnMod = btnDomainLicense; // Fixed extra dot
+              btnDomainLicense.classList.add("register");
+              btnProLicense.classList.remove("register");
               break;
             case 2: // Standard
               btnProLicense.label = util.getBundleString("qf.notification.premium.btn.upgrade");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'Register.goPro(3);'); // upgrade from standard
-              btnProLicense.classList.add('upgrade'); // no flashing
+              eventHandler = () => Register.goPro(3); // upgrade from standard
+              btnMod = btnProLicense;
+              btnProLicense.classList.add("upgrade"); // no flashing
               break;
           }
-					
-        }
-				else { // EXTEND
-					let extBtn, extText;
-          switch(licenseInfo.keyType) {
+
+          // Remove previous event handler (if any) and set the new one
+          if (eventHandler && btnMod) {
+            if (btnMod._currentHandler) {
+              btnMod.removeEventListener("command", btnMod._currentHandler);
+            }
+            btnMod.addEventListener("command", eventHandler); // Fixed missing dot
+            btnMod._currentHandler = eventHandler; // Store handler for later removal
+          }
+        } else {
+          // EXTEND
+          let extBtn, extText, eventHandler, eventHandlerStd;
+          switch (licenseInfo.keyType) {
             case 0:
               extBtn = btnProLicense;
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
-              extText = util.getBundleString("qf.notification.premium.btn.extendLicense")
+              eventHandler = () => Register.goPro(0, true);
+              extText = util.getBundleString("qf.notification.premium.btn.extendLicense");
               break;
             case 1:
               extBtn = btnDomainLicense;
-              btnProLicense.classList.remove('register'); // not flashing
-              btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
+              btnProLicense.classList.remove("register"); // not flashing
+              eventHandler = () => Register.goPro(1, true);
               extText = util.getBundleString("qf.notification.premium.btn.extendLicense");
               break;
             case 2:
               btnProLicense.label = util.getBundleString("qf.notification.premium.btn.upgrade");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'Register.goPro(3, true);');
+              eventHandler = () => Register.goPro(3, true); // upgrade from standard
               extBtn = btnStdLicense;
-              btnStdLicense.removeAttribute('oncommand');
-              btnStdLicense.setAttribute('oncommand', 'Register.goPro(2, true);');
-              extText = util.getBundleString("qf.notification.premium.btn.extendLicense")
-              // check whether renewal is up within 30 days
+              eventHandlerStd = () => Register.goPro(2, true); // handler for btnStdLicense
+              extText = util.getBundleString("qf.notification.premium.btn.extendLicense");
+
+              // Hide StandardRow if renewal is not close
               let today = new Date(),
-                  later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-                  dateString = later.toISOString().substr(0, 10);
-              
-              if (!(licenseInfo.expiryDate < dateString)) { // not close to expiry yet. let's hide this path.
-                let standardRow = getElement('StandardLicenseRow');
-                standardRow.collapsed=true;
+                later = new Date(today.setDate(today.getDate() + 30)),
+                dateString = later.toISOString().substr(0, 10);
+
+              if (!(licenseInfo.expiryDate < dateString)) {
+                // not close to expiry yet. hide this path
+                let standardRow = getElement("StandardLicenseRow");
+                standardRow.collapsed = true;
               }
-              break;        
+              break;
           }
 
-					extBtn.label = extText;
+          extBtn.label = extText;
           extBtn.classList.add("register");
-					// add tooltip
-					extBtn.setAttribute("tooltiptext", util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
-				}
+          // add tooltip
+          extBtn.setAttribute(
+            "tooltiptext",
+            util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip")
+          );
+
+          // Add the event handler for extBtn
+          if (eventHandler) {
+            if (extBtn._currentHandler) {
+              extBtn.removeEventListener("command", extBtn._currentHandler);
+            }
+            extBtn.addEventListener("command", eventHandler);
+            extBtn._currentHandler = eventHandler; // store the handler for later removal
+          }
+
+          // Add the event handler for btnStdLicense if needed
+          if (extBtn === btnStdLicense && eventHandlerStd) {
+            if (btnStdLicense._currentHandler) {
+              btnStdLicense.removeEventListener("command", btnStdLicense._currentHandler);
+            }
+            btnStdLicense.addEventListener("command", eventHandlerStd);
+            btnStdLicense._currentHandler = eventHandlerStd; // store the handler for later removal
+          }
+        }
 
 				// hide the "Enter License Key..." button + label
 				if (licenseInfo.status == "Valid") {
