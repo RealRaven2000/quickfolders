@@ -2805,50 +2805,53 @@ QuickFolders.Interface = {
 	* @icon: icon or "" or null
   * @entry: the entry from the model array - use for advanced (tab specific) properties
  	*/
-	styleFolderButton: function styleFolderButton(button, nUnreadTotal, nUnreadSubfolders, numTotal, specialStyle, tabColor, gotNew, icon, entry) {
+	styleFolderButton: function (button, nUnreadTotal, nUnreadSubfolders, numTotal, specialStyle, tabColor, gotNew, icon, entry) {
 		//reset style!
 		let cssClass = "",
         ADVANCED_FLAGS = QuickFolders.Util.ADVANCED_FLAGS;
 		//  toolbarbutton-menubutton-button
 
-		QuickFolders.Util.logDebugOptional("buttonStyle","styleFolderButton(" + button.getAttribute("label")
-			+ ", " + nUnreadTotal + ", " + numTotal + ", " + specialStyle + ")");
+		QuickFolders.Util.logDebugOptional("buttonStyle", 
+			`styleFolderButton(${button.getAttribute("label")}, ${nUnreadTotal}, ${numTotal}, ${specialStyle})`);
 
 		if (nUnreadTotal > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold) {
-      if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD))
-        { ; }
-      else {
-				if (nUnreadSubfolders == nUnreadTotal)
+      if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD)) {
+        ; // NOP
+			} else {
+				if (nUnreadSubfolders == nUnreadTotal) {
 					cssClass += " has-unreadSubOnly";
-				else {
-          if (nUnreadSubfolders)
+				} else {
+          if (nUnreadSubfolders) {
             cssClass += " has-unreadSub"; // [issue 109]
+          }
 					cssClass += " has-unread";
         }
 			}
 		}
 
-		if (numTotal > 0 && QuickFolders.Preferences.isShowFoldersWithMessagesItalic) {
-      if (!(entry && entry.flags && (entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS)))
-        cssClass += " has-messages";
-		}
+		if (
+      numTotal > 0 &&
+      QuickFolders.Preferences.isShowFoldersWithMessagesItalic &&
+      !(entry && entry.flags && entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS)
+    ) {
+      cssClass += " has-messages";
+    }
 
 		if (gotNew && QuickFolders.Preferences.isHighlightNewMail) {
 			button.setAttribute("biffState-NewMail","true");
 		} else {
-			if (button.getAttribute("biffState-NewMail"))
-				button.removeAttribute("biffState-NewMail");
+			button.removeAttribute("biffState-NewMail");
 		}
 
-		if (gotNew && QuickFolders.Preferences.isItalicsNewMail)
-			button.setAttribute("biffState-NewItalics","true");
-		else {
-			if (button.getAttribute("biffState-NewItalics"))
-				button.removeAttribute("biffState-NewItalics");
+		if (gotNew && QuickFolders.Preferences.isItalicsNewMail) {
+			button.setAttribute("biffState-NewItalics", "true");
+		} else {
+			button.removeAttribute("biffState-NewItalics");
 		}
 
-		if (specialStyle!="")
+		if (specialStyle!="") {
 			cssClass += " " + specialStyle;
+		}
 
 		let buttonFontSize = QuickFolders.Preferences.ButtonFontSize;
 		if (buttonFontSize) {
@@ -2858,16 +2861,16 @@ QuickFolders.Interface = {
 		// add some color, the easy way
 		if (tabColor) {
 			cssClass += " " + this.getButtonColorClass(tabColor);
-		}
-		else {
+		} else {
 			cssClass += " col0";
     }
 		// cssClass += " toolbarbutton-menubutton-button"; // [Bug 26575] - this alone didn't fix it
 
-		if (cssClass.trim)
+		if (cssClass.trim) {
 			button.className = cssClass.trim();
-		else
+		} else {
 			button.className = cssClass;
+		}
 
     this.applyIcon(button, icon);
 	} ,

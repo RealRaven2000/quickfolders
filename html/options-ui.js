@@ -575,38 +575,65 @@ QuickFolders.Options = {
   // doing what instantApply really should provide...
   toggleBoolPreference: async function (cb, noUpdate = false) {
     let prefString = cb.getAttribute("data-pref-name");
+    let uncheckMutexOptions=[];
     //  using the new preference system, this attribute should be the actual full string of the pref.
     //  pref = document.getElementById(prefString);
 
-    if (prefString) {
-      await QuickFolders.Preferences.setBoolPref(prefString, cb.checked);
-    }
+    try {
+      if (prefString) {
+        await QuickFolders.Preferences.setBoolPref(prefString, cb.checked);
+      }
 
-    if (noUpdate) return true;
-
-    switch (prefString) {
-      case "extensions.quickfolders.collapseCategories":
-        // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" });
-        messenger.runtime.sendMessage({ command: "updateCategoryBox" });
-        return false;
-      case "extensions.quickfolders.toolbar.hideInSingleMessage":
-        // QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" });
-        messenger.runtime.sendMessage({ command: "currentDeckUpdate" });
-        return false;
-      case "extensions.quickfolders.toolbar.largeIcons":
-        // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
-        messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true });
-        break;
-    }
-    // broadcast change of current folder bar for all interested windows.
-    if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
-      // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
-      messenger.runtime.sendMessage({ command: "updateNavigationBar" });
+      if (prefString.endsWith(".showFoldersWithMessagesItalic") && cb.checked) {
+        let cbMutex = document.querySelector("[preference=qfpg-ShowFoldersWithNewMailItalic]");
+        if (cbMutex?.checked) {
+          uncheckMutexOptions.push(cbMutex);
+        }
+      }
+      if (prefString.endsWith(".showFoldersWithNewMailItalic") && cb.checked) {
+        let cbMutex = document.querySelector("[preference=qfpg-ShowFoldersWithMessagesItalic]");
+        if (cbMutex?.checked) {
+          uncheckMutexOptions.push(cbMutex);
+        }
+      }
+      if (prefString.endsWith(".showNewMailHighlight")) {
+        document.querySelector("[preference=qfpg-ShowNewMailOutline]").disabled = !cb.checked;
+      }
+      
+      if (noUpdate) return true;
+    } catch (ex) {
       return true;
+    } finally {
+      // switch off mutually exclusive checkboxes: (make sure it doesn't trigger recursively!!!)
+      for (let option of uncheckMutexOptions) {
+        option.checked = false; // fastest option: toggle mutex off in UI, then react:
+        await QuickFolders.Options.toggleBoolPreference(option, false);
+      }
+      if (noUpdate) return true;
+      // UI update last
+      switch (prefString) {
+        case "extensions.quickfolders.collapseCategories":
+          // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" });
+          messenger.runtime.sendMessage({ command: "updateCategoryBox" });
+          return false;
+        case "extensions.quickfolders.toolbar.hideInSingleMessage":
+          // QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" });
+          messenger.runtime.sendMessage({ command: "currentDeckUpdate" });
+          return false;
+        case "extensions.quickfolders.toolbar.largeIcons":
+          // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+          messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true });
+          break;
+      }
+      // broadcast change of current folder bar for all interested windows.
+      if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
+        // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
+        messenger.runtime.sendMessage({ command: "updateNavigationBar" });
+        return true;
+      }
+      // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
+      messenger.runtime.sendMessage({ command: "updateMainWindow" });      
     }
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
-    messenger.runtime.sendMessage({ command: "updateMainWindow" });
-    return true;
   },
 
   // 3pane window only?

@@ -391,6 +391,7 @@ menupopup.widerMenu menucaption {
 	font-style: italic;
 }
 
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewMail] > label,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread > label,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unreadSubOnly > label {
 	border-radius: 3px;
@@ -402,6 +403,7 @@ menupopup.widerMenu menucaption {
 	border-width: 1px;
 }
 
+#QuickFolders-FoldersBox.outlineBiff toolbarbutton[biffState-NewMail] > label,
 #QuickFolders-FoldersBox.outlineBiff toolbarbutton[biffState-NewMail].has-unread > label,
 #QuickFolders-FoldersBox.outlineBiff toolbarbutton[biffState-NewMail].has-unreadSubOnly > label {
   color: #fff;
@@ -409,7 +411,7 @@ menupopup.widerMenu menucaption {
   font-weight: 900; 
 }
 
-
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewMail],
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unreadSubOnly,
 #QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
