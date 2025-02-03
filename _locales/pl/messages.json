@@ -498,6 +498,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Oznacz folder jako przeczytany (rekurencyjny)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Zawsze wyświetlaj opcje w karcie"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Kopiuj wiadomość do dowolnego folderu za pomocą skrótu"
   },

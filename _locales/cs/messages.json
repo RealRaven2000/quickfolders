@@ -502,6 +502,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Oz označit všechny jako přečtené (rekurzivně)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Vždy zobrazit možnosti na kartě"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Kopírovat poštu do jakékoli složky pomocí zkratky:"
   },

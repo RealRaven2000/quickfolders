@@ -496,6 +496,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "标记文件夹已读（遞歸）"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "始终在标签页中显示选项"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy-使用键盘快捷键将邮件复制到任何文件夹："
   },

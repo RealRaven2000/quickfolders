@@ -498,6 +498,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "標記資料夾為已讀取（递归）"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "始終在分頁中顯示選項"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - 使用快速鍵 複製信件到任何的資料夾"
   },

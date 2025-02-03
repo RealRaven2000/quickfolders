@@ -502,6 +502,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Ordner als gelesen markieren (rekursiv)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Optionen immer in einem Tab anzeigen"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Kopiere Mails in beliebiges Ziel mit:"
   },

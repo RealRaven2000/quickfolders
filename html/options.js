@@ -715,7 +715,9 @@ async function preselectTab(mode=null) {
       selectedTabElement = button;
     }
   });
+  if (!selectedTabElement) return;
   
+  console.log(`activating tab:`, selectedTabElement);
   let tabEvent = new Event("click");
   selectedTabElement.dispatchEvent(tabEvent);
 }
@@ -754,15 +756,14 @@ async function configureBuyButton() {
       // if we were a month ahead would this be expired?
       if (licenseInfo.expiryDate < dateString || forceExtend) {
         QuickFolders.Options.labelLicenseBtn(btnLicense, "extend");
-      }
-      else {
+      } else {
         if (licenseInfo.keyType==2) { // standard license
           btnLicense.classList.add("upgrade"); // removes "pulsing" animation
           btnLicense.setAttribute("collapsed",false);
           QuickFolders.Options.labelLicenseBtn(btnLicense, "upgrade");
-        }
-        else
+        } else {
           btnLicense.setAttribute("collapsed",true);
+        }
       }
       replaceCssClass(proTab, "paid");
       replaceCssClass(btnLicense, "paid");

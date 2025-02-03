@@ -502,6 +502,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Märk mappen som läst (rekursiv)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Visa alltid alternativ i en flik"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Kopiera e-post till valfri mapp med kortkommandot:"
   },

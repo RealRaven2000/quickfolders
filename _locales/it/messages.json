@@ -509,6 +509,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Segna la cartella come già letta (modalità ricorsiva)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Mostra sempre le opzioni in una scheda"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy: copia i messaggi di posta in qualsiasi cartella - Usa la scorciatoia:"
   },

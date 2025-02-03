@@ -486,6 +486,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Označi mapo kot prebrano (rekurzivno)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Vedno prikaži možnosti znotraj zavihka"
+  },
   "qf.checkbox.quickCopy": {
     "message": "Hitro kopiranje - Kopirajte pošto v katerokoli mapo z bližnjico:"
   },

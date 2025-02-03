@@ -411,6 +411,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Đánh dấu thư mục là Đã Đọc (đệ quy)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Visa alltid alternativ i en flik"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Sao chép email vào bất kỳ thư mục nào với Phím tắt:"
   },

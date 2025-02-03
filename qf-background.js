@@ -497,7 +497,7 @@ async function main() {
     forceSecondaryIdentity =
       (await messenger.LegacyPrefs.getPref(legacyPrefPath("licenser.forceSecondaryIdentity"))) ||
       false,
-    isDebug = isDebugOn(),
+    isDebug = await isDebugOn(),
     isDebugLicenser =
       (await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.premium.licenser"))) || false;
 
@@ -647,11 +647,9 @@ async function main() {
           params.append("mode", data.mode);
         }
 
-        let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         // to get the tab - we need the activetab permission
         // query for url
-        let url = browser.runtime.getURL("/html/options.html") + "*";
-
+        const url = browser.runtime.getURL("/html/options.html") + "*";
         let oldTabs = await browser.tabs.query({ url }); // destructure first
         if (oldTabs.length) {
           // get current windowId
@@ -663,24 +661,32 @@ async function main() {
           } else {
             await browser.tabs.update(found.id, { active: true });
           }
-
-          // activate the license tab!
+          // activate the tab that we need, after the settings page is ready
           if (data.mode) {
+            if (isDebug) console.log(`Activate preference page: ${data.mode}`);
             await browser.runtime.sendMessage({
               activatePrefsPage: data.mode,
             });
-          }
-        } else {
-          let optionsWin = await messenger.windows.create({
-            height: 720,
-            width: 840,
-            type: "panel",
-            url: `/html/options.html?${params.toString()}`,
-            allowScriptsToClose: true,
+          }  
+          return;      
+        } 
+        if (await messenger.LegacyPrefs.getPref(legacyPrefPath("optionsInTab"))) {
+          // await messenger.runtime.openOptionsPage();
+          const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
+          let optionsTab = await browser.tabs.create({
+            active: true,
+            url: myuri,
           });
-        }
-
-        // optionWin.sizeToContent()
+          return;
+        } 
+        // open options in a window (old)
+        let optionsWin = await messenger.windows.create({
+          height: 720,
+          width: 840,
+          type: "panel",
+          url: `/html/options.html?${params.toString()}`,
+          allowScriptsToClose: true,
+        });
         break;
 
       case "openAdvancedProps":
@@ -707,7 +713,7 @@ async function main() {
             legacyPrefPath("licenser.forceSecondaryIdentity")
           ),
           isDebugLicenser = await messenger.LegacyPrefs.getPref(
-             legacyPrefPath("debug.premium.licenser")
+            legacyPrefPath("debug.premium.licenser")
           );
 
         // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
@@ -718,7 +724,10 @@ async function main() {
         // return false;
 
         // Update background license.
-        await messenger.LegacyPrefs.setPref(legacyPrefPath("LicenseKey"), newLicense.info.licenseKey);
+        await messenger.LegacyPrefs.setPref(
+          legacyPrefPath("LicenseKey"),
+          newLicense.info.licenseKey
+        );
         currentLicense = newLicense;
 
         // 1. Broadcast into Experiment
@@ -793,7 +802,8 @@ async function main() {
         );
         break;
 
-      case "readCategories": { // read category from tabsession
+      case "readCategories": {
+        // read category from tabsession
         let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
         return cats;
       }
@@ -807,7 +817,8 @@ async function main() {
         await filterMailsRegex(regexOption, data.tabId);
         break;
 
-      case "readToolbarStatus": { // store toolbar visibilities in tabsession
+      case "readToolbarStatus": {
+        // store toolbar visibilities in tabsession
         let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
         return status;
       }
@@ -829,7 +840,6 @@ async function main() {
           browser.tabs.create({ active: true, url: data.URL });
         }
         break;
-
     }
   }
   

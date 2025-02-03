@@ -483,6 +483,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "フォルダを既読にする（再帰的）"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "オプションを常にタブで表示する"
+  },
   "qf.checkbox.quickCopy": {
     "message": "クイックコピー - ショートカットキーで任意のフォルダにメールをコピーする:"
   },

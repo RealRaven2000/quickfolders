@@ -501,6 +501,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Отметить папку как прочитанную (рекурсивно)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Всегда отображать параметры в вкладке"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Копирование сообщений в любую папку по нажатию"
   },

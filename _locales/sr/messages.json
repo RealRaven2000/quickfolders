@@ -444,6 +444,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Означи фасциклу као прочитану (рекурзивно)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Увек приказуј опције у картици"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - копирајте поруку у било коју фасциклу помоћу пречице "
   },

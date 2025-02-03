@@ -509,6 +509,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Mark Folder Read (recursive)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Always display options in a tab"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Copy mail to any folder with Shortcut:"
   },

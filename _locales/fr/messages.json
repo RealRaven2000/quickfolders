@@ -512,6 +512,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Marquer le dossier comme lu (récursif)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Toujours afficher les options dans un onglet"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - copier le message vers un dossier avec le raccourci :"
   },

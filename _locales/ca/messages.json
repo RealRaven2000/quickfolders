@@ -506,6 +506,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Marcar la Carpeta com a Llegida (recursiva)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Sempre mostrar les opcions en una pestanya"
+  },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Copia el correu a qualsevol carpeta amb la drecera:"
   },

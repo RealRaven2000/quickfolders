@@ -493,6 +493,9 @@
   "qf.checkbox.menus.markAllReadRecursive": {
     "message": "Marca la carpeta como leída (recursiva)"
   },
+  "qf.checkbox.optionsInTab": {
+    "message": "Mostrar siempre las opciones en una pestaña"
+  },
   "qf.checkbox.quickCopy": {
     "message": "Para copiar correos a cualquier carpeta usar el atajo (botón copia rápida)"
   },
