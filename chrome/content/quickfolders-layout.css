@@ -382,6 +382,7 @@ menupopup.widerMenu menucaption {
   
 }
 
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewItalics] > label,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewItalics].has-unread > label,
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewItalics].has-unreadSubOnly > label,
 #QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
@@ -416,6 +417,8 @@ menupopup.widerMenu menucaption {
 {
 	list-style-image: url("skin/ico/newUnread.png") !important;
 }
+
+
 #QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread ,
 #QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
 {
