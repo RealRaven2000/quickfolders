@@ -3752,7 +3752,7 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional("interface", "QuickFolders.Interface.onSearchMessages() folder = " + folder.prettyName);
 		// Tb:  // gFolderTreeController.searchMessages();
 		// MsgSearchMessages(folder);
-		let cmdController = top.controllers.getControllerForCommand("cmd_searchMessages");
+		// let cmdController = top.controllers.getControllerForCommand("cmd_searchMessages");
 		// cmdController?.doCommand("cmd_searchMessages", folder); // why is folder parameter not transmitted??
 		// QuickFolders.Util.logTb115("onSearchMessages()");
 		
@@ -4467,12 +4467,12 @@ QuickFolders.Interface = {
     menupopup.setAttribute("needsgutter", "true"); 
     // [Bug 26575] (safety?) - seems to be only triggered on non folder commands
 		QI.addUniqueEventListener(menupopup, "command", (event) => {
-			if (event.ctrlKey || event.metaKey) {
-				event.preventDefault(); // Prevent opening multiple tabs
-			}			
-			event.stopPropagation();
-			QuickFolders.Interface.clickHandler(event, event.target); // [issue ???]
-		});
+      if (event.ctrlKey || event.metaKey) {
+        event.preventDefault(); // Prevent opening multiple tabs
+      }
+      event.stopPropagation();
+      QuickFolders.Interface.clickHandler(event, event.target); // [issue 546]
+    });
 
 
     menupopup.className = "QuickFolders-folder-popup";

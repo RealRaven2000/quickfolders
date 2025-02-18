@@ -166,7 +166,7 @@ QuickFolders.FolderTree = {
 			}
 			util.logDebugOptional('folderTree.icons','Set element.style.listStyleImage = ' + element.style.listStyleImage);
 		}
-		catch(ex) { util.logException('addFolderIconToElement()',ex) };
+		catch(ex) { util.logException('addFolderIconToElement()', ex) };
 		return hasIcon;
 	} ,
 	
@@ -498,8 +498,9 @@ QuickFolders.FolderTree = {
         // QI.updateFolders(false, true);  forces rebuilding subfolder menus
       }
       catch (ex) {
-        util.logException('setFolderTreeIcon',ex);
-        return false;
+        util.logException("setFolderTreeIcon", ex);
+        return true; // [issue 546] signal that the change was done anyway!
+          // setForcePropertyEmpty always throws...
       }
       finally {
         if (currentFolderTab && currentFolderTab.folder && currentFolderTab.folder.URI == folder.URI) {
