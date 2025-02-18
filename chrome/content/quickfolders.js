@@ -189,11 +189,17 @@ END LICENSE BLOCK */
     ## [issue 532] Return key no longer moves emails when search finds only one folder
 
   6.9.3 QuickFolders Pro - WIP
+    ## made compatible with Tb 136.*
     ## New option to always open QuickFolders Options in a tab
     ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
     ## [issue 543] Remove inline event handlers which will be deprecated in Thunderbird 136`
     ## [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled.
     ## [issue 540] quickJump feature - Shortcut key to open specified folder in a new TB tab
+    ## Replace XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
+    ## [issue 546] Fixed: can no longer remove customized icon from tab
+    ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
+    
+
 
 
 	TO DO next
@@ -2547,12 +2553,9 @@ QuickFolders.CopyListener = {
             if (entry.invalid) {
               var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
               var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-              var { MailUtils } =
-                typeof MailUtils !== "undefined" && MailUtils
-                  ? { MailUtils }
-                  : ESM
-                    ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
-                    : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
+              var { MailUtils } = ESM
+                ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+                : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
 
               // [issue 265] try to fix the bookmark URI
               if (entry.messageId) {
