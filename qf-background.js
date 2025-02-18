@@ -945,42 +945,70 @@ async function main() {
     const optionsPageURL = browser.runtime.getURL("html/options.html");
     return optionsPageURL;
   }
-  async function onOptionsTabActivated() {
+  function onOptionsTabActivated() {
     // tell experiment to make QuickFolders toolbar visible
-    console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
+    if (isDebug) console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
     messenger.Utilities.displayMainToolbar(true);
   }
 
   messenger.tabs.onActivated.addListener(async (activeInfo) => {
-    console.log(activeInfo);
+    if (isDebug) console.log(activeInfo);
     const theTab = await messenger.tabs.get(activeInfo.tabId);
-    if (theTab.url == getOptionsPageURL()) {
+    if (theTab.url.startsWith(getOptionsPageURL())) {
       onOptionsTabActivated();
     }
   });
 
-  messenger.tabs.onCreated.addListener(async (activeTab) => {
-    console.log(activeTab);
-    // Function to wait for the tab to reach "complete" status and then check the URL
-    const checkTabStatus = async (tabId) => {
-      return new Promise((resolve) => {
-        const listener = (updatedTabId, changeInfo) => {
-          if (updatedTabId === tabId && changeInfo.status === "complete") {
-            messenger.tabs.onUpdated.removeListener(listener);
-            resolve();
-          }
-        };
-        messenger.tabs.onUpdated.addListener(listener);
-      });
-    };
+  const checkTabStatus = async (tabId) => {
+    return new Promise((resolve) => {
+      let hasValidURL = false;
+      let hasCompleted = false;
 
-    // Wait for the tab to reach "complete" status
-    await checkTabStatus(activeTab.id);
-    
-    const theTab = await messenger.tabs.get(activeTab.id);
-    // const theTab = await messenger.tabs.get(activeInfo.tabId);
-    if (theTab.url == getOptionsPageURL()) {
-      onOptionsTabActivated();
+      const listener = async (updatedTabId, changeInfo, tab) => {
+        if (updatedTabId !== tabId) return;
+
+        // Reload tab details
+        const updatedTab = await messenger.tabs.get(tabId);
+
+        if (changeInfo.url) {
+          if (isDebug) console.log(`🔄 Tab URL changed: ${updatedTab.url}`);
+          if (updatedTab.url.startsWith(getOptionsPageURL())) {
+            hasValidURL = true;
+          }
+        }
+
+        if (changeInfo.status === "complete") {
+          if (isDebug) console.log(`✅ Tab status changed to complete`);
+          hasCompleted = true;
+        }
+
+        // Resolve only when both conditions are met
+        if (hasValidURL && hasCompleted) {
+          if (isDebug) console.log(`🎯 Resolving promise for Tab ${tabId}: ${updatedTab.url}`);
+          messenger.tabs.onUpdated.removeListener(listener);
+          resolve(updatedTab.url); // return the full URL
+        }
+      };
+
+      messenger.tabs.onUpdated.addListener(listener);
+    });
+  };
+
+
+
+  messenger.tabs.onCreated.addListener(async (activeTab) => {
+    try {
+      if (isDebug) console.log("onCreated() - Initial tab:", activeTab);
+
+      // Wait for the URL to be set and tab to complete loading
+      const finalUrl = await checkTabStatus(activeTab.id);
+      if (isDebug) console.log(`Tab fully loaded with URL: ${finalUrl}`);
+
+      if (finalUrl.startsWith(getOptionsPageURL())) {
+        onOptionsTabActivated();
+      }
+    } catch (error) {
+      console.error("Error in tabs.onCreated listener:", error);
     }
   });  
 
