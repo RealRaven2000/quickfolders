@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "在搜尋結果中優先顯示 QuickFolders 書籤。"
+  },
+  "accessibility.hideIconMenu": {
+    "message": "從資料夾的上下文選單中移除「自訂圖示」指令。"
+  },
   "btn-extend-license": {
     "message": "我想將我的執照延長一年"
   },
@@ -847,6 +853,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "未特別選定顏色的（未作用中）分頁外觀"
+  },
+  "qf.label.accessibility": {
+    "message": "無障礙"
   },
   "qf.label.appearance": {
     "message": "外觀"

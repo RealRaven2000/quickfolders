@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Per proseguire il lavoro, gli sviluppatori delle estensioni debbono ora disporre di risorse finanziarie necessarie per poterle correggere e/o riscrivere così che gli utenti possano continuare a usufruire delle loro funzionalità."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Dai priorità ai segnalibri di QuickFolders nei risultati di ricerca."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Rimuovi il comando 'Personalizza icona' dal menu contestuale della cartella."
+  },
   "btn-extend-license": {
     "message": "Voglio estendere di un anno la mia licenza"
   },
@@ -864,6 +870,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Aspetto delle schede (inattive) prive di un colore selezionato specificamente"
+  },
+  "qf.label.accessibility": {
+    "message": "Accessibilità"
   },
   "qf.label.appearance": {
     "message": "Aspetto"

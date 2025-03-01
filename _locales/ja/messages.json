@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "引き続き有用であるために、アドオン開発者は、ユーザーが提供する機能の恩恵を受け続けることができるように、修正と書き換えに必要なリソースに資金を提供する必要があります。"
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "検索結果で QuickFolders のブックマークを優先表示する。"
+  },
+  "accessibility.hideIconMenu": {
+    "message": "フォルダーのコンテキストメニューから 'アイコンをカスタマイズ' コマンドを削除する。"
+  },
   "btn-extend-license": {
     "message": "ライセンスを 1 年延長します"
   },
@@ -814,6 +820,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "タブに特定の色を設定しません"
+  },
+  "qf.label.accessibility": {
+    "message": "アクセシビリティ"
   },
   "qf.label.appearance": {
     "message": "外観"

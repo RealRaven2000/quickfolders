@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "为了继续发挥作用，我们的附加组件开发人员现在需要资助修复和重写所需的资源，以便我们的用户可以继续从我们提供的功能中受益。"
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "在搜索结果中优先显示 QuickFolders 书签。"
+  },
+  "accessibility.hideIconMenu": {
+    "message": "从文件夹上下文菜单中移除“自定义图标”命令。"
+  },
   "btn-extend-license": {
     "message": "我想将我的执照延长一年"
   },
@@ -842,6 +848,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "没有用户定义颜色的（非活动）选项卡的布局"
+  },
+  "qf.label.accessibility": {
+    "message": "无障碍"
   },
   "qf.label.appearance": {
     "message": "外观"

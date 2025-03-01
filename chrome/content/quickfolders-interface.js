@@ -5807,6 +5807,10 @@ QuickFolders.Interface = {
           return payLoad(finalURI, options);
         }
       }
+			
+			// [issue 548] priority for tabs, start with rank 20
+			const a11y = QuickFolders.Preferences.getBoolPref("quickMove.priorityTabs"),
+			  tabStartupPriority = a11y ? 20 : 0;
 
       // change: if only 1 character is given, then the name must start with that character!
       // first, search QuickFolders
@@ -5816,7 +5820,7 @@ QuickFolders.Interface = {
           // folderEntry.uri
           matchPos = folderNameSearched.indexOf(searchString);
         if (matchPos >= 0) {
-          let rank = 0; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
+          let rank = tabStartupPriority; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
           if (searchString.length == folderEntry.name.length) rank += 4; // full match - promote
           if (matchPos == 0) rank += 2; // promote the rank if folder name starts with this string
           if (searchString.length <= 2 && matchPos != 0) {
@@ -6190,7 +6194,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	correctFolderEntry: function correctFolderEntry(URI) {
+	correctFolderEntry: function (URI) {
 		let confirmationText = "could not find this QuickFolder! The URL might be invalid - this can be caused by moving parent folders.\n"
 			+ "Do you want to correct this manually?",
 		    inputText = URI,

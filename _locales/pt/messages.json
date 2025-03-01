@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorizar os favoritos do QuickFolders nos resultados da pesquisa."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Remover o comando 'Personalizar ícone' do menu de contexto da pasta."
+  },
   "btn-extend-license": {
     "message": "Eu quero estender minha licença por um ano"
   },
@@ -847,6 +853,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Visual de abas (inativas) sem uma cor selecionada específica"
+  },
+  "qf.label.accessibility": {
+    "message": "Acessibilidade"
   },
   "qf.label.appearance": {
     "message": "Aparência"

@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritera QuickFolders-bokmärken i sökresultaten."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Ta bort kommandot 'Anpassa ikon' från mappens snabbmeny."
+  },
   "btn-extend-license": {
     "message": "Jag vill förlänga min licens med ett år"
   },
@@ -851,6 +857,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Utseendet på flikar som inte tilldelats en särskild färg"
+  },
+  "qf.label.accessibility": {
+    "message": "Tillgänglighet"
   },
   "qf.label.appearance": {
     "message": "Utseende"

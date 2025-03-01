@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Pour continuer à être utiles, nous, les développeurs de modules complémentaires, devons désormais financer les ressources nécessaires pour corriger et réécrire afin que nos utilisateurs puissent continuer à bénéficier des fonctionnalités que nous fournissons."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioriser les favoris QuickFolders dans les résultats de recherche."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Supprimer la commande 'Personnaliser l'icône' du menu contextuel du dossier."
+  },
   "btn-extend-license": {
     "message": "Je souhaite prolonger ma licence d‘un an"
   },
@@ -867,6 +873,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Aspect des onglets (inactifs) sans couleur spécifiée"
+  },
+  "qf.label.accessibility": {
+    "message": "Accessibilité"
   },
   "qf.label.appearance": {
     "message": "Apparence"

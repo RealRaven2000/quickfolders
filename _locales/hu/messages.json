@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritizáld a QuickFolders könyvjelzőket a keresési eredményekben."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Távolítsd el a 'Ikon testreszabása' parancsot a mappa helyi menüjéből."
+  },
   "btn-extend-license": {
     "message": "Szeretném meghosszabbítani az engedélyemet egy évvel"
   },
@@ -767,6 +773,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Az (inaktív) fülek megjelenése a felhasználó által kiválasztott szín nélkül"
+  },
+  "qf.label.accessibility": {
+    "message": "Akadálymentesség"
   },
   "qf.label.appearance": {
     "message": "Megjelenés"

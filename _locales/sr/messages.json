@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Дај предност QuickFolders обележивачима у резултатима претраге."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Уклони наредбу 'Прилагоди икону' из контекстног менија фасцикле."
+  },
   "btn-extend-license": {
     "message": "Желим да продужим лиценцу за годину дана"
   },
@@ -754,6 +760,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Изглед неактивних језичака без посебно одабране боје"
+  },
+  "qf.label.accessibility": {
+    "message": "Dostopnost"
   },
   "qf.label.appearance": {
     "message": "Изглед"

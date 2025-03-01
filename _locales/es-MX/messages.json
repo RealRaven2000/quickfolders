@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorizar los marcadores de QuickFolders en los resultados de búsqueda."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Eliminar el comando 'Personalizar ícono' del menú contextual de la carpeta."
+  },
   "btn-extend-license": {
     "message": "Quiero extender mi licencia por un año"
   },
@@ -845,6 +851,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Presentación de pestañas (inactivas) sin un color específicamente seleccionado"
+  },
+  "qf.label.accessibility": {
+    "message": "Accesibilidad"
   },
   "qf.label.appearance": {
     "message": "Apariencia"

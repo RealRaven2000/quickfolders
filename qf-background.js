@@ -338,9 +338,10 @@ async function filterMailsRegex(searchOptions, tabId = null) {
 // future function for icon support  [issue 399]
 async function addFolderPaneMenu() {
   // replaces code from QuickFolders.Interface.folderPanePopup()
-  let isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.tbmenus")),
+  const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.tbmenus")),
     txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
-    txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon");
+    txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon"),
+    isShowIconMenu = !(await messenger.LegacyPrefs.getPref(legacyPrefPath("accessibility.hideIconMenu")));
   if (isDebug) {
     console.log("QuickFolders: addFolderPaneMenu()");
   }
@@ -390,6 +391,7 @@ async function addFolderPaneMenu() {
     enabled: true,
     id: TOGGLEICON_ID,
     title: txtAddIcon,
+    visible: isShowIconMenu,
   };
   const idToggle = await messenger.menus.create(menuProps); // id of menu item
 
@@ -430,6 +432,7 @@ async function addFolderPaneMenu() {
   };
   const idRemove = await messenger.menus.create(removeProps);
   messenger.menus.onShown.addListener(async (info, tab) => {
+    const isShowIconMenus =  !(await messenger.LegacyPrefs.getPref(legacyPrefPath("accessibility.hideIconMenu")));
     const selectedFolder = info?.selectedFolder || null;
     const selectedAccount = info?.selectedAccount || null;
     const isServer = selectedAccount ? true : false;
@@ -448,9 +451,10 @@ async function addFolderPaneMenu() {
         icon
       );
     }
+
     let hasIcon = icon != null && icon.iconURL; // query the icon somehow.
     if (hasIcon) {
-      await messenger.menus.update(idRemove, { visible: true });
+      await messenger.menus.update(idRemove, { visible: isShowIconMenus });
     } else {
       await messenger.menus.update(idRemove, { visible: false });
     }
@@ -458,7 +462,7 @@ async function addFolderPaneMenu() {
       await messenger.menus.update(idToggle, { visible: false });
       await messenger.menus.update(idRemove, { visible: false });
     } else {
-      await messenger.menus.update(idToggle, { visible: true });
+      await messenger.menus.update(idToggle, { visible: isShowIconMenus });
     }
 
     messenger.menus.refresh();

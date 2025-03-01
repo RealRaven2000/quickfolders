@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Da bomo še naprej koristni, moramo razvijalci dodatkov zdaj financirati vire, potrebne za popravljanje in prepisovanje, tako da bodo lahko naši uporabniki še naprej koristili funkcionalnost, ki jo ponujamo."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Daj prednost zaznamkom QuickFolders v rezultatih iskanja."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Odstrani ukaz 'Prilagodi ikono' iz kontekstnega menija mape."
+  },
   "btn-extend-license": {
     "message": "Licenco želim podaljšati za eno leto"
   },
@@ -814,6 +820,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Videz (nedejavnih) zavihkov brez izbrane barve"
+  },
+  "qf.label.accessibility": {
+    "message": "Dostopnost"
   },
   "qf.label.appearance": {
     "message": "Videz"

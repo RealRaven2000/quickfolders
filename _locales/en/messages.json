@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritize QuickFolders bookmarks in search results."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Remove the 'Customize Icon' command from the folder context menu."
+  },
   "btn-extend-license": {
     "message": "I want to extend my license by one year"
   },
@@ -811,7 +817,7 @@
   "qf.filters.toggleMessage.title": {
     "message": "Creating Filters"
   },
-  "qf.foldercontextmenu.quickfolders.addQuickFolder" :{
+  "qf.foldercontextmenu.quickfolders.addQuickFolder": {
     "message": "Add Folder to QuickFolders Toolbar…"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
@@ -867,6 +873,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Look of (inactive) tabs without a specifically selected color"
+  },
+  "qf.label.accessibility": {
+    "message": "Accessibility"
   },
   "qf.label.appearance": {
     "message": "Appearance"

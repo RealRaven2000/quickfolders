@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Aby nadal być użytecznym, my, programiści dodatków, musimy teraz finansować zasoby potrzebne do naprawy i przepisywania, aby nasi użytkownicy mogli nadal korzystać z oferowanych przez nas funkcji."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorytet dla zakładek QuickFolders w wynikach wyszukiwania."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Usuń polecenie 'Dostosuj ikonę' z menu kontekstowego folderu."
+  },
   "btn-extend-license": {
     "message": "Chcę przedłużyć moją licencję o rok"
   },
@@ -847,6 +853,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Wygląd nieaktywnych folderów bez wybranego koloru"
+  },
+  "qf.label.accessibility": {
+    "message": "Dostępność"
   },
   "qf.label.appearance": {
     "message": "Wygląd"

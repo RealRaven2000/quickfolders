@@ -200,6 +200,7 @@ END LICENSE BLOCK */
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
     ## [issue 548] quickJump / quickMove prority for QF bookmarks in results & screenreader support
     ## [issue 550] Support adding QuickFolders (bookmark folders) using keyboard
+    ## [issue 551] Accessibility option: Remove 'customize icon' command from folder context
 
 
 

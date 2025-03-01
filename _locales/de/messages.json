@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "QuickFolders-Lesezeichen bei der Suche zuvorderst anzeigen."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Den Befehl 'Symbol anpassen' aus dem Ordner-Kontextmenü entfernen."
+  },
   "btn-extend-license": {
     "message": "Ich möchte meine Lizenz um ein Jahr verlängern"
   },
@@ -854,6 +860,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Aussehen inaktiver Tabs ohne individuelle Farbe"
+  },
+  "qf.label.accessibility": {
+    "message": "Barrierefreiheit"
   },
   "qf.label.appearance": {
     "message": "Aussehen"

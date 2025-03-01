@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Upřednostnit záložky QuickFolders ve výsledcích hledání."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Odebrat příkaz 'Přizpůsobit ikonu' z kontextového menu složky."
+  },
   "btn-extend-license": {
     "message": "Chci prodloužit licenci o jeden rok"
   },
@@ -858,6 +864,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Vzhled (neaktivních) karet bez konkrétně zvolené barvy"
+  },
+  "qf.label.accessibility": {
+    "message": "Přístupnost"
   },
   "qf.label.appearance": {
     "message": "Vzhled"

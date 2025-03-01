@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Per continuar sent útils, els desenvolupadors de complements ara han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritza els marcadors de QuickFolders als resultats de cerca."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Elimina l'ordre 'Personalitza la icona' del menú contextual de la carpeta."
+  },
   "btn-extend-license": {
     "message": "Vull ampliar la llicència un any"
   },
@@ -852,6 +858,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Vista de Pestanyes (inactives) sense color seleccionat"
+  },
+  "qf.label.accessibility": {
+    "message": "Accessibilitat"
   },
   "qf.label.appearance": {
     "message": "Aparença"

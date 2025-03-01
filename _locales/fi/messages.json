@@ -19,6 +19,12 @@
   "addon-authors-struggle": {
     "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Aseta QuickFolders-kirjanmerkit etusijalle hakutuloksissa."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Poista 'Mukauta kuvaketta' -komento kansion pikavalikosta."
+  },
   "btn-extend-license": {
     "message": "Haluan jatkaa lisenssini vuodella"
   },

@@ -19,6 +19,12 @@
   "addon-authors-struggle": {
     "message": "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Ưu tiên dấu trang QuickFolders trong kết quả tìm kiếm."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Xóa lệnh 'Tùy chỉnh biểu tượng' khỏi menu ngữ cảnh của thư mục."
+  },
   "btn-extend-license": {
     "message": "Tôi muốn gia hạn giấy phép của mình thêm một năm"
   },
@@ -700,6 +706,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Xem xét các tab (không hoạt động) không có màu được chọn cụ thể"
+  },
+  "qf.label.accessibility": {
+    "message": "Khả năng truy cập"
   },
   "qf.label.appearance": {
     "message": "Vẻ bề ngoài"

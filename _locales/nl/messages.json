@@ -22,6 +22,12 @@
   "addon-authors-struggle": {
     "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
   },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Geef QuickFolders-bladwijzers prioriteit in zoekresultaten."
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Verwijder het commando 'Pictogram aanpassen' uit het contextmenu van de map."
+  },
   "btn-extend-license": {
     "message": "Ik wil mijn licentie met een jaar verlengen"
   },
@@ -841,6 +847,9 @@
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur"
+  },
+  "qf.label.accessibility": {
+    "message": "Toegankelijkheid"
   },
   "qf.label.appearance": {
     "message": "Vormgeving"
