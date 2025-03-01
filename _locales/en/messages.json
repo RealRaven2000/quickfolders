@@ -811,6 +811,9 @@
   "qf.filters.toggleMessage.title": {
     "message": "Creating Filters"
   },
+  "qf.foldercontextmenu.quickfolders.addQuickFolder" :{
+    "message": "Add Folder to QuickFolders Toolbar…"
+  },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
     "message": "Customize Icon…"
   },

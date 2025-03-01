@@ -33,7 +33,7 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 	padding-right: 1px;
 }
 
-#QuickFolders-mainPopup.popupButton {
+#QuickFolders-mainPopupBtn.popupButton {
   padding-right: 1em;
 }
 
@@ -101,13 +101,13 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 }
 
 /* tools menu button */
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopupBtn {
 	list-style-image: url("skin/ico/settings.svg");
   /* fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity); */
 	stroke: var(--new-highlight, yellow); /* the tab in front of the wheel */
 }
-#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { 
+#QuickFolders-mainPopupBtn image, #QuickFolders-quickMove image, #filterActive image { 
 	height:16px !important; 
 }
 #QuickFolders-ToolbarPopup-options:not(:hover) image {
@@ -115,7 +115,7 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   /* -moz-context-properties: stroke, fill; */
 }
 
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopupBtn:hover {
   fill: var(--new-highlight);
 	stroke: currentColor;
 }
@@ -465,7 +465,7 @@ toolbarbutton#QuickFoldersCurrentFolder {
 
 #QuickFolders-Toolbar toolbarbutton[collapsed="true"],
 #QuickFolders-filterActive[collapsed="true"],
-#QuickFolders-mainPopup[collapsed="true"],
+#QuickFolders-mainPopupBtn[collapsed="true"],
 #QuickFolders-quickMove[collapsed="true"]
 {
 	margin: 0 !important;

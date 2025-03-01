@@ -188,7 +188,7 @@ END LICENSE BLOCK */
   6.9.2 QuickFolders Pro - 26/01/2025
     ## [issue 532] Return key no longer moves emails when search finds only one folder
 
-  6.9.3 QuickFolders Pro - WIP
+  6.10 QuickFolders Pro - WIP
     ## made compatible with Tb 136.*
     ## New option to always open QuickFolders Options in a tab
     ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
@@ -198,7 +198,8 @@ END LICENSE BLOCK */
     ## Replace XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
     ## [issue 546] Fixed: can no longer remove customized icon from tab
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
-    
+    ## [issue 548] quickJump / quickMove prority for QF bookmarks in results & screenreader support
+    ## [issue 550] Support adding QuickFolders (bookmark folders) using keyboard
 
 
 
@@ -813,103 +814,129 @@ var QuickFolders = {
 			return true;
 		},
 
-		drop: function (evt, dragSession) {
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
-      
-			if (this.prefs.isDebugOption('dnd')) {
-        QuickFolders.Util.logToConsole("toolbarDragObserver.drop() - dragSession = ", dragSession);
-      }
-			// let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
-      let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
-          contentType = types[0];
-
-			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
- 			function addFolder(src) {
-        if(src) {
-          let msg="", maxTabs, warnLevel;
-          if (!QuickFolders.Util.hasValidLicense()) { // max tab
+		drop: function (evt, dragSession, eventDetail = null) {
+      function addFolder(src) {
+        if (src) {
+          let msg = "",
+            maxTabs,
+            warnLevel;
+          if (!QuickFolders.Util.hasValidLicense()) {
+            // max tab
             maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
-            msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+            msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs", [maxTabs]);
             warnLevel = 2;
-          }
-          else if (QuickFolders.Util.hasStandardLicense()) {
+          } else if (QuickFolders.Util.hasStandardLicense()) {
             maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
-            msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+            msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs", [
+              maxTabs,
+            ]);
             warnLevel = 0;
           }
-          if (QuickFolders.Model.selectedFolders.length >= maxTabs
-              && 
-              !QuickFolders.Model.getFolderEntry(src)) {
-            if (msg) { 
+          if (
+            QuickFolders.Model.selectedFolders.length >= maxTabs &&
+            !QuickFolders.Model.getFolderEntry(src)
+          ) {
+            if (msg) {
               // allow adding folder (to different category if tab already exists)
               // otherwise, restrictions apply
               QuickFolders.Util.popupRestrictedFeature("tabs>" + maxTabs, msg, warnLevel);
               QuickFolders.Interface.viewSplash(msg);
               return false;
-            }         
+            }
           }
-          
+
           let cat = QuickFolders.Interface.CurrentlySelectedCategories;
           if (QuickFolders.Model.addFolder(src, cat)) {
-            let s = "Added shortcut " + src + " to QuickFolders"
+            let s = "Added shortcut " + src + " to QuickFolders";
             if (cat !== null) s = s + " Category " + cat;
-            try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
+            try {
+              QuickFolders.Util.showStatusMessage(s);
+            } catch (e) {}
           }
         }
         return true;
-			};
+      }
+      const directUri = eventDetail ? eventDetail.folderURI : null;
+      if (!dragSession && !directUri) {
+        dragSession = Cc["@mozilla.org/widget/dragservice;1"]
+          .getService(Ci.nsIDragService)
+          .getCurrentSession();
+      }
 
-			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
-			let msgFolder, sourceUri;
+      if (this.prefs.isDebugOption("dnd")) {
+        QuickFolders.Util.logToConsole("toolbarDragObserver.drop() - dragSession = ", dragSession);
+      }
+      // let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
+      let types, contentType;
 
-			switch (contentType) {
-				case "text/x-moz-folder":
-				case "text/x-moz-newsfolder":
+      if (directUri) {
+        QuickFolders.Util.logDebugOptional(
+          "dnd",
+          `toolbarDragObserver.drop uri - ${directUri}`
+        );
+      } else {
+        types = Array.from(evt.dataTransfer.mozTypesAt(0));
+        contentType = types[0];
+        QuickFolders.Util.logDebugOptional("dnd", `toolbarDragObserver.drop - ${contentType}`);
+      }
 
-					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
+      QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
+      let msgFolder, sourceUri;
+
+      switch (contentType) {
+        case "text/x-moz-folder":
+        case "text/x-moz-newsfolder":
+          if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) {
             let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
-            for (let i=0; i<count; i++) { // allow multiple folder drops...
+            for (let i = 0; i < count; i++) {
+              // allow multiple folder drops...
               msgFolder = evt.dataTransfer.mozGetDataAt(contentType, i);
-              if (msgFolder.QueryInterface)
+              if (msgFolder.QueryInterface) {
                 sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
-              else
+              } else {
                 sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // Postbox
+              }
               if (!addFolder(sourceUri)) break;
             }
-					}
-					else {
-						sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // older gecko versions.
+          } else {
+            sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // older gecko versions.
             addFolder(sourceUri);
-					}
+          }
 
-					break;
-				case "text/currentfolder":
-					// sourceUri = dropData.data;
+          break;
+        case "text/currentfolder":
+          // sourceUri = dropData.data;
           sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
-					addFolder(sourceUri);
-					break;
-				case "text/plain":  // [Bug 26560]
-				case "text/unicode":  // plain text: button was moved OR: a menuitem was dropped!!
-					// sourceUri = dropData.data;
+          addFolder(sourceUri);
+          break;
+        case "text/plain": // [Bug 26560]
+        case "text/unicode": // plain text: button was moved OR: a menuitem was dropped!!
+          // sourceUri = dropData.data;
           sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
-					let eType = dragSession.dataTransfer.mozSourceNode.tagName,
-					    myDragPos,
-					    target = evt.currentTarget;
-					if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
-						myDragPos="LeftMost"
-					else
-						myDragPos="RightMost"
-					if (eType === "menuitem" || eType === "menu") {
-						addFolder(sourceUri);
-					}
-					else {
-						if (!QuickFolders.Model.insertAtPosition(sourceUri, "", myDragPos)) {
-							//a menu item for a tab that does not exist was dropped!
-							addFolder(sourceUri);
-						}
-					}
-					break;
+          const eType = dragSession.dataTransfer.mozSourceNode.tagName;
+          let  myDragPos;
+          if (evt.pageX < 120) {
+            // should find this out by checking whether "Quickfolders" label is hit
+            myDragPos = "LeftMost";
+          } else {
+            myDragPos = "RightMost";
+          }
+          if (eType === "menuitem" || eType === "menu") {
+            addFolder(sourceUri);
+          } else {
+            if (!QuickFolders.Model.insertAtPosition(sourceUri, "", myDragPos)) {
+              //a menu item for a tab that does not exist was dropped!
+              addFolder(sourceUri);
+            }
+          }
+          break;
         default:
+          if (directUri) {
+            // context folder add:
+            addFolder(directUri);
+            return;
+          }
+
           let errText = "";
           if (typeof contentType == "string") {
             errText = `Dropped object has unsupported content type: [${contentType}]\n`;
@@ -918,15 +945,16 @@ var QuickFolders = {
           }
           QuickFolders.Util.logHighlight(
             "toolbarDragObserver.drop FAILED\n",
-            {color: "white", background: "rgb(80,0,0)"},
+            { color: "white", background: "rgb(80,0,0)" },
             errText,
             "dataTransfer Object: ",
             evt.dataTransfer,
             "\ncontained items:",
-            evt.dataTransfer? evt.dataTransfer.items : "n\a");
-        break;
-			}
-		}
+            evt.dataTransfer ? evt.dataTransfer.items : "n/a"
+          );
+          break;
+      }
+    }
 	} ,
 
 	// recursive popups have to react to drag mails!
@@ -1144,9 +1172,9 @@ var QuickFolders = {
 				while (QuickFolders.popupDragObserver.newFolderMsgUris.length)
 					QuickFolders.popupDragObserver.newFolderMsgUris.pop();
 				
-        let txtUris ='',
-						dt = evt.dataTransfer,
-					  types = dt.mozTypesAt(0);
+        let txtUris ='';
+        const dt = evt.dataTransfer,
+          types = dt.mozTypesAt(0);
 
         // types is a DOMStringList not an Arry, use contains, not includes
 				if (types.contains("text/x-moz-message")) {
@@ -1156,8 +1184,7 @@ var QuickFolders = {
 						QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
 					}
 					util.logDebugOptional('dnd', txtUris);
-				}				
-				else {
+				} else {
 					// LEGACY CODE!
 					util.logDebugOptional('dnd', 'LEGACY drag+drop code: using dragSession!');
 					for (let i = 0; i < dragSession.numDropItems; i++) {
@@ -1173,8 +1200,7 @@ var QuickFolders = {
 								let messageUri = dataObj.data.substring(0, len.value);
 								QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
 							}
-						}
-						catch (e) {
+						} catch (e) {
 							QuickFolders.LocalErrorLogger("Exception in drop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
 						}
 					}
@@ -1187,16 +1213,15 @@ var QuickFolders = {
 
 				util.logDebugOptional('dnd,dragToNew',
 				  "window.openDialog (newFolderDialog.xhtml)\n"
-					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
-					+ "dualUseFolders:" + dualUseFolders);
+					+ `folder/preselectedURI:${targetFolder} (URI: ${targetFolder.URI})\n` 
+					+ `dualUseFolders: ${dualUseFolders}`);
         window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
-            "",
-            "chrome,modal,resizable=no,centerscreen",
-            {
-              folder: targetFolder, 
-              dualUseFolders: dualUseFolders, 
-              okCallback: newFolderCallback
-            });
+          "",
+          "chrome,modal,resizable=no,centerscreen", {
+            folder: targetFolder, 
+            dualUseFolders: dualUseFolders, 
+            okCallback: newFolderCallback
+        });
 			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop event: " + e); return false}
 			return true;
 		}
@@ -1353,8 +1378,8 @@ var QuickFolders = {
           } catch (ex) {
             util.logDebug("Error during dragOver - hiding popups", ex);
           };
-					let dt = evt.dataTransfer,
-					    types = dt.mozTypesAt(0);
+					const dt = evt.dataTransfer,
+					  types = dt.mozTypesAt(0);
 					if (prefs.isDebugOption('dnd')) {
 						// http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#677
 						let txt = 'Drag types from event.dataTransfer:';
@@ -1600,15 +1625,15 @@ var QuickFolders = {
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
 			// dragSession.canDrop = true;
       
-      let types = Array.from(evt.dataTransfer.mozTypesAt(0)); // replace flavour param
+      const types = Array.from(evt.dataTransfer.mozTypesAt(0)); // replace flavour param
       if (   types.includes("text/x-moz-message") 
           || types.includes("text/unicode") 
           || types.includes("text/plain")
           || types.includes("text/x-moz-folder")
           || types.includes("text/x-moz-newsfolder")
-         )
+      ) {
         dragSession.canDrop = true;
-			else {
+       } else {
 				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.dragOver - can not drop " + types[0]);
 				dragSession.canDrop = false;
 			}

@@ -40,7 +40,7 @@ QuickFolders.Interface = {
 	set verticalMenuOffset(o) { this._verticalMenuOffset = o; QuickFolders.Preferences.setIntPref("debug.popupmenus.verticalOffset", o)},
 	get CategoryBox() { return  QuickFolders.Util.$("QuickFolders-Category-Box"); },
 	get FilterToggleButton() { return QuickFolders.Util.$("QuickFolders-filterActive"); },
-	get CogWheelPopupButton () { return QuickFolders.Util.$("QuickFolders-mainPopup"); },
+	get CogWheelPopupButton () { return QuickFolders.Util.$("QuickFolders-mainPopupBtn"); },
 	get QuickMoveButton () { return QuickFolders.Util.$("QuickFolders-quickMove"); },
   get ReadingListButton () { return QuickFolders.Util.$("QuickFolders-readingList"); },
 	get CategoryMenu() { return QuickFolders.Util.$("QuickFolders-Category-Selection"); },
@@ -1764,9 +1764,10 @@ QuickFolders.Interface = {
 					prefs = QuickFolders.Preferences,
 					isShift = (event && event.shiftKey) || false;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
+		if (!categoryName) return;
     
     let catA = categoryName.split("|"),
-    // remove invalid categories that may have been deleted in the meantime:
+    		// remove invalid categories that may have been deleted in the meantime:
         catR = catA.filter(c => QuickFolders.FolderCategory.isValidCategory(c));
     if (!catR.length) {
       categoryName = QuickFolders.FolderCategory.ALL;

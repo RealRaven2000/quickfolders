@@ -45,64 +45,55 @@ async function onLoad(activatedWhileWindowOpen) {
 
   console.log("Adding QuickFolders toolbar ...");
   WL.injectElements(`
-
   <toolbox id="navigation-toolbox">
     <vbox id="titlebar">
       <toolbar
-            id="QuickFolders-Toolbar"
-            toolbarname="QuickFolders Toolbar"
-            class="toolbar-primary contentTabToolbar quickFoldersToolbar"
-            ondragover="(QuickFolders.toolbarDragObserver).dragOver(event);"
-            ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
-            dragdroparea="QuickFolders-FoldersBox"
-            customizable="false"
-            context="QuickFolders-ToolbarPopup"
-            flex="10" >
+        id="QuickFolders-Toolbar"
+        toolbarname="QuickFolders Toolbar"
+        class="toolbar-primary contentTabToolbar quickFoldersToolbar"
+        dragdroparea="QuickFolders-FoldersBox"
+        customizable="false"
+        context="QuickFolders-ToolbarPopup"
+        flex="10">
         <hbox id="QuickFolders-left" align="center">
           <vbox id="QuickFolders-LabelBox" flex="0">
             <toolbarbutton id="QuickFolders-title-label" 
-                           oncommand="QuickFolders.Interface.clickTitleLabel(this);"
-                                         label="__MSG_qf.label.quickfolders__" />
+              label="__MSG_qf.label.quickfolders__" 
+              tabindex="0"/>
           </vbox>
         </hbox>
         
         <popupset id="QuickFolders-QuickMovePopupSet">
           <menupopup id="QuickFolders-quickMoveMenu">
             <menuitem id="QuickFolders-quickMove-suspend"
-                      label="__MSG_quickfolders.quickMove.menu.suspend__"
-                      oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
-                      type="checkbox"
-                      />
+              label="__MSG_quickfolders.quickMove.menu.suspend__"
+              type="checkbox"
+              />
             <menuitem id="QuickFolders-quickMove-cancel"
-                      label="__MSG_quickfolders.quickMove.menu.cancel__"
-                      oncommand="QuickFolders.quickMove.cancel();" 
-                      collapsed="true"
-                      />
+              label="__MSG_quickfolders.quickMove.menu.cancel__"
+              collapsed="true"
+              />
             <menuitem id="QuickFolders-quickMove-showSearch"
-                      label="__MSG_quickfolders.quickMove.menu.showSearch__"
-                      oncommand="QuickFolders.quickMove.showSearch();" 
-                      />
+              label="__MSG_quickfolders.quickMove.menu.showSearch__"
+              />
             <menuitem id="QuickFolders-quickMove-hideSearch"
-                      label="__MSG_quickfolders.quickMove.menu.hideSearch__"
-                      oncommand="QuickFolders.quickMove.hideSearch();" 
-                      collapsed="true"
-                      />
+              label="__MSG_quickfolders.quickMove.menu.hideSearch__"
+              collapsed="true"
+              />
           </menupopup>
         </popupset>	
         
         <popupset id="QuickFolders-ReadingListPopupSet">
           <menupopup id="QuickFolders-readingListMenu" class="widerMenu">
             <menuitem id="QuickFolders-readingList-reset"
-                      label="__MSG_quickfolders.readingList.clear__"
-                                class="cmd"
-                                collapsed="true"
-                      oncommand="QuickFolders.bookmarks.resetList(true);" 
-                      />
+              label="__MSG_quickfolders.readingList.clear__"
+              class="cmd"
+              collapsed="true"
+              />
             <menuitem id="QuickFolders-readingList-add"
-                      label="__MSG_quickfolders.readingList.addCurrent__"
-                                class="cmd"
-                      oncommand="QuickFolders.bookmarks.addCurrent();" 
-                      />
+              label="__MSG_quickfolders.readingList.addCurrent__"
+              class="cmd"
+              />
           </menupopup>
         </popupset>	
         
@@ -110,74 +101,63 @@ async function onLoad(activatedWhileWindowOpen) {
           <menupopup id="QuickFolders-ToolbarPopup">
             <!-- debug submenu -->
             <menu class="menu-iconic dbgMenu"  
-                  collapsed="true"
-                  id="QuickFolders-debug" 
-                  label="Debug">
+              collapsed="true"
+              id="QuickFolders-debug" 
+              label="Debug">
               <menupopup class="dbgMenu">
               
                 <menuitem id="QuickFolders-ToolbarPopup-dbg0"
                   label="Lift up Navigation bar"
-                  oncommand="QuickFolders.Interface.liftNavigationbar(window.gTabmail.currentTabInfo.chromeBrowser.contentDocument);" 
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg1"
                   label="Set News flag"
-                  oncommand="QuickFolders.Preferences.setBoolPref('hasNews', true); QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateQuickFoldersLabel' });"
                   class="menuitem-iconic"
                   />                                      
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg2"
                   label="Show Installation Popup"
-                  oncommand="QuickFolders.Interface.viewInstalled();" 
                   class="cmd menuitem-iconic"
                   />                  
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg3"
                   label="Copy current folder info!"
-                  oncommand="QuickFolders.Interface.copyCurrentFolderInfo();"
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg4"
                   label="Test Tree only Icons"
-                  oncommand="QuickFolders.Interface.testTreeIcons();" 
                   class="menuitem-iconic"
                   />
                                       
                 <menuitem id="QuickFolders-ToolbarPopup-dbg5"
                   label="Load FolderTree Dictionary"
-                  oncommand="QuickFolders.FolderTree.loadDictionary.call(QuickFolders.FolderTree, QuickFolders.Util.document3pane);" 
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg6"
                   label="Force Tree Refresh"
-                  oncommand="QuickFolders.FolderTree.refreshTree.call(QuickFolders.FolderTree);" 
                   class="menuitem-iconic"
                   />
                     
                 <menuitem id="QuickFolders-ToolbarPopup-dbg7"
                   label="Foldertree.init()"
-                  oncommand="QuickFolders.FolderTree.init.call(QuickFolders.FolderTree);" 
                   class="menuitem-iconic"
                   />
                                   
                 <menuitem id="QuickFolders-ToolbarPopup-dbg8"
                   label="Platform info - aboutHost()"
-                  oncommand="QuickFolders.Util.aboutHost();"
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg9"
                   label="Load Platform CSS"
-                  oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbgA"
                   label="Focus thread pane."
-                  oncommand="QuickFolders.Interface.setFocusThreadPane();"
                   class="menuitem-iconic"
                   />
                   
@@ -185,105 +165,91 @@ async function onLoad(activatedWhileWindowOpen) {
               </menupopup>
             </menu>
             <menuitem id="QuickFolders-ToolbarPopup-find"
-                      label="__MSG_qf.menuitem.quickfolders.find__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.findAccess__"
-                      oncommand="QuickFolders.Interface.findFolder(true,'quickJump');" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfFindFolder"
-                      collapsed="true"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.find__"
+              accesskey="__MSG_qf.menuitem.quickfolders.findAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfFindFolder"
+              collapsed="true"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-checkLicense"
-                      label="__MSG_qf.menuitem.quickfolders.checkLicense__"
-                      oncommand="QuickFolders.Interface.viewLicense();" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfCheckLicense"
-                      collapsed="true"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.checkLicense__"
+              class="cmd menuitem-iconic"
+              tagName="qfCheckLicense"
+              collapsed="true"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-options"
-                      label="__MSG_qf.menuitem.quickfolders.options__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.optionsAccess__"
-                      oncommand="QuickFolders.Interface.viewOptions(-1);" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfOptions"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.options__"
+              accesskey="__MSG_qf.menuitem.quickfolders.optionsAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfOptions"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-splash"
-                      label="__MSG_qf.menuitem.quickfolders.splash__"
-                      oncommand="QuickFolders.Interface.viewSplash();" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfSplash"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.splash__"
+              class="cmd menuitem-iconic"
+              tagName="qfSplash"
+              />
                       
             <menuitem id="QuickFolders-ToolbarPopup-filterMode"
-                      label="__MSG_qf.menuitem.quickfolders.filters__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.filtersAccess__"
-                      oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);"
-                      class="cmd menuitem-iconic"
-                      tagName="qfFilter"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.filters__"
+              accesskey="__MSG_qf.menuitem.quickfolders.filtersAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfFilter"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-paintBucket"
-                      label="__MSG_qf.menuitem.quickfolders.togglePaintMode__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.togglePaintModeAccess__"
-                      oncommand="QuickFolders.Interface.togglePaintMode('toggle');"
-                      class="cmd menuitem-iconic"
-                      tagName="qfPaintBucket"
-                      context="QuickFolders-Palette"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.togglePaintMode__"
+              accesskey="__MSG_qf.menuitem.quickfolders.togglePaintModeAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfPaintBucket"
+              context="QuickFolders-Palette"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-changeOrder"
-                      label="__MSG_qf.menuitem.quickfolders.changeOrder__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.changeOrderAccess__"
-                      oncommand="QuickFolders.Interface.viewChangeOrder();"
-                      class="cmd menuitem-iconic"
-                      tagName="qfOrder"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.changeOrder__"
+              accesskey="__MSG_qf.menuitem.quickfolders.changeOrderAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfOrder"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-support"
-                      label="__MSG_qf.menuitem.quickfolders.support__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.supportAccess__"
-                      oncommand="QuickFolders.Interface.viewSupport();"
-                      class="cmd menuitem-iconic"
-                      tagName="qfSupport"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.support__"
+              accesskey="__MSG_qf.menuitem.quickfolders.supportAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfSupport"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-help"
-                      label="__MSG_qf.menuitem.quickfolders.help__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.helpAccess__"
-                      oncommand="QuickFolders.Interface.viewHelp();" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfHelp"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.help__"
+              accesskey="__MSG_qf.menuitem.quickfolders.helpAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfHelp"
+              />
             <menuseparator />
             <menuitem id="QuickFolders-ToolbarPopup-refresh"
-                      label="__MSG_qf.menuitem.quickfolders.repairTabs__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.repairTabsAccess__"
-                      oncommand="QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateMainWindow', minimal: false });" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfRebuild"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.repairTabs__"
+              accesskey="__MSG_qf.menuitem.quickfolders.repairTabsAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfRebuild"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-repair"
-                      label="__MSG_qf.menuitem.quickfolders.repairTreeIcons__"
-                      oncommand="QuickFolders.Interface.repairTreeIcons();" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfRepairTreeIcons"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.repairTreeIcons__"
+              class="cmd menuitem-iconic"
+              tagName="qfRepairTreeIcons"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-tidy"
-                      label="__MSG_qf.menuitem.quickfolders.deleteDeadTabs__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.deleteDeadTabsAccess__"
-                      oncommand="QuickFolders.Interface.tidyDeadFolders();" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfTidyTabs"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.deleteDeadTabs__"
+              accesskey="__MSG_qf.menuitem.quickfolders.deleteDeadTabsAccess__"
+              class="cmd menuitem-iconic"
+              tagName="qfTidyTabs"
+              />
             <menuseparator />
             <menuitem id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
-                      label="__MSG_qf.menuitem.quickfolders.displayPreviewToolbar__"
-                      accesskey="__MSG_qf.menuitem.quickfolders.displayPreviewToolbarAccessKey__"
-                      oncommand="QuickFolders.Interface.displayNavigationToolbar({display:true});"
-                      class="cmd menuitem-iconic"
-                      tagName="qfPreviewToolbar" 
-                      />
+              label="__MSG_qf.menuitem.quickfolders.displayPreviewToolbar__"
+              accesskey="__MSG_qf.menuitem.quickfolders.displayPreviewToolbarAccessKey__"
+              class="cmd menuitem-iconic"
+              tagName="qfPreviewToolbar" 
+              />
             <menuitem id="QuickFolders-ToolbarPopup-register"
-                      label="__MSG_qf.menuitem.quickfolders.register__"
-                      oncommand="QuickFolders.Interface.showLicenseDialog('mainPopup');"
-                      class="cmd menuitem-iconic free"
-                      tagName="qfRegister"
-                      />
+              label="__MSG_qf.menuitem.quickfolders.register__"
+              class="cmd menuitem-iconic free"
+              tagName="qfRegister"
+              />
           </menupopup>
         </popupset>
 
@@ -300,86 +266,69 @@ async function onLoad(activatedWhileWindowOpen) {
 
   //-----------------------------
   // search panel & mini toolbar in QF toolbar
+  console.log("Adding QuickFolders Search Panel ...");
   WL.injectElements(`
     
 <hbox id="QuickFolders-left" style="align-items: stretch !important;">
   <vbox id="QuickFolders-Tools-Pane" insertafter="QuickFolders-LabelBox">
-    <hbox id="QuickFolders-Category-Box"
-              ondragenter="QuickFolders.buttonDragObserver.dragEnter(event)">
+    <hbox id="QuickFolders-Category-Box">
       <menulist id="QuickFolders-Category-Selection" 
-                          oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
-                          sizetopopup="none" 
-                          collapsed="true">
+        sizetopopup="none" 
+        collapsed="true">
         <menupopup>
             <!-- filled dynamically from JS -->
         </menupopup>
       </menulist>
       <hbox id="QuickFolders-oneButtonPanel">
-        <toolbarbutton id="QuickFolders-mainPopup"
-                       class="popupButton"
-                       tooltiptext="__MSG_qf.tooltip.mainOptions__"
-                       context="QuickFolders-ToolbarPopup"
-                       onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup',event);"/>
+        <toolbarbutton id="QuickFolders-mainPopupBtn"
+          class="popupButton"
+          tooltiptext="__MSG_qf.tooltip.mainOptions__"
+          context="QuickFolders-ToolbarPopup"
+          />
         <toolbarbutton id="QuickFolders-filterActive"
-                       tooltiptext="__MSG_qf.tooltip.filters__"
-                       oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
-                       collapsed="true"/>
+          tooltiptext="__MSG_qf.tooltip.filters__"
+          collapsed="true"
+          />
         <toolbarbutton id="QuickFolders-paintBucketActive"
-                       label="ABC"
-                       tooltiptext="__MSG_qf.tooltip.paintCanActive__"
-                       context="QuickFolders-PalettePopup" 
-                       oncommand="QuickFolders.Interface.showPalette(this);"
-                       collapsed="true"/>
+          label="ABC"
+          tooltiptext="__MSG_qf.tooltip.paintCanActive__"
+          context="QuickFolders-PalettePopup" 
+          collapsed="true"
+          />
         <toolbarbutton id="QuickFolders-readingList"
-                       class="popupButton"
-                       tooltiptext="__MSG_quickfolders.readingList.tooltip__"
-                       label=""
-                       onclick="QuickFolders.Interface.readingListClick(event,this);"
-                       ondrop="QuickFolders.buttonDragObserver.drop(event);"
-                       ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
-                       ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
-                       ondragleave="QuickFolders.buttonDragObserver.dragLeave(event);"
-                       context="QuickFolders-readingListMenu"
-                       collapsed="true"/>
+          class="popupButton"
+          tooltiptext="__MSG_quickfolders.readingList.tooltip__"
+          label=""
+          context="QuickFolders-readingListMenu"
+          collapsed="true"/>
         <toolbarbutton id="QuickFolders-quickMove"
-                       class="popupButton"
-                       tooltiptext="__MSG_qf.tooltip.quickMove__"
-                       label=""
-                       onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
-                       ondrop="QuickFolders.buttonDragObserver.drop(event);"
-                       ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
-                       ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
-                       ondragleave="QuickFolders.buttonDragObserver.dragLeave(event);"
-                       context="QuickFolders-quickMoveMenu"
-                       />
+          class="popupButton"
+          tooltiptext="__MSG_qf.tooltip.quickMove__"
+          label=""
+          context="QuickFolders-quickMoveMenu"
+          />
         <search-textbox id="QuickFolders-FindFolder" 
-                 onkeydown="QuickFolders.Interface.findFolderKeyDown(event);"
-                 class="searchBox input-sizer"
-                 type="search"
-                 collapsed="true"
-                 placeholder="__MSG_quickfolders.findFolder.placeHolder__"/>
+          class="searchBox input-sizer"
+          type="search"
+          collapsed="true"
+          placeholder="__MSG_quickfolders.findFolder.placeHolder__"
+          />
         <toolbarbutton id="QuickFolders-FindFolder-Help"
-                       class="popupButton"
-                       label=""
-                       tooltiptext="__MSG_quickfolders.findFolder.help__"
-                       collapsed="true"
-                       onclick="QuickFolders.Interface.quickMoveHelp(this);"
-                       />
+          class="popupButton"
+          label=""
+          tooltiptext="__MSG_quickfolders.findFolder.help__"
+          collapsed="true"
+          />
        </hbox>
        
-      <popupset id="QuickFolders-Palette" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+      <popupset id="QuickFolders-Palette" >
         <menupopup id="QuickFolders-PalettePopup" 
-                   class="QuickFolders-folder-popup" 
-                             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-                             onclick="QuickFolders.Interface.clickHandler(event,this);">
+          class="QuickFolders-folder-popup">
         </menupopup>
         <menupopup id="QuickFolders-FindPopup" 
-                   class="menu-iconic widerMenu" 
-                   position="after_start"
-                   oncommand="QuickFolders.Interface.selectFound(this, event);"
-                   onkeypress="QuickFolders.Interface.foundInput(this, event);"
-                   onblur="QuickFolders.Interface.findPopupBlur(this, event);"
-                   ignorekeys="false">
+          class="menu-iconic widerMenu" 
+          position="after_start"
+          ignorekeys="false">
         </menupopup>
       </popupset>       
     </hbox>
@@ -391,15 +340,142 @@ async function onLoad(activatedWhileWindowOpen) {
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
+
   const myToolbar = document.getElementById("QuickFolders-Toolbar");
   if (myToolbar) {
+    const QF = window.QuickFolders;
     // inject brighttext if necessary
     // for some reason this is not generated automatically
     // which leads to badly matching icons in the toolbar...
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       myToolbar.setAttribute("brighttext", true);
     }
+
+    // toolbar event handlers
+    myToolbar.querySelector("#QuickFolders-title-label").addEventListener("command", (e) => {
+      QF.Interface.clickTitleLabel(e.target);
+    });
+    myToolbar.addEventListener("dragover", (e) => QF.toolbarDragObserver.dragOver(e));
+    myToolbar.addEventListener("drop", (e) => QF.toolbarDragObserver.drop(e));
+
+    const mainMenuHandlers = {
+      // A. popupset#QuickFolders-QuickMovePopupSet
+      "QuickFolders-quickMove-suspend": () => QF.quickMove.toggleSuspendMove(e.target),
+      "QuickFolders-quickMove-cancel": () => QF.quickMove.cancel(),
+      "QuickFolders-quickMove-showSearch": () => QF.quickMove.showSearch(),
+      "QuickFolders-quickMove-hideSearch": () => QF.quickMove.hideSearch(),
+
+      // B. popupset#QuickFolders-ReadingListPopupSet
+      "QuickFolders-readingList-reset": () => QF.bookmarks.resetList(true),
+      "QuickFolders-readingList-add": () => QF.bookmarks.addCurrent(),
+
+      // C. popupset#QuickFolders-MainPopupSet
+      // C1. menupopup#QuickFolders-ToolbarPopup
+      // C1x: menupopup#dbgMenu
+      "QuickFolders-ToolbarPopup-dbg0": () =>
+        QF.Interface.liftNavigationbar(
+          window.gTabmail.currentTabInfo.chromeBrowser.contentDocument
+        ),
+      "QuickFolders-ToolbarPopup-dbg1": () => {
+        QF.Preferences.setBoolPref("hasNews", true);
+        QF.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" });
+      },
+      "QuickFolders-ToolbarPopup-dbg2": () => QF.Interface.viewInstalled(),
+      "QuickFolders-ToolbarPopup-dbg3": () => QF.Interface.copyCurrentFolderInfo(),
+      "QuickFolders-ToolbarPopup-dbg4": () => QF.Interface.testTreeIcons(),
+      "QuickFolders-ToolbarPopup-dbg5": () =>
+        QF.FolderTree.loadDictionary.call(QF.FolderTree, QF.Util.document3pane),
+      "QuickFolders-ToolbarPopup-dbg6": () => QF.FolderTree.refreshTree.call(QF.FolderTree),
+      "QuickFolders-ToolbarPopup-dbg7": () => QF.FolderTree.init.call(QF.FolderTree),
+      "QuickFolders-ToolbarPopup-dbg8": () => QF.Util.aboutHost(),
+      "QuickFolders-ToolbarPopup-dbg9": () => QF.Util.loadPlatformStylesheet(),
+      "QuickFolders-ToolbarPopup-dbgA": () => QF.Interface.setFocusThreadPane(),
+
+      // main popup items:
+      "QuickFolders-ToolbarPopup-find": () => QF.Interface.findFolder(true, "quickJump"),
+      "QuickFolders-ToolbarPopup-checkLicense": () => QF.Interface.viewLicense(),
+      "QuickFolders-ToolbarPopup-options": () => QF.Interface.viewOptions(-1),
+      "QuickFolders-ToolbarPopup-splash": () => QF.Interface.viewSplash(),
+      "QuickFolders-ToolbarPopup-filterMode": () =>
+        QF.Interface.toggle_FilterMode(!QF.FilterWorker.FilterMode),
+      "QuickFolders-ToolbarPopup-paintBucket": () => QF.Interface.togglePaintMode("toggle"),
+      "QuickFolders-ToolbarPopup-changeOrder": () => QF.Interface.viewChangeOrder(),
+      "QuickFolders-ToolbarPopup-support": () => QF.Interface.viewSupport(),
+      "QuickFolders-ToolbarPopup-help": () => QF.Interface.viewHelp(),
+      "QuickFolders-ToolbarPopup-refresh": () =>
+        QF.Util.notifyTools.notifyBackground({
+          func: "updateMainWindow",
+          minimal: false,
+        }),
+      "QuickFolders-ToolbarPopup-repair": () => QF.Interface.repairTreeIcons(),
+      "QuickFolders-ToolbarPopup-tidy": () => QF.Interface.tidyDeadFolders(),
+      "QuickFolders-ToolbarPopup-displayPreviewToolbar": () =>
+        QF.Interface.displayNavigationToolbar({ display: true }),
+      "QuickFolders-ToolbarPopup-register": () => QF.Interface.showLicenseDialog("mainPopup"),
+    };
+
+    // D. #QuickFolders-oneButtonPanel
+    const oneButtonHandlers = {
+      "QuickFolders-mainPopupBtn": (e) =>
+        QF.Interface.showPopup(e.target, "QuickFolders-ToolbarPopup", e),
+      "QuickFolders-filterActive": () => QF.Interface.toggle_FilterMode(false),
+      "QuickFolders-paintBucketActive": (e) => QF.Interface.showPalette(e.target),
+      "QuickFolders-readingList": (e) => QF.Interface.readingListClick(e, e.target),
+      "QuickFolders-quickMove": (e) => QF.Interface.quickMoveButtonClick(e, e.target),
+      "QuickFolders-FindFolder": (e) => QF.Interface.findFolderKeyDown(e),
+      "QuickFolders-FindFolder-Help": (e) => QF.Interface.quickMoveHelp(e.target),
+      "QuickFolders-Category-Selection": (e) =>
+        QF.Interface.selectCategory(e.target.value, false, e.target, e),
+      "QuickFolders-PalettePopup": (e) => QF.Interface.clickHandler(e, e.target),
+      "QuickFolders-FindPopup": (e) => QF.Interface.selectFound(e.target, e),
+    };
+
+    for (const [id, handler] of Object.entries({ ...mainMenuHandlers, ...oneButtonHandlers })) {
+      const element = document.getElementById(id);
+      let eventType = "command";
+      switch (id) {
+        case "QuickFolders-FindFolder":
+          eventType = "keydown";
+          break;
+      }
+      if (element) {
+        element.addEventListener(eventType, handler);
+      }
+    }
+
+    /// D+D
+    // Get the elements
+    const readingListButton = document.getElementById("QuickFolders-readingList");
+    const quickMoveButton = document.getElementById("QuickFolders-quickMove");
+
+    // Define the event handler functions
+    const dragEnterHandler = (event) => QF.buttonDragObserver.dragEnter(event);
+    const dragOverHandler = (event) => QF.buttonDragObserver.dragOver(event);
+    const dropHandler = (event) => QF.buttonDragObserver.drop(event);
+    const dragLeaveHandler = (event) => QF.buttonDragObserver.dragLeave(event);
+
+    // Attach the event listeners to the buttons
+    readingListButton.addEventListener("dragenter", dragEnterHandler);
+    readingListButton.addEventListener("dragover", dragOverHandler);
+    readingListButton.addEventListener("drop", dropHandler);
+    readingListButton.addEventListener("dragleave", dragLeaveHandler);
+
+    quickMoveButton.addEventListener("dragenter", dragEnterHandler);
+    quickMoveButton.addEventListener("dragover", dragOverHandler);
+    quickMoveButton.addEventListener("drop", dropHandler);
+    quickMoveButton.addEventListener("dragleave", dragLeaveHandler);
+
+    const qfCatBox = document.getElementById("QuickFolders-Category-Box");
+    qfCatBox.addEventListener("dragenter", dragEnterHandler);
+    qfCatBox.addEventListener("command", (e) =>
+      QF.Interface.selectCategory(e.target.value, false, e.target, e)
+    );
+
+    const findPopup = document.getElementById("QuickFolders-FindPopup");
+    findPopup.addEventListener("keypress", (e) => QF.Interface.foundInput(e.target, e));
+    findPopup.addEventListener("blur", (e) => QF.Interface.findPopupBlur(e.target, e));
   }
+
   const themeHandler = {
     handleEvent(event) {
       window.QuickFolders.Interface.patchToolbarTheme(event, {
@@ -509,9 +585,21 @@ async function onLoad(activatedWhileWindowOpen) {
     };
     window.QuickFolders.Interface.onRemoveIcon(element, event.detail);
   };
+  addCurrentFolderToQF = (event) => {
+    let element = {
+      id: "context-quickFoldersAddTab",
+    };
+    // fake a dragsession    
+    window.QuickFolders.toolbarDragObserver.drop(
+      element,
+      { dummy: "not a dragSession!" },
+      event.detail.detail
+    );
+  }
 
   mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
   mylisteners["removeQuickFoldersIcon"] = removeIcon;
+  mylisteners["addQuickFolderTab"] = addCurrentFolderToQF;
 
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);

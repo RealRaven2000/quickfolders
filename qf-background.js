@@ -2,6 +2,7 @@ import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
+const ADDQUICKFOLDER_ID = "addQuickFolderTab";
 const TOGGLEICON_ID = "toggleQuickFoldersIcon";
 const REMOVEICON_ID = "removeQuickFoldersIcon";
 const LEGACY_SETTINGS_ROOT = "extensions.quickfolders.";
@@ -338,16 +339,19 @@ async function filterMailsRegex(searchOptions, tabId = null) {
 async function addFolderPaneMenu() {
   // replaces code from QuickFolders.Interface.folderPanePopup()
   let isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.tbmenus")),
-      txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
-      txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon");
+    txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
+    txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon");
   if (isDebug) {
     console.log("QuickFolders: addFolderPaneMenu()");
   }
-  let menuProps = {
+  /*** add icon to Folder  */
+  const menuProps = {
     contexts: ["folder_pane"],
-    onclick: async (event) => {    
-      if (isDebug) { console.log("QuickFolders folderpane context menu", event); }
-      const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
+    onclick: async (event) => {
+      if (isDebug) {
+        console.log("QuickFolders folderpane context menu", event);
+      }
+      const menuItem = { id: TOGGLEICON_ID }; // fake menu item to pass to doCommand
 
       // determine folder of clicked tree item:
       const selectedFolder = event?.selectedFolder || null;
@@ -355,76 +359,76 @@ async function addFolderPaneMenu() {
       const selectedFolders = event?.selectedFolders || null;
 
       // multiple folders are selected, we cannot execute
-      if (selectedFolders && selectedFolders.length>1) {
-        console.log("QuickFolders: addFolderPaneMenu -  cannot execute, multiple folders are selected!");
+      if (selectedFolders && selectedFolders.length > 1) {
+        console.log(
+          "QuickFolders: addFolderPaneMenu -  cannot execute, multiple folders are selected!"
+        );
         return;
       }
 
       const selectedAccount = event?.selectedAccount || null;
-      let URI = null;  
+      let URI = null;
       if (selectedFolder) {
         URI = await messenger.Utilities.getFolderUri(selectedFolder.accountId, selectedFolder.path);
       } else if (selectedAccount) {
         URI = await messenger.Utilities.getFolderUri(selectedAccount.id);
-      }      
+      }
 
-      messenger.NotifyTools.notifyExperiment( 
-        { 
-          event: "toggleQuickFoldersIcon", 
-          detail: { 
-            commandItem: menuItem, 
-            folderURI: URI, 
-            selectedFolder: event.selectedFolder, 
-            selectedAccount: event.selectedAccount 
-          } 
-        } 
-      );
+      messenger.NotifyTools.notifyExperiment({
+        event: "toggleQuickFoldersIcon",
+        detail: {
+          commandItem: menuItem,
+          folderURI: URI,
+          selectedFolder: event.selectedFolder,
+          selectedAccount: event.selectedAccount,
+        },
+      });
     },
     icons: {
-      "16": "chrome/content/skin/ico/image.svg"
-    } ,
+      16: "chrome/content/skin/ico/image.svg",
+    },
     enabled: true,
     id: TOGGLEICON_ID,
-    title: txtAddIcon
-  }
-  let idToggle = await messenger.menus.create(menuProps); // id of menu item
-  let removeProps = {
+    title: txtAddIcon,
+  };
+  const idToggle = await messenger.menus.create(menuProps); // id of menu item
+
+  /*** remove icon from Folder  */
+  const removeProps = {
     contexts: ["folder_pane"],
-    onclick: async (event) => {    
-      const menuItem = { id: REMOVEICON_ID };   // fake menu item to pass to doCommand
+    onclick: async (event) => {
+      const menuItem = { id: REMOVEICON_ID }; // fake menu item to pass to doCommand
       let currentTab = await messenger.mailTabs.getCurrent();
 
       // determine folder of clicked tree item:
       const selectedFolder = event?.selectedFolder || null;
       const selectedAccount = event?.selectedAccount || null;
-      let URI = null;  
+      let URI = null;
       if (selectedFolder) {
         URI = await messenger.Utilities.getFolderUri(selectedFolder.accountId, selectedFolder.path);
       } else if (selectedAccount) {
         URI = await messenger.Utilities.getFolderUri(selectedAccount.id);
-      }      
+      }
 
-
-      messenger.NotifyTools.notifyExperiment( 
-        { event: "removeQuickFoldersIcon", 
-          detail: { 
-            commandItem: menuItem,
-            folderURI: URI, 
-            selectedFolder: event.selectedFolder, 
-            selectedAccount: event.selectedAccount 
-          } // , windowId: currentTab.windowId, tabId: currentTab.id
-        } 
-      );
+      messenger.NotifyTools.notifyExperiment({
+        event: "removeQuickFoldersIcon",
+        detail: {
+          commandItem: menuItem,
+          folderURI: URI,
+          selectedFolder: event.selectedFolder,
+          selectedAccount: event.selectedAccount,
+        }, // , windowId: currentTab.windowId, tabId: currentTab.id
+      });
     },
     icons: {
-      "16": "chrome/content/skin/ico/picture-remove.svg"
-    } ,
+      16: "chrome/content/skin/ico/picture-remove.svg",
+    },
     enabled: true,
     visible: false,
     id: REMOVEICON_ID,
-    title: txtRemoveIcon
-  }
-  let idRemove = await messenger.menus.create(removeProps); 
+    title: txtRemoveIcon,
+  };
+  const idRemove = await messenger.menus.create(removeProps);
   messenger.menus.onShown.addListener(async (info, tab) => {
     const selectedFolder = info?.selectedFolder || null;
     const selectedAccount = info?.selectedAccount || null;
@@ -436,26 +440,64 @@ async function addFolderPaneMenu() {
     } else if (selectedAccount) {
       icon = await messenger.Utilities.getFolderIcon(selectedAccount.id);
     }
-    if (isDebug) { 
-      console.log("QuickFolders [debug.tbmenu]\n menus.onShown() - folderpane context menu:", selectedFolder, info, icon); 
+    if (isDebug) {
+      console.log(
+        "QuickFolders [debug.tbmenu]\n menus.onShown() - folderpane context menu:",
+        selectedFolder,
+        info,
+        icon
+      );
     }
-    let hasIcon = (icon != null && icon.iconURL); // query the icon somehow.
+    let hasIcon = icon != null && icon.iconURL; // query the icon somehow.
     if (hasIcon) {
-      await messenger.menus.update(idRemove, {visible: true});
+      await messenger.menus.update(idRemove, { visible: true });
     } else {
-      await messenger.menus.update(idRemove, {visible: false});
+      await messenger.menus.update(idRemove, { visible: false });
     }
     if (!isServer && !selectedFolder) {
-      await messenger.menus.update(idToggle, {visible: false});
-      await messenger.menus.update(idRemove, {visible: false});
+      await messenger.menus.update(idToggle, { visible: false });
+      await messenger.menus.update(idRemove, { visible: false });
     } else {
-      await messenger.menus.update(idToggle, {visible: true});
+      await messenger.menus.update(idToggle, { visible: true });
     }
 
-    messenger.menus.refresh();    
+    messenger.menus.refresh();
   });
-    
-
+  /*** add folder as QuickFolder - a11y  */
+  const txtAddQuickFOlder = messenger.i18n.getMessage(
+    "qf.foldercontextmenu.quickfolders.addQuickFolder"
+  );
+  const addTabProps = {
+    contexts: ["folder_pane"],
+    onclick: async (event) => {
+      const menuItem = { id: ADDQUICKFOLDER_ID }; // fake menu item to pass to doCommand
+      // multiple folders selection?
+      const selectedFolders = event?.selectedFolders || null;
+      if (selectedFolders && selectedFolders.length > 1) {
+        // alert: adding multiple folders - not supported!
+        return;
+      }
+      // determine folder of clicked tree item:
+      const selectedFolder = event?.selectedFolder || null;
+      const URI = await messenger.Utilities.getFolderUri(
+        selectedFolder.accountId,
+        selectedFolder.path
+      );
+      messenger.NotifyTools.notifyExperiment({
+        event: ADDQUICKFOLDER_ID,
+        detail: {
+          commandItem: menuItem,
+          folderURI: URI,
+          selectedFolder: event.selectedFolder,
+          selectedAccount: event.selectedAccount,
+        },
+      });
+    },
+    enabled: true,
+    id: ADDQUICKFOLDER_ID,
+    title: txtAddQuickFOlder,
+  };
+  let idAddQuickFolderTab = await messenger.menus.create(addTabProps);
 }
 
 async function getFindRelatedStruct() {
