@@ -340,7 +340,6 @@ async function onLoad(activatedWhileWindowOpen) {
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
-
   const myToolbar = document.getElementById("QuickFolders-Toolbar");
   if (myToolbar) {
     const QF = window.QuickFolders;
@@ -430,17 +429,18 @@ async function onLoad(activatedWhileWindowOpen) {
       "QuickFolders-FindPopup": (e) => QF.Interface.selectFound(e.target, e),
     };
 
+    const eventExceptions = {
+      "QuickFolders-FindFolder": "keydown",
+    };
+
     for (const [id, handler] of Object.entries({ ...mainMenuHandlers, ...oneButtonHandlers })) {
       const element = document.getElementById(id);
-      let eventType = "command";
-      switch (id) {
-        case "QuickFolders-FindFolder":
-          eventType = "keydown";
-          break;
-      }
-      if (element) {
-        element.addEventListener(eventType, handler);
-      }
+      if (!element) continue;
+      const eventType = eventExceptions[id] || "command"; // Default to "command"
+      element.addEventListener(eventType, (e) => {
+        e.stopPropagation(); // Prevent bubbling
+        handler(e);
+      });
     }
 
     /// D+D
@@ -467,10 +467,12 @@ async function onLoad(activatedWhileWindowOpen) {
 
     const qfCatBox = document.getElementById("QuickFolders-Category-Box");
     qfCatBox.addEventListener("dragenter", dragEnterHandler);
-    qfCatBox.addEventListener("command", (e) =>
-      QF.Interface.selectCategory(e.target.value, false, e.target, e)
-    );
+    qfCatBox.addEventListener("command", (e) => {
+      if (e.target != qfCatBox) return; // event bubbled!
+      QF.Interface.selectCategory(e.target.value, false, e.target, e);
+    });
 
+    // special events!
     const findPopup = document.getElementById("QuickFolders-FindPopup");
     findPopup.addEventListener("keypress", (e) => QF.Interface.foundInput(e.target, e));
     findPopup.addEventListener("blur", (e) => QF.Interface.findPopupBlur(e.target, e));
@@ -490,19 +492,6 @@ async function onLoad(activatedWhileWindowOpen) {
   window.addEventListener("toolbarvisibilitychange", themeHandler);
   window.QuickFolders.themeHandler = themeHandler;
 
-  // window.QuickFolders.initDocAndWindow(window);
-  // [issue 378]
-  /*
-  let searchbox = document.getElementById("QuickFolders-FindFolder");
-  if (searchbox) {
-    // these child nodes are in #shadow-root!
-    let searchInput = searchbox.querySelector("input");
-    if (searchInput) {
-      searchInput.addEventListener("input", searchbox.dataset.value = searchInput.value);
-    }
-  }
-  */
-
   // [issue 534] leave search box open: allow dragging more maisls for quickMove
   const qm = myToolbar.querySelector("#QuickFolders-FindFolder");
   if (qm) {
@@ -516,6 +505,19 @@ async function onLoad(activatedWhileWindowOpen) {
       return window.QuickFolders.buttonDragObserver.dragLeave(e);
     });
   }
+
+  // window.QuickFolders.initDocAndWindow(window);
+  // [issue 378]
+  /*
+  let searchbox = document.getElementById("QuickFolders-FindFolder");
+  if (searchbox) {
+    // these child nodes are in #shadow-root!
+    let searchInput = searchbox.querySelector("input");
+    if (searchInput) {
+      searchInput.addEventListener("input", searchbox.dataset.value = searchInput.value);
+    }
+  }
+  */
 
   // add listeners
   window.QuickFolders.Util.logDebug("Adding Folder Listener...");
@@ -589,13 +591,13 @@ async function onLoad(activatedWhileWindowOpen) {
     let element = {
       id: "context-quickFoldersAddTab",
     };
-    // fake a dragsession    
+    // fake a dragsession
     window.QuickFolders.toolbarDragObserver.drop(
       element,
       { dummy: "not a dragSession!" },
       event.detail.detail
     );
-  }
+  };
 
   mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
   mylisteners["removeQuickFoldersIcon"] = removeIcon;
