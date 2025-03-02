@@ -1,4 +1,4 @@
-<b>Release 6.9</b>
+<b>Release 6.10</b>
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
 Or get the new cheaper <a href="http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=qf-version-page" target="_blank">QuickFolders Standard License</a>. This is the preferred way of funding all the ongoing work and improvements.
@@ -8,47 +8,30 @@ Read the new <a href="https://quickfolders.org/premium.html#featureComparison">c
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
 
-<b>Maintenance release 6.9.3 (planned)</b>
-  <li> New option to always open QuickFolders Options in a tab. </li>
-  <li> [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs </li>
-  <li> [issue 543] Remove inline event handlers which will be deprecated in Thunderbird 136 </li>
-  <li> [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled. </li>
-  <li> [issue 540] quickJump feature - Use [CTRL] key to open folder in a new TB tab. </li>
-  <li> [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule </li>
-  <li> Compatibility with Thunderbird 136.*</li>
-</ul>
-
-<b>Maintenance release 6.9.2</b>
-<ul>
-  <li> Fixed: Return key no longer moves emails when search finds only one folder <a href="https://github.com/RealRaven2000/QuickFolders/issues/532">[issue 532]</a></li>
-</ul>
-
-<b>Maintenance release 6.9.1</b>
-<ul>
-  <li> Fixed: Shortcut Key configured for quickMove / quickJump are ignored. <a href="https://github.com/RealRaven2000/QuickFolders/issues/526">[issue 526]</a> </li>
-  <li> Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes multiple tries. <a href="https://github.com/RealRaven2000/QuickFolders/issues/531">[issue 531]</a></li>
-  <li> Completed some missing Czech translations that were accidentally left in English. </li>
-  <li> Fixed: toggle toolbar button broken. <a href="https://github.com/RealRaven2000/QuickFolders/issues/530">[issue 530]</a></li>
-  <li> Added advanced search setting to not collapse quickMove box after use. <a href="https://github.com/RealRaven2000/QuickFolders/issues/534">[issue 534]</a></li>
-  <li> Support compatibility with Thunderbird 135.* </li>
-</ul>
 
 <b>Improvements</b>
 <ul>
-  <li> Improved performance of quickMove / quickJump auto-filling search results while typing <a href="https://github.com/RealRaven2000/QuickFolders/issues/463">[issue 463]</a></li>
-  <li> The QuickFolders toolbar is now displayed when the settings tab is opened. This makes it easier to see any executed layout changes. <a href="https://github.com/RealRaven2000/QuickFolders/issues/524">[issue 524]</a></li>
-  <li> Skip unread and Next / Previous sibling folder now follow tree in lexical order. <a href="https://github.com/RealRaven2000/QuickFolders/issues/513">[issue 513]</a></li>
-  <li> Tab-Specific Properties now work again in Thunderbird beta 134. <a href="https://github.com/RealRaven2000/QuickFolders/issues/518">[issue 518]</a></li>
-  <li> Added a prompt for how to use 'find related mails' search pattern.</li>
-  <li> Improved mail system icons for dark mode.</li>
-  <li> Added full Czech UI translation (added 531 entities).</li>
+  <li> New option to always display QuickFolders Options in a tab. </li>
+  <li> quickJump feature - Use [CTRL] key to open folder in a new TB tab. [issue 540]</li>
+  <li> quickJump - Modifier key [Alt] to open folder in new window. [issue 542]</li>
+  <li> Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue 547] </li>
+  <li> a11y: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue 548]</li>
+  <li> a11y: Support adding QuickFolders (bookmark folders) using keyboard. [issue 550]</li>
+  <li> a11y: Accessibility option: Remove 'customize icon' command from folder context. [issue 551]</li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-  <li> Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems. </li>
-  <li> Fixed: Folder names containing single quotes broke navigation. </li>
-  <li> Fixed: Allow creating a subfolder with space in name from quickMove. <a href="https://github.com/RealRaven2000/QuickFolders/issues/512">[issue 512]</a> </li>
-  <li> Fixed: Open Message from reading list / quickMove in tab broken <a href="https://github.com/RealRaven2000/QuickFolders/issues/507">[issue 507]</a> </li>
+  <li> Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs. [issue 541]</li>
+  <li> Fixed: No cursive tab on new mails if "display unread tabs as bold" is disabled. [issue 539]</li>
+  <li> Fixed: can no longer remove customized icon from tab. [issue 546]</li>
+</ul>
+
+
+<b>Miscellanei</b>
+<ul>
+  <li> Compatibility with Thunderbird 136.*</li>
+  <li> Removed inline event handlers which will be deprecated in Thunderbird 136. [issue 543]</li>
+  <li> Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue 547]</li>
 </ul>
 

@@ -1,31 +1,24 @@
-**Maintenance release 6.9.2**
 
-*   Fixed: Return key no longer moves emails when search finds only one folder [issue #532]</li>
+**Improvements**
 
-**Maintenance release 6.9.1**
-
-*   Fixed: Shortcut Key configured for quickMove / quickJump are ignored.  [issue #526]
-*   Fixed: ALT-1/2/3 shortcuts working sporadically; sometimes takes multiple tries. [issue #531] 
-*   Completed some missing Czech translations that were accidentally left in English. [issue #530]
-*   Fixed: toggle toolbar button broken. 
-*   Added advanced search setting to not collapse quickMove box after use. [issue #534] 
-*   Support compatibility with Thunderbird 135.*
-
-
-**Improvements (6.9)**
-
-*   Improved performance of quickMove / quickJump auto-filling search results while typing [issue #463]
-*   The QuickFolders toolbar is now displayed when the settings tab is opened. This makes it easier to see any executed layout changes. [issue #524]
-*   Skip unread and Next / Previous sibling folder now follow tree in lexical order. [issue #513]
-*   Tab-Specific Properties now work again in Thunderbird beta 134. [issue #518]
-*   Added a prompt for how to use 'find related mails' search pattern 
-*   Improved mail system icons for dark mode.
-*   Added Czech UI translations
+*   New option to always display QuickFolders Options in a tab. 
+*   quickJump feature - Use [CTRL] key to open folder in a new TB tab. [issue #540]
+*   quickJump - Modifier key [Alt] to open folder in new window. [issue #542]
+*   Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue #547] 
+*   a11y: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue #548]
+*   a11y: Support adding QuickFolders (bookmark folders) using keyboard. [issue #550]
+*   a11y: Accessibility option: Remove 'customize icon' command from folder context. [issue #551]
   
 
-**Bug Fixes (6.9)**
+**Bug Fixes**
 
-*   Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems.
-*   Fixed: Folder names containing single quotes broke navigation.
-*   Fixed: Allow creating a subfolder with space in name from quickMove. [issue #512]
-*   Fixed: Open Message from reading list / quickMove in tab broken [issue #507]
+*   Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs. [issue #541]
+*   Fixed: No cursive tab on new mails if "display unread tabs as bold" is disabled. [issue #539]
+*   Fixed: can no longer remove customized icon from tab. [issue #546]
+
+**Miscellanei**
+
+*   Compatibility with Thunderbird 136.*
+*   Removed inline event handlers which will be deprecated in Thunderbird 136. [issue #543]
+*   Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue #547]
+
