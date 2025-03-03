@@ -1221,6 +1221,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Không mở tab có lịch sử phiên bản"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Làm nổi bật các tab không hợp lệ 🧹"
+  },
   "qf.youtube.description": {
     "message": "Để có video chi tiết về Tiện ích bổ sung Thunderbird và cách sử dụng Thư mục nhanh, hãy truy cập kênh YouTube Thunderbird Daily của tôi."
   },

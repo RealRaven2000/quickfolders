@@ -1512,6 +1512,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Evidenzia le schede non valide 🧹"
+  },
   "qf.youtube.description": {
     "message": "Per trovare dei video sulle estensioni di Thunderbird e su come usare QuickFolders, visitare il mio canale YouTube \"Thunderbird Daily\"."
   },

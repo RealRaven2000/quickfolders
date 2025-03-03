@@ -1514,6 +1514,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Mettre en évidence les onglets invalides 🧹"
+  },
   "qf.youtube.description": {
     "message": "Pour des vidéos détaillées sur les modules complémentaires Thunderbird et savoir comment utiliser QuickFolders, visitez ma chaîne YouTube Thunderbird Daily."
   },

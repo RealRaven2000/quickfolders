@@ -1502,6 +1502,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Neotevírat kartu s historií verzí"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Zvýraznit neplatné karty 🧹"
+  },
   "qf.youtube.description": {
     "message": "Pro podrobné videonávody o doplňcích pro Thunderbird a používání QuickFolders navštivte můj YouTube kanál Thunderbird Daily."
   },

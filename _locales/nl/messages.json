@@ -1467,6 +1467,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Ongeldige tabbladen markeren 🧹"
+  },
   "qf.youtube.description": {
     "message": "Bezoek voor gedetailleerde video’s over Thunderbird-add-ons en hoe u QuickFolders kunt gebruiken mijn YouTube-kanaal ‘Thunderbird Daily’."
   },

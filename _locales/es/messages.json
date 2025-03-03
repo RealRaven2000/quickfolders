@@ -1482,6 +1482,9 @@
   "qf.update.hideVersionHistory": {
     "message": "No abrir página con historial de versiones"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Resaltar pestañas no válidas 🧹"
+  },
   "qf.youtube.description": {
     "message": "Para ver videos detallados sobre complementos de Thunderbird y cómo usar QuickFolders, visite mi canal de YouTube Thunderbird Daily."
   },

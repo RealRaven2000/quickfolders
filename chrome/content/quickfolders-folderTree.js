@@ -495,7 +495,6 @@ QuickFolders.FolderTree = {
           this.debugDictionary(); // test dictionary, just for now
         }
         // [issue 283] - do not force update during setFolderTreeIcon
-        // QI.updateFolders(false, true);  forces rebuilding subfolder menus
       }
       catch (ex) {
         util.logException("setFolderTreeIcon", ex);

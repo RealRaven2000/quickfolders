@@ -1457,6 +1457,9 @@
   "qf.update.hideVersionHistory": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Ressalta les pestanyes no vàlides 🧹"
+  },
   "qf.youtube.description": {
     "message": "Per obtenir vídeos detallats sobre els complements de Thunderbird i com utilitzar QuickFolders, visiteu el meu canal de YouTube Thunderbird Daily."
   },

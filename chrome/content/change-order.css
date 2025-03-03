@@ -32,12 +32,15 @@ description#Explain-Drag {
 }
 
 vbox#myscrollbox {
-  overflow: auto;
-  max-height:650px;
+  overflow-x: auto;
+  max-height: 650px;
+  max-width: 1200px;
+  min-width: unset;
   background-color: #FFF;
   color: black;
   padding: 2px;
   border: 1px solid black;
+  width: min-content;
 }
 
 

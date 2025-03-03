@@ -1467,6 +1467,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Nie otwieraj karty z historią wersji"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Wyróżnij nieprawidłowe karty 🧹"
+  },
   "qf.youtube.description": {
     "message": "Szczegółowe filmy dotyczące dodatków Thunderbird i korzystania z QuickFolders można znaleźć na moim kanale YouTube Thunderbird Daily."
   },

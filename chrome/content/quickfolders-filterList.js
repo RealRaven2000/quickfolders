@@ -348,7 +348,6 @@ QuickFolders.FilterList = {
 	} ,
 	
 	rebuildFilterList: function() {
-		const util = QuickFolders.Util;
     rebuildFilterList(gCurrentFilterList);
 		this.updateCountBox();
 	} ,
@@ -366,40 +365,21 @@ QuickFolders.FilterList = {
 			return;
 		}
 
-		let rows = this.getListElementCount(filterList); 
-		
+		let rows = this.getListElementCount(filterList);		
 		for (let i = rows - 1; i>=0; i--){
-			let matched = true, item, title;
-			 // SeaMonkey (Postbox) vs Thunderbird - treeview vs listbox
-			if (filterList.nodeName == 'tree') 
-			{
-				// SeaMonkey + Postbox
-				item = getFilter(i); // SM: defined in FilterListDialog.js (SM only)
-				title = item.filterName;
-				if (title.toLocaleLowerCase().indexOf(keyWord) == -1){
-					matched = false;
-					this.gFilterTreeView().performActionOnRow("delete", i);
-					filterList.boxObject.invalidateRow(i);
-					filterList.boxObject.rowCountChanged(i + 1, -1);
-				}
+			let matched = true;
+			const item = filterList.getItemAtIndex(i);
+			const title = item.firstChild.getAttribute("label");
+			if (!title.toLocaleLowerCase().includes(keyWord)) {
+				matched = false;
+				filterList.removeChild(item);
 			}
-			else {
-				// Thunderbird
-				item = filterList.getItemAtIndex(i);
-				title = item.firstChild.getAttribute("label");
-				if (title.toLocaleLowerCase().indexOf(keyWord) == -1) {
-					matched = false;
-					filterList.removeChild(item);
-				}
-				
-			}
-			if (matched)
+			if (matched) {
 				QuickFolders.Util.logDebugOptional("filters", "matched filter: " + title);
+			}				
 		}
 		this.updateCountBox();
-		if (focusSearchBox)
-			searchBox.focus();
-
+		if (focusSearchBox) searchBox.focus();
 	} 
 	
 	

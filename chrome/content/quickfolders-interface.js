@@ -704,7 +704,7 @@ QuickFolders.Interface = {
 
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
-	updateFolders: function updateFolders(rebuildCategories, minimalUpdate) {
+	updateFolders: function (rebuildCategories, minimalUpdate) {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
     const profileThis = (prefs.isDebugOption("updateFolders,performance")),
@@ -810,10 +810,12 @@ QuickFolders.Interface = {
 					if (button) {
 						if (!folder || typeof folder.server == "undefined")  {
 							button.setAttribute("folderURI", folderEntry.uri);
-							folderEntry.invalid = true; // add invalid to entry!
-						}
-            else
+							if (QuickFolders.Preferences.getBoolPref("validityCheck.onUpdate")) {
+                folderEntry.invalid = true; // add invalid to entry!
+							}
+						} else {
               countValidTabs++;
+						}
               
 						this.buttonsByOffset[offset] = button;
 						isFirst = false;
@@ -1350,7 +1352,7 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateCategoryLayout(); // hide or show.
 	} ,
 
-	updateMainWindow: function(minimal) {
+	updateMainWindow: function(minimal = false) {
 		function logCSS(txt) {
 			util.logDebugOptional("css", txt);
 		}
@@ -1489,7 +1491,6 @@ QuickFolders.Interface = {
 						if (check.value) isContinue = true;
 					  countDeleted++;
 						// update UI
-            // this.updateFolders(true, false);
             QuickFolders.Interface.updateFolders(true, false);
 						// QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });  // wrong this loads it from prefs
 						i--; // array is spliced, so we need to go back one!
@@ -1757,7 +1758,7 @@ QuickFolders.Interface = {
 		}	
 	},
   
-	selectCategory: function selectCategory(categoryName, rebuild, dropdown, event) {
+	selectCategory: function (categoryName, rebuild, dropdown, event) {
     const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
           FCat = QuickFolders.FolderCategory,
@@ -2573,8 +2574,8 @@ QuickFolders.Interface = {
 		            (buttonId == "QuickFoldersCurrentFolder" ? util.document3pane :  document);
 
     if (!folder && !isMinimal) {
-      util.logToConsole("Error in addFolderButton: " + "folder parameter is empty!\n"
-                        + "Entry: " + (entry ? (entry.name || label) : (" invalid entry: " + label)));
+      util.logToConsole("Error in addFolderButton: folder parameter is empty!\n"
+                        + `Entry: ${(entry ? (entry?.name || label) : (" invalid entry: " + label))}`);
     }
     try {
 			let isMsgFolder = folder && (typeof folder.getStringProperty != "undefined");
@@ -2638,7 +2639,9 @@ QuickFolders.Interface = {
       } 
 		}
 		else {
-			specialFolderType="invalid icon";
+			if (QuickFolders.Preferences.getBoolPref("validityCheck.onUpdate")) {
+        specialFolderType = "invalid icon";
+      }
 			tabIcon="";
 		}
 
@@ -2964,6 +2967,16 @@ QuickFolders.Interface = {
 			}
 		} catch (ex) { 
 			util.logToConsole(ex); 
+		}
+		if (!button.folder && button.getAttribute("folderURI")) {
+			const URI = button.getAttribute("folderURI");
+			button.folder = QuickFolders.Model.getMsgFolderFromUri(URI);
+			if (button.folder) {
+				button.classList.remove("invalid");
+				QuickFolders.Util.logHighlight(`Repaired missing QuickFolders Tab from URI ${URI}`);
+			} else {
+				QuickFolders.Util.logHighlight(`Couldn't find folder from  QuickFolders Tab URI: ${URI}`);
+			}
 		}
 		if (button.folder) {
 			// [Bug 26190] - already selected = drill down on second click
@@ -3748,7 +3761,7 @@ QuickFolders.Interface = {
 
 	},
 
-	onSearchMessages: async function onSearchMessages(element) {
+	onSearchMessages: async function (element) {
 		let folder = QuickFolders.Util.getPopupNode(element).folder;
 		QuickFolders.Util.logDebugOptional("interface", "QuickFolders.Interface.onSearchMessages() folder = " + folder.prettyName);
 		// Tb:  // gFolderTreeController.searchMessages();
@@ -3771,7 +3784,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// forceOnCommand use the "old" way of oncommand attribute for QF options dialog
-	buildPaletteMenu: function buildPaletteMenu(currentColor, existingPopupMenu, ignoreTheme, forceOnCommand) {
+	buildPaletteMenu: function (currentColor, existingPopupMenu, ignoreTheme, forceOnCommand) {
 		const Themes = QuickFolders.Themes.themes,
 		      util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
@@ -6783,34 +6796,37 @@ QuickFolders.Interface = {
 	} ,
 
 	// set Tab Color of a button via the palette popup menu
-	setTabColorFromMenu: function setTabColorFromMenu(menuitem, col) {
+	setTabColorFromMenu: function (menuitem, col) {
 		// get parent button of color sub(sub)(sub)menu
-		let parent = menuitem,
-        prefs = QuickFolders.Preferences,
-				QI = QuickFolders.Interface,
-				util = QuickFolders.Util,
-		    ssPalettes;
-		while (!parent.folder && parent.parentNode) {
-			parent=parent.parentNode;
-			switch(parent.id) {
-				case "QuickFolders-Palette": // fall through
-				case "QuickFolders-PalettePopup":
-					// paint the paintBucketButton
-					this.setPaintButtonColor(col);
-					return;
-				default:  // "QuickFolders-Options-PalettePopup" etc.
-				  if (!parent.id.includes("QuickFolders-Options-"))
-						continue;  //
-          throw("invalid legacy code: setTabColorFromMenu from " + parent.id);
-			} // end switch
+		let parent = menuitem;
+    const util = QuickFolders.Util;
+		function isFolderButton(el) {
+			return el.folder || el.getAttribute("folderURI")
 		}
+		while (!isFolderButton(parent) && parent.parentNode) {
+      parent = parent.parentNode;
+      switch (parent.id) {
+        case "QuickFolders-Palette": // fall through
+        case "QuickFolders-PalettePopup":
+          // paint the paintBucketButton
+          this.setPaintButtonColor(col);
+          return;
+        default: // "QuickFolders-Options-PalettePopup" etc.
+          if (!parent?.id.includes("QuickFolders-Options-")) continue; //
+          throw "invalid legacy code: setTabColorFromMenu from " + parent.id;
+      } // end switch
+    }
 		// or... paint a quickFolders tab
 		let theFolder = parent.folder,
-		    button = this.getButtonByFolder(theFolder);
+      button = parent.folder ? this.getButtonByFolder(theFolder) : parent;
 		util.logToConsole("Interface.setTabColorFromMenu(" + menuitem.toString() + ", " + col + ")" );
 		this.setButtonColor(button, col);        // color the  button via palette entry number
     this.initElementPaletteClass(button, "", (col=="0"));    // make sure correct palette is set
-		QuickFolders.Model.setFolderColor(theFolder.URI, col, false); // store color in folder string
+		QuickFolders.Model.setFolderColor(
+      theFolder?.URI || button.getAttribute("folderURI"), // support invalid folders.
+      col,
+      false
+    ); // store color in folder string
 	} ,
 
   applyTabStyle: function applyTabStyle(el, styleId) {

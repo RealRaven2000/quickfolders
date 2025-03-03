@@ -1465,6 +1465,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Ungültige Tabs markieren 🧹"
+  },
   "qf.youtube.description": {
     "message": "Für detaillierte Videos über Thunderbird Add-ons und die Nutzung von QuickFolders besuchen Sie meinen YouTube Kanal Thunderbird Daily."
   },

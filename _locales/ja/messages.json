@@ -1404,6 +1404,9 @@
   "qf.update.hideVersionHistory": {
     "message": "バージョン履歴のあるタブを開かない"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "無効なタブを強調表示 🧹"
+  },
   "qf.youtube.description": {
     "message": "Thunderbird アドオンと QuickFolders の使い方についての説明動画は、私の YouTube チャンネル、Thunderbird Daily でご覧ください。"
   },

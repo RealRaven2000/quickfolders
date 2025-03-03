@@ -4,8 +4,6 @@ var { ExtensionCommon } = ChromeUtils.importESModule(
 );
 
 
-
-
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   
   async fileConfig(mode, jsonData, fname) {
@@ -242,7 +240,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 }
                 if (!entries.length)
                   entries=[];
-                // the following function calls this.updateMainWindow() which calls this.updateFolders()
+                // the following function calls QI.updateMainWindow() which calls QI.updateFolders()
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
                 mainWin.QuickFolders.Model.correctFolderEntries(entries, false);
@@ -256,6 +254,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                   }
                 }
 
+                // this should really wait for the UI...
                 question = util.getBundleString("qf.prompt.loadFolders.confirm");
                 if (invalidCount) {
                   let wrn = util.getBundleString("qfInvalidTabCount"),

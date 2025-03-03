@@ -1494,6 +1494,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Не открывать вкладку с историей версий"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Выделить недопустимые вкладки 🧹"
+  },
   "qf.youtube.description": {
     "message": "Для подробных видео о дополнениях Thunderbird и как использовать QuickFolders посетите мой канал на YouTube Thunderbird Daily."
   },

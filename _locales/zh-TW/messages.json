@@ -1458,6 +1458,9 @@
   "qf.update.hideVersionHistory": {
     "message": "不要打開帶有版本歷史記錄的選項卡"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "突出顯示無效標籤頁 🧹"
+  },
   "qf.youtube.description": {
     "message": "關於 Thunderbird Add-ons 的詳細影片，以及如何使用 QuickFolders ，請前往觀賞我的 YouTube 頻道 Thunderbird Daily 。"
   },

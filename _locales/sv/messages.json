@@ -1486,6 +1486,9 @@
   "qf.update.hideVersionHistory": {
     "message": "Öppna inte fliken med versionshistorik"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "Markera ogiltiga flikar 🧹"
+  },
   "qf.youtube.description": {
     "message": "För detaljerade videor om tillägg till Thunderbird och hur man använder QuickFolders, besök min YouTube-kanal Thunderbird Daily."
   },

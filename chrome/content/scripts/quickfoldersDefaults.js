@@ -3,6 +3,7 @@
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 pref("extensions.quickfolders.lastActiveCategories","");
+pref("extensions.quickfolders.validityCheck.onUpdate",true);
 // General Prefs
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);

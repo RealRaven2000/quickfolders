@@ -165,7 +165,7 @@ QuickFolders.bookmarks = {
     return false;
   },
   
-  onClick: function onClickBookmark(menuItem, evt, entry) {
+  onClick: function (menuItem, evt, entry) {
     let util = QuickFolders.Util,
         prefs = QuickFolders.Preferences,
 		    isCtrl = evt.ctrlKey,
@@ -230,7 +230,7 @@ QuickFolders.bookmarks = {
       this.save();
   },  
   
-  addMenuItem: function addMenuItem(entry) {
+  addMenuItem: function (entry) {
     let util = QuickFolders.Util,
         menu = util.$('QuickFolders-readingListMenu'),
         menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
@@ -605,7 +605,7 @@ QuickFolders.bookmarks = {
   
   // Update the User Interface (Reading List Menu: context items only)
   // the list itself is only rebuilt when calling load() or setting dirty=true and calling persist()
-  update: function update() {
+  update: function () {
     let isActive = this.hasEntries,
         util = QuickFolders.Util,
         QI = QuickFolders.Interface;

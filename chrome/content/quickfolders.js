@@ -189,18 +189,23 @@ END LICENSE BLOCK */
     ## [issue 532] Return key no longer moves emails when search finds only one folder
 
   6.10 QuickFolders Pro - WIP
-    ## made compatible with Tb 136.*
-    ## New option to always open QuickFolders Options in a tab
-    ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
-    ## [issue 543] Remove inline event handlers which will be deprecated in Thunderbird 136`
-    ## [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled.
+    ## New option to always display QuickFolders Options in a tab
     ## [issue 540] quickJump feature - Shortcut key to open specified folder in a new TB tab
-    ## Replace XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
+    ## [issue 542] quickJump - Modifier key [Alt] to open folder in new window 
+    ## [issue 548] a11y: quickJump / quickMove prority for QF bookmarks in results & screenreader support
+    ## [issue 550] a11y: Support adding QuickFolders (bookmark folders) using keyboard
+    ## [issue 551] a11y: Accessibility option: Remove 'customize icon' command from folder context
+    ## [issue 478] option to disable highlighting tabs with invalid folders 🧹
+    ---
+    ## [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled.
+    ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
     ## [issue 546] Fixed: can no longer remove customized icon from tab
+    ---
+    ## made compatible with Tb 136.*
+    ## Replaced XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
+    ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
-    ## [issue 548] quickJump / quickMove prority for QF bookmarks in results & screenreader support
-    ## [issue 550] Support adding QuickFolders (bookmark folders) using keyboard
-    ## [issue 551] Accessibility option: Remove 'customize icon' command from folder context
+    
 
 
 

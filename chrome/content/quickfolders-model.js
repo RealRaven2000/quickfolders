@@ -126,9 +126,12 @@ QuickFolders.Model = {
     return null;
   } ,
   
-  getButtonEntry: function getButtonEntry(button) {
-    if (!button.folder) return null;
-    return this.getFolderEntry(button.folder.URI);
+  getButtonEntry: function(button) {
+    if (!button) return null;
+    // support invalid folders:
+    const uri = button?.folder?.URI || button.getAttribute("folderURI");
+    if (!uri) return null;
+    return this.getFolderEntry(uri);
   } ,
 
   removeFolder: function removeFolder(uri, updateEntries) {
@@ -143,7 +146,7 @@ QuickFolders.Model = {
       this.update();
   } ,
 
-  renameFolder: function renameFolder(uri, name) {
+  renameFolder: function (uri, name) {
     QuickFolders.Util.logDebug("model.renameFolder");
     let entry;
 
@@ -196,7 +199,7 @@ QuickFolders.Model = {
   update: function update() {
     QuickFolders.Util.logDebug("model.update");
     this.store();
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // QuickFolders.Interface.updateFolders(true, false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); 
   } ,
 
   setTabIcon: function setTabIcon(button, entry, iconURI, menuItem) {
@@ -230,7 +233,7 @@ QuickFolders.Model = {
     QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
   } ,
 
-  setFolderColor: function setFolderColor(uri, tabColor, withUpdate) {
+  setFolderColor: function (uri, tabColor, withUpdate) {
     let entry;
     if (tabColor == 'undefined') 
       tabColor=0;
@@ -434,7 +437,6 @@ QuickFolders.Model = {
   
   correctFolderEntries: function (entries, withStorage = true) {
     let needsPatch = false;
-    let is102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
     
     function addAccountKey(e) {
       // [issue 281] - convert to new format
@@ -476,48 +478,54 @@ QuickFolders.Model = {
       throw new Error(`Failed to reconstruct URL for ${e.uri} of account ${e.account} - account type ${acType}`);
     }
 
+    const flagIncorrectFolders = QuickFolders.Preferences.getBoolPref("validityCheck.onUpdate");
     for (let i = 0; i < entries.length; i++) {
       let e = entries[i];
       if (!e.account) {
         needsPatch = true;
         addAccountKey(e);
       }
+      if (!e.uri) continue;
       // Thunderbird 102 correction: read valid! account attribute, then try to match the folder to the account.
-      if (is102 && e.uri) {
-        let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
-        if (e.account && !e.account.startsWith("?")) {
-          if (f) {
-            // The folder was found, clear invalid flag!
-            if (e.invalid) {
-              delete e.invalid;
-            }
-            continue;
-          }
-          // Folder uri is invalid, reconstruct!
-          try {
-            let newUri = reconstructUri(e); // this should make a new uri based on the current account key and remaining path
-            // Validate the reconstructed uri.
-            f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
-            if (!f) {
-              throw new Error(`Reconstructed URL ${newUri} for ${e.uri} of account ${e.account} is invalid`);
-            }
-            needsPatch = true;
-            console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
-            e.uri = newUri;
+      let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
+      if (e.account && !e.account.startsWith("?")) {
+        if (f) {
+          // The folder was found, clear invalid flag!
+          if (e.invalid) {
             delete e.invalid;
-          } catch (ex) {
-            console.log(`QuickFolders\n%c${ex.message}`, "background: rgb(120,0,0); color:white;");
           }
-        } else {
-          if (f && (e.account.startsWith("?") || e.invalid)) {
-            // The folder was found, add account key once again!
-            if (addAccountKey(e)) { // account was corrected with a real accountname
-              needsPatch = true;
+          continue;
+        }
+        // Folder uri is invalid, reconstruct!
+        try {
+          let newUri = reconstructUri(e); // this should make a new uri based on the current account key and remaining path
+          if (e.uri == newUri) {
+            if (!flagIncorrectFolders) {
+              delete e.invalid;
+              continue;
             }
           }
-          // No valid account, matching magic!
-          // TO DO LATER.
+          // Validate the reconstructed uri.
+          f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
+          if (!f) {
+            throw new Error(`Reconstructed URL ${newUri} for ${e.uri} of account ${e.account} is invalid`);
+          }
+          needsPatch = true;
+          console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
+          e.uri = newUri;
+          delete e.invalid;
+        } catch (ex) {
+          console.log(`QuickFolders\n%c${ex.message}`, "background: rgb(120,0,0); color:white;");
         }
+      } else {
+        if (f && (e.account.startsWith("?") || e.invalid)) {
+          // The folder was found, add account key once again!
+          if (addAccountKey(e)) { // account was corrected with a real accountname
+            needsPatch = true;
+          }
+        }
+        // No valid account, matching magic!
+        // TO DO LATER.
       }
     }
     
@@ -584,7 +592,7 @@ QuickFolders.Model = {
         QuickFolders.Util.logDebug('Palette updated!');
         this.paletteUpdated = true;
 
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // QuickFolders.Interface.updateFolders(true, false);
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); 
         QuickFolders.Preferences.storeFolderEntries(folderEntries);
   
       }

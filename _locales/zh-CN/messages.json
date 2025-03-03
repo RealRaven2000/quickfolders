@@ -1447,6 +1447,9 @@
   "qf.update.hideVersionHistory": {
     "message": "不要打开带有版本历史记录的选项卡"
   },
+  "qf.update.markInvalidTabs": {
+    "message": "突出显示无效选项卡 🧹"
+  },
   "qf.youtube.description": {
     "message": "有关Thunderbird附加组件以及如何使用QuickFolders的详细视频，请访问我的YouTube频道Thunderbird Daily。"
   },
