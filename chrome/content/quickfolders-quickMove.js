@@ -13,6 +13,8 @@
     QuickFolders_ESM
       ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
       : ChromeUtils.import("resource:///modules/MailServices.jsm");
+      
+  var { PluralForm } = ChromeUtils.importESModule("resource://gre/modules/PluralForm.sys.mjs");
 
 // drop target which defers a move to a quickJump operation
 QuickFolders.quickMove = {
@@ -179,8 +181,6 @@ QuickFolders.quickMove = {
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
 		const util = QuickFolders.Util,
 		      QI = QuickFolders.Interface;
-					
-    var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
 					
     let actionCount,
         fld = folder || QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
