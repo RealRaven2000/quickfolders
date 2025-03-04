@@ -682,9 +682,8 @@ async function loadPrefs() {
 // force a mode "helpOnly" "supportOnly" "licenseKey"
 // change selectedTab from numeral to string!!
 async function preselectTab(mode=null) {
-  let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab"),
+  let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab") || "",
       selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
-    // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
   let selTab = optionParams ? optionParams.get("selectedTab") : ""; 
   if (!mode) {
