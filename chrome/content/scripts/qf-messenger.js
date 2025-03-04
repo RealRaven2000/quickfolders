@@ -54,6 +54,7 @@ async function onLoad(activatedWhileWindowOpen) {
         dragdroparea="QuickFolders-FoldersBox"
         customizable="false"
         context="QuickFolders-ToolbarPopup"
+        aria-orientation="horizontal"
         flex="10">
         <hbox id="QuickFolders-left" align="center">
           <vbox id="QuickFolders-LabelBox" flex="0">
@@ -255,7 +256,8 @@ async function onLoad(activatedWhileWindowOpen) {
 
 
         <vbox id="QuickFolders-Folders-Pane"  flex="1">
-          <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
+          <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer"      
+            role="toolbar">
             <div class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</div>
           </box>
         </vbox>
@@ -274,7 +276,8 @@ async function onLoad(activatedWhileWindowOpen) {
     <hbox id="QuickFolders-Category-Box">
       <menulist id="QuickFolders-Category-Selection" 
         sizetopopup="none" 
-        collapsed="true">
+        collapsed="true"
+        tabindex="0">
         <menupopup>
             <!-- filled dynamically from JS -->
         </menupopup>
@@ -306,18 +309,21 @@ async function onLoad(activatedWhileWindowOpen) {
           tooltiptext="__MSG_qf.tooltip.quickMove__"
           label=""
           context="QuickFolders-quickMoveMenu"
+          tabindex="0"
           />
         <search-textbox id="QuickFolders-FindFolder" 
           class="searchBox input-sizer"
           type="search"
           collapsed="true"
           placeholder="__MSG_quickfolders.findFolder.placeHolder__"
+          tabindex="0"
           />
         <toolbarbutton id="QuickFolders-FindFolder-Help"
           class="popupButton"
           label=""
           tooltiptext="__MSG_quickfolders.findFolder.help__"
           collapsed="true"
+          tabindex="0"
           />
        </hbox>
        

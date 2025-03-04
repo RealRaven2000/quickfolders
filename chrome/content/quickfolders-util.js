@@ -1312,7 +1312,6 @@ allowUndo = true)`
 
 	// optional logging for important points in flow.
 	logHighlight: function(txt, options={color:"white", background:"rgb(80,0,0)"}, ...args) {
-    let txt2 = null;
     if (typeof options == "string") {
       args.unshift(options); // insert as top = add as first additional args element
       options = {color:"white", background:"rgb(80,0,0)"}; // set color again

@@ -371,6 +371,7 @@ QuickFolders.Interface = {
 				let recentLabel = QuickFolders.Preferences.getBoolPref("recentfolders.showLabel") ? this.getUIstring("qfRecentFolders") : "";
 				button.setAttribute("label", recentLabel);
 				button.setAttribute("tag", "#Recent");
+				button.setAttribute("role", "button");
 				button.id="QuickFolders-Recent";
 
 				// biffState = nsMsgBiffState_Unknown = 2
@@ -406,8 +407,7 @@ QuickFolders.Interface = {
 				{
 					if (button.getAttribute("context") != this.RecentPopupId) { // prevent event duplication
 						button.setAttribute("context", this.RecentPopupId);
-						button.setAttribute("position","after_start");
-						// button.addEventListener("contextmenu", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, false); }, true);
+						// button.setAttribute("position","after_start");
 						button.addEventListener("click", (event) => { QuickFolders.Interface.onClickRecent(event.target, event, true); return false; }, false);
 						button.addEventListener("dragenter", (event) => { QuickFolders.buttonDragObserver.dragEnter(event); }, false);
 						button.addEventListener("dragover", (event) => { QuickFolders.buttonDragObserver.dragOver(event); return false; }, false);
@@ -771,11 +771,11 @@ QuickFolders.Interface = {
 		if (prefs.isShowRecentTab) {
 			if (minimalUpdate ) {
 				offset++;
-			}
-			else
-			{
+			} else {
 				let rtab = this.createRecentTab(null, false, null);
 				if (rtab) {
+					rtab.setAttribute("tabIndex", 0);
+					rtab.setAttribute("role", "button");
 					this.FoldersBox.appendChild(rtab);
 					offset++;
 				}
@@ -814,7 +814,47 @@ QuickFolders.Interface = {
                 folderEntry.invalid = true; // add invalid to entry!
 							}
 						} else {
-              countValidTabs++;
+							// a11y
+							button.addEventListener("keydown", (event) => {
+								function goNextSibling(dir=+1) {
+									let b = button;
+									do {
+                    b = dir > 0 ? b.nextElementSibling : b.previousElementSibling;
+                  } while (
+                    b &&
+                    (b.tagName !== "toolbarbutton" || !b.folder) // && (b.id && b.id!="QuickFolders-Recent")
+                  );
+									return b;
+								}
+								let sibling;
+								switch (event.key) {
+                  case "ArrowRight":
+                    sibling = goNextSibling(1);
+                    break;
+                  case "ArrowLeft":
+                    sibling = goNextSibling(-1);
+                    break;
+                  case "Enter":
+                    QuickFolders.Interface.onButtonClick(button, event, false);
+                    break;
+                  case "ContextMenu": // Windows Menu key
+                    // Trigger your context menu logic here
+                    console.log("Context menu key pressed!");
+                    break;
+                  case "F2": // Rename action
+                    QuickFolders.Interface.onRenameBookmark(button);
+                    event.preventDefault(); // Prevent any default behavior
+                    break;
+                }
+								if (!sibling) return;
+								event.preventDefault();
+								button.setAttribute("tabindex","-1");
+								sibling.setAttribute("tabindex", "0");
+								sibling.focus();
+							})
+							button.setAttribute("tabindex", isFirst ? "0" : "-1");
+							button.setAttribute("role","button");
+							countValidTabs++;
 						}
               
 						this.buttonsByOffset[offset] = button;
@@ -853,8 +893,7 @@ QuickFolders.Interface = {
 			if (invalidCount) {
 				util.logDebug("{0} invalid tabs where found!\n Please check with 'Remove Invalid tabs' from the QuickFolders tools menu.".replace("{0}", invalidCount));
       }
-		}
-    else { // no tabs defined : add instructions label
+		} else { // no tabs defined : add instructions label
       let existingLabel = this.FoldersBox.querySelector("#QuickFolders-Instructions-Label");
       if (!existingLabel) {
         let label = document.createXULElement('label'),
@@ -3255,7 +3294,7 @@ QuickFolders.Interface = {
 
 	onRenameBookmark: function(element) {
 		let util = QuickFolders.Util,
-        folderButton = util.getPopupNode(element),
+        folderButton = (element.tagName == "toolbarbutton") ? element : util.getPopupNode(element),
 		    sOldName = folderButton.label; //	this.getButtonByFolder(popupNode.folder).label;
 		// strip shortcut numbers
 		if(QuickFolders.Preferences.isShowShortcutNumbers) {

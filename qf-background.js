@@ -1000,6 +1000,7 @@ async function main() {
   messenger.tabs.onActivated.addListener(async (activeInfo) => {
     if (isDebug) console.log(activeInfo);
     const theTab = await messenger.tabs.get(activeInfo.tabId);
+    if (!theTab?.url) return;
     if (theTab.url.startsWith(getOptionsPageURL())) {
       onOptionsTabActivated();
     }
