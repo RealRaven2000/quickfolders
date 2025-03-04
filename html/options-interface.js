@@ -27,7 +27,7 @@ QuickFolders.Interface = {
 		}
   } ,  
 
-	setTabColorFromMenu: async function setTabColorFromMenu(menuitem, col) {
+	setTabColorFromMenu: async function (menuitem, col) {
 		// get parent button of color sub(sub)(sub)menu
 		let parent = menuitem,
         prefs = QuickFolders.Preferences,
