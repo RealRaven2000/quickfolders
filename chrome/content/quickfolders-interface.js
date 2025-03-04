@@ -2737,14 +2737,14 @@ QuickFolders.Interface = {
 			  this.FoldersBox.appendChild(sep);
 			}
 			this.FoldersBox.appendChild(button);
-			if (folder) {
+			if (folder || entry.uri) {
         // these are defined in mail/base/content/folderPane.js
-				const observer = QuickFolders.buttonDragObserver;
-				QI.addUniqueEventListener(button, "dragenter", (event) => observer.dragEnter(event));
-				QI.addUniqueEventListener(button, "dragover", (event) => observer.dragOver(event));
-				QI.addUniqueEventListener(button, "drop", (event) => observer.drop(event));
-				QI.addUniqueEventListener(button, "dragleave", (event) => observer.dragLeave(event));
-			}
+        const observer = QuickFolders.buttonDragObserver;
+        QI.addUniqueEventListener(button, "dragenter", (event) => observer.dragEnter(event));
+        QI.addUniqueEventListener(button, "dragover", (event) => observer.dragOver(event));
+        QI.addUniqueEventListener(button, "drop", (event) => observer.drop(event));
+        QI.addUniqueEventListener(button, "dragleave", (event) => observer.dragLeave(event));
+      }
 			// button.setAttribute("flex",100);
 		}
     // we do this after appendChild, because labelElement needs to be generated in DOM

@@ -1847,8 +1847,18 @@ var QuickFolders = {
         util.logToConsole("dropping eml file: currently unsupported.");
       } else if (isDropButton) {  // reordering button positions
         // was "text/unicode"
-        let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
-        QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");        
+        const buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
+        const targetURI = DropTarget?.folder || DropTarget.getAttribute("folderURI");
+        if (targetURI) {
+          QuickFolders.Model.insertAtPosition(buttonURI, targetURI, ""); 
+        } else {
+          QuickFolders.Util.logHighlight(
+            "invalid drop data - no targetURI:",
+            {color:"yellow", background:"rgb(80,0,0)"},
+            buttonURI,
+            DropTarget
+          );
+        }
 
       }
       util.logDebugOptional('dnd',"completed buttonDragObserver.drop() !\n==========================");
@@ -1861,17 +1871,15 @@ var QuickFolders = {
 			util.logDebugOptional('dnd', 'buttonDragObserver.startDrag\n' 
 			                           + 'button.folder=' + button.folder + '\n' 
 																 + 'button.id=' + button.id || "n/a");
-			if(!button.folder)
-				 return;
+      const uri = button?.folder?.URI || button.getAttribute("folderURI");
+			if (!uri) return;
 			// transferData.data = new TransferData();
       // if current folder button is started to drag, use a different flavour
 			if (button.id && button.id === "QuickFoldersCurrentFolder") {
-				// transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
-        event.dataTransfer.mozSetDataAt("text/currentfolder", button.folder.URI, 0);
+        event.dataTransfer.mozSetDataAt("text/currentfolder", uri, 0);
       }
 			else {
-				// transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
-        event.dataTransfer.mozSetDataAt("text/unicode", button.folder.URI, 0);
+        event.dataTransfer.mozSetDataAt("text/unicode", uri, 0);
       }
 		}
 
