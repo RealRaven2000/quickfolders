@@ -72,14 +72,14 @@ async function onLoad(activatedWhileWindowOpen) {
               />
             <menuitem id="QuickFolders-quickMove-cancel"
               label="__MSG_quickfolders.quickMove.menu.cancel__"
-              collapsed="true"
+              collapsed="true" hidden="true"
               />
             <menuitem id="QuickFolders-quickMove-showSearch"
               label="__MSG_quickfolders.quickMove.menu.showSearch__"
               />
             <menuitem id="QuickFolders-quickMove-hideSearch"
               label="__MSG_quickfolders.quickMove.menu.hideSearch__"
-              collapsed="true"
+              collapsed="true" hidden="true"
               />
           </menupopup>
         </popupset>	
@@ -89,7 +89,7 @@ async function onLoad(activatedWhileWindowOpen) {
             <menuitem id="QuickFolders-readingList-reset"
               label="__MSG_quickfolders.readingList.clear__"
               class="cmd"
-              collapsed="true"
+              collapsed="true" hidden="true"
               />
             <menuitem id="QuickFolders-readingList-add"
               label="__MSG_quickfolders.readingList.addCurrent__"
@@ -100,11 +100,11 @@ async function onLoad(activatedWhileWindowOpen) {
         
         <popupset id="QuickFolders-MainPopupSet">
           <menupopup id="QuickFolders-ToolbarPopup">
-            <!-- debug submenu -->
             <menu class="menu-iconic dbgMenu"  
-              collapsed="true"
+              collapsed="true" hidden="true"
               id="QuickFolders-debug" 
-              label="Debug">
+              label="Debug"
+              >
               <menupopup class="dbgMenu">
               
                 <menuitem id="QuickFolders-ToolbarPopup-dbg0"
@@ -170,13 +170,13 @@ async function onLoad(activatedWhileWindowOpen) {
               accesskey="__MSG_qf.menuitem.quickfolders.findAccess__"
               class="cmd menuitem-iconic"
               tagName="qfFindFolder"
-              collapsed="true"
+              collapsed="true" hidden="true"
               />
             <menuitem id="QuickFolders-ToolbarPopup-checkLicense"
               label="__MSG_qf.menuitem.quickfolders.checkLicense__"
               class="cmd menuitem-iconic"
               tagName="qfCheckLicense"
-              collapsed="true"
+              collapsed="true" hidden="true"
               />
             <menuitem id="QuickFolders-ToolbarPopup-options"
               label="__MSG_qf.menuitem.quickfolders.options__"
@@ -276,7 +276,7 @@ async function onLoad(activatedWhileWindowOpen) {
     <hbox id="QuickFolders-Category-Box">
       <menulist id="QuickFolders-Category-Selection" 
         sizetopopup="none" 
-        collapsed="true"
+        collapsed="true" hidden="true"
         tabindex="0">
         <menupopup>
             <!-- filled dynamically from JS -->
@@ -290,20 +290,20 @@ async function onLoad(activatedWhileWindowOpen) {
           />
         <toolbarbutton id="QuickFolders-filterActive"
           tooltiptext="__MSG_qf.tooltip.filters__"
-          collapsed="true"
+          collapsed="true" hidden="true"
           />
         <toolbarbutton id="QuickFolders-paintBucketActive"
           label="ABC"
           tooltiptext="__MSG_qf.tooltip.paintCanActive__"
           context="QuickFolders-PalettePopup" 
-          collapsed="true"
+          collapsed="true" hidden="true"
           />
         <toolbarbutton id="QuickFolders-readingList"
           class="popupButton"
           tooltiptext="__MSG_quickfolders.readingList.tooltip__"
           label=""
           context="QuickFolders-readingListMenu"
-          collapsed="true"/>
+          collapsed="true" hidden="true"/>
         <toolbarbutton id="QuickFolders-quickMove"
           class="popupButton"
           tooltiptext="__MSG_qf.tooltip.quickMove__"
@@ -314,7 +314,7 @@ async function onLoad(activatedWhileWindowOpen) {
         <search-textbox id="QuickFolders-FindFolder" 
           class="searchBox input-sizer"
           type="search"
-          collapsed="true"
+          collapsed="true" hidden="true"
           placeholder="__MSG_quickfolders.findFolder.placeHolder__"
           tabindex="0"
           />
@@ -322,7 +322,7 @@ async function onLoad(activatedWhileWindowOpen) {
           class="popupButton"
           label=""
           tooltiptext="__MSG_quickfolders.findFolder.help__"
-          collapsed="true"
+          collapsed="true" hidden="true"
           tabindex="0"
           />
        </hbox>

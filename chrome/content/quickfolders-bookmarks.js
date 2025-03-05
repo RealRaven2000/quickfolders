@@ -606,16 +606,16 @@ QuickFolders.bookmarks = {
   // Update the User Interface (Reading List Menu: context items only)
   // the list itself is only rebuilt when calling load() or setting dirty=true and calling persist()
   update: function () {
-    let isActive = this.hasEntries,
-        util = QuickFolders.Util,
-        QI = QuickFolders.Interface;
+    const isActive = this.hasEntries,
+      util = QuickFolders.Util,
+      QI = QuickFolders.Interface;
     util.logDebug('QuickFolders.bookmarks.update()\n' + 'isActive = ' + isActive);
     // indicate number of messages on the button?
     QI.ReadingListButton.label = 
       isActive ?
       this.Entries.length : '';  
-    let btn = util.$('QuickFolders-readingList-reset');
-    if (btn) btn.collapsed = !isActive;
+    const btn = util.$('QuickFolders-readingList-reset');
+    QI.showElement(btn, isActive);
   } ,
 
   readStringFile: async function readStringFile() {

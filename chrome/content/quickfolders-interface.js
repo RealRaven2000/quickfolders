@@ -654,53 +654,73 @@ QuickFolders.Interface = {
 
 		try {
       util.logDebug("updateQuickFoldersLabel()");
-			let isRenew = (QuickFolders.Util.licenseInfo.isValid && QuickFolders.Util.licenseInfo.licensedDaysLeft<=10),
-			    showLabelBox = isRenew || prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
-					quickFoldersLabel = this.TitleLabel,
-					qfLabelBox = this.TitleLabelBox,
-					isLicenseNotChecked = !wasLicenseViewedInSession();
+      let isRenew =
+          QuickFolders.Util.licenseInfo.isValid &&
+          QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10,
+        showLabelBox =
+          isRenew ||
+          prefs.isShowQuickFoldersLabel ||
+          QuickFolders.Util.licenseInfo.isExpired ||
+          0 == QuickFolders.Model.selectedFolders.length,
+        quickFoldersLabel = this.TitleLabel,
+        qfLabelBox = this.TitleLabelBox,
+        isLicenseNotChecked = !wasLicenseViewedInSession();
 
-			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
-			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
+      quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
+      // force Renew QuickFolders to be visible!
+      QuickFolders.Interface.showElement(quickFoldersLabel, showLabelBox);
       if (QuickFolders.Util.licenseInfo.isExpired) {
-				quickFoldersLabel.classList.add("expired");
-      } 
-      
-			let checkMenu = document.getElementById("QuickFolders-ToolbarPopup-checkLicense");
-			if (checkMenu) {
-				checkMenu.collapsed = !isRenew;
-			}
-			if (isRenew && isLicenseNotChecked) {
-				quickFoldersLabel.classList.remove("expired");
-				quickFoldersLabel.classList.add("renew");
-				quickFoldersLabel.classList.remove("newsflash");
-				let txtRenew = util.getBundleString("qf.premium.renew", QuickFolders.Util.licenseInfo.licensedDaysLeft);
-				quickFoldersLabel.label = txtRenew;
-			}
-      else if (prefs.getBoolPref("hasNews")) {
-				quickFoldersLabel.classList.add("newsflash");
-				quickFoldersLabel.setAttribute("tooltiptext", util.getBundleString("update.tooltip",["QuickFolders"]));
+        quickFoldersLabel.classList.add("expired");
       }
-			else if (QuickFolders.Util.licenseInfo.isExpired && isLicenseNotChecked) {
-				quickFoldersLabel.classList.remove("renew");
-				quickFoldersLabel.classList.remove("newsflash");
-				let txtExpired =
-				  util.getBundleString("qf.premium.renewLicense.tooltip").replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
-				quickFoldersLabel.setAttribute("tooltiptext", txtExpired);
-			}
-			else {
-				quickFoldersLabel.removeAttribute("tooltiptext");
-				quickFoldersLabel.classList.remove("renew");
-				quickFoldersLabel.classList.remove("expired");
-				quickFoldersLabel.classList.remove("newsflash");
-			} 
-			qfLabelBox.collapsed = !showLabelBox;
-			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
-		}
+
+      let checkMenu = document.getElementById("QuickFolders-ToolbarPopup-checkLicense");
+			QuickFolders.Interface.showElement(checkMenu, isRenew);
+      if (isRenew && isLicenseNotChecked) {
+        quickFoldersLabel.classList.remove("expired");
+        quickFoldersLabel.classList.add("renew");
+        quickFoldersLabel.classList.remove("newsflash");
+        let txtRenew = util.getBundleString(
+          "qf.premium.renew",
+          QuickFolders.Util.licenseInfo.licensedDaysLeft
+        );
+        quickFoldersLabel.label = txtRenew;
+      } else if (prefs.getBoolPref("hasNews")) {
+        quickFoldersLabel.classList.add("newsflash");
+        quickFoldersLabel.setAttribute(
+          "tooltiptext",
+          util.getBundleString("update.tooltip", ["QuickFolders"])
+        );
+      } else if (QuickFolders.Util.licenseInfo.isExpired && isLicenseNotChecked) {
+        quickFoldersLabel.classList.remove("renew");
+        quickFoldersLabel.classList.remove("newsflash");
+        let txtExpired = util
+          .getBundleString("qf.premium.renewLicense.tooltip")
+          .replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
+        quickFoldersLabel.setAttribute("tooltiptext", txtExpired);
+      } else {
+        quickFoldersLabel.removeAttribute("tooltiptext");
+        quickFoldersLabel.classList.remove("renew");
+        quickFoldersLabel.classList.remove("expired");
+        quickFoldersLabel.classList.remove("newsflash");
+      }
+			QuickFolders.Interface.showElement(qfLabelBox, showLabelBox);
+      qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
+    }
 		catch(ex) {
 			util.logException("updateQuickFoldersLabel()", ex);
 		}
 	} ,
+
+	showElement: function(el, visible) {
+		if (!el) return;
+		// for a11y we need to hide the element, collapsed still exposes it to keyboard focus!
+		if (visible) {
+			el.removeAttribute("hidden");
+		} else {
+			el.setAttribute("hidden", "true");
+		}			
+		el.collapsed = !visible;
+	},
 
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
@@ -709,6 +729,8 @@ QuickFolders.Interface = {
 					util = QuickFolders.Util;
     const profileThis = (prefs.isDebugOption("updateFolders,performance")),
           profileStyle = "background-color: rgb(194, 82, 131); color:white;"; // Bashful pink
+
+
     if (profileThis) {
       util.stopWatch("start","updateFolders");
       
@@ -719,13 +741,9 @@ QuickFolders.Interface = {
 
 		let showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
 
-		if (this.CogWheelPopupButton)
-			this.CogWheelPopupButton.collapsed = !showToolIcon || this.PaintModeActive;
-    if (this.ReadingListButton)
-      this.ReadingListButton.collapsed = !prefs.isShowReadingList;
-
-    if (this.QuickMoveButton)
-      this.QuickMoveButton.collapsed = !prefs.isShowQuickMove;
+		this.showElement(this.CogWheelPopupButton, showToolIcon && !this.PaintModeActive);
+		this.showElement(this.ReadingListButton, prefs.isShowReadingList);
+		this.showElement(this.QuickMoveButton, prefs.isShowQuickMove);
 
 		if (minimalUpdate)
 			this.updateCategoryLayout();
@@ -1159,16 +1177,14 @@ QuickFolders.Interface = {
           let node = toolbar2.children[n],
             special = node.getAttribute("special");
           if (special && special == "qfMsgFolderNavigation") {
-            node.collapsed = hideMsgNavigation;
+						QuickFolders.Interface.showElement(node, !hideMsgNavigation);
           } else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
             // hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
-            node.collapsed = hideFolderNavigation;
+						QuickFolders.Interface.showElement(node, !hideMsgNavigation);
           }
         }
         const skippy = doc3pane.getElementById("quickFoldersSkipFolder");
-        if (skippy) {
-          skippy.collapsed = !prefs.getBoolPref("currentFolderBar.skipUnreadFolder");
-        }
+				QuickFolders.Interface.showElement(skippy, prefs.getBoolPref("currentFolderBar.skipUnreadFolder"))
 
         toolbar2.setAttribute(
           "iconsize",
@@ -2476,11 +2492,11 @@ QuickFolders.Interface = {
 					if (DEBUG_ME) { debugger; }
 					//	return;
 				}
-				for (let i=0; i<nodes.length; i++) {
-					if(nodes[i].classList.contains("dbgMenu")) {
-						nodes[i].collapsed=!evt.shiftKey;
-					}
-				}
+				for (const node of nodes) {
+          if (node.classList.contains("dbgMenu")) {
+            QuickFolders.Interface.showElement(node, evt.shiftKey);
+          }
+        }
 			}
 
 			util.logDebugOptional("popupmenus", "Open popup menu: " + p.tagName + "\nid: " + p.id);
@@ -2515,6 +2531,7 @@ QuickFolders.Interface = {
 			if (!isNaN(col))
 				QI.setPaintButtonColor();
 		}
+		return p; // return the popup element
 	} ,
 
 	getButtonLabel: function getButtonLabel(folder, useName, offset, entry, stats) {
@@ -3146,7 +3163,8 @@ QuickFolders.Interface = {
 
 		folderButton = util.getPopupNode(element);
 		entry = model.getButtonEntry(folderButton);
-		element.collapsed = true; // hide the menu item!
+		// element.collapsed = true; // hide the menu item!
+		QuickFolders.Interface.showElement(element, false);		
 		model.setTabIcon	(folderButton, entry, "");
 		let folder = model.getMsgFolderFromUri(entry.uri)
 		if (folder && QuickFolders.FolderTree) {
@@ -6289,52 +6307,57 @@ QuickFolders.Interface = {
         QuickMove = QuickFolders.quickMove;
     util.logDebugOptional("interface.findFolder,quickMove", "findFolder(" + show + ", " + actionType + ")");
 		try {
-			let displaySearchControls = show;
-			if (!QuickFolders.Preferences.getBoolPref("premium.findFolder.autoCollapse") && !actionType) {
-				displaySearchControls = true;
-			}
-			const ff = QI.FindFolderBox;
-			ff.collapsed = !displaySearchControls;
-      QI.FindFolderHelp.collapsed = !displaySearchControls;
+      let displaySearchControls = show;
+      if (!QuickFolders.Preferences.getBoolPref("premium.findFolder.autoCollapse") && !actionType) {
+        displaySearchControls = true;
+      }
+      const ff = QI.FindFolderBox;
+      // ff.collapsed = !displaySearchControls;
+      QI.showElement(ff, displaySearchControls);
+      QI.showElement(QI.FindFolderHelp, displaySearchControls);
 
-			if (show) {
-				if (actionType) {
-					util.popupRestrictedFeature(actionType,util.getBundleString("qf.notification.premium.shortcut"),2); // Licensed Version Notification
-          let isMove = (actionType == "quickMove");
+      if (show) {
+        if (actionType) {
+          util.popupRestrictedFeature(
+            actionType,
+            util.getBundleString("qf.notification.premium.shortcut"),
+            2
+          ); // Licensed Version Notification
+          let isMove = actionType == "quickMove";
           QI.toggleMoveModeSearchBox(isMove);
           if (isMove && QuickMove.suspended) {
             QuickMove.toggleSuspendMove(); // undo suspend
           }
-				}
+        }
         QI.updateFindBoxMenus(show);
 
-				let autofill = (ff.value == "") && util.hasValidLicense() && prefs.getBoolPref("quickMove.autoFill");
-				if (autofill) {
-					ff.value = prefs.getStringPref("quickMove.lastFolderName"); // should [ESC] delete contents?
-					ff.select();
-				}
-				ff.focus();
-				return;
-			} 
-			// !show: hide the search box?
-			ff.value = ""; // reset search box
-			if (QI.CurrentTabMode!="mailMessageTab") {
-				// move focus away!
-				let threadPane = this.getThreadPane();
-				if (!threadPane.collapsed) {
-					this.setFocusThreadPane(true);
-				}
-				else {
-					let fTree = GetFolderTree();
-					if (!fTree.collapsed) {
-						fTree.focus();
-					} else {
-						ff.blur();
-					}
-				}
-			}
-			QI.updateFindBoxMenus(show);
-		}
+        let autofill =
+          ff.value == "" && util.hasValidLicense() && prefs.getBoolPref("quickMove.autoFill");
+        if (autofill) {
+          ff.value = prefs.getStringPref("quickMove.lastFolderName"); // should [ESC] delete contents?
+          ff.select();
+        }
+        ff.focus();
+        return;
+      }
+      // !show: hide the search box?
+      ff.value = ""; // reset search box
+      if (QI.CurrentTabMode != "mailMessageTab") {
+        // move focus away!
+        let threadPane = this.getThreadPane();
+        if (!threadPane.collapsed) {
+          this.setFocusThreadPane(true);
+        } else {
+          let fTree = GetFolderTree();
+          if (!fTree.collapsed) {
+            fTree.focus();
+          } else {
+            ff.blur();
+          }
+        }
+      }
+      QI.updateFindBoxMenus(show);
+    }
 		catch(ex) {
 			util.logException("findFolder (" + show + ", " + actionType + ") failed.", ex);
 		}
@@ -6648,20 +6671,21 @@ QuickFolders.Interface = {
 				const CurrentFolderRemoveIconBtn = doc.getElementById("QuickFolders-RemoveIcon");
 				const CurrentFolderSelectIconBtn = doc.getElementById("QuickFolders-SelectIcon");
 				const CurrentFolderFindRelatedBtn = doc.getElementById("QuickFolders-findRelated");
-				if (CurrentFolderFindRelatedBtn) {
-					CurrentFolderFindRelatedBtn.collapsed = !prefs.supportsFindRelated;
-				}
+				QuickFolders.Interface.showElement(
+					CurrentFolderFindRelatedBtn,
+					prefs.supportsFindRelated
+				);
         if (QuickFolders.FolderTree && CurrentFolderRemoveIconBtn) {
           if (!prefs.supportsCustomIcon) {
-            CurrentFolderSelectIconBtn.collapsed = true;
-            CurrentFolderRemoveIconBtn.collapsed = true;
+						QuickFolders.Interface.showElement(CurrentFolderSelectIconBtn, false);
+						QuickFolders.Interface.showElement(CurrentFolderRemoveIconBtn, false);
           } else {
             let hasIcon =
               prefs.getBoolPref("currentFolderBar.folderTreeIcon")
               ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
               : QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
-            CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
-            CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
+						QuickFolders.Interface.showElement(CurrentFolderRemoveIconBtn, hasIcon);
+						QuickFolders.Interface.showElement(CurrentFolderSelectIconBtn, !hasIcon); // hide select icon for tidier experience.
           }
         }
         disableNavigation(false);
@@ -6828,9 +6852,9 @@ QuickFolders.Interface = {
 		// ==> must become palette type aware as well!
     if (this.PaintModeActive) {
       this.initHoverStyle(
-               this.getStyleSheet(document, QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
-               this.getStyleSheet(document, QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
-               true);
+				this.getStyleSheet(document, QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
+				this.getStyleSheet(document, QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
+				true);
     }
 	} ,
 
@@ -7799,7 +7823,7 @@ QuickFolders.Interface = {
 		this.showPopup(button, context);
 	} ,
 
-	togglePaintMode: function togglePaintMode(mode) {
+	togglePaintMode: function(mode) {
 		const util = QuickFolders.Util;
 		let active;
 		switch (mode) {
@@ -7817,11 +7841,14 @@ QuickFolders.Interface = {
 		let paintButton = this.PaintButton;
 		if (paintButton) {
 			let btnCogwheel = this.CogWheelPopupButton;
-			if (btnCogwheel)
-				btnCogwheel.collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
-			paintButton.collapsed = !active;
-			if (this.CategoryBox)
+			QuickFolders.Interface.showElement(
+        btnCogwheel,
+        !active && QuickFolders.Preferences.isShowToolIcon
+      );
+			QuickFolders.Interface.showElement(paintButton, active);
+			if (this.CategoryBox) {
 				this.CategoryBox.setAttribute("mode", active ? "paint" : "");
+			}
 
 			if (this.CurrentFolderFilterToggleButton) {
 				this.CurrentFolderFilterToggleButton.setAttribute("mode", "");
@@ -7840,22 +7867,26 @@ QuickFolders.Interface = {
 				try {
 					this.setButtonColor(paintButton, tabColor);
 					// create context menu
-					let menupopup = this.PalettePopup,
-              hasPopup = false;
+					const menupopup = this.PalettePopup;
+          let hasPopup = false;
           // [issue 111] - Paint mode not working
           menupopup.childNodes.forEach(e => {if (e.tagName=="menuitem") hasPopup=true;} );
 					if (!hasPopup) {
 						util.logDebugOptional("interface","build palette menu…");
 						this.buildPaletteMenu(tabColor, menupopup);
 						// a menu item to end this mode
-						let mItem = this.createMenuItem("qfPaint", this.getUIstring("qfPaintToggle"));
-						// this.setEventAttribute(mItem, "oncommand","QuickFolders.Interface.togglePaintMode("off");");
-						mItem.addEventListener("command", (event) => { QuickFolders.Interface.togglePaintMode("off"); }, false);
+						const mItem = this.createMenuItem("qfPaint", this.getUIstring("qfPaintToggle"));
+						mItem.addEventListener(
+              "command",
+              (event) => {
+                QuickFolders.Interface.togglePaintMode("off");
+              },
+              false
+            );
             mItem.className = "menuitem-iconic";
 						menupopup.insertBefore(this.createIconicElement("menuseparator", "*"), menupopup.firstChild);
 						menupopup.insertBefore(mItem, menupopup.firstChild);
-					}
-					else {
+					} else {
 						util.logDebugOptional("interface","palette already built (firstChild exists)");
           }
           
@@ -7882,8 +7913,10 @@ QuickFolders.Interface = {
   updateFindBoxMenus: function updateFindBoxMenus(toggle) {
 		const util = QuickFolders.Util;
     try {
-      util.$("QuickFolders-quickMove-showSearch").collapsed = toggle;
-      util.$("QuickFolders-quickMove-hideSearch").collapsed = !toggle;
+			QuickFolders.Interface.showElement(util.$("QuickFolders-quickMove-showSearch"), !toggle);
+			QuickFolders.Interface.showElement(util.$("QuickFolders-quickMove-hideSearch"), toggle);
+			// util.$("QuickFolders-quickMove-showSearch").collapsed = toggle;
+			// util.$("QuickFolders-quickMove-hideSearch").collapsed = !toggle;
     }
     catch (ex) {
 			util.logException("Exception during updateFindBoxMenus(" + toggle + ") ", ex);
@@ -7893,29 +7926,29 @@ QuickFolders.Interface = {
   // make a special style visible to show that [Enter] will move the mails in the list (and not just jump to the folder)
   toggleMoveModeSearchBox: function (toggle) {
     QuickFolders.Util.logDebug("toggleMoveModeSearchBox(" + toggle + ")");
-    let searchBox = QuickFolders.Interface.FindFolderBox;
-		if (toggle)
-			searchBox.classList.add("quickMove");
-		else
-			searchBox.classList.remove("quickMove");
-
+    const searchBox = QuickFolders.Interface.FindFolderBox;
+		if (toggle) searchBox.classList.add("quickMove");
+		else searchBox.classList.remove("quickMove");
   } ,
 
   quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
-		const QI = QuickFolders.Interface;
-	  let searchBox = QI.FindFolderBox;
-    if (evt.target.tagName == "menuitem") { // [issue 292] Close quickJump box after using the "="
+    const QI = QuickFolders.Interface;
+    const searchBox = QI.FindFolderBox;
+    if (evt.target.tagName == "menuitem") {
+      // [issue 292] Close quickJump box after using the "="
       return;
     }
-    if (searchBox && !searchBox.collapsed && evt.button==0)  { // hide only on left click
+    // Hide search box on left click if it's visible
+    if (searchBox && !searchBox.hasAttribute("hidden") && evt.button == 0) {
       QuickFolders.quickMove.hideSearch(); // hide search box if shown
-    } else {
-      if (QuickFolders.quickMove.hasMails) {
-        QI.showPopup(el,"QuickFolders-quickMoveMenu");
-      } else {
-        QI.findFolder(true,"quickJump"); // show jump to folder box
-      }
+			return
     }
+
+		if (QuickFolders.quickMove.hasMails) {
+			QI.showPopup(el, "QuickFolders-quickMoveMenu");
+		} else {
+			QI.findFolder(true, "quickJump"); // show jump to folder box
+		}
   },
 
   readingListClick: function readingListClick(evt, el) {
@@ -7968,17 +8001,18 @@ QuickFolders.Interface = {
       QuickFolders.Preferences.setBoolPref("hasNews", false); // reset
       // send a notification to update all windows!
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
+			return;
     }
-		else if (QuickFolders.Util.licenseInfo.isExpired) {
+		if (QuickFolders.Util.licenseInfo.isExpired) {
 			if (!QuickFolders.Util.licenseInfo.isLicenseViewed) {
 				QuickFolders.Util.licenseInfo.isLicenseViewed = true; // session variable to mark license stuff as "seen".
 				QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel"}); 
 			}		
 			QuickFolders.Interface.showLicenseDialog("mainLabelRenewal");
+			return;
 		}
-		else { // get context Menu as normal
-			QuickFolders.Interface.showPopup(btn, "QuickFolders-ToolbarPopup");
-		}
+		// get context Menu as normal
+		const p = QuickFolders.Interface.showPopup(btn, "QuickFolders-ToolbarPopup");
 	} ,
 
 	removeLastPopup: function(p, theDoc) {
