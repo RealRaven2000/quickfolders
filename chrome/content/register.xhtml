@@ -99,7 +99,7 @@
 	<hbox class="form">
 	  <vbox>
 			<hbox>
-				<label class="ref">__MSG_account.label__</label>
+				<label class="ref" for="mailIdentity">__MSG_account.label__</label>
 				<menulist id="mailIdentity"
 					sizetopopup="none"
 					oncommand="Register.selectIdentity(this);"
@@ -109,28 +109,28 @@
 				</menulist>
 			</hbox>
 			<hbox>
-				<label control="email"
+				<label control="email" for="email"
 							 class="ref"
 							 value="__MSG_email.label__" 
 							 />
-				<html:input type="text" id="email" />
+				<html:input type="text" id="email" aria-autocomplete="none"/>
 			</hbox>
 		</vbox>
 	  <spacer flex="1"/>
 	  <vbox>
 			<hbox>
-				<label control="firstName"
+				<label control="firstName" for="firstName"
 							 class="ref"
 							 value="__MSG_firstName.label__" 
 							 />
-				<html:input type="text" id="firstName" />
+				<html:input type="text" id="firstName" aria-autocomplete="none"/>
 			</hbox>
 			<hbox>
-				<label control="lastName"
+				<label control="lastName" for="lastName"
 				       class="ref"
 							 value="__MSG_lastName.label__" 
 							 />
-				<html:input type="text" id="lastName" />
+				<html:input type="text" id="lastName" aria-autocomplete="none"/>
 			</hbox>
 		</vbox>
 		<spacer flex="3" />
@@ -142,11 +142,11 @@
 					<spacer flex="1" />
 				</td>
 				<td>
-					<label class="shilling">__MSG_buyLicense.instruct__</label>
+					<label class="shilling" for="btnLicense">__MSG_buyLicense.instruct__</label>
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnLicense"
-					  class="register"
+					  class="register" 
 						label="__MSG_buyProLicense.button__"
 						oncommand="Register.goPro(0);" />
 				</td>
@@ -183,5 +183,5 @@
 		</table>
 	</vbox>
 
-	<html:input type="text" id="referrer" collapsed="true"/>
+	<html:input type="text" id="referrer" collapsed="true" aria-autocomplete="none"/>
 </dialog>
