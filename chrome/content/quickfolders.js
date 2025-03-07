@@ -201,7 +201,7 @@ END LICENSE BLOCK */
     ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
     ## [issue 546] Fixed: can no longer remove customized icon from tab
     ---
-    ## made compatible with Tb 136.*
+    ## made compatible with Tb 137.*
     ## Replaced XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
     ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule

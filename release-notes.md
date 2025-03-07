@@ -4,10 +4,9 @@
 *   New option to always display QuickFolders Options in a tab. 
 *   quickJump feature - Use [CTRL] key to open folder in a new TB tab. [issue #540]
 *   quickJump - Modifier key [Alt] to open folder in new window. [issue #542]
-*   Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue #547] 
-*   a11y: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue #548]
-*   a11y: Support adding QuickFolders (bookmark folders) using keyboard. [issue #550]
-*   a11y: Accessibility option: Remove 'customize icon' command from folder context. [issue #551]
+*   accessibility: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue #548]
+*   accessibility: Support adding QuickFolders (bookmark folders) using keyboard. [issue #550]
+*   accessibility: Accessibility option: Remove 'customize icon' command from folder context. [issue #551]
   
 
 **Bug Fixes**
@@ -18,7 +17,7 @@
 
 **Miscellanei**
 
-*   Compatibility with Thunderbird 136.*
+*   Compatibility with Thunderbird 137.*
 *   Removed inline event handlers which will be deprecated in Thunderbird 136. [issue #543]
-*   Thunderbird 136 retires ChromeUtils.import - replace with importESModule. [issue #547]
+*   Thunderbird 136 retires `ChromeUtils.import` - replace with `importESModule`. [issue #547]
 
